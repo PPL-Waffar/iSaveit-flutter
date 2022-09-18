@@ -1,16 +1,15 @@
-# isaveit
+# iSaveit
+## Members:
+1. Anastasia Audi Wulandari - 2006607495
+2. Anne Yuliana - 2006607513
+3. Firlandi Althaf Rizqi Ansyari - 2006489874
+4. Winaldo Amadea Hestu - 2006520001
+5. Raihan Fadhila Sukmana - 2006519971
+6. Reynaldi Oktavianus 2006607601
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Project Vision and Goals
+#### Organize budget and expenses with the intent that users can spend their money
+#### Able to reach the university and small business communities and express our motive from this app
+We hope to reach more than twenty potential users in our waiting list
+Receive more than four stars in user satisfaction rate
+Users uses this app daily 
