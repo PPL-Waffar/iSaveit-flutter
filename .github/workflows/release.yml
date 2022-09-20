@@ -9,7 +9,10 @@ on:
   
   # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
+  # This workflow contains a single job called "Build and Release APK"
+  releases:
+    name: Build and Release APK
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -23,19 +26,6 @@ jobs:
         with:
           package: egakcap
           ignore: "*_state.dart, do_not_import_me.dart"
-      - run: flutter pub get
-      - run: flutter packages pub run build_runner build
-      - run: flutter analyze
-      - run: flutter test --coverage .
-      - uses: codecov/codecov-action@v1.0.2
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-  # This workflow contains a single job called "Build and Release APK"
-  releases:
-    name: Build and Release APK
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    steps:
       - name: Checkout the code
         uses: actions/checkout@v2
         
@@ -62,6 +52,17 @@ jobs:
               
       - name: Build APK
         run: flutter build apk --split-per-abi
+        
+      - name: test
+      - run: flutter pub get
+      - run: flutter packages pub run build_runner build
+      - run: flutter build aot
+      - run: flutter analyze
+      - run: flutter test --coverage .
+      - uses: codecov/codecov-action@v1.0.2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+        
 
       - name: Get current date
         id: date
