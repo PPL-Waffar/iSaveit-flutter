@@ -39,3 +39,15 @@ jobs:
 
       - name: Analyze
         run: flutter analyze
+  check:
+    name: dart-code-metrics-action
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+          
+      - name: dart-code-metrics
+        uses: dart-code-checker/dart-code-metrics-action@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
