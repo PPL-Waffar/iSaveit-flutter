@@ -41,13 +41,11 @@ jobs:
       - name: Test app
         run: flutter test --coverage
         
-      - name: Convert coverage to ICOV
-        run: flutter pub run --coverage:format_coverage --lcov --in=coverage --out=coverage.lcov --packages=.packages --report-on=lib
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v1.0.2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: coverage/lcov.info
+          file: ./coverage/lcov.info
               
       - name: Build APK
         run: flutter build apk --split-per-abi
