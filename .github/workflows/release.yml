@@ -9,21 +9,6 @@ on:
   
   # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  test:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Install Flutter
-      uses: subosito/flutter-action@v1.3.2
-    - name: Install app dependencies
-      run: flutter pub get
-    - name: Test app
-      run: flutter test --coverage
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        file: coverage/lcov.info
   # This workflow contains a single job called "Build and Release APK"
   releases:
     name: Build and Release APK
@@ -51,8 +36,13 @@ jobs:
       - name: Get packages
         run: flutter packages get
 
-      - name: Analyze
-        run: flutter analyze
+      - name: Test app
+        run: flutter test --coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: coverage/lcov.info
               
       - name: Build APK
         run: flutter build apk --split-per-abi
@@ -70,3 +60,4 @@ jobs:
           name: 'v${{ steps.version.outputs.version }}'
           token: ${{ secrets.GH_TOKEN }}
           tag: ${{ steps.version.outputs.version }}
+        
