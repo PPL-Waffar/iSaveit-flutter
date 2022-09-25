@@ -11,7 +11,17 @@ class HomeView extends StatelessWidget {
           backgroundColor: Colors.white,
           title: Text ("Welcome Back! \nYourname", style: TextStyle(color: Colors.black),),
             actions: [
-              Icon(Icons.add, color: Colors.black, size: 40,),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                  ),
+                  onPressed: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const add_pocket())
+                    );
+                  },
+                  child: Icon(Icons.add, color: Colors.black, size: 40,))
             ],
           ),
 
@@ -144,9 +154,154 @@ class pocket extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return Container(
+        child: Column(
+        children : <Widget>[
+          SizedBox(height: 10,),
+          Text('My Pocket', style: TextStyle(fontSize: 18,), textDirection: TextDirection.ltr,),
+          SizedBox(height: 10,),
+          SizedBox(
+              height: 72,
+              width: 343,
+              child: ElevatedButton(
+                onPressed: null,
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.indigoAccent,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
 
+                ),
+                child: RichText(
+                  text: TextSpan(
+                      style: DefaultTextStyle.of(context).style,
+                      children: const <TextSpan>[
+                        TextSpan(text: 'Groceries\n', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),),
+                        TextSpan(text: 'Rp 200.000 spent of Rp 400.000', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
+                      ],
+                  ),
+                ),
+              ),
+            ),
+          SizedBox(height: 10,),
+          SizedBox(
+            height: 72,
+            width: 343,
+
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.indigoAccent,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+
+              ),
+              onPressed: null,
+              child: RichText(
+                text: TextSpan(
+                  style: DefaultTextStyle.of(context).style,
+                  children: const <TextSpan>[
+                    TextSpan(text: 'Groceries\n', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),),
+                    TextSpan(text: 'Rp 200.000 spent of Rp 400.000', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 10,),
+          SizedBox(
+            height: 72,
+            width: 343,
+
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.indigoAccent,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+
+              ),
+              onPressed: null,
+              child: RichText(
+                text: TextSpan(
+                  style: DefaultTextStyle.of(context).style,
+                  children: const <TextSpan>[
+                    TextSpan(text: 'Groceries\n', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),),
+                    TextSpan(text: 'Rp 200.000 spent of Rp 400.000', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 10,),
+          SizedBox(
+            height: 72,
+            width: 343,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.fromLTRB(0, 0,0 ,0),
+                  primary: Colors.indigoAccent,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+
+              ),
+              onPressed: null,
+              child: RichText(
+                text: TextSpan(
+                  style: DefaultTextStyle.of(context).style,
+                  children: const <TextSpan>[
+                    TextSpan(text: 'Groceries\n', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),),
+                    TextSpan(text: 'Rp 200.000 spent of Rp 400.000', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
+                  ],
+                ),
+              ),
+            ),
+          ),
+          ],
+        ),
     );
   }
 }
+
+class add_pocket extends StatelessWidget {
+  const add_pocket({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: const Text('Add planned payment & pocket', style: TextStyle(color: Colors.black),),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 150,
+            ),
+            Text('Add', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.indigo
+              ),// <-- ElevatedButton
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text ('New Pocket'),
+              ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFFdfe2ff)
+              ),
+                onPressed:(){
+                  Navigator.pop(context);
+                },
+                child: Text('Planned Payment', style: TextStyle(color: Colors.indigo),),
+            ),
+            TextButton(     // <-- TextButton
+              onPressed: () {
+                Navigator.pop(context);
+              },
+             child: Text('Cancel', style: TextStyle(color: Colors.red),),
+            ),
+          ]
+        ),
+      ),
+    );
+  }
+}
+
 
 
