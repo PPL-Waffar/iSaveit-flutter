@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:isaveit/page/editPocket.dart';
 
 class pocket extends StatelessWidget{
   @override 
@@ -6,12 +7,11 @@ class pocket extends StatelessWidget{
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar( 
-        
-      automaticallyImplyLeading: false,
-      backgroundColor: Colors.white,
-      elevation: 0,
-      //add edit button on the right top corner
-      leading: IconButton(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        //add edit button on the right top corner
+        leading: IconButton(
         icon: const Icon(Icons.arrow_back, color: Colors.black),
         onPressed: () => Navigator.of(context).pop()),
         
@@ -19,9 +19,10 @@ class pocket extends StatelessWidget{
           IconButton(
             icon: const Icon(Icons.edit),
             color: Colors.black,
-            onPressed: () {},
+            onPressed: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => editPocket())),
           ),
-        ],
+        ],  
       ),
 
       body: SingleChildScrollView(
