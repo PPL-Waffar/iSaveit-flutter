@@ -63,7 +63,6 @@ class balance extends StatelessWidget{
             ),
           ),
           SizedBox(height: 15,),
-          Text("Don't miss your payment",  textAlign: TextAlign.left, style: TextStyle(fontSize: 20),),
         ],
       )
     );
@@ -90,6 +89,7 @@ class planned_payment extends StatelessWidget{
     return Container(
       child : Row(
           children: <Widget>[
+              Text("Don't miss your payment",  textAlign: TextAlign.left, style: TextStyle(fontSize: 20),),
               SizedBox( width: 5,),
               Container(
                 padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -98,7 +98,7 @@ class planned_payment extends StatelessWidget{
                   color: Colors.indigoAccent.shade100,
                 ),
                 height: 110,
-                width: 187,
+                width: 161,
                 child :RichText(
                   text: TextSpan(
                     style: DefaultTextStyle.of(context).style,
@@ -125,7 +125,7 @@ class planned_payment extends StatelessWidget{
                 color: Colors.indigoAccent.shade100,
               ),
               height: 110,
-              width: 187,
+              width: 161,
               child :RichText(
                 text: TextSpan(
                   style: DefaultTextStyle.of(context).style,
@@ -146,6 +146,7 @@ class planned_payment extends StatelessWidget{
           ]
           ),
 
+      
       );
   }
 
@@ -269,7 +270,7 @@ class add_pocket extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: 150,
+              height: 20,
             ),
             Text('Add', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),),
             ElevatedButton(
@@ -302,6 +303,5 @@ class add_pocket extends StatelessWidget {
     );
   }
 }
-
 
 
