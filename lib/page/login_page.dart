@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import '../page/homepage.dart';
 
 
-class Register extends StatefulWidget {
+class Login extends StatefulWidget {
   @override
-  RegisterPage createState() => RegisterPage();
+  LoginPage createState() => LoginPage();
 }
 
 
-class RegisterPage extends State<Register> {
+class LoginPage extends State<Login> {
 
 
   @override
@@ -24,49 +24,11 @@ class RegisterPage extends State<Register> {
         child: Column(
         children: <Widget>[
           SizedBox(height: 20,),
-          Text('Create an account', style: TextStyle(fontSize: 24, color: Color(0xff3444CE)),),
+          Text('Login to your account', style: TextStyle(fontSize: 24, color: Color(0xff3444CE)),),
           SizedBox(height: 7,),
-          const Text('Welcome to iSaveIt!', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),),
+          const Text("Welcome back, you've been missed", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),),
           const SizedBox(height: 20,),
-          Text('Name', textAlign: TextAlign.left, style: TextStyle(fontSize: 14),),
-          Card(
-            margin: EdgeInsets.all(20),
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      key: Key("addName"),
-                      decoration: const InputDecoration(
-                          border : OutlineInputBorder(), hintText: 'Enter your name'
-                        ),
-                    ),
-                  ),  
-                ],
-              ),
-            ),
-          ),
-          Text('Date of Birth', style: TextStyle(fontSize: 14),),
-          Card(
-            margin: EdgeInsets.all(20),
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      key: Key("addDate"),
-                      decoration: const InputDecoration(
-                          border : OutlineInputBorder(), hintText: 'Enter your date of birth'
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Text('Email', style: TextStyle(fontSize: 14),),
+          Text('Email', textAlign: TextAlign.left, style: TextStyle(fontSize: 14),),
           Card(
             margin: EdgeInsets.all(20),
             child: Padding(
@@ -77,10 +39,10 @@ class RegisterPage extends State<Register> {
                     child: TextFormField(
                       key: Key("addEmail"),
                       decoration: const InputDecoration(
-                          border : OutlineInputBorder(), hintText: 'Enter your email'
-                      ),
+                          border : OutlineInputBorder(), hintText: 'Enter your name'
+                        ),
                     ),
-                  ),
+                  ),  
                 ],
               ),
             ),
@@ -114,7 +76,7 @@ class RegisterPage extends State<Register> {
                 color: Color(0xff4054FF)
               ),
               child: ElevatedButton(
-                  key: Key("addAccount"),
+                  key: Key("loginAccount"),
                   style: ElevatedButton.styleFrom(
                     minimumSize: const Size.fromHeight(48),
                     elevation: 0,
@@ -130,15 +92,18 @@ class RegisterPage extends State<Register> {
                   MaterialPageRoute(builder: (context) => HomeView())
                   );
                 },
-                child: const Text('Create Account', style: TextStyle(fontSize: 16, color: Colors.white), ),
+                child: const Text('Login', style: TextStyle(fontSize: 16, color: Colors.white), ),
               ),
             ),
             SizedBox(height: 20,),
             TextButton(     // <-- TextButton
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeView())
+                  );
               },
-              child: Text('Already have an account?', style: TextStyle(color: Color(0XFF4054FF),),),
+              child: Text("Don't have an account?", style: TextStyle(color: Color(0XFF4054FF),),),
             ),
           ]
         )
