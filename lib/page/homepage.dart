@@ -8,12 +8,18 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.white,
-          title: Text ("Welcome Back! \nYourname", style: TextStyle(color: Colors.black),),
+          elevation: 0,
+          title: Text ("Welcome Back! \nYourname", style: TextStyle(color: Colors.black), textAlign: TextAlign.left,),
             actions: [
               ElevatedButton(
+
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
+                    side: BorderSide(
+                    color: Colors.transparent,
+                    ),
                   ),
                   onPressed: (){
                     Navigator.push(
@@ -63,6 +69,7 @@ class balance extends StatelessWidget{
             ),
           ),
           SizedBox(height: 15,),
+          Text("Don't miss your payment",  textAlign: TextAlign.left, style: TextStyle(fontSize: 20),),
         ],
       )
     );
@@ -89,8 +96,7 @@ class planned_payment extends StatelessWidget{
     return Container(
       child : Row(
           children: <Widget>[
-              Text("Don't miss your payment",  textAlign: TextAlign.left, style: TextStyle(fontSize: 20),),
-              SizedBox( width: 5,),
+              SizedBox( width: 10,),
               Container(
                 padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                 decoration: BoxDecoration(
@@ -116,7 +122,7 @@ class planned_payment extends StatelessWidget{
 
 
               ),
-              const SizedBox(width: 5,),
+              const SizedBox(width: 10,),
 
             Container(
               padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
