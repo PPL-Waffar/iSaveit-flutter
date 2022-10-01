@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart'; 
-import 'pocket.dart';
+import 'pocket/createPocket.dart';
+import 'pocket/pocketdetails.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -9,7 +10,8 @@ class HomeView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("Homepage"),
-            directPocket()
+            directPocket(),
+            addPocket()
           ]
       ); 
   }
@@ -33,3 +35,24 @@ class directPocket extends StatelessWidget{
     );
   }
 }
+
+//create button to createPocket page
+class addPocket extends StatelessWidget{
+  @override 
+  Widget build(BuildContext context){
+    //create pocket button
+    return Container(
+      alignment: Alignment.center,
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => createPocket()),
+          );
+        },
+        child: const Text('Create Pocket'),
+      ),
+    );
+  }
+}
+

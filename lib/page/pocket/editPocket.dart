@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:isaveit/page/pocket.dart';
+import 'package:isaveit/page/homepage.dart';
+import 'package:isaveit/page/pocket/pocketdetails.dart';
 
 class editPocket extends StatelessWidget{
   @override 
@@ -11,7 +12,7 @@ class editPocket extends StatelessWidget{
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(height: 96),
-            balance(),
+            pocketBalance(),
             const SizedBox(height: 32),
             divider(),
             const SizedBox(height: 32),
@@ -21,7 +22,7 @@ class editPocket extends StatelessWidget{
             const SizedBox(height: 32),
             editButton(),
             const SizedBox(height: 16),
-            deleteButton(),
+            deleteDialog(),
             const SizedBox(height: 16),
             cancelButton(),
         ],)
@@ -29,7 +30,7 @@ class editPocket extends StatelessWidget{
     );
   }
 }
-class balance extends StatelessWidget{
+class pocketBalance extends StatelessWidget{
   @override 
   Widget build(BuildContext context){
     return Column(
@@ -137,6 +138,7 @@ class editButton extends StatelessWidget{
     //create pocket button
     return Container(
       alignment: Alignment.center,
+      margin: const EdgeInsets.only(left: 70, right: 70),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           minimumSize: const Size.fromHeight(48),
@@ -150,7 +152,7 @@ class editButton extends StatelessWidget{
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => editPocket()),
+            MaterialPageRoute(builder: (context) => pocket()),
           );
         },
         child: const Text('Edit Pocket'),
@@ -159,30 +161,42 @@ class editButton extends StatelessWidget{
   }
 }
 
-class deleteButton extends StatelessWidget{
-  @override 
-  Widget build(BuildContext context){
-    //create pocket button
+class deleteDialog extends StatelessWidget {
+  const deleteDialog({super.key});
+  @override
+  Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
+      margin: const EdgeInsets.only(left: 70, right: 70),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          
+          minimumSize: const Size.fromHeight(48),
           elevation: 0,
           backgroundColor: const Color(0xFFDFE2FF),
           shape: 
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(48),
             )
+        ),
+        onPressed: () => showDialog<String>(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+            title: const Text('Delete Pocket'),
+            content: const Text('Are you sure you want to delete this pocket?'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.pop(context, 'Cancel'),
+                child: const Text('Cancel', style: TextStyle(color: Color(0xFFD3180C))),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(context, 'Delete', ),
+                child: const Text('Delete', style: TextStyle(color: Color(0XFF4054FF))),
+              ),
+            ],
           ),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => editPocket()),
-          );
-        },
-        child: const Text('Delete Pocket', style: TextStyle(color: Color(0xFF4054FF))),
-      ),
+        ),
+        child: const Text('Delete Pocket', style: TextStyle(color: Color(0XFF4054FF))),
+      )
     );
   }
 }
@@ -195,7 +209,7 @@ class cancelButton extends StatelessWidget{
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => editPocket()),
+          MaterialPageRoute(builder: (context) => pocket()),
         );
       },
   child: const Text(
@@ -205,3 +219,4 @@ class cancelButton extends StatelessWidget{
 );
   }
 }
+

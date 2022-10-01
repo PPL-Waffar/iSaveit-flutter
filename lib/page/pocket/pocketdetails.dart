@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:isaveit/page/editPocket.dart';
+import 'package:isaveit/page/homepage.dart';
+import 'package:isaveit/page/pocket/editPocket.dart';
 
 class pocket extends StatelessWidget{
   @override 
@@ -13,8 +14,9 @@ class pocket extends StatelessWidget{
         //add edit button on the right top corner
         leading: IconButton(
         icon: const Icon(Icons.arrow_back, color: Colors.black),
-        onPressed: () => Navigator.of(context).pop()),
-        
+        onPressed: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => HomeView()))),
+
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.edit),
