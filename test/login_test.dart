@@ -41,6 +41,7 @@ void main() {
     await tester.tap(loginAccount);
     await tester.pump();
 
+    expect(find.text('Login to your account'), findsOneWidget);
     expect(find.text("Welcome back, you've been missed"), findsOneWidget);
     expect(find.text('Welcome Back! \nYourname'), findsNothing);
 
