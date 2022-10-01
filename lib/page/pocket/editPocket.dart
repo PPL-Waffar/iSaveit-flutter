@@ -11,7 +11,9 @@ class editPocket extends StatelessWidget{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(height: 96),
+            const SizedBox(height: 32),
+            pageLabel(),
+            const SizedBox(height: 32),
             pocketBalance(),
             const SizedBox(height: 32),
             divider(),
@@ -28,6 +30,21 @@ class editPocket extends StatelessWidget{
         ],)
       )
     );
+  }
+}
+
+class pageLabel extends StatelessWidget{
+  @override 
+  Widget build(BuildContext context){
+    return Container(
+      margin: const EdgeInsets.only(left: 20),
+      alignment: Alignment.topLeft,
+        child: 
+        const Text('Edit Pocket',
+        textAlign: TextAlign.left,
+        style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)
+        ),
+      );
   }
 }
 class pocketBalance extends StatelessWidget{

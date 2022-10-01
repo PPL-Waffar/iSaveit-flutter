@@ -137,7 +137,7 @@ class createButton extends StatelessWidget{
             MaterialPageRoute(builder: (context) => pocket()),
           );
         },
-        child: const Text('Edit Pocket'),
+        child: const Text('Create Pocket'),
       ),
     );
   }
