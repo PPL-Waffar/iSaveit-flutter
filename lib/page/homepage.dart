@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'plannedpayment.dart';
+import 'plannedpayment/plannedpayment.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -8,14 +8,13 @@ class HomeView extends StatelessWidget {
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("Homepage"),
-          directPocket()
+          directPlannedPayment()
         ]
     );
   }
 }
 
-class directPocket extends StatelessWidget{
+class directPlannedPayment extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     //create pocket button
