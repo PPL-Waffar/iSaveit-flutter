@@ -45,6 +45,8 @@ void main() {
     await tester.tap(addAccount);
     await tester.pump();
 
+    expect(find.text('Welcome to iSaveIt!'), findsOneWidget);
+    expect(find.text('Welcome Back! \nYourname'), findsNothing);
 
   });
 
