@@ -7,7 +7,7 @@ on:
   push:
     branches: [PBI-1-register]
   pull_request:
-    branches: [PBI-1-register]
+    branches: [PBI-1-login]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
