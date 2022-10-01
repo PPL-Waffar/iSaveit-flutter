@@ -5,22 +5,19 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:isaveit/main.dart';
-import 'package:isaveit/page/homepage.dart';
 import 'package:isaveit/page/login_page.dart';
 
 void main() {
   testWidgets('Test Register', (WidgetTester tester) async {
-    final addEmail = find.byKey(ValueKey("addEmail"));
-    final addPassword = find.byKey(ValueKey("addPassword"));
-    final loginAccount = find.byKey(ValueKey("loginAccount"));
+    final addEmail = find.byKey(const ValueKey("addEmail"));
+    final addPassword = find.byKey(const ValueKey("addPassword"));
+    final loginAccount = find.byKey(const ValueKey("loginAccount"));
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MaterialApp(
+    await tester.pumpWidget(const MaterialApp(
       home: Login(),
     ));
 
