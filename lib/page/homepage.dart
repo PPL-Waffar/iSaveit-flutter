@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'plannedpayment/plannedpayment.dart';
 import 'plannedpayment/editplannedpayment.dart';
+import 'plannedpayment/plannedpaymentdetails.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -10,7 +11,8 @@ class HomeView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           directPlannedPayment(),
-          editPlannedPayment()
+          editPlannedPayment(),
+          PlannedPaymentDetails()
         ]
     );
   }
@@ -53,17 +55,21 @@ class editPlannedPayment extends StatelessWidget{
     );
   }
 }
-
-// import 'package:flutter/cupertino.dart';
-// import 'package:flutter/material.dart';
-//
-// class HomeView extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       child: Center(
-//         child: Text("Homepage"),
-//       ),
-//     );
-//   }
-// }
+class PlannedPaymentDetails extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    //create pocket button
+    return Container(
+      alignment: Alignment.center,
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => plannedpaymentdetails()),
+          );
+        },
+        child: const Text('Payment Details'),
+      ),
+    );
+  }
+}

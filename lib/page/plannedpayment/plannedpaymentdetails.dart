@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'plannedpaymentdetails.dart';
+import 'editplannedpayment.dart';
 
-class editplannedpayment extends StatefulWidget{
-  @override
-  State<editplannedpayment> createState() => _editplannedpaymentState();
-}
-class _editplannedpaymentState extends State<editplannedpayment> {
+// class plannedpaymentdetails extends StatefulWidget{
+//   @override
+//   State<plannedpaymentdetails> createState() => _plannedpaymentdetailsState();
+// }
+class plannedpaymentdetails extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return Scaffold(
+      // resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -17,6 +18,18 @@ class _editplannedpaymentState extends State<editplannedpayment> {
           leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.black),
               onPressed: () => Navigator.of(context).pop()),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.edit),
+              color: Colors.black,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => editplannedpayment()),
+                );
+              },
+            ),
+          ],
         ),
         body: SingleChildScrollView(
             child: Column(
@@ -25,85 +38,17 @@ class _editplannedpaymentState extends State<editplannedpayment> {
                 SizedBox(height: 0.5,),
                 editexpense(),
                 const SizedBox(height: 32),
-                // TextFormField(
-                //   decoration: InputDecoration(
-                //       labelText: 'Payment Name',
-                //       hintText: 'Enter your payment',
-                //       filled: true,
-                //       fillColor: Colors.blue.withOpacity(0.2),
-                //       border: OutlineInputBorder(
-                //           borderSide: BorderSide.none,
-                //           borderRadius: BorderRadius.circular(10)
-                //       )
-                //   ),
-                // ),
-                // const SizedBox(height: 24),
-                // TextFormField(
-                //   decoration: InputDecoration(
-                //       labelText: 'Expense',
-                //       hintText: 'Rp 0',
-                //       filled: true,
-                //       fillColor: Colors.blue.withOpacity(0.2),
-                //       border: OutlineInputBorder(
-                //           borderSide: BorderSide.none,
-                //           borderRadius: BorderRadius.circular(10)
-                //       )
-                //   ),
-                // ),
-                // const SizedBox(height: 24),
-                // TextFormField(
-                //   decoration: InputDecoration(
-                //       labelText: 'Date',
-                //       hintText: 'DD/MM/YYYY',
-                //       filled: true,
-                //       fillColor: Colors.blue.withOpacity(0.2),
-                //       border: OutlineInputBorder(
-                //           borderSide: BorderSide.none,
-                //           borderRadius: BorderRadius.circular(10)
-                //       )
-                //   ),
-                // ),
-                // const SizedBox(height: 24),
-                // TextFormField(
-                //   decoration: InputDecoration(
-                //       labelText: 'Type of Payment',
-                //       hintText: 'Cash, Debit, or E-money',
-                //       filled: true,
-                //       fillColor: Colors.blue.withOpacity(0.2),
-                //       border: OutlineInputBorder(
-                //           borderSide: BorderSide.none,
-                //           borderRadius: BorderRadius.circular(10)
-                //       )
-                //   ),
-                // ),
-                // const SizedBox(height: 24),
-                // TextFormField(
-                //   decoration: InputDecoration(
-                //       labelText: 'Category',
-                //       hintText: 'Groceries, Food, Entertainment',
-                //       filled: true,
-                //       fillColor: Colors.blue.withOpacity(0.2),
-                //       border: OutlineInputBorder(
-                //           borderSide: BorderSide.none,
-                //           borderRadius: BorderRadius.circular(10)
-                //       )
-                //   ),
-                // ),
                 paymentname(),
                 expensename(),
                 dateDetails(),
                 paymentType(),
                 pocketCategory(),
-
-
-
                 const SizedBox(height: 24),
                 editsubmitpayment(),
-                const SizedBox(height: 24),
-                deletesubmitpayment(),
-                const SizedBox(height: 24),
-                editcancelpayment()
-
+                // const SizedBox(height: 24),
+                // deletesubmitpayment(),
+                // const SizedBox(height: 24),
+                // editcancelpayment()
               ],
             )
         ));
@@ -252,7 +197,7 @@ class editexpense extends StatelessWidget{
         const SizedBox(height: 10),
         Container(
           padding: const EdgeInsets.all(15),
-          width: 320,
+          width: 230,
           height: 60,
           decoration: BoxDecoration(
             color: const Color(0xFFDFE2FF),
@@ -263,9 +208,9 @@ class editexpense extends StatelessWidget{
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
                     //Text for budget
-                    Text('Edit your planned payment here!',
+                    Text('Planned Payment',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontFamily: 'Inter', fontSize: 20,
+                        style: TextStyle(fontFamily: 'Inter', fontSize: 25,
                             fontWeight: FontWeight.w700, color: Color(0xFF4054FF))
                     ),
                     SizedBox(height: 10),
@@ -302,14 +247,14 @@ class editsubmitpayment extends StatelessWidget{
         style: ElevatedButton.styleFrom(
             minimumSize: const Size.fromHeight(48),
             elevation: 0,
-            backgroundColor: const Color(0XFF4054FF),
+            backgroundColor: const Color(0xFFFFFF),
             shape:
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(48),)),
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => editplannedpayment()),
+            MaterialPageRoute(builder: (context) => plannedpaymentdetails()),
           );
         },
         child: const Text('Edit Planned Payment',
@@ -336,7 +281,7 @@ class deletesubmitpayment extends StatelessWidget{
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => editplannedpayment()),
+            MaterialPageRoute(builder: (context) => plannedpaymentdetails()),
           );
         },
         child: const Text('Delete Planned Payment',
