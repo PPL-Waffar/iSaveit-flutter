@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import '../page/homepage.dart';
-import '../page/newsletter.dart';
 import '../page/profile.dart';
-import '../page/report.dart';
-import '../page/transaction.dart';
-
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,18 +18,24 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SettingView(),
+      home: const SettingView(),
     );
   }
 }
 
 class SettingView extends StatefulWidget {
+  const SettingView({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _SettingViewState createState() => _SettingViewState();
 }
 
 class _SettingViewState extends State<SettingView> {
-  final tabs = [HomeView(), ReportView(), MoneyView(), NewsView(), ProfileView()];
+  final tabs = [const HomeView(), 
+  //ReportView(), MoneyView(), NewsView(), 
+  const ProfileView()
+  ];
 
   int _currentIndex = 0;
 
@@ -52,52 +56,50 @@ class _SettingViewState extends State<SettingView> {
         selectedItemColor: Colors.indigoAccent,
         unselectedItemColor: Colors.indigo,
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: InkResponse(
               focusColor: Colors.transparent,
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
-              child: Container(
-                child: Icon(
-                  Icons.house_outlined,),
-              ),
+              child: Icon(
+                Icons.house_outlined,),
             ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Container(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
               ),
-              child: Icon(Icons.add_chart),
+              child: const Icon(Icons.add_chart),
             ),
             label: 'Report',
           ),
           BottomNavigationBarItem(
             icon: Container(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
 
               ),
-              child: Icon(Icons.attach_money_rounded, size: 45, color: Colors.white,),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.indigoAccent.shade100,
                 ),
+              child: const Icon(Icons.attach_money_rounded, size: 45, color: Colors.white,),
             ),
             label: 'Transaction',
           ),
           BottomNavigationBarItem(
             icon: Container(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
               ),
-              child: Icon(Icons.newspaper_outlined),
+              child: const Icon(Icons.newspaper_outlined),
             ),
             label: 'Read',
           ),
           BottomNavigationBarItem(
             icon: Container(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
               ),
-              child: Icon(Icons.account_box_outlined),
+              child: const Icon(Icons.account_box_outlined),
             ),
             label: 'Profile',
           ),

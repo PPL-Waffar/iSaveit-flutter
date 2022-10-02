@@ -1,13 +1,28 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart'; 
 
-class ProfileView extends StatelessWidget {
+
+class ProfileView extends StatefulWidget {
+  const ProfileView({super.key});
+
+  @override
+  ProfilePage createState() => ProfilePage();
+}
+
+class ProfilePage extends State<ProfileView> {
+
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text("Profile"),
-      ),
+    return Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.white,
+          elevation: 0,
+          ),
+          body: const SingleChildScrollView(
+            child: Text('Profile'),
+      )
     );
   }
 }
+
