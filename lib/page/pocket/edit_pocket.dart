@@ -18,7 +18,7 @@ class EditPocketPage extends State<EditPocket> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(height: 32),
+            const SizedBox(height: 60),
 
             //Edit pocket title
             Container(
@@ -78,8 +78,9 @@ class EditPocketPage extends State<EditPocket> {
             const SizedBox(height: 32),
 
             //pocket name
-            SingleChildScrollView( child:
-            Column(
+            SingleChildScrollView( 
+              padding: const EdgeInsets.only(left: 30, right: 30),
+              child:Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text('Name', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
@@ -100,6 +101,7 @@ class EditPocketPage extends State<EditPocket> {
 
             //Pocket budget
             SingleChildScrollView(
+              padding: const EdgeInsets.only(left: 30, right: 30),
               child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -124,7 +126,7 @@ class EditPocketPage extends State<EditPocket> {
             //edit button
             Container(
               alignment: Alignment.center,
-              margin: const EdgeInsets.only(left: 70, right: 70),
+              margin: const EdgeInsets.only(left: 30, right: 30),
               child: ElevatedButton(
                 key: const Key("editPocketButton"),
                 style: ElevatedButton.styleFrom(
@@ -151,7 +153,7 @@ class EditPocketPage extends State<EditPocket> {
             //delete button
             Container(
               alignment: Alignment.center,
-              margin: const EdgeInsets.only(left: 70, right: 70),
+              margin: const EdgeInsets.only(left: 30, right: 30),
               child: ElevatedButton(
                 key: const Key("deletePocket"),
                 style: ElevatedButton.styleFrom(

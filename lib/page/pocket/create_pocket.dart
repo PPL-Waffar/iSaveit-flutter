@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:isaveit/page/homepage.dart';
+import 'package:isaveit/page/pocket/pocket_details.dart';
 
 class CreatePocket extends StatefulWidget {
   const CreatePocket({Key? key}) : super(key: key);
@@ -19,7 +21,7 @@ class CreatePocketPage extends State<CreatePocket> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(height: 32),
+            const SizedBox(height: 60),
 
             //Create pocket title
             Container(
@@ -34,7 +36,7 @@ class CreatePocketPage extends State<CreatePocket> {
             const SizedBox(height: 32),
 
             SingleChildScrollView( 
-              padding: const EdgeInsets.only(left: 70, right: 70),
+              padding: const EdgeInsets.only(left: 30, right: 30),
               child:Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -56,7 +58,7 @@ class CreatePocketPage extends State<CreatePocket> {
 
             //Pocket budget
             SingleChildScrollView(
-              padding: const EdgeInsets.only(left: 70, right: 70),
+              padding: const EdgeInsets.only(left: 30, right: 30),
               child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -79,7 +81,7 @@ class CreatePocketPage extends State<CreatePocket> {
 
             Container(
               alignment: Alignment.center,
-              margin: const EdgeInsets.only(left: 70, right: 70),
+              margin: const EdgeInsets.only(left: 30, right: 30),
               child: ElevatedButton(
                 key: const Key("createPocketButton"),
                 style: ElevatedButton.styleFrom(
@@ -94,7 +96,7 @@ class CreatePocketPage extends State<CreatePocket> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const CreatePocket()),
+                    MaterialPageRoute(builder: (context) => const Pocket()),
                   );
                 },
                 child: const Text('Create Pocket'),
@@ -108,7 +110,7 @@ class CreatePocketPage extends State<CreatePocket> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const CreatePocket()),
+                  MaterialPageRoute(builder: (context) => const HomeView()),
                 );
               },
               child: const Text(

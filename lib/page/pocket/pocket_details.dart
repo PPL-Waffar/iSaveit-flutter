@@ -169,8 +169,10 @@ class PocketPage extends State<Pocket> {
     const SizedBox(height: 24),
 
     //empty wallet
-    Image.asset('assets/images/empty_wallet.png',
+    SizedBox(
+      child: Image.asset( 'assets/images/empty_wallet.png',
       width: 250, height: 250),
+    )
         ],
       ),
       ),
