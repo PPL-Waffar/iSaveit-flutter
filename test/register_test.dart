@@ -14,13 +14,13 @@ import 'package:isaveit/page/register_page.dart';
 
 void main() {
   testWidgets('Test Register', (WidgetTester tester) async {
-    final addName = find.byKey(ValueKey("addName"));
-    final addDate = find.byKey(ValueKey("addDate"));
-    final addEmail = find.byKey(ValueKey("addEmail"));
-    final addPassword = find.byKey(ValueKey("addPassword"));
-    final addAccount = find.byKey(ValueKey("addAccount"));
+    final addName = find.byKey(const ValueKey("addName"));
+    final addDate = find.byKey(const ValueKey("addDate"));
+    final addEmail = find.byKey(const ValueKey("addEmail"));
+    final addPassword = find.byKey(const ValueKey("addPassword"));
+    final addAccount = find.byKey(const ValueKey("addAccount"));
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MaterialApp(
+    await tester.pumpWidget(const MaterialApp(
       home: Register(),
     ));
 
