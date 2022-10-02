@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:isaveit/page/homepage.dart';
-import 'package:isaveit/page/pocket/editPocket.dart';
+import 'package:isaveit/page/pocket/edit_pocket.dart';
 
-class pocket extends StatefulWidget {
+class Pocket extends StatefulWidget {
+  const Pocket({super.key});
+
   @override
   PocketPage createState() => PocketPage();
 }
 
 
-class PocketPage extends State<pocket> {
+class PocketPage extends State<Pocket> {
 
    @override
   Widget build(BuildContext context) {
@@ -20,14 +22,14 @@ class PocketPage extends State<pocket> {
           leading: IconButton(
         icon: const Icon(Icons.arrow_back, color: Colors.black),
         onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => HomeView()))),
+              .push(MaterialPageRoute(builder: (context) => const HomeView()))),
 
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.edit),
             color: Colors.black,
             onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => editPocket())),
+              .push(MaterialPageRoute(builder: (context) => const EditPocket())),
           ),
         ],  
       ),
@@ -62,7 +64,7 @@ class PocketPage extends State<pocket> {
           ],
     ),
     // height gap
-    SizedBox(height: 32),
+    const SizedBox(height: 32),
 
     //divider line
     Container(
@@ -167,11 +169,8 @@ class PocketPage extends State<pocket> {
     const SizedBox(height: 24),
 
     //empty wallet
-    Container(
-      //insert image
-      child: Image.asset('assets/images/empty_wallet.png',
+    Image.asset('assets/images/empty_wallet.png',
       width: 250, height: 250),
-    )
         ],
       ),
       ),

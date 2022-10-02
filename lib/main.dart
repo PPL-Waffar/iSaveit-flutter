@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import '../page/pocket/pocketdetails.dart';
+import 'package:isaveit/page/pocket/edit_pocket.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: pocket(),
+    return const MaterialApp(
+      home: EditPocket(),
       
     );
   }

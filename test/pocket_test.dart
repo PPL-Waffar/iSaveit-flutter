@@ -5,20 +5,17 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:isaveit/main.dart';
-import 'package:isaveit/page/pocket/editPocket.dart';
-import 'package:isaveit/page/pocket/pocketdetails.dart';
+import 'package:isaveit/page/pocket/pocket_details.dart';
 
 void main() {
   testWidgets('Pocket details', (WidgetTester tester) async {
         // Build our app and trigger a frame.
-    await tester.pumpWidget(MaterialApp(
-      home: pocket(),
+    await tester.pumpWidget(const MaterialApp(
+      home: Pocket(),
     ));
 
     // Verify that our counter starts at 0.
