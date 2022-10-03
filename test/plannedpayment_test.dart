@@ -22,7 +22,9 @@ void main() {
     await tester.pumpWidget(const MaterialApp(
       home: plannedpayment(),
     ));
-
+    
+    expect(find.byIcon(Icons.arrow_back), findsNothing);
+    expect(find.text('Edit Pocket'), findsNothing);
 
 
     await tester.pump();
