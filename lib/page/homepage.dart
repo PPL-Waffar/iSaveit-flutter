@@ -295,7 +295,7 @@ class HomePage extends State<HomeView> {
                   text: TextSpan(
                     style: DefaultTextStyle.of(context).style,
                     children: const <TextSpan>[
-                      TextSpan(text: 'Groceries\n', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),),
+                      TextSpan(text: 'Health\n', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),),
                       TextSpan(text: 'Rp 200.000 spent of Rp 400.000', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
                     ],
                   ),
