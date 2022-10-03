@@ -11,7 +11,9 @@ class HomeView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           directPlannedPayment(),
+          const SizedBox(height: 24),
           editPlannedPayment(),
+          const SizedBox(height: 24),
           PlannedPaymentDetails()
         ]
     );
