@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 // import 'package:dropdownfield/dropdownfield.dart';
 
-class plannedpayment extends StatefulWidget{
-  const plannedpayment({Key? key}) : super(key: key);
+class Plannedpayment extends StatefulWidget{
+  const Plannedpayment({Key? key}) : super(key: key);
   @override
-  _plannedpaymentState createState() => _plannedpaymentState();
+  PlannedpaymentState createState() => PlannedpaymentState();
 }
-class _plannedpaymentState extends State<plannedpayment> {
-  final _formKey = GlobalKey<FormState>();
+class PlannedpaymentState extends State<Plannedpayment> {
   String _adminType = "Debit";
-  String? _duplicatepayment;
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -66,8 +64,8 @@ class _plannedpaymentState extends State<plannedpayment> {
                   const SizedBox(height: 24),
                             DropdownButtonFormField<String>(
                                 key: const Key("addPaymentType"),
-                                style: TextStyle(height: 0),
-                                decoration: InputDecoration(
+                                style: const TextStyle(height: 0),
+                                decoration: const InputDecoration(
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(Radius.circular(8.0)),
                                         borderSide: BorderSide(
@@ -82,16 +80,16 @@ class _plannedpaymentState extends State<plannedpayment> {
                                 onChanged: (String? value) => {_adminType = value!},
                                 items: const [
                                   DropdownMenuItem<String>(
-                                    child: Text("Debit"),
                                     value: "Debit",
+                                    child: Text("Debit"),
                                   ),
                                   DropdownMenuItem(
-                                    child: Text("Cash"),
                                     value: "Cash",
+                                    child: Text("Cash"),
                                   ),
                                   DropdownMenuItem(
-                                    child: Text("E-money"),
                                     value: "E-money",
+                                    child: Text("E-money"),
                                   ),
                                 ]),
                   const SizedBox(height: 24),
@@ -106,162 +104,20 @@ class _plannedpaymentState extends State<plannedpayment> {
                     keyboardType: TextInputType.number,
                   ),
                             const SizedBox(height: 24),
-                            submitpayment(),
+                            const Submitpayment(),
                             const SizedBox(height: 24),
-                            cancelpayment()
+                            const Cancelpayment()
 
                 ]
             )
         ),
-    //     SingleChildScrollView(
-    //       child: Column(
-    //         mainAxisAlignment: MainAxisAlignment.start,
-    //         children: <Widget>[
-    //           SizedBox(height: 0.5,),
-    //           expense(),
-    //           const SizedBox(height: 32),
-    //           TextFormField(
-    //             key: const Key("addPaymentsName"),
-    //             decoration: InputDecoration(
-    //               enabledBorder: OutlineInputBorder(
-    //                   borderRadius: BorderRadius.all(Radius.circular(8.0)),
-    //                   borderSide: BorderSide(
-    //                       width: 1.0, color: Color(0xFFDBDBDB)
-    //                   )
-    //               ),
-    //               labelText: 'Payment Name',
-    //               hintText: 'Enter your payment',
-    //               filled: true,
-    //             ),
-    // ),
-    //           const SizedBox(height: 24),
-    //           TextFormField(
-    //             key: const Key("addExpense"),
-    //             style: TextStyle(height: 0),
-    //             decoration: InputDecoration(
-    //               enabledBorder: OutlineInputBorder(
-    //                   borderRadius: BorderRadius.all(Radius.circular(8.0)),
-    //                   borderSide: BorderSide(
-    //                       width: 1.0, color: Color(0xFFDBDBDB)
-    //                   )
-    //               ),
-    //                 labelText: 'Expense',
-    //                 hintText: 'Rp 0',
-    //                 filled: true,
-    //             ),
-    //           ),
-    //           const SizedBox(height: 24),
-    //           TextFormField(
-    //             key: const Key("addDate"),
-    //             style: TextStyle(height: 0),
-    //             decoration: InputDecoration(
-    //                 enabledBorder: OutlineInputBorder(
-    //                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
-    //                     borderSide: BorderSide(
-    //                         width: 1.0, color: Color(0xFFDBDBDB)
-    //                     )
-    //                 ),
-    //                 labelText: 'Date',
-    //                 hintText: 'DD/MM/YYYY',
-    //                 filled: true,
-    //             ),
-    //           ),
-    //           const SizedBox(height: 24),
-    //           DropdownButtonFormField<String>(
-    //               key: const Key("addPaymentType"),
-    //               style: TextStyle(height: 0),
-    //               decoration: InputDecoration(
-    //                   enabledBorder: OutlineInputBorder(
-    //                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
-    //                       borderSide: BorderSide(
-    //                           width: 1.0, color: Color(0xFFDBDBDB)
-    //                       )
-    //                   ),
-    //                   labelText: 'Type of Payment',
-    //                   hintText: 'Enter your payment',
-    //                   filled: true,
-    //               ),
-    //               value: _adminType,
-    //               onChanged: (String? value) => {_adminType = value!},
-    //               items: const [
-    //                 DropdownMenuItem<String>(
-    //                   child: Text("Debit"),
-    //                   value: "Debit",
-    //                 ),
-    //                 DropdownMenuItem(
-    //                   child: Text("Cash"),
-    //                   value: "Cash",
-    //                 ),
-    //                 DropdownMenuItem(
-    //                   child: Text("E-money"),
-    //                   value: "E-money",
-    //                 ),
-    //               ]),
-    //           const SizedBox(height: 24),
-    //           TextFormField(
-    //             key: const Key("addCategory"),
-    //             style: TextStyle(height: 0),
-    //             decoration: InputDecoration(
-    //               enabledBorder: OutlineInputBorder(
-    //                 borderRadius: BorderRadius.all(Radius.circular(8.0)),
-    //                 borderSide: BorderSide(
-    //                   width: 1.0, color: Color(0xFFDBDBDB)
-    //                 )
-    //               ),
-    //                 labelText: 'Category',
-    //                 hintText: 'Groceries, Food, Entertainment',
-    //                 filled: true,
-    //             ),
-    //           ),
-    //           const SizedBox(height: 24),
-    //           submitpayment(),
-    //           const SizedBox(height: 24),
-    //           cancelpayment()
-    // ],
-    //       )
-    // )
-    );
-  }
-}
-class expense extends StatelessWidget{
-  @override
-  Widget build(BuildContext context){
-    return Column(
-      children: [
-        const SizedBox(height: 10),
-        Container(
-          padding: const EdgeInsets.all(15),
-          width: 260,
-          height: 60,
-          child:SingleChildScrollView(
-              child: Container(
-                margin: const EdgeInsets.only(left: 20),
-                alignment: Alignment.center,
-                child:
-                const Text('Your Planned Payment',
-                    style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)
-                ),
-              ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-class  Payment extends StatelessWidget{
-  @override
-  Widget build(BuildContext context){
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // paymentform(),
-          const SizedBox(width: 20),
-        ]
     );
   }
 }
 //create submit button
-class submitpayment extends StatelessWidget{
+class Submitpayment extends StatelessWidget{
+  const Submitpayment({super.key});
+
   @override
   Widget build(BuildContext context){
     return Container(
@@ -279,7 +135,7 @@ class submitpayment extends StatelessWidget{
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => plannedpayment()),
+            MaterialPageRoute(builder: (context) => const Plannedpayment()),
           );
         },
           child: const Text('Create Planned Payment',
@@ -289,7 +145,9 @@ class submitpayment extends StatelessWidget{
     );
   }
 }
-class cancelpayment extends StatelessWidget{
+class Cancelpayment extends StatelessWidget{
+  const Cancelpayment({super.key});
+
   @override
   Widget build(BuildContext context){
     return Container(
@@ -298,9 +156,8 @@ class cancelpayment extends StatelessWidget{
       child: ElevatedButton(
         key: const Key("createCancelButton"),
         style: ElevatedButton.styleFrom(
-            minimumSize: const Size.fromHeight(48),
+            minimumSize: const Size.fromHeight(48), backgroundColor: Colors.white70,
             elevation: 0,
-            primary: Colors.white70,
             // backgroundColor: const Color(0xffb74093),
             shape:
             RoundedRectangleBorder(
@@ -310,7 +167,7 @@ class cancelpayment extends StatelessWidget{
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => plannedpayment()),
+            MaterialPageRoute(builder: (context) => const Plannedpayment()),
           );
         },
         child: const Text('Cancel',
@@ -320,4 +177,3 @@ class cancelpayment extends StatelessWidget{
     );
   }
 }
-

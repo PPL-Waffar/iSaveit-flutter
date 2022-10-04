@@ -1,26 +1,29 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'plannedpayment/plannedpayment.dart';
 import 'plannedpayment/editplannedpayment.dart';
 import 'plannedpayment/plannedpaymentdetails.dart';
 
 class HomeView extends StatelessWidget {
+  const HomeView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          directPlannedPayment(),
-          const SizedBox(height: 24),
-          editPlannedPayment(),
-          const SizedBox(height: 24),
+        children: const [
+          DirectPlannedPayment(),
+          SizedBox(height: 24),
+          EditPlannedPayment(),
+          SizedBox(height: 24),
           PlannedPaymentDetails()
         ]
     );
   }
 }
 
-class directPlannedPayment extends StatelessWidget{
+class DirectPlannedPayment extends StatelessWidget{
+  const DirectPlannedPayment({super.key});
+
   @override
   Widget build(BuildContext context){
     //create pocket button
@@ -30,7 +33,7 @@ class directPlannedPayment extends StatelessWidget{
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => plannedpayment()),
+            MaterialPageRoute(builder: (context) => Plannedpayment()),
           );
         },
         child: const Text('Crete Planned Payment'),
@@ -39,7 +42,9 @@ class directPlannedPayment extends StatelessWidget{
   }
 }
 
-class editPlannedPayment extends StatelessWidget{
+class EditPlannedPayment extends StatelessWidget{
+  const EditPlannedPayment({super.key});
+
   @override
   Widget build(BuildContext context){
     //create pocket button
@@ -49,7 +54,7 @@ class editPlannedPayment extends StatelessWidget{
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => editplannedpayment()),
+            MaterialPageRoute(builder: (context) => const Editplannedpayment()),
           );
         },
         child: const Text('Edit Planned Payment'),
@@ -58,6 +63,8 @@ class editPlannedPayment extends StatelessWidget{
   }
 }
 class PlannedPaymentDetails extends StatelessWidget{
+  const PlannedPaymentDetails({super.key});
+
   @override
   Widget build(BuildContext context){
     //create pocket button
@@ -67,7 +74,7 @@ class PlannedPaymentDetails extends StatelessWidget{
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => plannedpaymentdetails()),
+            MaterialPageRoute(builder: (context) => const Plannedpaymentdetails()),
           );
         },
         child: const Text('Payment Details'),

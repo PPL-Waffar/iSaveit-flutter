@@ -5,7 +5,9 @@ import 'editplannedpayment.dart';
 //   @override
 //   State<plannedpaymentdetails> createState() => _plannedpaymentdetailsState();
 // }
-class plannedpaymentdetails extends StatelessWidget {
+class Plannedpaymentdetails extends StatelessWidget {
+  const Plannedpaymentdetails({super.key});
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -25,7 +27,7 @@ class plannedpaymentdetails extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => editplannedpayment()),
+                  MaterialPageRoute(builder: (context) => const Editplannedpayment()),
                 );
               },
             ),
@@ -34,21 +36,21 @@ class plannedpaymentdetails extends StatelessWidget {
         body: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
+              children: const <Widget>[
                 SizedBox(height: 0.5,),
-                editexpense(),
-                const SizedBox(height: 32),
-                paymentname(),
-                const SizedBox(height: 32),
-                expensename(),
-                const SizedBox(height: 32),
-                dateDetails(),
-                const SizedBox(height: 32),
-                paymentType(),
-                const SizedBox(height: 32),
-                pocketCategory(),
-                const SizedBox(height: 24),
-                editsubmitpayment(),
+                Editexpense(),
+                SizedBox(height: 32),
+                Paymentname(),
+                SizedBox(height: 32),
+                Expensename(),
+                SizedBox(height: 32),
+                DateDetails(),
+                SizedBox(height: 32),
+                PaymentType(),
+                SizedBox(height: 32),
+                PocketCategory(),
+                SizedBox(height: 24),
+                Editsubmitpayment(),
                 // const SizedBox(height: 24),
                 // deletesubmitpayment(),
                 // const SizedBox(height: 24),
@@ -58,17 +60,19 @@ class plannedpaymentdetails extends StatelessWidget {
         ));
   }
 }
-class paymentname extends StatelessWidget{
+class Paymentname extends StatelessWidget{
+  const Paymentname({super.key});
+
   @override
   Widget build(BuildContext context){
     return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text('Payment Name', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-          const SizedBox(height: 8),
-          Container(
+        children: const [
+          Text('Payment Name', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+          SizedBox(height: 8),
+          SizedBox(
             width: 343,
-            child: const TextField(
+            child: TextField(
               style:  TextStyle(height: 0),
               decoration:  InputDecoration(
                 enabledBorder: OutlineInputBorder(
@@ -83,17 +87,19 @@ class paymentname extends StatelessWidget{
     );
   }
 }
-class expensename extends StatelessWidget{
+class Expensename extends StatelessWidget{
+  const Expensename({super.key});
+
   @override
   Widget build(BuildContext context){
     return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text('Expense', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-          const SizedBox(height: 8),
-          Container(
+        children: const [
+          Text('Expense', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+          SizedBox(height: 8),
+          SizedBox(
             width: 343,
-            child: const TextField(
+            child: TextField(
               style:  TextStyle(height: 0),
               decoration:  InputDecoration(
                 enabledBorder: OutlineInputBorder(
@@ -108,17 +114,19 @@ class expensename extends StatelessWidget{
     );
   }
 }
-class dateDetails extends StatelessWidget{
+class DateDetails extends StatelessWidget{
+  const DateDetails({super.key});
+
   @override
   Widget build(BuildContext context){
     return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text('Date', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-          const SizedBox(height: 8),
-          Container(
+        children: const [
+          Text('Date', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+          SizedBox(height: 8),
+          SizedBox(
             width: 343,
-            child: const TextField(
+            child: TextField(
               style:  TextStyle(height: 0),
               decoration:  InputDecoration(
                 enabledBorder: OutlineInputBorder(
@@ -133,17 +141,19 @@ class dateDetails extends StatelessWidget{
     );
   }
 }
-class paymentType extends StatelessWidget{
+class PaymentType extends StatelessWidget{
+  const PaymentType({super.key});
+
   @override
   Widget build(BuildContext context){
     return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text('Type of Payment', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-          const SizedBox(height: 8),
-          Container(
+        children: const [
+          Text('Type of Payment', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+          SizedBox(height: 8),
+          SizedBox(
             width: 343,
-            child: const TextField(
+            child: TextField(
               style:  TextStyle(height: 0),
               decoration:  InputDecoration(
                 enabledBorder: OutlineInputBorder(
@@ -158,17 +168,19 @@ class paymentType extends StatelessWidget{
     );
   }
 }
-class pocketCategory extends StatelessWidget{
+class PocketCategory extends StatelessWidget{
+  const PocketCategory({super.key});
+
   @override
   Widget build(BuildContext context){
     return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text('Pocket', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-          const SizedBox(height: 8),
-          Container(
+        children: const [
+          Text('Pocket', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+          SizedBox(height: 8),
+          SizedBox(
             width: 343,
-            child: const TextField(
+            child: TextField(
               style:  TextStyle(height: 0),
               decoration:  InputDecoration(
                 enabledBorder: OutlineInputBorder(
@@ -183,7 +195,9 @@ class pocketCategory extends StatelessWidget{
     );
   }
 }
-class editexpense extends StatelessWidget{
+class Editexpense extends StatelessWidget{
+  const Editexpense({super.key});
+
   @override
   Widget build(BuildContext context){
     return Column(
@@ -222,21 +236,25 @@ class editexpense extends StatelessWidget{
     );
   }
 }
-class  editPayment extends StatelessWidget{
+class  EditPayment extends StatelessWidget{
+  const EditPayment({super.key});
+
   @override
   Widget build(BuildContext context){
     return Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        children: const [
           // paymentform(),
-          const SizedBox(width: 20),
+          SizedBox(width: 20),
 
         ]
     );
   }
 }
 //create submit button
-class editsubmitpayment extends StatelessWidget{
+class Editsubmitpayment extends StatelessWidget{
+  const Editsubmitpayment({super.key});
+
   @override
   Widget build(BuildContext context){
     return Container(
@@ -246,14 +264,14 @@ class editsubmitpayment extends StatelessWidget{
         style: ElevatedButton.styleFrom(
             minimumSize: const Size.fromHeight(48),
             elevation: 0,
-            backgroundColor: const Color(0xFFFFFF),
+            backgroundColor: const Color(0x00ffffff),
             shape:
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(48),)),
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => plannedpaymentdetails()),
+            MaterialPageRoute(builder: (context) => const Plannedpaymentdetails()),
           );
         },
         child: const Text('Edit Planned Payment',
@@ -263,7 +281,9 @@ class editsubmitpayment extends StatelessWidget{
     );
   }
 }
-class deletesubmitpayment extends StatelessWidget{
+class Deletesubmitpayment extends StatelessWidget{
+  const Deletesubmitpayment({super.key});
+
   @override
   Widget build(BuildContext context){
     return Container(
@@ -280,7 +300,7 @@ class deletesubmitpayment extends StatelessWidget{
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => plannedpaymentdetails()),
+            MaterialPageRoute(builder: (context) => const Plannedpaymentdetails()),
           );
         },
         child: const Text('Delete Planned Payment',
@@ -290,7 +310,9 @@ class deletesubmitpayment extends StatelessWidget{
     );
   }
 }
-class editcancelpayment extends StatelessWidget{
+class Editcancelpayment extends StatelessWidget{
+  const Editcancelpayment({super.key});
+
   @override
   Widget build(BuildContext context){
     return Container(
@@ -298,9 +320,8 @@ class editcancelpayment extends StatelessWidget{
       margin: const EdgeInsets.only(left: 20),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            minimumSize: const Size.fromHeight(48),
+            minimumSize: const Size.fromHeight(48), backgroundColor: Colors.grey,
             elevation: 0,
-            primary: Colors.grey,
             // backgroundColor: const Color(0xffb74093),
             shape:
             RoundedRectangleBorder(
@@ -310,7 +331,7 @@ class editcancelpayment extends StatelessWidget{
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => plannedpaymentdetails()),
+            MaterialPageRoute(builder: (context) => const Plannedpaymentdetails()),
           );
         },
         child: const Text('Cancel',
