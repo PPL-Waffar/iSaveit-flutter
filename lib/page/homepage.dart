@@ -96,134 +96,130 @@ class HomePage extends State<HomeView> {
               items: [
 
                 //1st Image of Slider
-                Container(
-                  padding: const EdgeInsets.fromLTRB(20, 15, 20, 0),
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(12)),
-                    color: Colors.indigoAccent.shade100,
-                  ),
-                  height: 30,
-                  width: 260,
-                  child :RichText(
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: const <TextSpan>[
-                        TextSpan(text :'\n'),
-                        TextSpan(text: 'Spotify\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Colors.indigo)),
-                        TextSpan(text: 'Rp 50.000\n', style: TextStyle(fontSize: 18)),
-                        TextSpan(text: '\n'),
-                        TextSpan(text: '\n'),
-                        TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Colors.indigo,fontWeight: FontWeight.bold,)),
-                        TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
+                SizedBox(
+                height: 30,
+                width: 200,
+                child: ElevatedButton(
+                onPressed: () =>  {},
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xffDFE2FF),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
 
-                      ],
-                    ),
+                ),
+                child: RichText(
+                  text: TextSpan(
+                    style: DefaultTextStyle.of(context).style,
+                    children: const <TextSpan>[
+                        TextSpan(text: 'Spotify\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
+                        TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
+                        TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14,  color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
+                        TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
+                    ],
                   ),
+                ),
+                ),
                 ),
 
                 //2nd Image of Slider
-                Container(
-                  padding: const EdgeInsets.fromLTRB(20, 15, 20, 0),
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(12)),
-                    color: Colors.indigoAccent.shade100,
-                  ),
-                  height: 30,
-                  width: 260,
-                  child :RichText(
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: const <TextSpan>[
-                        TextSpan(text :'\n'),
-                        TextSpan(text: 'Netflix\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Colors.indigo)),
-                        TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
-                        TextSpan(text: '\n'),
-                        TextSpan(text: '\n'),
-                        TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Colors.indigo,fontWeight: FontWeight.bold,)),
-                        TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
+                SizedBox(
+                height: 30,
+                width: 200,
+                child: ElevatedButton(
+                onPressed: () =>  {},
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xffDFE2FF),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
 
-                      ],
-                    ),
+                ),
+                child: RichText(
+                  text: TextSpan(
+                    style: DefaultTextStyle.of(context).style,
+                    children: const <TextSpan>[
+                        TextSpan(text: 'Youtube\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
+                        TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
+                        TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
+                        TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
+                    ],
                   ),
+                ),
+                ),
                 ),
                 //3rd Image of Slider
-                Container(
-                  padding: const EdgeInsets.fromLTRB(20, 15, 20, 0),
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(12)),
-                    color: Colors.indigoAccent.shade100,
-                  ),
-                  height: 30,
-                  width: 260,
-                  child :RichText(
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: const <TextSpan>[
-                        TextSpan(text :'\n'),
-                        TextSpan(text: 'Youtube\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Colors.indigo)),
-                        TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
-                        TextSpan(text: '\n'),
-                        TextSpan(text: '\n'),
-                        TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Colors.indigo,fontWeight: FontWeight.bold,)),
-                        TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
+                SizedBox(
+                height: 30,
+                width: 200,
+                child: ElevatedButton(
+                onPressed: () =>  {},
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xffDFE2FF),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
 
-                      ],
-                    ),
+                ),
+                child: RichText(
+                  text: TextSpan(
+                    style: DefaultTextStyle.of(context).style,
+                    children: const <TextSpan>[
+                        TextSpan(text: 'Netflix\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
+                        TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
+                        TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
+                        TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
+                    ],
                   ),
+                ),
+                ),
                 ),
                 //4th Image of Slider
-                Container(
-                  padding: const EdgeInsets.fromLTRB(20, 15, 20, 0),
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(12)),
-                    color: Colors.indigoAccent.shade100,
-                  ),
-                  height: 30,
-                  width: 260,
-                  child :RichText(
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: const <TextSpan>[
-                        TextSpan(text :'\n'),
-                        TextSpan(text: 'HBO GO\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Colors.indigo)),
-                        TextSpan(text: 'Rp 200.000\n', style: TextStyle(fontSize: 18)),
-                        TextSpan(text: '\n'),
-                        TextSpan(text: '\n'),
-                        TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Colors.indigo,fontWeight: FontWeight.bold,)),
-                        TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
+                SizedBox(
+                height: 30,
+                width: 200,
+                child: ElevatedButton(
+                onPressed: () =>  {},
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xffDFE2FF),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
 
-                      ],
-                    ),
+                ),
+                child: RichText(
+                  text: TextSpan(
+                    style: DefaultTextStyle.of(context).style,
+                    children: const <TextSpan>[
+                        TextSpan(text: 'HBO GO\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
+                        TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
+                        TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
+                        TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
+                    ],
                   ),
                 ),
+                ),
+                ),
                 //5th Image of Slider
-                Container(
-                  padding: const EdgeInsets.fromLTRB(20, 15, 20, 0),
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(12)),
-                    color: Colors.indigoAccent.shade100,
-                  ),
-                  height: 30,
-                  width: 260,
-                  child :RichText(
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: const <TextSpan>[
-                        TextSpan(text :'\n'),
-                        TextSpan(text: 'Code Academy\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Colors.indigo)),
+                SizedBox(
+                height: 30,
+                width: 200,
+                child: ElevatedButton(
+                onPressed: () =>  {},
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xffDFE2FF),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+
+                ),
+                child: RichText(
+                  text: TextSpan(
+                    style: DefaultTextStyle.of(context).style,
+                    children: const <TextSpan>[
+                        TextSpan(text: 'Code Academy\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
                         TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
-                        TextSpan(text: '\n'),
-                        TextSpan(text: '\n'),
-                        TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Colors.indigo,fontWeight: FontWeight.bold,)),
+                        TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
                         TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
-                      ],
-                    ),
+                    ],
                   ),
+                ),
+                ),
                 ),
               ],
               //Slider Container properties
               options: CarouselOptions(
-                height: 180.0,
+                height: 110.0,
                 enlargeCenterPage: true,
                 autoPlay: true,
                 aspectRatio: 16 / 9,
@@ -251,9 +247,9 @@ class HomePage extends State<HomeView> {
               height: 72,
               width: 343,
               child: ElevatedButton(
-                onPressed: null,
+                onPressed: () =>  {},
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.indigoAccent,
+                    backgroundColor: const Color(0xffDFE2FF),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
 
                 ),
@@ -275,11 +271,11 @@ class HomePage extends State<HomeView> {
 
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.indigoAccent,
+                     backgroundColor: const Color(0xffDFE2FF),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
 
                 ),
-                onPressed: null,
+                onPressed: () =>  {},
                 child: RichText(
                   text: TextSpan(
                     style: DefaultTextStyle.of(context).style,
@@ -298,11 +294,11 @@ class HomePage extends State<HomeView> {
 
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.indigoAccent,
+                     backgroundColor: const Color(0xffDFE2FF),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
 
                 ),
-                onPressed: null,
+                onPressed: () =>  {},
                 child: RichText(
                   text: TextSpan(
                     style: DefaultTextStyle.of(context).style,
@@ -321,11 +317,11 @@ class HomePage extends State<HomeView> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.fromLTRB(0, 0,0 ,0),
-                    backgroundColor: Colors.indigoAccent,
+                     backgroundColor: const Color(0xffDFE2FF),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
 
                 ),
-                onPressed: null,
+                onPressed: () =>  {},
                 child: RichText(
                   text: TextSpan(
                     style: DefaultTextStyle.of(context).style,
