@@ -26,7 +26,6 @@ class EditplannedpaymentState extends State<Editplannedpayment> {
               children: <Widget>[
                 const Text('Edit Your Planned Payment', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
                 const SizedBox(height: 0.5,),
-                // editexpense(),
                 const SizedBox(height: 32),
                 const Paymentname(),
                 const SizedBox(height: 32),
@@ -113,7 +112,6 @@ class Paymentname extends StatelessWidget{
 }
 class Expensename extends StatelessWidget{
   const Expensename({super.key});
-
   @override
   Widget build(BuildContext context){
     return Column(
@@ -140,7 +138,6 @@ class Expensename extends StatelessWidget{
 }
 class DateDetails extends StatelessWidget{
   const DateDetails({super.key});
-
   @override
   Widget build(BuildContext context){
     return Column(
@@ -167,7 +164,6 @@ class DateDetails extends StatelessWidget{
 }
 class PaymentType extends StatelessWidget{
   const PaymentType({super.key});
-
   @override
   Widget build(BuildContext context){
     return Column(
@@ -194,7 +190,6 @@ class PaymentType extends StatelessWidget{
 }
 class PocketCategory extends StatelessWidget{
   const PocketCategory({super.key});
-
   @override
   Widget build(BuildContext context){
     return Column(
@@ -221,7 +216,6 @@ class PocketCategory extends StatelessWidget{
 }
 class Editexpense extends StatelessWidget{
   const Editexpense({super.key});
-
   @override
   Widget build(BuildContext context){
     return
@@ -247,20 +241,6 @@ class Editexpense extends StatelessWidget{
     );
   }
 }
-class  EditPayment extends StatelessWidget{
-  const EditPayment({super.key});
-
-  @override
-  Widget build(BuildContext context){
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          // paymentform(),
-          SizedBox(width: 20),
-        ]
-    );
-  }
-}
 //create submit button
 class Editsubmitpayment extends StatelessWidget{
   const Editsubmitpayment({super.key});
@@ -269,11 +249,13 @@ class Editsubmitpayment extends StatelessWidget{
   Widget build(BuildContext context){
     return Container(
       alignment: Alignment.center,
-      margin: const EdgeInsets.only(left: 20),
+      margin: const EdgeInsets.only(right: 20, left: 20),
       child: ElevatedButton(
+        key: const Key("createSubmitButton"),
         style: ElevatedButton.styleFrom(
             minimumSize: const Size.fromHeight(48),
             elevation: 0,
+            padding: const EdgeInsets.all(16.0),
             backgroundColor: const Color(0XFF4054FF),
             shape:
             RoundedRectangleBorder(
@@ -298,7 +280,7 @@ class Deletesubmitpayment extends StatelessWidget{
   Widget build(BuildContext context){
     return Container(
       alignment: Alignment.center,
-      margin: const EdgeInsets.only(left: 20),
+      margin: const EdgeInsets.only(right: 20,left: 20),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
             minimumSize: const Size.fromHeight(48),
@@ -328,26 +310,19 @@ class Editcancelpayment extends StatelessWidget{
     return Container(
       alignment: Alignment.center,
       margin: const EdgeInsets.only(left: 20),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            minimumSize: const Size.fromHeight(48), backgroundColor: Colors.grey,
-            elevation: 0,
-            // backgroundColor: const Color(0xffb74093),
-            shape:
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(48),)),
-        // style: ElevatedButton.styleFrom(
-        //     primary: Colors.white70,),
+      child: TextButton(
+        key: const Key("cancelEditPocket"),
         onPressed: () {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const Plannedpaymentdetails()),
           );
         },
-        child: const Text('Cancel',
-            style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFFDFE2FF))
+        child: const Text(
+          'Cancel',
+          style: TextStyle(color: Color(0xFFD3180C)),
         ),
-      ),
+      )
     );
   }
 }

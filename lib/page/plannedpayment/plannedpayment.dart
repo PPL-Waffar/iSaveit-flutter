@@ -26,7 +26,10 @@ class PlannedpaymentState extends State<Plannedpayment> {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Create Planned Payment', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+                  const Text('Create your planned payment', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+                  const SizedBox(height: 0.5,),
+                  const SizedBox(height: 32),
+                  const Text('Payment Name', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
                   const SizedBox(height: 8),
                   TextFormField(
                     key: const Key("addPaymentName"),
@@ -35,33 +38,36 @@ class PlannedpaymentState extends State<Plannedpayment> {
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(8.0)),
                             borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                        labelText: 'Payment Name',
                         hintText: 'Enter your payment name here'),
                     keyboardType: TextInputType.number,
                   ),
                   const SizedBox(height: 24),
+                  const Text('Expense', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+                  const SizedBox(height: 8),
                   TextFormField(
                     key: const Key("addExpense"),
                     decoration: const InputDecoration(
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(8.0)),
                             borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                        labelText: 'Expense',
                         hintText: 'Rp 0'),
                     keyboardType: TextInputType.number,
                   ),
                   const SizedBox(height: 24),
+                  const Text('Date', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+                  const SizedBox(height: 8),
                   TextFormField(
                     key: const Key("addDate"),
                     decoration: const InputDecoration(
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(8.0)),
                             borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                        labelText: 'Date',
                         hintText: 'DD/MM/YYYY'),
                     keyboardType: TextInputType.number,
                   ),
                   const SizedBox(height: 24),
+                  const Text('Type of Payment', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+                  const SizedBox(height: 8),
                             DropdownButtonFormField<String>(
                                 key: const Key("addPaymentType"),
                                 style: const TextStyle(height: 0),
@@ -72,8 +78,7 @@ class PlannedpaymentState extends State<Plannedpayment> {
                                             width: 1.0, color: Color(0xFFDBDBDB)
                                         )
                                     ),
-                                    labelText: 'Type of Payment',
-                                    hintText: 'Enter your payment',
+                                    hintText: 'Enter your payment method',
                                     filled: true,
                                 ),
                                 value: _adminType,
@@ -93,13 +98,14 @@ class PlannedpaymentState extends State<Plannedpayment> {
                                   ),
                                 ]),
                   const SizedBox(height: 24),
+                  const Text('Category', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+                  const SizedBox(height: 8),
                   TextFormField(
                     key: const Key("addCategory"),
                     decoration: const InputDecoration(
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(8.0)),
                             borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                        labelText: 'Category',
                         hintText: 'Entertainment, food'),
                     keyboardType: TextInputType.number,
                   ),
