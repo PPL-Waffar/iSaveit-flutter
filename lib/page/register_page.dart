@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import '../page/homepage.dart';
+import 'package:isaveit/page/navbar.dart';
 
 
 class Register extends StatefulWidget {
@@ -129,7 +129,7 @@ class RegisterPage extends State<Register> {
                 onPressed: () {
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomeView())
+                  MaterialPageRoute(builder: (context) => const SettingView())
                   );
                 },
                 child: const Text('Create Account', style: TextStyle(fontSize: 16, color: Colors.white), ),
