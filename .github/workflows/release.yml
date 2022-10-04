@@ -5,7 +5,7 @@ name: Release
 on: 
   # Triggers the workflow on push events but only for the main branch
   push:
-    branches: [PBI-1-creating_homepage]
+    branches: [staging]
   
   # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -62,3 +62,4 @@ jobs:
           name: 'v${{ steps.version.outputs.version }}'
           token: ${{ secrets.GH_TOKEN }}
           tag: ${{ steps.version.outputs.version }}
+        
