@@ -1,18 +1,17 @@
-
 import 'package:flutter/material.dart';
-import 'package:isaveit/page/navbar.dart';
-import '../page/login_page.dart';
+import '../page/homepage.dart';
+import '../page/register_page.dart';
 
 
-class Register extends StatefulWidget {
-  const Register({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
 
   @override
-  RegisterPage createState() => RegisterPage();
+  LoginPage createState() => LoginPage();
 }
 
 
-class RegisterPage extends State<Register> {
+class LoginPage extends State<Login> {
 
 
   @override
@@ -27,49 +26,11 @@ class RegisterPage extends State<Register> {
         child: Column(
         children: <Widget>[
           const SizedBox(height: 20,),
-          const Text('Create an account', style: TextStyle(fontSize: 24, color: Color(0xff3444CE)),),
+          const Text('Login to your account', style: TextStyle(fontSize: 24, color: Color(0xff3444CE)),),
           const SizedBox(height: 7,),
-          const Text('Welcome to iSaveIt!', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),),
+          const Text("Welcome back, you've been missed", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),),
           const SizedBox(height: 20,),
-          const Text('Name', textAlign: TextAlign.left, style: TextStyle(fontSize: 14),),
-          Card(
-            margin: const EdgeInsets.all(20),
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      key: const Key("addName"),
-                      decoration: const InputDecoration(
-                          border : OutlineInputBorder(), hintText: 'Enter your name'
-                        ),
-                    ),
-                  ),  
-                ],
-              ),
-            ),
-          ),
-          const Text('Date of Birth', style: TextStyle(fontSize: 14),),
-          Card(
-            margin: const EdgeInsets.all(20),
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      key: const Key("addDate"),
-                      decoration: const InputDecoration(
-                          border : OutlineInputBorder(), hintText: 'Enter your date of birth'
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const Text('Email', style: TextStyle(fontSize: 14),),
+          const Text('Email', textAlign: TextAlign.left, style: TextStyle(fontSize: 14),),
           Card(
             margin: const EdgeInsets.all(20),
             child: Padding(
@@ -80,10 +41,10 @@ class RegisterPage extends State<Register> {
                     child: TextFormField(
                       key: const Key("addEmail"),
                       decoration: const InputDecoration(
-                          border : OutlineInputBorder(), hintText: 'Enter your email'
-                      ),
+                          border : OutlineInputBorder(), hintText: 'Enter your name'
+                        ),
                     ),
-                  ),
+                  ),  
                 ],
               ),
             ),
@@ -117,7 +78,7 @@ class RegisterPage extends State<Register> {
                 color: Color(0xff4054FF)
               ),
               child: ElevatedButton(
-                  key: const Key("addAccount"),
+                  key: const Key("loginAccount"),
                   style: ElevatedButton.styleFrom(
                     minimumSize: const Size.fromHeight(48),
                     elevation: 0,
@@ -130,10 +91,10 @@ class RegisterPage extends State<Register> {
                 onPressed: () {
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SettingView())
+                  MaterialPageRoute(builder: (context) => const HomeView())
                   );
                 },
-                child: const Text('Create Account', style: TextStyle(fontSize: 16, color: Colors.white), ),
+                child: const Text('Login', style: TextStyle(fontSize: 16, color: Colors.white), ),
               ),
             ),
             const SizedBox(height: 20,),
@@ -141,10 +102,10 @@ class RegisterPage extends State<Register> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Login())
+                  MaterialPageRoute(builder: (context) => const Register())
                   );
               },
-              child: const Text('Already have an account?', style: TextStyle(color: Color(0XFF4054FF),),),
+              child: const Text("Don't have an account?", style: TextStyle(color: Color(0XFF4054FF),),),
             ),
           ]
         )
