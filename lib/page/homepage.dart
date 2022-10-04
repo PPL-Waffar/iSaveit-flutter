@@ -20,7 +20,6 @@ class HomeView extends StatelessWidget {
     );
   }
 }
-
 class DirectPlannedPayment extends StatelessWidget{
   const DirectPlannedPayment({super.key});
 
