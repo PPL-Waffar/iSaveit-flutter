@@ -1,7 +1,6 @@
 # iSaveit
 [![CodeFactor](https://www.codefactor.io/repository/github/ppl-waffar/isaveit-flutter/badge)](https://www.codefactor.io/repository/github/ppl-waffar/isaveit-flutter)
 
-[![codecov](https://codecov.io/gh/PPL-Waffar/iSaveit-flutter/branch/PBI-1-register/graph/badge.svg?token=TRTTY2BRPQ)](https://codecov.io/gh/PPL-Waffar/iSaveit-flutter)
 ## Members:
 1. Anastasia Audi Wulandari - 2006607495
 2. Anne Yuliana - 2006607513

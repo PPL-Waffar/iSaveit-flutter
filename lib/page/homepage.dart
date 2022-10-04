@@ -1,12 +1,17 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:isaveit/page/plannedpayment/plannedpayment.dart';
+import 'package:isaveit/page/plannedpayment/plannedpaymentdetails.dart';
+import 'package:isaveit/page/pocket/create_pocket.dart';
+import 'package:isaveit/page/pocket/pocket_details.dart';
+// import '../page//profile.dart';
 
 
 class HomeView extends StatefulWidget {
-const HomeView({super.key});
+  const HomeView({super.key});
 
-@override
-HomePage createState() => HomePage();
+  @override
+  HomePage createState() => HomePage();
 }
 
 class HomePage extends State<HomeView> {
@@ -25,40 +30,47 @@ class HomePage extends State<HomeView> {
                 context: context,
                 builder: (BuildContext context) =>
                     AlertDialog(title: const Text('Add') ,
-                     actions: <Widget>[
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                            Colors.indigo), // <-- ElevatedButton
-                        onPressed: () {
-                        },
-                        child: const Text('New Pocket'),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                            Colors.indigo), // <-- ElevatedButton
-                        onPressed: () {
-                           
-                        },
-                        child: const Text(
-                          'Planned Payment',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      TextButton(
-                        // <-- TextButton
-                        onPressed: () {
-                          Navigator.pop(
-                            context,
-                          );
-                        },
-                        child: const Text(
-                          'Cancel',
-                          style: TextStyle(color: Colors.red),
-                        ),
-                      ),
-                    ]),
+                        actions: <Widget>[
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                Colors.indigo), // <-- ElevatedButton
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const CreatePocket()));
+                            },
+                            child: const Text('New Pocket'),
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                Colors.indigo), // <-- ElevatedButton
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Plannedpayment()));
+                            },
+                            child: const Text(
+                              'Planned Payment',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          TextButton(
+                            // <-- TextButton
+                            onPressed: () {
+                              Navigator.pop(
+                                context,
+                              );
+                            },
+                            child: const Text(
+                              'Cancel',
+                              style: TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ]),
               ),
               child: const Icon(
                 Icons.add,
@@ -89,124 +101,129 @@ class HomePage extends State<HomeView> {
 
                 //1st Image of Slider
                 SizedBox(
-                height: 30,
-                width: 200,
-                child: ElevatedButton(
-                onPressed: () =>  {},
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xffDFE2FF),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+                  height: 30,
+                  width: 200,
+                  child: ElevatedButton(
+                    onPressed: () =>  {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                    builder: (context) => const Plannedpaymentdetails()))
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xffDFE2FF),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
 
-                ),
-                child: RichText(
-                  text: TextSpan(
-                    style: DefaultTextStyle.of(context).style,
-                    children: const <TextSpan>[
-                        TextSpan(text: 'Spotify\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
-                        TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
-                        TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14,  color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
-                        TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
-                    ],
+                    ),
+                    child: RichText(
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: const <TextSpan>[
+                          TextSpan(text: 'Spotify\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
+                          TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
+                          TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14,  color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
+                          TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-                ),
                 ),
 
                 //2nd Image of Slider
                 SizedBox(
-                height: 30,
-                width: 200,
-                child: ElevatedButton(
-                onPressed: () =>  {},
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xffDFE2FF),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+                  height: 30,
+                  width: 200,
+                  child: ElevatedButton(
+                    onPressed: () =>  {},
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xffDFE2FF),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
 
-                ),
-                child: RichText(
-                  text: TextSpan(
-                    style: DefaultTextStyle.of(context).style,
-                    children: const <TextSpan>[
-                        TextSpan(text: 'Youtube\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
-                        TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
-                        TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
-                        TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
-                    ],
+                    ),
+                    child: RichText(
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: const <TextSpan>[
+                          TextSpan(text: 'Youtube\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
+                          TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
+                          TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
+                          TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-                ),
                 ),
                 //3rd Image of Slider
                 SizedBox(
-                height: 30,
-                width: 200,
-                child: ElevatedButton(
-                onPressed: () =>  {},
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xffDFE2FF),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+                  height: 30,
+                  width: 200,
+                  child: ElevatedButton(
+                    onPressed: () =>  {},
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xffDFE2FF),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
 
-                ),
-                child: RichText(
-                  text: TextSpan(
-                    style: DefaultTextStyle.of(context).style,
-                    children: const <TextSpan>[
-                        TextSpan(text: 'Netflix\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
-                        TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
-                        TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
-                        TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
-                    ],
+                    ),
+                    child: RichText(
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: const <TextSpan>[
+                          TextSpan(text: 'Netflix\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
+                          TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
+                          TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
+                          TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-                ),
                 ),
                 //4th Image of Slider
                 SizedBox(
-                height: 30,
-                width: 200,
-                child: ElevatedButton(
-                onPressed: () =>  {},
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xffDFE2FF),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+                  height: 30,
+                  width: 200,
+                  child: ElevatedButton(
+                    onPressed: () =>  {},
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xffDFE2FF),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
 
-                ),
-                child: RichText(
-                  text: TextSpan(
-                    style: DefaultTextStyle.of(context).style,
-                    children: const <TextSpan>[
-                        TextSpan(text: 'HBO GO\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
-                        TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
-                        TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
-                        TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
-                    ],
+                    ),
+                    child: RichText(
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: const <TextSpan>[
+                          TextSpan(text: 'HBO GO\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
+                          TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
+                          TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
+                          TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-                ),
                 ),
                 //5th Image of Slider
                 SizedBox(
-                height: 30,
-                width: 200,
-                child: ElevatedButton(
-                onPressed: () =>  {},
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xffDFE2FF),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+                  height: 30,
+                  width: 200,
+                  child: ElevatedButton(
+                    onPressed: () =>  {},
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xffDFE2FF),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
 
-                ),
-                child: RichText(
-                  text: TextSpan(
-                    style: DefaultTextStyle.of(context).style,
-                    children: const <TextSpan>[
-                        TextSpan(text: 'Code Academy\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
-                        TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
-                        TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
-                        TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
-                    ],
+                    ),
+                    child: RichText(
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: const <TextSpan>[
+                          TextSpan(text: 'Code Academy\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
+                          TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
+                          TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
+                          TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-                ),
                 ),
               ],
               //Slider Container properties
@@ -239,7 +256,9 @@ class HomePage extends State<HomeView> {
               height: 72,
               width: 343,
               child: ElevatedButton(
-                onPressed: () =>  {},
+                onPressed: () =>  {Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Pocket()),
+                )},
                 style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xffDFE2FF),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
@@ -263,7 +282,7 @@ class HomePage extends State<HomeView> {
 
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                     backgroundColor: const Color(0xffDFE2FF),
+                    backgroundColor: const Color(0xffDFE2FF),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
 
                 ),
@@ -286,7 +305,7 @@ class HomePage extends State<HomeView> {
 
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                     backgroundColor: const Color(0xffDFE2FF),
+                    backgroundColor: const Color(0xffDFE2FF),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
 
                 ),
@@ -309,7 +328,7 @@ class HomePage extends State<HomeView> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.fromLTRB(0, 0,0 ,0),
-                     backgroundColor: const Color(0xffDFE2FF),
+                    backgroundColor: const Color(0xffDFE2FF),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
 
                 ),
