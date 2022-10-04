@@ -33,7 +33,7 @@ class DirectPlannedPayment extends StatelessWidget{
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Plannedpayment()),
+            MaterialPageRoute(builder: (context) => const Plannedpayment()),
           );
         },
         child: const Text('Crete Planned Payment'),
