@@ -6,31 +6,24 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:isaveit/page/homepage.dart';
+import 'package:isaveit/page/pocket/pocket_details.dart';
 
 void main() {
-  testWidgets('Testing homepage', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('Pocket details', (WidgetTester tester) async {
+        // Build our app and trigger a frame.
     await tester.pumpWidget(const MaterialApp(
-      home: HomeView(),
+      home: Pocket(),
     ));
 
-    
-    expect(find.byIcon(Icons.add), findsOneWidget);
-    expect(find.text('Welcome Back! \nYourname'), findsOneWidget);
-
-    
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    
-    expect(find.text('Welcome Back! \nYourname'), findsOneWidget);
-
-    expect(find.text('Welcome Back!'), findsNothing);
+    // Verify that our counter starts at 0.
+    expect(find.byIcon(Icons.edit), findsOneWidget);
+    expect(find.byIcon(Icons.arrow_back), findsOneWidget);
+    expect(find.text('Grocery Balance'), findsOneWidget);
+    expect(find.text('Grocery transactions'), findsOneWidget);
+    expect(find.text('Rp 500.000',), findsNothing);
   });
 
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:isaveit/page/homepage.dart';
 // import 'package:dropdownfield/dropdownfield.dart';
 
 class Plannedpayment extends StatefulWidget{
@@ -173,7 +174,7 @@ class Cancelpayment extends StatelessWidget{
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const Plannedpayment()),
+            MaterialPageRoute(builder: (context) => const HomeView()),
           );
         },
         child: const Text('Cancel',
