@@ -32,9 +32,9 @@ class SettingView extends StatefulWidget {
 }
 
 class _SettingViewState extends State<SettingView> {
-  final tabs = [const HomeView(), 
-  //ReportView(), MoneyView(), NewsView(), 
-  const ProfileView()
+  final tabs = [const HomeView(),
+    //ReportView(), MoneyView(), NewsView(),
+    const ProfileView()
   ];
 
   int _currentIndex = 0;
@@ -79,10 +79,10 @@ class _SettingViewState extends State<SettingView> {
               padding: const EdgeInsets.only(
 
               ),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.indigoAccent.shade100,
-                ),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.indigoAccent.shade100,
+              ),
               child: const Icon(Icons.attach_money_rounded, size: 45, color: Colors.white,),
             ),
             label: 'Transaction',

@@ -6,6 +6,7 @@ on:
   # Triggers the workflow on push events but only for the main branch
   push:
     branches: [staging]
+
   
   # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -35,7 +36,8 @@ jobs:
       
       - name: Get packages
         run: flutter packages get
-      - name: Install dependencies 
+
+      - name: Install dependencies
         run: flutter pub get
 
       - name: Test app
