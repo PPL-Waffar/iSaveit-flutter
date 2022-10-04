@@ -5,7 +5,8 @@ name: Pre-Release
 on: 
   # Triggers the workflow on pull request events but only for the main branch
   pull_request:
-    branches: [PBI-1-creating_pp]
+    branches: [staging]
+
   
   # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
