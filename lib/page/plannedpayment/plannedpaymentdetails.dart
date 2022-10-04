@@ -39,9 +39,13 @@ class plannedpaymentdetails extends StatelessWidget {
                 editexpense(),
                 const SizedBox(height: 32),
                 paymentname(),
+                const SizedBox(height: 32),
                 expensename(),
+                const SizedBox(height: 32),
                 dateDetails(),
+                const SizedBox(height: 32),
                 paymentType(),
+                const SizedBox(height: 32),
                 pocketCategory(),
                 const SizedBox(height: 24),
                 editsubmitpayment(),
@@ -199,24 +203,19 @@ class editexpense extends StatelessWidget{
           padding: const EdgeInsets.all(15),
           width: 230,
           height: 60,
-          decoration: BoxDecoration(
-            color: const Color(0xFFDFE2FF),
-            borderRadius: BorderRadius.circular(8),
-          ),
+          // decoration: BoxDecoration(
+          //   color: const Color(0xFFDFE2FF),
+          //   borderRadius: BorderRadius.circular(8),
+          // ),
           child:SingleChildScrollView(
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    //Text for budget
-                    Text('Planned Payment',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontFamily: 'Inter', fontSize: 25,
-                            fontWeight: FontWeight.w700, color: Color(0xFF4054FF))
-                    ),
-                    SizedBox(height: 10),
-                    //Text for amount of money
-                  ]
-              )
+              child: Container(
+                margin: const EdgeInsets.only(left: 20),
+                alignment: Alignment.center,
+                child:
+                const Text('Your Planned Payment',
+                    style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)
+                ),
+              ),
           ),
         ),
       ],
