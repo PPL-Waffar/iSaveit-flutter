@@ -23,8 +23,6 @@ void main() {
       home: plannedpayment(),
     ));
 
-    expect(find.byIcon(Icons.arrow_back), findsNothing);
-    expect(find.text('Edit Pocket'), findsNothing);
 
 
     await tester.pump();
