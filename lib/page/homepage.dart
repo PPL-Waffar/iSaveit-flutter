@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:isaveit/page/pocket/create_pocket.dart';
+import 'package:isaveit/page/pocket/pocket_details.dart';
 import '../page//profile.dart';
 
 
@@ -35,7 +37,7 @@ class HomePage extends State<HomeView> {
                            Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const ProfileView()));
+                                  builder: (context) => const CreatePocket()));
                         },
                         child: const Text('New Pocket'),
                       ),
@@ -247,7 +249,9 @@ class HomePage extends State<HomeView> {
               height: 72,
               width: 343,
               child: ElevatedButton(
-                onPressed: () =>  {},
+                onPressed: () =>  {Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Pocket()),
+                )},
                 style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xffDFE2FF),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
@@ -339,3 +343,4 @@ class HomePage extends State<HomeView> {
     );
   }
 }
+
