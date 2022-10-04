@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:isaveit/page/homepage.dart';
 import 'package:isaveit/page/pocket/pocket_details.dart';
 
 class EditPocket extends StatefulWidget {
@@ -178,7 +179,7 @@ class EditPocketPage extends State<EditPocket> {
                       ),
                       TextButton(
                         key: const Key("confirmDeletePocket"),
-                        onPressed: () => Navigator.pop(context, 'Delete', ),
+                        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeView())),
                         child: const Text('Delete', style: TextStyle(color: Color(0XFF4054FF))),
                       ),
                     ],
