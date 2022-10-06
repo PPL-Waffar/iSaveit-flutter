@@ -4,6 +4,7 @@ import 'package:isaveit/page/plannedpayment/plannedpayment.dart';
 import 'package:isaveit/page/plannedpayment/plannedpaymentdetails.dart';
 import 'package:isaveit/page/pocket/create_pocket.dart';
 import 'package:isaveit/page/pocket/pocket_details.dart';
+import 'package:isaveit/page/transactions/create_borrow.dart';
 // import '../page//profile.dart';
 
 
@@ -55,6 +56,22 @@ class HomePage extends State<HomeView> {
                             },
                             child: const Text(
                               'Planned Payment',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          //create button for borrow
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                Colors.indigo), // <-- ElevatedButton
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const CreateBorrow()));
+                            },
+                            child: const Text(
+                              'Input Transactions',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
