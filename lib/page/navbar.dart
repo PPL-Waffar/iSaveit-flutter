@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:isaveit/page/transactions/transaction_form.dart';
 import '../page/homepage.dart';
 
 class SettingView extends StatefulWidget {
@@ -10,7 +11,7 @@ class SettingView extends StatefulWidget {
 }
 
 class _SettingViewState extends State<SettingView> {
-  final tabs = [const HomeView(),
+  final tabs = [const HomeView(), const InputTransaction()
     //ReportView(), MoneyView(), NewsView(), ProfileView()
   ];
 
@@ -54,7 +55,6 @@ class _SettingViewState extends State<SettingView> {
           BottomNavigationBarItem(
             icon: Container(
               padding: const EdgeInsets.only(
-
               ),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:isaveit/page/homepage.dart';
+import 'package:isaveit/page/navbar.dart';
 import 'package:isaveit/page/pocket/pocket_details.dart';
 
 class CreatePocket extends StatefulWidget {
@@ -110,7 +110,7 @@ class CreatePocketPage extends State<CreatePocket> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomeView()),
+                  MaterialPageRoute(builder: (context) => const SettingView()),
                 );
               },
               child: const Text(

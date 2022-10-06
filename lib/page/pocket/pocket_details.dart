@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:isaveit/page/homepage.dart';
+import 'package:isaveit/page/navbar.dart';
 import 'package:isaveit/page/pocket/edit_pocket.dart';
 
 class Pocket extends StatefulWidget {
@@ -22,7 +22,7 @@ class PocketPage extends State<Pocket> {
           leading: IconButton(
         icon: const Icon(Icons.arrow_back, color: Colors.black),
         onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => const HomeView()))),
+              .push(MaterialPageRoute(builder: (context) => const SettingView()))),
 
         actions: <Widget>[
           IconButton(
