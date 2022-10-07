@@ -108,15 +108,15 @@ class InputTransactionForm extends State<InputTransaction> {
               child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Date', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+                const Text('Amount', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
                 const SizedBox(height: 8),
                 TextFormField(
-                      key: const Key("transactionDate"),
+                      key: const Key("transactionAmount"),
                       decoration: const InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
                           borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                          hintText: 'DD/MM/YY'),
+                          hintText: 'Rp 0'),
                       keyboardType: TextInputType.number,
                   )
               ]
