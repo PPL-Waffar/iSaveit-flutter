@@ -23,6 +23,5 @@ void main() {
     expect(find.text('Grocery Balance'), findsOneWidget);
     expect(find.text('Grocery transactions'), findsOneWidget);
     expect(find.text('Rp 500.000',),findsNothing);
-    expect(find.text('Belanja September minggu kedua'), findsOneWidget);
   });
 }
