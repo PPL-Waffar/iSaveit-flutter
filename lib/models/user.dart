@@ -1,10 +1,10 @@
 
 class User {
-  String sessionId;
-  String datetime;
-  bool isCitizen;
-  String email;
-  String name;
+  String? sessionId;
+  String? datetime;
+  bool? isCitizen;
+  String? email;
+  String? name;
 
   User(
       {required this.sessionId,

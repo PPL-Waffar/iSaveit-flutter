@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:isaveit/page/navbar.dart';
 import 'package:isaveit/models/user.dart';
 import '../page/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -42,15 +41,10 @@ Future<User> registerUser(
 
     prefs.setString('sessionId', userData["session-id"]);
     prefs.setBool('isCitizen', userData["role_users"]);
-    prefs.setString('datetime', userData["datetime"]);
-    prefs.setString('type', userData["is_admin"] ? userData["type"] : '');
-    prefs.setBool(
-        'isVerified', userData["role_users"] ? userData["is_verified"] : false);
     prefs.setString('email', userData["email"]);
     prefs.setString('name', userData["name"]);
-    prefs.setString('datetime', userData["datetime"]);
 
-    return Future.delayed(const Duration(seconds: 2), () => user);
+    return Future.delayed(const Duration(seconds: 0), () => user);
   } else {
     return Future.error("internal");
   }
@@ -225,7 +219,7 @@ class RegisterPage extends State<Register> {
                             MaterialPageRoute<void>(
                                 builder: (BuildContext context) =>
                                     // ignore: prefer_const_constructors
-                                    SettingView()),
+                                    Login()),
                             (Route<dynamic> route) => false);
                       });
                     }
