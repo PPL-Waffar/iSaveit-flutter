@@ -12,7 +12,7 @@ on:
 jobs:
   # This workflow contains a single job called "Build and Pre-Release APK"
   releases:
-    name: Build and Pre-Release APK
+    name: Build APK
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
@@ -39,8 +39,3 @@ jobs:
       - name: Build APK
         run: flutter build apk --split-per-abi
       
-      - name: Pre-release APK by uploading it to Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: APKS
-          path: build/app/outputs/flutter-apk/*.apk
