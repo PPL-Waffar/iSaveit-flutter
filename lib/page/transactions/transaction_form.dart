@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:isaveit/page/navbar.dart';
 
-List<String> list = <String>['One', 'Two', 'Three', 'Four'];
+
 
 class InputTransaction extends StatefulWidget {
   const InputTransaction({super.key});
@@ -10,7 +10,12 @@ class InputTransaction extends StatefulWidget {
   InputTransactionForm createState() => InputTransactionForm();
 }
 
+List<String> transactionType = <String>['Expense', 'Income'];
+List<String> paymentType = <String>['Debit Card', 'E-Wallet', 'Cash'];
+List<String> pocket = <String>['Grocery', 'Transportation', 'Entertainment'];
+List<String> list = <String>['item1', 'item2', 'item3'];
 class InputTransactionForm extends State<InputTransaction> {
+
   String dropdownValue = list.first;
   @override
   Widget build(BuildContext context) {
