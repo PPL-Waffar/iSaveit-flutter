@@ -12,7 +12,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:isaveit/page/login_page.dart';
 
 void main() {
-  testWidgets('Test Register', (WidgetTester tester) async {
+  testWidgets('Test Login', (WidgetTester tester) async {
     final addEmail = find.byKey(const ValueKey("addEmail"));
     final addPassword = find.byKey(const ValueKey("addPassword"));
     final loginAccount = find.byKey(const ValueKey("loginAccount"));
