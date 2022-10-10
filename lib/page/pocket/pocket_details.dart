@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:isaveit/page/homepage.dart';
 import 'package:isaveit/page/pocket/edit_pocket.dart';
 
+import '../../models/user.dart';
+
 class Pocket extends StatefulWidget {
-  const Pocket({super.key});
+  User? user;
+  Pocket({Key? key, this.user}) : super(key: key);
 
   @override
   PocketPage createState() => PocketPage();
@@ -22,14 +25,14 @@ class PocketPage extends State<Pocket> {
           leading: IconButton(
         icon: const Icon(Icons.arrow_back, color: Colors.black),
         onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => const HomeView()))),
+              .push(MaterialPageRoute(builder: (context) =>  HomeView()))),
 
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.edit),
             color: Colors.black,
             onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => const EditPocket())),
+              .push(MaterialPageRoute(builder: (context) =>  EditPocket())),
           ),
         ],  
       ),

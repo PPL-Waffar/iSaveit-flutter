@@ -4,17 +4,21 @@ import 'package:isaveit/page/plannedpayment/plannedpayment.dart';
 import 'package:isaveit/page/plannedpayment/plannedpaymentdetails.dart';
 import 'package:isaveit/page/pocket/create_pocket.dart';
 import 'package:isaveit/page/pocket/pocket_details.dart';
+import 'package:isaveit/models/user.dart';
 // import '../page//profile.dart';
 
 
 class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+  User? user;
+  HomeView({Key? key, this.user}) : super(key: key);
 
   @override
-  HomePage createState() => HomePage();
+  HomePage createState() => HomePage(user);
 }
 
 class HomePage extends State<HomeView> {
+  User user;
+  HomePage({Key? key, required this.user});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,8 +42,8 @@ class HomePage extends State<HomeView> {
                             onPressed: () {
                               Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const CreatePocket()));
+                                  MaterialPageRoute( //error di navigation ke create pocket krn masalah user
+                                      builder: (context) => CreatePocket(user)));
                             },
                             child: const Text('New Pocket'),
                           ),
@@ -257,7 +261,7 @@ class HomePage extends State<HomeView> {
               width: 343,
               child: ElevatedButton(
                 onPressed: () =>  {Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Pocket()),
+                  MaterialPageRoute(builder: (context) => Pocket()),
                 )},
                 style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xffDFE2FF),
