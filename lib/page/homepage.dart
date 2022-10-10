@@ -20,7 +20,14 @@ class HomePage extends State<HomeView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: const Text ("Welcome Back! \nYourname", style: TextStyle(color: Colors.black),),
+          elevation: 0,
+          leadingWidth: 150, 
+          leading: const Center(
+              child: Text(
+            'Welcome Back! \nYourname',
+            style: TextStyle(fontSize: 16, color: Colors.black),
+          ),
+          ),
         actions: [
           ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -119,9 +126,10 @@ class HomePage extends State<HomeView> {
                       text: TextSpan(
                         style: DefaultTextStyle.of(context).style,
                         children: const <TextSpan>[
-                          TextSpan(text: 'Spotify\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
-                          TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
-                          TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14,  color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
+                          TextSpan(text: 'Spotify\n', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18, color: Color(0xff4054FF))),
+                          TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 14)),
+                          TextSpan(text: 'Lend Money\n', style: TextStyle(fontSize: 9, color: Color(0xff4054FF)), ),
+                          TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 12,  color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
                           TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
                         ],
                       ),
@@ -144,9 +152,10 @@ class HomePage extends State<HomeView> {
                       text: TextSpan(
                         style: DefaultTextStyle.of(context).style,
                         children: const <TextSpan>[
-                          TextSpan(text: 'Youtube\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
-                          TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
-                          TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
+                          TextSpan(text: 'Youtube\n', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18, color: Color(0xff4054FF))),
+                          TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 14)),
+                          TextSpan(text: 'Borrow Money\n', style: TextStyle(fontSize: 9, color: Color(0xff4054FF)), ),
+                          TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 12, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
                           TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
                         ],
                       ),
@@ -168,8 +177,9 @@ class HomePage extends State<HomeView> {
                       text: TextSpan(
                         style: DefaultTextStyle.of(context).style,
                         children: const <TextSpan>[
-                          TextSpan(text: 'Netflix\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
-                          TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
+                          TextSpan(text: 'Netflix\n', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18, color: Color(0xff4054FF))),
+                          TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 14)),
+                          TextSpan(text: 'Lend Money\n', style: TextStyle(fontSize: 9, color: Color(0xff4054FF)), ),
                           TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
                           TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
                         ],
@@ -192,9 +202,10 @@ class HomePage extends State<HomeView> {
                       text: TextSpan(
                         style: DefaultTextStyle.of(context).style,
                         children: const <TextSpan>[
-                          TextSpan(text: 'HBO GO\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
-                          TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
-                          TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
+                          TextSpan(text: 'HBO GO\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Color(0xff4054FF))),
+                          TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 14)),
+                          TextSpan(text: 'Lend Money\n', style: TextStyle(fontSize: 9, color: Color(0xff4054FF)), ),
+                          TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 12, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
                           TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
                         ],
                       ),
@@ -216,9 +227,10 @@ class HomePage extends State<HomeView> {
                       text: TextSpan(
                         style: DefaultTextStyle.of(context).style,
                         children: const <TextSpan>[
-                          TextSpan(text: 'Code Academy\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xff4054FF))),
-                          TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 18)),
-                          TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 14, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
+                          TextSpan(text: 'Code Academy\n', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18, color: Color(0xff4054FF))),
+                          TextSpan(text: 'Rp 150.000\n', style: TextStyle(fontSize: 14)),
+                          TextSpan(text: 'Lend Money\n', style: TextStyle(fontSize: 9, color: Color(0xff4054FF)), ),
+                          TextSpan(text: 'Date            Type\n', style: TextStyle(fontSize: 12, color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
                           TextSpan(text: '25/08/22       Entertaiment', style: TextStyle(fontSize: 12)),
                         ],
                       ),
