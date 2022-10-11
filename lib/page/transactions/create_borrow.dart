@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:isaveit/page/homepage.dart';
 import 'package:isaveit/page/plannedpayment/plannedpayment.dart';
-// import 'package:isaveit/page/homepage.dart';
-// import 'package:isaveit/page/pocket/pocket_details.dart';
+import 'package:intl/intl.dart';
 
 class CreateBorrow extends StatefulWidget {
   const CreateBorrow({super.key});
@@ -12,7 +11,15 @@ class CreateBorrow extends StatefulWidget {
 }
 
 class CreateBorrowPage extends State<CreateBorrow> {
-  String _adminType = "Debit";
+  TextEditingController dateinput = TextEditingController();
+  String _paymentType = "Debit";
+  String _pocketType = "Groceries";
+  String _borrowType = "Debt";
+  @override
+  void initState() {
+    dateinput.text = ""; //set the initial value of text field
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +36,7 @@ class CreateBorrowPage extends State<CreateBorrow> {
                     margin: const EdgeInsets.only(left: 20),
                     alignment: Alignment.topLeft,
                     child:
-                    const Text('Borrow Transactions',
+                    const Text('Borrow Transactions 🤝🏼',
                         style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)
                     ),
                   ),
@@ -116,26 +123,80 @@ class CreateBorrowPage extends State<CreateBorrow> {
                             const SizedBox(height: 24),
                             const Text('Date', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
                             const SizedBox(height: 8),
-                            TextFormField(
-                              key: const Key("addDate"),
-                              decoration: const InputDecoration(
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                      borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                                  hintText: 'DD/MM/YYYY'),
-                              keyboardType: TextInputType.number,
-                            ),
+                            Container(
+                                padding: const EdgeInsets.only(),
+                                child:Center(
+                                    child:TextField(
+                                      key: const Key("addDate"),
+                                      controller: dateinput,
+                                      cursorWidth: 50,
+                                      decoration: const InputDecoration(
+                                          prefixIcon: Icon(Icons.calendar_today),
+                                          enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                              borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                                          hintText: 'YYYY-MM-DD'),
+                                      readOnly: true,  //set it true, so that user will not able to edit text
+                                      onTap: () async {
+                                        DateTime? pickedDate = await showDatePicker(
+                                            context: context, initialDate: DateTime.now(),
+                                            firstDate: DateTime(2000), //DateTime.now() - not to allow to choose before today.
+                                            lastDate: DateTime(2101)
+                                        );
+                                        if(pickedDate != null ){
+                                          String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
+                                          setState(() {
+                                            dateinput.text = formattedDate; //set output date to TextField value.
+                                          });
+                                        }else{
+                                        }
+                                      },
+                                    ))),
                             const SizedBox(height: 24),
                             const Text('Type of Borrowing', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
                             const SizedBox(height: 8),
-                            TextFormField(
-                              key: const Key("addBorrowingType"),
-                              decoration: const InputDecoration(
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                      borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                                  hintText: 'Type "In debt" or "Lending money"'),
-                              keyboardType: TextInputType.number,
+                            Padding(
+                              padding: const EdgeInsets.only(),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: DropdownButtonFormField<String>(
+                                        key: const Key("addBorrowingType"),
+                                        style: const TextStyle(height: 0),
+                                        decoration: const InputDecoration(
+                                          fillColor: Color(0XFFF9F9F9),
+                                          enabledBorder: OutlineInputBorder(
+                                              borderRadius:
+                                              BorderRadius.all(Radius.circular(8.0)),
+                                              borderSide:
+                                              BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                                          hintText: 'Debt',
+                                          filled: true,
+                                        ),
+                                        value: _borrowType,
+                                        onChanged: (String? value) => {_borrowType = value!},
+                                        items: const [
+                                          DropdownMenuItem<String>(
+                                            value: "Debt",
+                                            child: Text(
+                                              "Debt",
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          ),
+                                          DropdownMenuItem(
+                                              value: "Lend money",
+                                              child: Text(
+                                                "Lend money",
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                ),
+                                              )),
+                                        ]),
+                                  ),
+                                ],
+                              ),
                             ),
                             const SizedBox(height: 24),
                             const Text('Borrower name', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
@@ -146,52 +207,116 @@ class CreateBorrowPage extends State<CreateBorrow> {
                                   enabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
                                       borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                                  hintText: 'Enter their name here'),
+                                  hintText: 'Enter the borrower name here'),
                               keyboardType: TextInputType.number,
                             ),
                             const SizedBox(height: 24),
                             const Text('Type of Payment', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
                             const SizedBox(height: 8),
-                            DropdownButtonFormField<String>(
-                                key: const Key("addPaymentType"),
-                                style: const TextStyle(height: 0),
-                                decoration: const InputDecoration(
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                      borderSide: BorderSide(
-                                          width: 1.0, color: Color(0xFFDBDBDB)
-                                      )
+                            Padding(
+                              padding: const EdgeInsets.only(),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: DropdownButtonFormField<String>(
+                                        key: const Key("addPaymentType"),
+                                        style: const TextStyle(height: 0),
+                                        decoration: const InputDecoration(
+                                          fillColor: Color(0XFFF9F9F9),
+                                          enabledBorder: OutlineInputBorder(
+                                              borderRadius:
+                                              BorderRadius.all(Radius.circular(8.0)),
+                                              borderSide:
+                                              BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                                          hintText: 'Enter your payment method',
+                                          filled: true,
+                                        ),
+                                        value: _paymentType,
+                                        onChanged: (String? value) => {_paymentType = value!},
+                                        items: const [
+                                          DropdownMenuItem<String>(
+                                            value: "Debit",
+                                            child: Text(
+                                              "Debit",
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          ),
+                                          DropdownMenuItem(
+                                              value: "Cash",
+                                              child: Text(
+                                                "Cash",
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                ),
+                                              )),
+                                          DropdownMenuItem(
+                                              value: "E-money",
+                                              child: Text(
+                                                "E-money",
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                ),
+                                              )),
+                                        ]),
                                   ),
-                                  hintText: 'Enter your payment method',
-                                  filled: true,
-                                ),
-                                value: _adminType,
-                                onChanged: (String? value) => {_adminType = value!},
-                                items: const [
-                                  DropdownMenuItem<String>(
-                                    value: "Debit",
-                                    child: Text("Debit"),
-                                  ),
-                                  DropdownMenuItem(
-                                    value: "Cash",
-                                    child: Text("Cash"),
-                                  ),
-                                  DropdownMenuItem(
-                                    value: "E-money",
-                                    child: Text("E-money"),
-                                  ),
-                                ]),
+                                ],
+                              ),
+                            ),
                             const SizedBox(height: 24),
                             const Text('Pocket', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
                             const SizedBox(height: 8),
-                            TextFormField(
-                              key: const Key("addPocketCategory"),
-                              decoration: const InputDecoration(
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                      borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                                  hintText: 'Entertainment, food'),
-                              keyboardType: TextInputType.number,
+                            Padding(
+                              padding: const EdgeInsets.only(),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: DropdownButtonFormField<String>(
+                                        key: const Key("addPocketName"),
+                                        style: const TextStyle(height: 0),
+                                        decoration: const InputDecoration(
+                                          fillColor: Color(0XFFF9F9F9),
+                                          enabledBorder: OutlineInputBorder(
+                                              borderRadius:
+                                              BorderRadius.all(Radius.circular(8.0)),
+                                              borderSide:
+                                              BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                                          hintText: 'Enter your pocket',
+                                          filled: true,
+                                        ),
+                                        value: _pocketType,
+                                        onChanged: (String? value) => {_pocketType = value!},
+                                        items: const [
+                                          DropdownMenuItem<String>(
+                                            value: "Groceries",
+                                            child: Text(
+                                              "Groceries",
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          ),
+                                          DropdownMenuItem(
+                                              value: "Health",
+                                              child: Text(
+                                                "Health",
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                ),
+                                              )),
+                                          DropdownMenuItem(
+                                              value: "Food And Beverages",
+                                              child: Text(
+                                                "Food And Beverages",
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                ),
+                                              )),
+                                        ]),
+                                  ),
+                                ],
+                              ),
                             ),
                             const SizedBox(height: 24),
                             const InputTransactions(),
@@ -230,7 +355,7 @@ class InputTransactions extends StatelessWidget{
           );
         },
         child: const Text('Input Transactions',
-            style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Colors.white)
+            style: TextStyle(color: Colors.white)
         ),
       ),
     );

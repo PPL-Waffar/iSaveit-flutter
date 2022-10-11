@@ -17,8 +17,10 @@ void main() {
     final addAmount = find.byKey(const ValueKey("addAmount"));
     final addDate = find.byKey(const ValueKey("addDate"));
     final addBorrowingType = find.byKey(const ValueKey("addBorrowingType"));
-    final createInputTransactions = find.byKey(const ValueKey("createInputTransactions"));
     final addBorrowerName = find.byKey(const ValueKey("addBorrowerName"));
+    final addPaymentType = find.byKey(const ValueKey("addPaymentType"));
+    final addPocketName = find.byKey(const ValueKey("addPocketName"));
+    final createInputTransactions = find.byKey(const ValueKey("createInputTransactions"));
     final createCancelButton = find.byKey(const ValueKey("createCancelButton"));
 
 
@@ -30,15 +32,19 @@ void main() {
     await tester.pump();
 
     //Create test for text fields
-    await tester.enterText(addPaymentName, "Spotify");
+    await tester.enterText(addPaymentName, "Lunch");
     await tester.pumpAndSettle();
-    await tester.enterText(addAmount, "30.000");
+    await tester.enterText(addAmount, "RP 30.000");
     await tester.pumpAndSettle();
-    await tester.enterText(addDate, "13/07/22");
+    await tester.enterText(addDate, "2022-10-03");
     await tester.pumpAndSettle();
-    await tester.enterText(addBorrowingType, "In Debt");
+    await tester.enterText(addBorrowingType, "Debt");
     await tester.pumpAndSettle();
     await tester.enterText(addBorrowerName, "Jane Doe");
+    await tester.pumpAndSettle();
+    await tester.enterText(addPaymentType, "Debit");
+    await tester.pumpAndSettle();
+    await tester.enterText(addPocketName, "Food");
     await tester.pump(const Duration(seconds: 2));
 
 
