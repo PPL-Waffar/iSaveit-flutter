@@ -12,28 +12,26 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Login extends StatefulWidget {
   const Login({super.key});
   Future<User> webServiceLogin(String telephone, String password) async {
-    var response = await post(
-        Uri.parse("http://localhost:8000/user/flu-login/"),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode({"email": telephone, "password": password}));
+    var response =
+        await post(Uri.parse("https://isaveit-staging.herokuapp.com/user/flu-login/"),
+            headers: <String, String>{
+              'Content-Type': 'application/json; charset=UTF-8',
+            },
+            body: jsonEncode({"email": telephone, "password": password}));
 
     if (response.statusCode == 200) {
       Map<String, dynamic> userData = jsonDecode(response.body);
       User user = User(
-        datetime: userData["datetime"],
-        sessionId: userData["session-id"],
-        isCitizen: true,
-        email: userData["email"],
-        name: userData["name"]);
+          datetime: userData["datetime"],
+          sessionId: userData["session-id"],
+          isCitizen: true,
+          email: userData["email"],
+          name: userData["name"]);
 
       final prefs = await SharedPreferences.getInstance();
-      prefs.setString('sessionId', userData["session-id"]);  
+      prefs.setString('sessionId', userData["session-id"]);
       prefs.setBool('isCitizen', userData["role_users"]);
       prefs.setString('email', userData["email"]);
-
-        
 
       return user;
     } else {
@@ -143,28 +141,26 @@ class LoginPage extends State<Login> {
               ),
             ),
             onPressed: () async {
-                                setState(() {
-                                  loading = true;
-                                });
-                                {
-                                  User user = await widget.webServiceLogin(
-                                      _email.text, _password.text);
+              setState(() {
+                loading = true;
+              });
+              {
+                User user =
+                    await widget.webServiceLogin(_email.text, _password.text);
 
-                                  {
-                                  
-                                    SchedulerBinding.instance
-                                        .addPostFrameCallback((_) {
-                                      Navigator.of(context).pushAndRemoveUntil(
-                                          MaterialPageRoute<void>(
-                                              builder: (BuildContext context) =>
-                                                  SettingView(user: user)),
-                                          (Route<dynamic> route) => false);
-                                    });
-                                  }
-                                }
-                                _email.clear();
-                                _password.clear();
-                              },
+                {
+                  SchedulerBinding.instance.addPostFrameCallback((_) {
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute<void>(
+                            builder: (BuildContext context) =>
+                                SettingView(user)),
+                        (Route<dynamic> route) => false);
+                  });
+                }
+              }
+              _email.clear();
+              _password.clear();
+            },
             child: const Text(
               'Login',
               style: TextStyle(fontSize: 16, color: Colors.white),

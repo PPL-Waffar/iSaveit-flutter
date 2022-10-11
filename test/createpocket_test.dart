@@ -13,7 +13,13 @@ import 'package:isaveit/page/pocket/create_pocket.dart';
 
 void main() {
   testWidgets('Create Pocket', (WidgetTester tester) async {
-    User user;
+    User user = User(
+        datetime: "2021-05-01 00:00:00.000000",
+        sessionId: "1234567890",
+        isCitizen: true,
+        email: "usertest@gmail.com",
+        name: "Amanda");
+
 
     final addPocketName = find.byKey(const ValueKey("addPocketName"));
     final addPocketBudget = find.byKey(const ValueKey("addPocketBudget"));

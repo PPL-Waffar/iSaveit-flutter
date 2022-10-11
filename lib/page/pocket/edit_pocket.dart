@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:isaveit/page/homepage.dart';
+import 'package:isaveit/page/navbar.dart';
 import 'package:isaveit/page/pocket/pocket_details.dart';
 
 import '../../models/user.dart';
 
 class EditPocket extends StatefulWidget {
-  User? user;
-  EditPocket({Key? key, this.user}) : super(key: key);
+  final User user;
+  const EditPocket(this.user, {super.key});
 
   @override
   EditPocketPage createState() => EditPocketPage();
@@ -145,7 +145,7 @@ class EditPocketPage extends State<EditPocket> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Pocket()),
+                    MaterialPageRoute(builder: (context) => Pocket(widget.user)),
                   );
                 },
                 child: const Text('Edit Pocket'),
@@ -182,7 +182,7 @@ class EditPocketPage extends State<EditPocket> {
                       ),
                       TextButton(
                         key: const Key("confirmDeletePocket"),
-                        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) =>  HomeView())),
+                        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) =>  SettingView(widget.user))),
                         child: const Text('Delete', style: TextStyle(color: Color(0XFF4054FF))),
                       ),
                     ],
@@ -200,7 +200,7 @@ class EditPocketPage extends State<EditPocket> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Pocket()),
+                  MaterialPageRoute(builder: (context) => Pocket(widget.user)),
                 );
               },
               child: const Text(
