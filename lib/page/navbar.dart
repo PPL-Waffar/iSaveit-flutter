@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:isaveit/models/user.dart';
 import '../page/homepage.dart';
 
 class SettingView extends StatefulWidget {
-  const SettingView({super.key});
+  const SettingView({super.key, required User user});
 
   @override
   // ignore: library_private_types_in_public_api
