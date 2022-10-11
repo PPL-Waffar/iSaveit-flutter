@@ -354,7 +354,7 @@ class HomePage extends State<HomeView> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const InputTransaction()));
+                        builder: (context) => const CreateTransaction()));
               }, child: const Text('input transactions'),
             )
           ],

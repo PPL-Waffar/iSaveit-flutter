@@ -11,7 +11,7 @@ class SettingView extends StatefulWidget {
 }
 
 class _SettingViewState extends State<SettingView> {
-  final tabs = [const HomeView(), const InputTransaction()
+  final tabs = [const HomeView(), const CreateTransaction()
     //ReportView(), MoneyView(), NewsView(), ProfileView()
   ];
 

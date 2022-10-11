@@ -1,49 +1,46 @@
+
 import 'package:flutter/material.dart';
-import 'package:isaveit/page/navbar.dart';
+import 'package:intl/intl.dart';
+import '../navbar.dart';
 
-
-
-class InputTransaction extends StatefulWidget {
-  const InputTransaction({super.key});
-
+class CreateTransaction extends StatefulWidget {
+  const CreateTransaction({super.key});
   @override
-  InputTransactionForm createState() => InputTransactionForm();
+  CreateTransactionPage createState() => CreateTransactionPage();
 }
 
-List<String> transactionType = <String>['Expense', 'Income'];
-List<String> paymentType = <String>['Debit Card', 'E-Wallet', 'Cash'];
-List<String> pocket = <String>['Grocery', 'Transportation', 'Entertainment'];
-List<String> list = <String>['item1', 'item2', 'item3'];
-class InputTransactionForm extends State<InputTransaction> {
+class CreateTransactionPage extends State<CreateTransaction> {
+  
+  String _paymentType = "Debit";
+  String _pocketType = "Groceries";
+  String _transacType = "Income";
 
-  String dropdownValue = list.first;
+  TextEditingController dateinput = TextEditingController(); 
+    @override
+    void initState() {
+      dateinput.text = ""; //set the initial value of text field
+      super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: const Color(0XFFF9F9F9),
+        elevation: 0,
+        leadingWidth: 500,
+        leading: const Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Text(
+              'Input Transaction',
+              style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black)
+            )),
+      ),
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const SizedBox(height: 60),
-
-            //Edit pocket title
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
             Container(
-              margin: const EdgeInsets.only(left: 20),
-              alignment: Alignment.topLeft,
-                child: 
-                const Text('Input Transactions 💰',
-                style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)
-                ),
-              ),
-
-            const SizedBox(height: 32),
-
-            //pocket balance
-            SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
                   alignment: Alignment.center,
                   child: const Center(
                     child: 
@@ -63,14 +60,11 @@ class InputTransactionForm extends State<InputTransaction> {
                     style: TextStyle(fontFamily: 'Inter', fontSize: 32, fontWeight: FontWeight.w700)
                     ),
                   ),
-                )
-              ],
-            )
+                ),
+
+            const SizedBox(
+              height: 32,
             ),
-
-            const SizedBox(height: 32),
-
-            //divider 
             Container(
               margin: const EdgeInsets.only(left: 20, right: 20),
               child: const Divider(
@@ -83,188 +77,276 @@ class InputTransactionForm extends State<InputTransaction> {
             ),
 
             const SizedBox(height: 32),
-
-            //pocket name
-            SingleChildScrollView( 
+            const Padding(
+              padding: EdgeInsets.only(left: 30, right: 30),
+              child: Text(
+                'Payment Name',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
               padding: const EdgeInsets.only(left: 30, right: 30),
-              child:Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('Transaction Name', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-                const SizedBox(height: 8),
-                TextFormField(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
                       key: const Key("transactionName"),
                       decoration: const InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
                           borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                          hintText: 'Lunch at Canteen'),
-                    ),  
-                ]
-            )
+                          hintText: 'Purchase stationaries'),
+                    ),
+                  ),
+                ],
+              ),
             ),
 
             const SizedBox(height: 32),
 
-            
-            //Pocket budget
-            SingleChildScrollView(
+            const Padding(
+              padding: EdgeInsets.only(left: 30, right: 30),
+              child: Text(
+                'Amount',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
               padding: const EdgeInsets.only(left: 30, right: 30),
-              child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('Amount', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-                const SizedBox(height: 8),
-                TextFormField(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
                       key: const Key("transactionAmount"),
                       decoration: const InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
                           borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
                           hintText: 'Rp 0'),
-                      keyboardType: TextInputType.number,
-                  )
-              ]
-            )
-            ),
-
-
-            const SizedBox(height: 32),
-
-                        //Pocket budget
-            SingleChildScrollView(
-              padding: const EdgeInsets.only(left: 30, right: 30),
-              child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('Date', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-                const SizedBox(height: 8),
-                TextFormField(
-                      key: const Key("transactionDate"),
-                      decoration: const InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                          borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                          hintText: 'DD/MM/YY'),
-                      keyboardType: TextInputType.number,
-                  )
-              ]
-            )
-            ),
-
-
-            const SizedBox(height: 32),
-
-            SingleChildScrollView(
-              padding: const EdgeInsets.only(left: 30, right: 30),
-              child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('Type of Transaction', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-                const SizedBox(height: 8),
-                DropdownButtonFormField<String>(
-                  value: dropdownValue,
-                  icon: const Icon(Icons.arrow_drop_down_outlined),
-                    decoration: const InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                      filled: true,
-                    ),
-                    dropdownColor: Colors.white,
-                  onChanged: (String? value) {
-                    // This is called when the user selects an item.
-                    setState(() {
-                      dropdownValue = value!;
-                    });
-                  },
-                  items: list.map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                ),
-                ]
-              )
+                          keyboardType: TextInputType.number,),
+                  ),
+                ],
+              ),
             ),
             
             const SizedBox(height: 32),
 
-            SingleChildScrollView(
-              padding: const EdgeInsets.only(left: 30, right: 30),
-              child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('Type of Payment', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-                const SizedBox(height: 8),
-                DropdownButtonFormField<String>(
-                  value: dropdownValue,
-                  icon: const Icon(Icons.arrow_drop_down_outlined),
-                    decoration: const InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                      filled: true,
-                    ),
-                    dropdownColor: Colors.white,
-                  onChanged: (String? value) {
-                    // This is called when the user selects an item.
-                    setState(() {
-                      dropdownValue = value!;
-                    });
-                  },
-                  items: list.map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                ),
-                ]
-              )
+            const Padding(
+              padding: EdgeInsets.only(left: 30, right: 30),
+              child: Text(
+                'Date',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
-            
-
-            const SizedBox(height: 32),
-
-            SingleChildScrollView(
-              padding: const EdgeInsets.only(left: 30, right: 30),
-              child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('Pocket', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-                const SizedBox(height: 8),
-                DropdownButtonFormField<String>(
-                  value: dropdownValue,
-                  icon: const Icon(Icons.arrow_drop_down_outlined),
-                    decoration: const InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                      filled: true,
-                    ),
-                    dropdownColor: Colors.white,
-                  onChanged: (String? value) {
-                    // This is called when the user selects an item.
-                    setState(() {
-                      dropdownValue = value!;
-                    });
-                  },
-                  items: list.map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                ),
-                ]
-              )
-            ),
+            //Date Picker
+            Container(
+          padding: const EdgeInsets.only(left: 30, right: 30),
+          child:Center( 
+             child:TextField(
+                key: const Key("transactionDate"),
+                controller: dateinput,
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.calendar_today),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                    hintText: 'YYYY-MM-dd'), //editing controller of this TextField
+                
+                readOnly: true,  //set it true, so that user will not able to edit text
+                onTap: () async {
+                  DateTime? pickedDate = await showDatePicker(
+                      context: context, initialDate: DateTime.now(),
+                      firstDate: DateTime(2000), //DateTime.now() - not to allow to choose before today.
+                      lastDate: DateTime(2101)
+                  );
+                  
+                  if(pickedDate != null ){
+                    String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate); 
+                      setState(() {
+                         dateinput.text = formattedDate; //set output date to TextField value. 
+                      });
+                  }else{
+                  }
+                },
+             ))),
             
             const SizedBox(height: 32),
 
-            //edit button
+            const Padding(
+              padding: EdgeInsets.only(left: 30, right: 30),
+              child: Text(
+                'Type of Transaction',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+                 Padding(
+              padding: const EdgeInsets.only(left: 30, right: 30),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: DropdownButtonFormField<String>(
+                        key: const Key("TransacType"),
+                        decoration: const InputDecoration(
+                          fillColor: Color(0XFFF9F9F9),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.0)),
+                              borderSide:
+                                  BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                          hintText: 'Enter your payment method',
+                          filled: true,
+                        ),
+                        value: _transacType,
+                        onChanged: (String? value) => {_transacType = value!},
+                        items: const [
+                          DropdownMenuItem<String>(
+                            value: "Income",
+                            child: Text(
+                              "Income",
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                          DropdownMenuItem(
+                              value: "Expense",
+                              child: Text(
+                                "Expense",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              )),
+                          
+                        ]),
+                  ),
+                ],
+              ),
+            ),
+            
+            const SizedBox(height: 32),
+
+            const Padding(
+              padding: EdgeInsets.only(left: 30, right: 30),
+              child: Text(
+                'Type of Payment',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 30, right: 30),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: DropdownButtonFormField<String>(
+                        key: const Key("addPaymentType"),
+                        style: const TextStyle(height: 0),
+                        decoration: const InputDecoration(
+                          fillColor: Color(0XFFF9F9F9),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.0)),
+                              borderSide:
+                                  BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                          hintText: 'Enter your payment method',
+                          filled: true,
+                        ),
+                        value: _paymentType,
+                        onChanged: (String? value) => {_paymentType = value!},
+                        items: const [
+                          DropdownMenuItem<String>(
+                            value: "Debit",
+                            child: Text(
+                              "Debit",
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                          DropdownMenuItem(
+                              value: "Cash",
+                              child: Text(
+                                "Cash",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              )),
+                          DropdownMenuItem(
+                              value: "E-money",
+                              child: Text(
+                                "E-money",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              )),
+                        ]),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 32),
+
+            const Padding(
+              padding: EdgeInsets.only(left: 30, right: 30),
+              child: Text(
+                'Pocket',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 30, right: 30),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: DropdownButtonFormField<String>(
+                        key: const Key("addPocketName"),
+                        style: const TextStyle(height: 0),
+                        decoration: const InputDecoration(
+                          fillColor: Color(0XFFF9F9F9),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.0)),
+                              borderSide:
+                                  BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                          hintText: 'Enter your pocket',
+                          filled: true,
+                        ),
+                        value: _pocketType,
+                        onChanged: (String? value) => {_pocketType = value!},
+                        items: const [
+                          DropdownMenuItem<String>(
+                            value: "Groceries",
+                            child: Text(
+                              "Groceries",
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                          DropdownMenuItem(
+                              value: "Health",
+                              child: Text(
+                                "Health",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              )),
+                          DropdownMenuItem(
+                              value: "Food And Beverages",
+                              child: Text(
+                                "Food And Beverages",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              )),
+                        ]),
+                  ),
+                ],
+              ),
+            ),
+            
+            const SizedBox(height: 32),
+
             Container(
               alignment: Alignment.center,
               margin: const EdgeInsets.only(left: 30, right: 30),
@@ -276,7 +358,7 @@ class InputTransactionForm extends State<InputTransaction> {
                   backgroundColor: const Color(0XFF4054FF),
                   shape: 
                     RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(48),
+                      borderRadius: BorderRadius.circular(12),
                     )
                   ),
                 onPressed: () {
@@ -289,33 +371,26 @@ class InputTransactionForm extends State<InputTransaction> {
               ),
             ),
 
-            const SizedBox(height: 16),
             
-            //cancel button
-            TextButton(
-              key: const Key("cancelEditPocket"),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SettingView()),
-                );
-              },
-              child: const Text(
-                'Cancel',
-                style: TextStyle(color: Color(0xFFD3180C)),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
+              child: Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pop(
+                      context,
+                    );
+                  },
+                  child: const Text(
+                    'Cancel',
+                    style: TextStyle(color: Colors.red),
+                  ),
+                ),
               ),
-            )
-          ]
-        )
-      )
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
-
-// List<DropdownMenuItem<String>> get transactionDropdown{
-//   List<DropdownMenuItem<String>> transactionItems = [
-//     const DropdownMenuItem(value: "Income", child: Text("Income")),
-//     const DropdownMenuItem(value: "Expense", child: Text("Expense")),  
-//   ];
-//   return transactionItems;
-// }
