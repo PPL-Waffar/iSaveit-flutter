@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../page/homepage.dart';
-import 'transaction/input_transaction.dart';
+
 
 class SettingView extends StatefulWidget {
   const SettingView({super.key});
@@ -11,7 +11,7 @@ class SettingView extends StatefulWidget {
 }
 
 class _SettingViewState extends State<SettingView> {
-  final tabs = [ const HomeView(), const Transaction(), 
+  final tabs = [ const HomeView(), //Transaction(), 
     //NewsView(), //ReportView(), ProfileView()
   ];
 
