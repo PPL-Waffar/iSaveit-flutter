@@ -30,9 +30,9 @@ name: SonarCloud analysis
 
 on:
   push:
-    branches: [ "staging" ]
+    branches: [ "PBI-2-login" ]
   pull_request:
-    branches: [ "staging" ]
+    branches: [ "PBI-2-login" ]
   workflow_dispatch:
 
 permissions:

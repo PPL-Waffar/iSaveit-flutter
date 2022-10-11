@@ -12,10 +12,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:isaveit/page/login_page.dart';
 
 void main() {
-  testWidgets('Test Register', (WidgetTester tester) async {
+  testWidgets('Test Login', (WidgetTester tester) async {
     final addEmail = find.byKey(const ValueKey("addEmail"));
     final addPassword = find.byKey(const ValueKey("addPassword"));
-    final loginAccount = find.byKey(const ValueKey("loginAccount"));
+    
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MaterialApp(
       home: Login(),
@@ -35,13 +35,7 @@ void main() {
 
     await tester.enterText(addEmail, "angel@gmail.com");
     await tester.enterText(addPassword, "ngelangel18");
-    await tester.tap(loginAccount);
-    await tester.pump();
-
-    expect(find.text('Login to your account'), findsOneWidget);
-    expect(find.text("Welcome back, you've been missed"), findsOneWidget);
-    expect(find.text('Welcome Back! \nYourname'), findsNothing);
-
+    
   });
 
 }

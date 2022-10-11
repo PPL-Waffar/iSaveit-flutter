@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:isaveit/page/navbar.dart';
 import '../page/login_page.dart';
 
 
@@ -130,7 +129,7 @@ class RegisterPage extends State<Register> {
                 onPressed: () {
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SettingView())
+                  MaterialPageRoute(builder: (context) => const Login())
                   );
                 },
                 child: const Text('Create Account', style: TextStyle(fontSize: 16, color: Colors.white), ),
