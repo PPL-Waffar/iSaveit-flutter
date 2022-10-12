@@ -11,7 +11,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:isaveit/page/transactions/create_borrow.dart';
 
 void main() {
-  testWidgets('Borrow Transactions', (WidgetTester tester) async {
+  testWidgets('Borrow Transactions 🤝🏼', (WidgetTester tester) async {
 
     final addPaymentName = find.byKey(const ValueKey("addPaymentName"));
     final addAmount = find.byKey(const ValueKey("addAmount"));
@@ -38,13 +38,14 @@ void main() {
     await tester.pumpAndSettle();
     await tester.enterText(addDate, "2022-10-03");
     await tester.pumpAndSettle();
-    await tester.enterText(addBorrowingType, "Debt");
+    await tester.tap(addBorrowingType);
     await tester.pumpAndSettle();
     await tester.enterText(addBorrowerName, "Jane Doe");
     await tester.pumpAndSettle();
-    await tester.enterText(addPaymentType, "Debit");
+    await tester.tap(addPaymentType);
     await tester.pumpAndSettle();
-    await tester.enterText(addPocketName, "Food");
+    await tester.tap(addPocketName);
+    await tester.pumpAndSettle();
     await tester.pump(const Duration(seconds: 2));
 
 
