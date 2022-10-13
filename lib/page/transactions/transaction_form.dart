@@ -185,7 +185,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
                 children: [
                   Expanded(
                     child: DropdownButtonFormField<String>(
-                        key: const Key("TransacType"),
+                        key: const ValueKey("TransacType"),
                         decoration: const InputDecoration(
                           fillColor: Color(0XFFF9F9F9),
                           enabledBorder: OutlineInputBorder(
@@ -238,7 +238,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
                 children: [
                   Expanded(
                     child: DropdownButtonFormField<String>(
-                        key: const Key("addPaymentType"),
+                        key: const ValueKey("PaymentType"),
                         style: const TextStyle(height: 0),
                         decoration: const InputDecoration(
                           fillColor: Color(0XFFF9F9F9),
@@ -299,7 +299,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
                 children: [
                   Expanded(
                     child: DropdownButtonFormField<String>(
-                        key: const Key("addPocketName"),
+                        key: const ValueKey("PocketName"),
                         style: const TextStyle(height: 0),
                         decoration: const InputDecoration(
                           fillColor: Color(0XFFF9F9F9),

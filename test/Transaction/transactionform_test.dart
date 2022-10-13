@@ -36,10 +36,55 @@ void main() {
     await tester.pumpAndSettle();
     await tester.enterText(transactionAmount, "30.000");
     await tester.pumpAndSettle();
-    await tester.enterText(transactionDate, "2022-10-02");
+
     await tester.pump(const Duration(seconds: 2));
 
-        await tester.pump();
+
+    await tester.enterText(transactionDate, "2022-10-02");
+    final dateTextField = find.byIcon(Icons.calendar_today);
+        await tester.tap(dateTextField);
+
+    //Test transaction type widget
+    final transacDropdown = find.byKey(const ValueKey('TransacType'));
+    await tester.tap(transacDropdown);
+    await tester.pumpAndSettle();
+
+    ///if you want to tap first item
+    final transacItem = find.text('Income').last;
+
+    await tester.tap(transacItem);
+    await tester.pumpAndSettle();
+
+        //Test transaction type widget
+    final paymentDropdown = find.byKey(const ValueKey('PaymentType'));
+    await tester.tap(paymentDropdown);
+    await tester.pumpAndSettle();
+
+    ///if you want to tap first item
+    final paymentItem = find.text('Debit').last;
+
+    await tester.tap(paymentItem);
+    await tester.pumpAndSettle();
+
+    //Test transaction type widget
+    final pocketDropdown = find.byKey(const ValueKey('PocketName'));
+    await tester.tap(pocketDropdown);
+    await tester.pumpAndSettle();
+
+    ///if you want to tap first item
+    final pocketItem = find.text('Groceries').last;
+
+    await tester.tap(pocketItem);
+    await tester.pumpAndSettle();
+
+    expect(find.byType(ElevatedButton), findsOneWidget);
+    await tester.tap(find.byType(ElevatedButton));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(TextButton), findsOneWidget);
+    await tester.tap(find.byType(TextButton));
+    await tester.pumpAndSettle();
+
   });
 
 }
