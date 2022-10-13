@@ -130,7 +130,7 @@ class RegisterPage extends State<Register> {
                 onPressed: () {
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SettingView())
+                  MaterialPageRoute(builder: (context) =>  const SettingView())
                   );
                 },
                 child: const Text('Create Account', style: TextStyle(fontSize: 16, color: Colors.white), ),

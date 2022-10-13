@@ -24,7 +24,7 @@ class PocketPage extends State<Pocket> {
           leading: IconButton(
         icon: const Icon(Icons.arrow_back, color: Colors.black),
         onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => const SettingView()))),
+              .push(MaterialPageRoute(builder: (context) =>  SettingView()))),
 
         actions: <Widget>[
           IconButton(
