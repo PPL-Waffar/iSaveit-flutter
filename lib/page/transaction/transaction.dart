@@ -66,9 +66,7 @@ class TransactionPage extends State<Transaction> {
         TextButton(
         // <-- TextButton
         onPressed: () {
-          Navigator.pop(
-            context,
-          );
+          Navigator.pop(context);
         },
         child: const Text(
           'Cancel',

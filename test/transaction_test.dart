@@ -30,6 +30,32 @@ void main() {
         ),
       ),
     );
+    await tester.pumpWidget(
+      Directionality(
+        textDirection: TextDirection.ltr,
+        child: Material(
+          child: Center(
+            child: ElevatedButton(
+              onPressed: () { },
+              child: const Text('Borrow Transaction')
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpWidget(
+      Directionality(
+        textDirection: TextDirection.ltr,
+        child: Material(
+          child: Center(
+            child: TextButton(
+              onPressed: () {Navigator.pop; },
+              child: const Text('Cancel')
+            ),
+          ),
+        ),
+      ),
+    );
     await tester.pump();
   });
 }
