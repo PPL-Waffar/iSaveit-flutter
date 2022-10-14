@@ -19,7 +19,7 @@ iSaveIt is a money management application that hope to oprganize budget and expe
 
 -----
 ## Getting Started
-This is a `Django` project that mainly contain the `back-end` materials.
+This is a `Flutter` project that mainly contain the `front-end` materials.
 
 ## Requirements
 - dart SDK (install dart: https://dart.dev/get-dart)
