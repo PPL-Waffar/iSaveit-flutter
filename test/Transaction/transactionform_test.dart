@@ -10,7 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isaveit/page/transactions/transaction_form.dart';
 
+
 void main() {
+  
   testWidgets('Transaction Form', (WidgetTester tester) async {
 
     final transactionName = find.byKey(const ValueKey("transactionName"));
@@ -43,11 +45,11 @@ void main() {
     await tester.enterText(transactionDate, "2022-10-02");
     final dateTextField = find.byIcon(Icons.calendar_today);
         await tester.tap(dateTextField);
-
+ 
     //Test transaction type widget
     final transacDropdown = find.byKey(const ValueKey('TransacType'));
-    await tester.tap(transacDropdown);
-    await tester.pumpAndSettle();
+      await tester.tap(transacDropdown);
+      await tester.pumpAndSettle();
 
     ///if you want to tap first item
     final transacItem = find.text('Income').last;
@@ -77,11 +79,14 @@ void main() {
     await tester.tap(pocketItem);
     await tester.pumpAndSettle();
 
+    //Test button
     expect(find.byType(ElevatedButton), findsOneWidget);
+    await tester.pump(const Duration(milliseconds: 100));
     await tester.tap(find.byType(ElevatedButton));
     await tester.pumpAndSettle();
 
     expect(find.byType(TextButton), findsOneWidget);
+    await tester.pump(const Duration(milliseconds: 100));
     await tester.tap(find.byType(TextButton));
     await tester.pumpAndSettle();
 
