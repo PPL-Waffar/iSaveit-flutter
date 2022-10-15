@@ -381,10 +381,10 @@ class Cancelpayment extends StatelessWidget{
         // style: ElevatedButton.styleFrom(
         //     primary: Colors.white70,),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const HomeView()),
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => const HomeView()),
+          // );
         },
         child: const Text('Cancel',
             style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFFD3180C))
