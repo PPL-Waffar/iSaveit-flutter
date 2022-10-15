@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:isaveit/page/homepage.dart';
+import 'page/register_page.dart';
+
 
 void main() => runApp(const MyApp());
 class MyApp extends StatelessWidget {
@@ -8,8 +9,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: HomeView(),
-
+      debugShowCheckedModeBanner: false,
+      home: Register(),
+      
     );
   }
 }

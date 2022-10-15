@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:isaveit/page/homepage.dart';
 import 'package:intl/intl.dart';
+// import 'package:dropdownfield/dropdownfield.dart';
 
 class Plannedpayment extends StatefulWidget{
-  const Plannedpayment({Key? key}) : super(key: key);
+  
+  const Plannedpayment({super.key});
+
   @override
   PlannedpaymentState createState() => PlannedpaymentState();
 }
@@ -240,10 +242,10 @@ class PlannedpaymentState extends State<Plannedpayment> {
             // style: ElevatedButton.styleFrom(
             //     primary: Colors.white70,),
                  onPressed: () {
-                 Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HomeView()),
-              );
+              //    Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const HomeView()),
+              // );
             },
             child: const Text('Cancel',
                 style: TextStyle(color: Color(0xFFD3180C))
@@ -253,6 +255,69 @@ class PlannedpaymentState extends State<Plannedpayment> {
                 ]
             )
         ),
+    );
+  }
+}
+//create submit button
+class Submitpayment extends StatelessWidget{
+  const Submitpayment({super.key});
+
+  @override
+  Widget build(BuildContext context){
+    return Container(
+      alignment: Alignment.center,
+      margin: const EdgeInsets.only(left: 20),
+      child: ElevatedButton(
+        key: const Key("createSubmitButton"),
+        style: ElevatedButton.styleFrom(
+        minimumSize: const Size.fromHeight(48),
+    elevation: 0,
+    backgroundColor: const Color(0XFF4054FF),
+    shape:
+    RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(48),)),
+        onPressed: () {
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => Plannedpayment(user)),
+          // );
+        },
+          child: const Text('Create Planned Payment',
+              style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Colors.white)
+          ),
+      ),
+    );
+  }
+}
+class Cancelpayment extends StatelessWidget{
+  const Cancelpayment({super.key});
+
+  @override
+  Widget build(BuildContext context){
+    return Container(
+      alignment: Alignment.center,
+      margin: const EdgeInsets.only(left: 20),
+      child: ElevatedButton(
+        key: const Key("createCancelButton"),
+        style: ElevatedButton.styleFrom(
+            minimumSize: const Size.fromHeight(48), backgroundColor: Colors.white70,
+            elevation: 0,
+            // backgroundColor: const Color(0xffb74093),
+            shape:
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(48),)),
+        // style: ElevatedButton.styleFrom(
+        //     primary: Colors.white70,),
+        onPressed: () {
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) =>  SettingView(user)),
+          // );
+        },
+        child: const Text('Cancel',
+            style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFFD3180C))
+        ),
+      ),
     );
   }
 }
