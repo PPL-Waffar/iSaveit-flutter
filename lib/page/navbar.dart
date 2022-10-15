@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:isaveit/models/user.dart';
 import '../page/homepage.dart';
 import '../page/report/reportpage.dart';
-import '../page/transaction/transaction.dart';
+import 'transactions/transaction.dart';
 
 // ignore: must_be_immutable
 class SettingView extends StatefulWidget {

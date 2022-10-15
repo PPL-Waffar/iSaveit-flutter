@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:isaveit/page/transaction/transaction.dart';
+import 'package:isaveit/page/transactions/transaction.dart';
 
 void main() {
   testWidgets('Testing transaction dialog', (WidgetTester tester) async {
