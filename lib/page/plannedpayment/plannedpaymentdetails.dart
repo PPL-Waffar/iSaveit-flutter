@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'editplannedpayment.dart';
 
-// class plannedpaymentdetails extends StatefulWidget{
-//   @override
-//   State<plannedpaymentdetails> createState() => _plannedpaymentdetailsState();
-// }
 class Plannedpaymentdetails extends StatelessWidget {
   const Plannedpaymentdetails({super.key});
-
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -33,311 +28,84 @@ class Plannedpaymentdetails extends StatelessWidget {
             ),
           ],
         ),
-        body: SingleChildScrollView(
+        body:
+        SingleChildScrollView(
+            padding: const EdgeInsets.only(left: 30, right: 30),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: const <Widget>[
-                SizedBox(height: 0.5,),
-                Editexpense(),
-                SizedBox(height: 32),
-                Paymentname(),
-                SizedBox(height: 32),
-                Expensename(),
-                SizedBox(height: 32),
-                DateDetails(),
-                SizedBox(height: 32),
-                PaymentType(),
-                SizedBox(height: 32),
-                PocketCategory(),
-                SizedBox(height: 24),
-                Editsubmitpayment(),
-                // const SizedBox(height: 24),
-                // deletesubmitpayment(),
-                // const SizedBox(height: 24),
-                // editcancelpayment()
-              ],
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text('Your Planned Payment Details!', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+                  const SizedBox(height: 32),
+                  const Text('Payment Name', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+                  const SizedBox(height: 8),
+                  TextFormField(
+                    key: const Key("addPaymentName"),
+                    cursorWidth: 50,
+                    decoration: const InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                            borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                        hintText: 'Spotify'),
+                    keyboardType: TextInputType.number,
+                  ),
+                  const SizedBox(height: 24),
+                  const Text('Expense', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+                  const SizedBox(height: 8),
+                  TextFormField(
+                    key: const Key("addExpense"),
+                    decoration: const InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                            borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                        hintText: 'Rp 64.000'),
+                    keyboardType: TextInputType.number,
+                  ),
+                  const SizedBox(height: 24),
+                  const Text('Date', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+                  const SizedBox(height: 8),
+                  Container(
+                      padding: const EdgeInsets.only(),
+                      child:Center(
+                          child:TextField(
+                            key: const Key("transactionDate"),
+                            cursorWidth: 50,
+                            decoration: const InputDecoration(
+                                prefixIcon: Icon(Icons.calendar_today),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                    borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                                hintText: '2022-10-03'), //editing controller of this TextField
+                            readOnly: true,  //set it true, so that user will not able to edit text
+                            onTap: () async {
+                            },
+                          ))),
+                  const SizedBox(height: 24),
+                  const Text('Type of Payment', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+                  const SizedBox(height: 8),
+                  TextFormField(
+                    key: const Key("paymentType"),
+                    decoration: const InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                            borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                        hintText: 'Debit'),
+                    keyboardType: TextInputType.number,
+                  ),
+                  const SizedBox(height: 24),
+                  const Text('Pocket', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+                  const SizedBox(height: 8),
+                  TextFormField(
+                    key: const Key("pocketType"),
+                    decoration: const InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                            borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                        hintText: 'Food'),
+                    keyboardType: TextInputType.number,
+                  ),
+                ]
             )
-        ));
-  }
-}
-class Paymentname extends StatelessWidget{
-  const Paymentname({super.key});
-
-  @override
-  Widget build(BuildContext context){
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text('Payment Name', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-          SizedBox(height: 8),
-          SizedBox(
-            width: 343,
-            child: TextField(
-              style:  TextStyle(height: 0),
-              decoration:  InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    borderSide: BorderSide(
-                        width: 1.0, color: Color(0xFFDBDBDB))),
-                labelText: 'Spotify',
-              ),
-            ),
-          )
-        ]
-    );
-  }
-}
-class Expensename extends StatelessWidget{
-  const Expensename({super.key});
-
-  @override
-  Widget build(BuildContext context){
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text('Expense', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-          SizedBox(height: 8),
-          SizedBox(
-            width: 343,
-            child: TextField(
-              style:  TextStyle(height: 0),
-              decoration:  InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    borderSide: BorderSide(
-                        width: 1.0, color: Color(0xFFDBDBDB))),
-                labelText: 'Rp 64.000',
-              ),
-            ),
-          )
-        ]
-    );
-  }
-}
-class DateDetails extends StatelessWidget{
-  const DateDetails({super.key});
-
-  @override
-  Widget build(BuildContext context){
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text('Date', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-          SizedBox(height: 8),
-          SizedBox(
-            width: 343,
-            child: TextField(
-              style:  TextStyle(height: 0),
-              decoration:  InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    borderSide: BorderSide(
-                        width: 1.0, color: Color(0xFFDBDBDB))),
-                labelText: '22/09/2022',
-              ),
-            ),
-          )
-        ]
-    );
-  }
-}
-class PaymentType extends StatelessWidget{
-  const PaymentType({super.key});
-
-  @override
-  Widget build(BuildContext context){
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text('Type of Payment', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-          SizedBox(height: 8),
-          SizedBox(
-            width: 343,
-            child: TextField(
-              style:  TextStyle(height: 0),
-              decoration:  InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    borderSide: BorderSide(
-                        width: 1.0, color: Color(0xFFDBDBDB))),
-                labelText: 'Cash',
-              ),
-            ),
-          )
-        ]
-    );
-  }
-}
-class PocketCategory extends StatelessWidget{
-  const PocketCategory({super.key});
-
-  @override
-  Widget build(BuildContext context){
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text('Pocket', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-          SizedBox(height: 8),
-          SizedBox(
-            width: 343,
-            child: TextField(
-              style:  TextStyle(height: 0),
-              decoration:  InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    borderSide: BorderSide(
-                        width: 1.0, color: Color(0xFFDBDBDB))),
-                labelText: 'Entertainment',
-              ),
-            ),
-          )
-        ]
-    );
-  }
-}
-class Editexpense extends StatelessWidget{
-  const Editexpense({super.key});
-
-  @override
-  Widget build(BuildContext context){
-    return Column(
-      children: [
-        // Container(
-        //     alignment: Alignment.center,
-        //     child: const Center(
-        //       child:
-        //       Text('Edit Planned Payments',
-        //           textAlign: TextAlign.center,
-        //           style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w500)
-        //       ),
-        //     )
-        // ),
-        const SizedBox(height: 10),
-        Container(
-          padding: const EdgeInsets.all(15),
-          width: 230,
-          height: 60,
-          // decoration: BoxDecoration(
-          //   color: const Color(0xFFDFE2FF),
-          //   borderRadius: BorderRadius.circular(8),
-          // ),
-          child:SingleChildScrollView(
-              child: Container(
-                margin: const EdgeInsets.only(left: 20),
-                alignment: Alignment.center,
-                child:
-                const Text('Your Planned Payment',
-                    style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)
-                ),
-              ),
-          ),
         ),
-      ],
-    );
-  }
-}
-class  EditPayment extends StatelessWidget{
-  const EditPayment({super.key});
-
-  @override
-  Widget build(BuildContext context){
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          // paymentform(),
-          SizedBox(width: 20),
-
-        ]
-    );
-  }
-}
-//create submit button
-class Editsubmitpayment extends StatelessWidget{
-  const Editsubmitpayment({super.key});
-
-  @override
-  Widget build(BuildContext context){
-    return Container(
-      alignment: Alignment.center,
-      margin: const EdgeInsets.only(left: 20),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            minimumSize: const Size.fromHeight(48),
-            elevation: 0,
-            backgroundColor: const Color(0x00ffffff),
-            shape:
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(48),)),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const Plannedpaymentdetails()),
-          );
-        },
-        child: const Text('Edit Planned Payment',
-            style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Colors.white)
-        ),
-      ),
-    );
-  }
-}
-class Deletesubmitpayment extends StatelessWidget{
-  const Deletesubmitpayment({super.key});
-
-  @override
-  Widget build(BuildContext context){
-    return Container(
-      alignment: Alignment.center,
-      margin: const EdgeInsets.only(left: 20),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            minimumSize: const Size.fromHeight(48),
-            elevation: 0,
-            backgroundColor: const Color(0xFFDFE2FF),
-            shape:
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(48),)),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const Plannedpaymentdetails()),
-          );
-        },
-        child: const Text('Delete Planned Payment',
-            style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Colors.red)
-        ),
-      ),
-    );
-  }
-}
-class Editcancelpayment extends StatelessWidget{
-  const Editcancelpayment({super.key});
-
-  @override
-  Widget build(BuildContext context){
-    return Container(
-      alignment: Alignment.center,
-      margin: const EdgeInsets.only(left: 20),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            minimumSize: const Size.fromHeight(48), backgroundColor: Colors.grey,
-            elevation: 0,
-            // backgroundColor: const Color(0xffb74093),
-            shape:
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(48),)),
-        // style: ElevatedButton.styleFrom(
-        //     primary: Colors.white70,),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const Plannedpaymentdetails()),
-          );
-        },
-        child: const Text('Cancel',
-            style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFFDFE2FF))
-        ),
-      ),
     );
   }
 }
