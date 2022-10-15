@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:isaveit/models/user.dart';
 import '../page/homepage.dart';
 import '../page/transaction/transaction.dart';
 import '../page/report/reportpage.dart';
 
 // ignore: must_be_immutable
 class SettingView extends StatefulWidget {
-  const SettingView({super.key});
+  const SettingView({super.key, required User user});
 
   @override
   // ignore: library_private_types_in_public_api
