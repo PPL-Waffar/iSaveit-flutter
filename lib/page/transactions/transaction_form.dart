@@ -428,10 +428,6 @@ class CreateTransactionPage extends State<CreateTransaction> {
                                             Text('Failed to create planned payment')));
                               }
                             }
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) =>  SettingView()),
-                  // );
                 },
                 child: const Text('Input Transaction'),
               ),

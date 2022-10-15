@@ -13,7 +13,7 @@ class Login extends StatefulWidget {
   const Login({super.key});
   Future<User> webServiceLogin(String telephone, String password) async {
     var response =
-        await post(Uri.parse("http://127.0.0.1:8000/user/flu-login/"),
+        await post(Uri.parse("https://isaveit-staging.herokuapp.com/user/flu-login/"),
             headers: <String, String>{
               'Content-Type': 'application/json; charset=UTF-8',
             },
