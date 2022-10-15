@@ -9,19 +9,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isaveit/page/transactions/transaction_form.dart';
+import 'package:isaveit/models/user.dart';
 
 
 void main() {
   
   testWidgets('Transaction Form', (WidgetTester tester) async {
+    User user = User(
+        datetime: "2021-05-01 00:00:00.000000",
+        sessionId: "1234567890",
+        isCitizen: true,
+        email: "usertest@gmail.com",
+        name: "Amanda");
 
     final transactionName = find.byKey(const ValueKey("transactionName"));
     final transactionAmount = find.byKey(const ValueKey("transactionAmount"));
     final transactionDate = find.byKey(const ValueKey("transactionDate"));
     
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MaterialApp(
-      home: CreateTransaction(),
+    await tester.pumpWidget(MaterialApp(
+      home: CreateTransaction(user),
     ));
     expect(find.byIcon(Icons.add), findsNothing);
     expect(find.text('My Balance'), findsOneWidget);
