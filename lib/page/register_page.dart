@@ -128,7 +128,7 @@ class RegisterPage extends State<Register> {
             padding: const EdgeInsets.all(10.0),
             child: Center(
                 child: TextField(
-              key: const Key("transactionDate"),
+              key: const Key("addDate"),
               controller: dateinput,
               decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.calendar_today),
