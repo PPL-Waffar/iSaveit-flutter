@@ -19,7 +19,7 @@ class ViewTransaction extends State<PocketTransaction> {
           leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.black),
               onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const SettingView()))),
+                  builder: (context) =>  SettingView()))),
           actions: <Widget>[
             IconButton(
               icon: const Icon(Icons.edit),

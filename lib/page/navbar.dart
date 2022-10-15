@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:isaveit/models/user.dart';
 import '../page/homepage.dart';
-import '../page/transaction/transaction.dart';
 import '../page/report/reportpage.dart';
+import '../page/transaction/transaction.dart';
 
 // ignore: must_be_immutable
 class SettingView extends StatefulWidget {
-  const SettingView({super.key, required User user});
+  User user;
+  SettingView(this.user, {super.key});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -24,7 +25,7 @@ class _SettingViewState extends State<SettingView> {
     setState(() {});
     super.initState();
     screens = [
-      const HomeView(),
+      HomeView(widget.user),
       const ReportView(),
       const Transaction(),
     ];
