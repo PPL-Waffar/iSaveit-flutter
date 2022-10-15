@@ -1,5 +1,7 @@
+// ignore_for_file: prefer_const_constructors, unnecessary_new
+
 import 'package:flutter/material.dart';
-import 'package:isaveit/page/homepage.dart';
+import 'package:isaveit/page/navbar.dart';
 import 'package:isaveit/page/pocket/edit_pocket.dart';
 
 class Pocket extends StatefulWidget {
@@ -22,7 +24,7 @@ class PocketPage extends State<Pocket> {
           leading: IconButton(
         icon: const Icon(Icons.arrow_back, color: Colors.black),
         onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => const HomeView()))),
+              .push(MaterialPageRoute(builder: (context) =>  SettingView()))),
 
         actions: <Widget>[
           IconButton(
@@ -167,16 +169,116 @@ class PocketPage extends State<Pocket> {
     ),
 
     const SizedBox(height: 24),
-
+    
+    Container(),
     //empty wallet
+    // SizedBox(
+    //   child: Image.asset( 'assets/images/empty_wallet.png',
+    //   width: 250, height: 250),
+    // )
     SizedBox(
-      child: Image.asset( 'assets/images/empty_wallet.png',
-      width: 250, height: 250),
-    )
+      child: Row(children: [
+        Flexible(
+          child: new Container(
+            height: 46,
+            width: 200,
+          padding: new EdgeInsets.only(left: 20.0),
+          child: RichText(
+            text: TextSpan(
+              style: DefaultTextStyle.of(context).style,
+              children: const <TextSpan>[
+              TextSpan(text: 'Belanja September minggu kedua\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121),fontWeight: FontWeight.bold,)), 
+              TextSpan(text: 'Debit card', style: TextStyle(fontSize: 12, color: Color(0xff979C9E), fontWeight: FontWeight.w700))
+              ]
+            ),
+          ),
+          ),
+        ),
+        Container(
+          height: 46,
+          width: 200,
+          padding: const EdgeInsets.fromLTRB(90, 0, 17, 0),
+          child: const Text('-Rp 120.000', style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
+        ),
+        ]
+      ),
+    ),
+    SizedBox(height: 14,),
+    Container(
+      padding: const EdgeInsets.fromLTRB(17, 0, 16, 0),
+      child: const MySeparator(),
+    ),
+    SizedBox(height: 24,),
+     SizedBox(
+      child: Row(children: [
+        Flexible(
+          child: new Container(
+            height: 46,
+            width: 200,
+          padding: new EdgeInsets.only(left: 20.0),
+          child: RichText(
+            text: TextSpan(
+              style: DefaultTextStyle.of(context).style,
+              children: const <TextSpan>[
+              TextSpan(text: 'Patungan Potluck\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121),fontWeight: FontWeight.bold,)), 
+              TextSpan(text: 'Credit card', style: TextStyle(fontSize: 12, color: Color(0xff979C9E), fontWeight: FontWeight.w700))
+              ]
+            ),
+          ),
+          ),
+        ),
+        Container(
+          height: 46,
+          width: 200,
+          padding: const EdgeInsets.fromLTRB(90, 0, 17, 0),
+          child: const Text('+Rp 120.000', style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)),
+        ),
+        ]
+      ),
+    ),
+    Container(
+      padding: const EdgeInsets.fromLTRB(17, 0, 16, 0),
+      child: const MySeparator(),
+    ),
+    
+
         ],
       ),
       ),
     );    
+  }
+}
+
+
+class MySeparator extends StatelessWidget {
+  const MySeparator({Key? key, this.height = 1, this.color = Colors.black})
+      : super(key: key);
+  final double height;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        final boxWidth = constraints.constrainWidth();
+        const dashWidth = 10.0;
+        final dashHeight = height;
+        final dashCount = (boxWidth / (2 * dashWidth)).floor();
+        return Flex(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          direction: Axis.horizontal,
+          children: List.generate(dashCount, (_) {
+            return SizedBox(
+              width: dashWidth,
+              height: dashHeight,
+              child: const DecoratedBox(
+                decoration: BoxDecoration(color: Color(0xffCDCFD0)),
+              ),
+            );
+          }),
+        );
+      },
+    );
   }
 }
     
