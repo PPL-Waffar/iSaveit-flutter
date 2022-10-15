@@ -163,9 +163,7 @@ class RegisterPage extends State<Register> {
           'Email',
           style: TextStyle(fontSize: 14),
         ),
-        Card(
-          margin: const EdgeInsets.all(20),
-          child: Padding(
+        Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
               children: [
@@ -181,7 +179,6 @@ class RegisterPage extends State<Register> {
               ],
             ),
           ),
-        ),
         const Text(
           'Password',
           style: TextStyle(fontSize: 14),
