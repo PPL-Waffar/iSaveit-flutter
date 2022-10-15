@@ -13,7 +13,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:isaveit/page/register_page.dart';
 
 void main() {
-  testWidgets('Test Register', (WidgetTester tester) async {
+  testWidgets('Test Register Page', (WidgetTester tester) async {
     final addName = find.byKey(const ValueKey("addName"));
     final addDate = find.byKey(const ValueKey("addDate"));
     final addEmail = find.byKey(const ValueKey("addEmail"));
