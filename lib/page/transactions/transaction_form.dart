@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../navbar.dart';
 
 class CreateTransaction extends StatefulWidget {
   const CreateTransaction({super.key});
@@ -362,10 +361,10 @@ class CreateTransactionPage extends State<CreateTransaction> {
                     )
                   ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SettingView()),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) =>  SettingView()),
+                  // );
                 },
                 child: const Text('Input Transaction'),
               ),

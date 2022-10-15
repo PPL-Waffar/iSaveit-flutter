@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import '../navbar.dart';
 
 class PocketTransaction extends StatefulWidget {
   const PocketTransaction({super.key});
@@ -18,8 +17,9 @@ class ViewTransaction extends State<PocketTransaction> {
           elevation: 0,
           leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.black),
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>  SettingView()))),
+              onPressed: () {}),
+              //=> Navigator.of(context).push(MaterialPageRoute(
+              //     builder: (context) =>  SettingView()))),
           actions: <Widget>[
             IconButton(
               icon: const Icon(Icons.edit),

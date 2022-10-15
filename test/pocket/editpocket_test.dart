@@ -8,11 +8,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:isaveit/models/user.dart';
 import 'package:isaveit/page/pocket/edit_pocket.dart';
 
 void main() {
   testWidgets('Edit Pocket', (WidgetTester tester) async {
+    User user = User(
+      datetime: "2021-05-01 00:00:00.000000",
+      sessionId: "1234567890",
+      isCitizen: true,
+      email: "usertest@gmail.com",
+      name: "Amanda");
 
     final editPocketName = find.byKey(const ValueKey("editPocketName"));
     final editPocketBudget = find.byKey(const ValueKey("editPocketBudget"));
@@ -21,8 +27,8 @@ void main() {
     final cancelEditPocket = find.byKey(const ValueKey("cancelEditPocket"));
     
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MaterialApp(
-      home: EditPocket(),
+    await tester.pumpWidget( MaterialApp(
+      home: EditPocket(user),
     ));
 
     expect(find.byIcon(Icons.arrow_back), findsNothing);

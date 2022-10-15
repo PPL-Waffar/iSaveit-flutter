@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:isaveit/page/homepage.dart';
 // import 'package:dropdownfield/dropdownfield.dart';
 
 class Plannedpayment extends StatefulWidget{
-  const Plannedpayment({Key? key}) : super(key: key);
+  
+  const Plannedpayment({super.key});
+
   @override
   PlannedpaymentState createState() => PlannedpaymentState();
 }
@@ -140,10 +141,10 @@ class Submitpayment extends StatelessWidget{
     RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(48),)),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const Plannedpayment()),
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => Plannedpayment(user)),
+          // );
         },
           child: const Text('Create Planned Payment',
               style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Colors.white)
@@ -172,10 +173,10 @@ class Cancelpayment extends StatelessWidget{
         // style: ElevatedButton.styleFrom(
         //     primary: Colors.white70,),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const HomeView()),
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) =>  SettingView(user)),
+          // );
         },
         child: const Text('Cancel',
             style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFFD3180C))
