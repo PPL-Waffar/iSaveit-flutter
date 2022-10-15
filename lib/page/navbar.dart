@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:isaveit/models/user.dart';
 import '../page/homepage.dart';
+import '../page/report/reportpage.dart';
+import '../page/transaction/transaction.dart';
 
 // ignore: must_be_immutable
 class SettingView extends StatefulWidget {
@@ -24,6 +26,8 @@ class _SettingViewState extends State<SettingView> {
     super.initState();
     screens = [
       HomeView(widget.user),
+      const ReportView(),
+      const Transaction(),
     ];
   }
 

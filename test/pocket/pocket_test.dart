@@ -5,7 +5,6 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isaveit/models/user.dart';
@@ -29,7 +28,6 @@ void main() {
     expect(find.byIcon(Icons.arrow_back), findsOneWidget);
     expect(find.text('Grocery Balance'), findsOneWidget);
     expect(find.text('Grocery transactions'), findsOneWidget);
-    expect(find.text('Rp 500.000',), findsNothing);
+    expect(find.text('Rp 500.000',),findsNothing);
   });
-
 }
