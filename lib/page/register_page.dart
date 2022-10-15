@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:isaveit/models/user.dart';
@@ -60,6 +60,13 @@ class Register extends StatefulWidget {
 }
 
 class RegisterPage extends State<Register> {
+  TextEditingController dateinput = TextEditingController();
+  @override
+  void initState() {
+    dateinput.text = ""; //set the initial value of text field
+    super.initState();
+  }
+
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final TextEditingController _name = TextEditingController();
@@ -68,11 +75,11 @@ class RegisterPage extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
-          elevation: 0,
-          ),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       body: SingleChildScrollView(
           child: Column(children: <Widget>[
         const SizedBox(
@@ -97,48 +104,61 @@ class RegisterPage extends State<Register> {
           textAlign: TextAlign.left,
           style: TextStyle(fontSize: 14),
         ),
-        Card(
-          margin: const EdgeInsets.all(20),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    key: const Key("addName"),
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Enter your name'),
-                    controller: _name,
-                  ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: TextFormField(
+                  key: const Key("addName"),
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter your name'),
+                  controller: _name,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         const Text(
           'Date of Birth',
           style: TextStyle(fontSize: 14),
         ),
-        Card(
-          margin: const EdgeInsets.all(20),
-          child: Padding(
+        Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    key: const Key("addDate"),
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Enter your date of birth'),
-                    controller: _datetime,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+            child: Center(
+                child: TextField(
+              key: const Key("transactionDate"),
+              controller: dateinput,
+              decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.calendar_today),
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      borderSide:
+                          BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                  hintText:
+                      'YYYY-MM-dd'), //editing controller of this TextField
+
+              readOnly:
+                  true, //set it true, so that user will not able to edit text
+              onTap: () async {
+                DateTime? pickedDate = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(
+                        2000), //DateTime.now() - not to allow to choose before today.
+                    lastDate: DateTime(2101));
+
+                if (pickedDate != null) {
+                  String formattedDate =
+                      DateFormat('yyyy-MM-dd').format(pickedDate);
+                  setState(() {
+                    dateinput.text =
+                        formattedDate; //set output date to TextField value.
+                  });
+                } else {}
+              },
+            ))),
         const Text(
           'Email',
           style: TextStyle(fontSize: 14),
@@ -166,24 +186,21 @@ class RegisterPage extends State<Register> {
           'Password',
           style: TextStyle(fontSize: 14),
         ),
-        Card(
-          margin: const EdgeInsets.all(20),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    key: const Key("addPassword"),
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Enter your password'),
-                    controller: _password,
-                  ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: TextFormField(
+                  key: const Key("addPassword"),
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter your password'),
+                  controller: _password,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         const SizedBox(

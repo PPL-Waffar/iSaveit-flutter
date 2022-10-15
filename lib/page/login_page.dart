@@ -79,9 +79,7 @@ class LoginPage extends State<Login> {
           textAlign: TextAlign.left,
           style: TextStyle(fontSize: 14),
         ),
-        Card(
-          margin: const EdgeInsets.all(20),
-          child: Padding(
+        Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
               children: [
@@ -97,14 +95,12 @@ class LoginPage extends State<Login> {
               ],
             ),
           ),
-        ),
+        
         const Text(
           'Password',
           style: TextStyle(fontSize: 14),
         ),
-        Card(
-          margin: const EdgeInsets.all(20),
-          child: Padding(
+        Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
               children: [
@@ -121,7 +117,7 @@ class LoginPage extends State<Login> {
               ],
             ),
           ),
-        ),
+        
         const SizedBox(
           height: 25,
         ),
