@@ -97,9 +97,7 @@ class RegisterPage extends State<Register> {
           textAlign: TextAlign.left,
           style: TextStyle(fontSize: 14),
         ),
-        Card(
-          margin: const EdgeInsets.all(20),
-          child: Padding(
+         Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
               children: [
@@ -114,15 +112,12 @@ class RegisterPage extends State<Register> {
                 ),
               ],
             ),
-          ),
-        ),
+          ),        
         const Text(
           'Date of Birth',
           style: TextStyle(fontSize: 14),
         ),
-        Card(
-          margin: const EdgeInsets.all(20),
-          child: Padding(
+        Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
               children: [
@@ -138,14 +133,12 @@ class RegisterPage extends State<Register> {
               ],
             ),
           ),
-        ),
+        
         const Text(
           'Email',
           style: TextStyle(fontSize: 14),
         ),
-        Card(
-          margin: const EdgeInsets.all(20),
-          child: Padding(
+       Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
               children: [
@@ -161,14 +154,12 @@ class RegisterPage extends State<Register> {
               ],
             ),
           ),
-        ),
+        
         const Text(
           'Password',
           style: TextStyle(fontSize: 14),
         ),
-        Card(
-          margin: const EdgeInsets.all(20),
-          child: Padding(
+       Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
               children: [
@@ -185,7 +176,6 @@ class RegisterPage extends State<Register> {
               ],
             ),
           ),
-        ),
         const SizedBox(
           height: 25,
         ),
