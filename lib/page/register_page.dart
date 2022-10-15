@@ -14,18 +14,17 @@ Future<User> registerUser(
 ) async {
   Response response;
   try {
-    response = await post(
-        Uri.parse(
-            "https://isaveit-staging.herokuapp.com/user/flu-register-user/"),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode({
-          "email": email,
-          "password": password,
-          "name": name,
-          "datetime": datetime,
-        }));
+    response =
+        await post(Uri.parse("https://isaveit-staging.herokuapp.com/user/flu-register-user/"),
+            headers: <String, String>{
+              'Content-Type': 'application/json; charset=UTF-8',
+            },
+            body: jsonEncode({
+              "email": email,
+              "password": password,
+              "name": name,
+              "datetime": datetime,
+            }));
   } catch (e) {
     return Future.error("offline");
   }
