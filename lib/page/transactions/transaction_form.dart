@@ -300,26 +300,26 @@ class CreateTransactionPage extends State<CreateTransaction> {
                         onChanged: (String? value) => {paymentType = value!},
                         items: const [
                           DropdownMenuItem<String>(
-                            value: "Debit",
+                            value: "debit card",
                             child: Text(
-                              "Debit",
+                              "debit card",
                               style: TextStyle(
                                 color: Colors.black,
                               ),
                             ),
                           ),
                           DropdownMenuItem(
-                              value: "Cash",
+                              value: "cash",
                               child: Text(
-                                "Cash",
+                                "cash",
                                 style: TextStyle(
                                   color: Colors.black,
                                 ),
                               )),
                           DropdownMenuItem(
-                              value: "E-money",
+                              value: "e-wallet",
                               child: Text(
-                                "E-money",
+                                "e-wallet",
                                 style: TextStyle(
                                   color: Colors.black,
                                 ),

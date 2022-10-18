@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:isaveit/models/user.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+// heroku link: https://isaveit-staging.herokuapp.com/pocket/add-pocket/
 
 Future<Map<String, dynamic>> sendNewUser(
     String pocketName, String pocketBudget, User user) async {
-  const url = 'https://isaveit-staging.herokuapp.com/pocket/add-pocket/';
+  const url = 'http://127.0.0.1:8000/pocket/add-pocket/';
 
   try {
     final response = await http.post(
