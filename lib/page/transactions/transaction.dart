@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:isaveit/page/transactions/transaction_form.dart';
+import 'package:isaveit/models/user.dart';
 
+// ignore: must_be_immutable
 class Transaction extends StatefulWidget {
-  const Transaction({super.key});
+  User user;
+  Transaction(this.user,{super.key});
 
   @override
   TransactionPage createState() => TransactionPage();
@@ -33,7 +37,11 @@ class TransactionPage extends State<Transaction> {
                   backgroundColor: const Color(0xff4054FF),
                   elevation: 0,
                 ),
-              onPressed: () {},
+              onPressed: () { Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      CreateTransaction(widget.user)));},
               child: const Text('Input Transaction', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               )
               ),

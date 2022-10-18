@@ -5,6 +5,7 @@ import 'package:http/http.dart';
 import 'package:isaveit/models/user.dart';
 import '../page/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+//heroku link: https://isaveit-staging.herokuapp.com/user/flu-register-user/"
 
 Future<User> registerUser(
   String email,
@@ -15,7 +16,7 @@ Future<User> registerUser(
   Response response;
   try {
     response =
-        await post(Uri.parse("https://isaveit-staging.herokuapp.com/user/flu-register-user/"),
+        await post(Uri.parse("http://127.0.0.1:8000/user/flu-register-user/"),
             headers: <String, String>{
               'Content-Type': 'application/json; charset=UTF-8',
             },

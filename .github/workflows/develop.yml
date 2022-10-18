@@ -33,7 +33,7 @@ jobs:
         uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-
+      
       - name: Get packages
         run: flutter packages get
 
@@ -46,7 +46,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
+          
       - name: dart-code-metrics
         uses: dart-code-checker/dart-code-metrics-action@v2
         with:
