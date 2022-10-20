@@ -1,29 +1,83 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:isaveit/models/user.dart';
+import 'package:isaveit/page/navbar.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
+Future<Map<String, dynamic>> sendNewUser(
+    String expensename, String expenseamount, String expensedate, String paymentType, String expenseperson,
+    // String expensechoice, String expensepocket,
+    User user) async {
+  // const url = 'http://127.0.0.1:8000/payment/flu-add-payment/';
+  const url = 'https://isaveit-staging.herokuapp.com/payment/flu-add-payment/';
+
+  try {
+    final response = await http.post(
+      Uri.parse(url),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'expense_name': expensename,
+        'expense_amount': expenseamount,
+        'expense_date': expensedate,
+        'expense_type': paymentType,
+        'expense_person': expenseperson,
+        // 'expense_payment_choice': expensechoice,
+        // 'expense_pocket': expensepocket,
+        'session_id': user.sessionId,
+      }),
+    );
+
+    Map<String, dynamic> result = jsonDecode(response.body);
+
+    if (response.statusCode == 200) {
+      return result;
+    } else {
+      return <String, dynamic>{'error': 'Web service is offline'};
+    }
+  } catch (error) {
+    return {'isSuccessful': false, 'error': ''};
+  }
+}
+//ignore: must_be_immutable
 class CreateBorrow extends StatefulWidget {
-  const CreateBorrow({super.key});
+  User user;
+  CreateBorrow(this.user, {super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   CreateBorrowPage createState() => CreateBorrowPage();
 }
 
 class CreateBorrowPage extends State<CreateBorrow> {
+  final _formKey = GlobalKey<FormState>();
   TextEditingController dateinput = TextEditingController();
-  String _paymentType = "Debit";
-  String _pocketType = "Groceries";
-  String _borrowType = "Debt";
+  String paymentType = "debit card";
+  // String _pocketType = "Groceries";
+  // String _borrowType = "Debt";
   @override
   void initState() {
     dateinput.text = ""; //set the initial value of text field
     super.initState();
   }
+  TextEditingController expensename = TextEditingController();
+  TextEditingController expenseamount = TextEditingController();
+  TextEditingController expensedate = TextEditingController();
+  TextEditingController expenseperson = TextEditingController();
+
+  Map<String, dynamic>? fetchedResult;
+  bool? isSuccessful;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        body: SingleChildScrollView(
+        body:
+        SingleChildScrollView(
+        child: Form(
+        key: _formKey,
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -97,6 +151,7 @@ class CreateBorrowPage extends State<CreateBorrow> {
                             const Text('Payment Name', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
                             const SizedBox(height: 8),
                             TextFormField(
+                              controller: expensename,
                               key: const Key("addPaymentName"),
                               cursorWidth: 50,
                               decoration: const InputDecoration(
@@ -104,12 +159,15 @@ class CreateBorrowPage extends State<CreateBorrow> {
                                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
                                       borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
                                   hintText: 'Enter your payment here'),
-                              keyboardType: TextInputType.number,
+                              keyboardType: TextInputType.name,
                             ),
+
                             const SizedBox(height: 24),
+
                             const Text('Amount', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
                             const SizedBox(height: 8),
                             TextFormField(
+                              controller: expenseamount,
                               key: const Key("addAmount"),
                               decoration: const InputDecoration(
                                   enabledBorder: OutlineInputBorder(
@@ -151,55 +209,56 @@ class CreateBorrowPage extends State<CreateBorrow> {
                                       },
                                     ))),
                             const SizedBox(height: 24),
-                            const Text('Type of Borrowing', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-                            const SizedBox(height: 8),
-                            Padding(
-                              padding: const EdgeInsets.only(),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: DropdownButtonFormField<String>(
-                                        key: const Key("addBorrowingType"),
-                                        style: const TextStyle(height: 0),
-                                        decoration: const InputDecoration(
-                                          fillColor: Color(0XFFF9F9F9),
-                                          enabledBorder: OutlineInputBorder(
-                                              borderRadius:
-                                              BorderRadius.all(Radius.circular(8.0)),
-                                              borderSide:
-                                              BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                                          hintText: 'Debt',
-                                          filled: true,
-                                        ),
-                                        value: _borrowType,
-                                        onChanged: (String? value) => {_borrowType = value!},
-                                        items: const [
-                                          DropdownMenuItem<String>(
-                                            value: "Debt",
-                                            child: Text(
-                                              "Debt",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                          ),
-                                          DropdownMenuItem(
-                                              value: "Lend money",
-                                              child: Text(
-                                                "Lend money",
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                ),
-                                              )),
-                                        ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 24),
+                            // const Text('Type of Borrowing', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+                            // const SizedBox(height: 8),
+                            // Padding(
+                            //   padding: const EdgeInsets.only(),
+                            //   child: Row(
+                            //     children: [
+                            //       Expanded(
+                            //         child: DropdownButtonFormField<String>(
+                            //             key: const Key("addBorrowingType"),
+                            //             style: const TextStyle(height: 0),
+                            //             decoration: const InputDecoration(
+                            //               fillColor: Color(0XFFF9F9F9),
+                            //               enabledBorder: OutlineInputBorder(
+                            //                   borderRadius:
+                            //                   BorderRadius.all(Radius.circular(8.0)),
+                            //                   borderSide:
+                            //                   BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                            //               hintText: 'Debt',
+                            //               filled: true,
+                            //             ),
+                            //             value: _borrowType,
+                            //             onChanged: (String? value) => {_borrowType = value!},
+                            //             items: const [
+                            //               DropdownMenuItem<String>(
+                            //                 value: "Debt",
+                            //                 child: Text(
+                            //                   "Debt",
+                            //                   style: TextStyle(
+                            //                     color: Colors.black,
+                            //                   ),
+                            //                 ),
+                            //               ),
+                            //               DropdownMenuItem(
+                            //                   value: "Lend money",
+                            //                   child: Text(
+                            //                     "Lend money",
+                            //                     style: TextStyle(
+                            //                       color: Colors.black,
+                            //                     ),
+                            //                   )),
+                            //             ]),
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
+                            // const SizedBox(height: 24),
                             const Text('Borrower name', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
                             const SizedBox(height: 8),
                             TextFormField(
+                              controller: expenseperson,
                               key: const Key("addBorrowerName"),
                               decoration: const InputDecoration(
                                   enabledBorder: OutlineInputBorder(
@@ -229,30 +288,30 @@ class CreateBorrowPage extends State<CreateBorrow> {
                                           hintText: 'Enter your payment method',
                                           filled: true,
                                         ),
-                                        value: _paymentType,
-                                        onChanged: (String? value) => {_paymentType = value!},
+                                        value: paymentType,
+                                        onChanged: (String? value) => {paymentType = value!},
                                         items: const [
                                           DropdownMenuItem<String>(
-                                            value: "Debit",
+                                            value: "debit card",
                                             child: Text(
-                                              "Debit",
+                                              "debit card",
                                               style: TextStyle(
                                                 color: Colors.black,
                                               ),
                                             ),
                                           ),
                                           DropdownMenuItem(
-                                              value: "Cash",
+                                              value: "cash",
                                               child: Text(
-                                                "Cash",
+                                                "cash",
                                                 style: TextStyle(
                                                   color: Colors.black,
                                                 ),
                                               )),
                                           DropdownMenuItem(
-                                              value: "E-money",
+                                              value: "e-wallet",
                                               child: Text(
-                                                "E-money",
+                                                "e-wallet",
                                                 style: TextStyle(
                                                   color: Colors.black,
                                                 ),
@@ -263,131 +322,139 @@ class CreateBorrowPage extends State<CreateBorrow> {
                               ),
                             ),
                             const SizedBox(height: 24),
-                            const Text('Pocket', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-                            const SizedBox(height: 8),
-                            Padding(
-                              padding: const EdgeInsets.only(),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: DropdownButtonFormField<String>(
-                                        key: const Key("addPocketName"),
-                                        style: const TextStyle(height: 0),
-                                        decoration: const InputDecoration(
-                                          fillColor: Color(0XFFF9F9F9),
-                                          enabledBorder: OutlineInputBorder(
-                                              borderRadius:
-                                              BorderRadius.all(Radius.circular(8.0)),
-                                              borderSide:
-                                              BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                                          hintText: 'Enter your pocket',
-                                          filled: true,
-                                        ),
-                                        value: _pocketType,
-                                        onChanged: (String? value) => {_pocketType = value!},
-                                        items: const [
-                                          DropdownMenuItem<String>(
-                                            value: "Groceries",
-                                            child: Text(
-                                              "Groceries",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                          ),
-                                          DropdownMenuItem(
-                                              value: "Health",
-                                              child: Text(
-                                                "Health",
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                ),
-                                              )),
-                                          DropdownMenuItem(
-                                              value: "Food And Beverages",
-                                              child: Text(
-                                                "Food And Beverages",
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                ),
-                                              )),
-                                        ]),
-                                  ),
-                                ],
+                            // const Text('Pocket', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
+                            // const SizedBox(height: 8),
+                            // Padding(
+                            //   padding: const EdgeInsets.only(),
+                            //   child: Row(
+                            //     children: [
+                            //       Expanded(
+                            //         child: DropdownButtonFormField<String>(
+                            //             key: const Key("addPocketName"),
+                            //             style: const TextStyle(height: 0),
+                            //             decoration: const InputDecoration(
+                            //               fillColor: Color(0XFFF9F9F9),
+                            //               enabledBorder: OutlineInputBorder(
+                            //                   borderRadius:
+                            //                   BorderRadius.all(Radius.circular(8.0)),
+                            //                   borderSide:
+                            //                   BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                            //               hintText: 'Enter your pocket',
+                            //               filled: true,
+                            //             ),
+                            //             value: _pocketType,
+                            //             onChanged: (String? value) => {_pocketType = value!},
+                            //             items: const [
+                            //               DropdownMenuItem<String>(
+                            //                 value: "Groceries",
+                            //                 child: Text(
+                            //                   "Groceries",
+                            //                   style: TextStyle(
+                            //                     color: Colors.black,
+                            //                   ),
+                            //                 ),
+                            //               ),
+                            //               DropdownMenuItem(
+                            //                   value: "Health",
+                            //                   child: Text(
+                            //                     "Health",
+                            //                     style: TextStyle(
+                            //                       color: Colors.black,
+                            //                     ),
+                            //                   )),
+                            //               DropdownMenuItem(
+                            //                   value: "Food And Beverages",
+                            //                   child: Text(
+                            //                     "Food And Beverages",
+                            //                     style: TextStyle(
+                            //                       color: Colors.black,
+                            //                     ),
+                            //                   )),
+                            //             ]),
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
+                            const SizedBox(height: 24),
+                            Container(
+                              alignment: Alignment.center,
+                              margin: const EdgeInsets.only(left: 20),
+                              child: ElevatedButton(
+                                key: const Key("createInputTransactions"),
+                                style: ElevatedButton.styleFrom(
+                                    minimumSize: const Size.fromHeight(48),
+                                    elevation: 0,
+                                    backgroundColor: const Color(0XFF4054FF),
+                                    shape:
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(48),)),
+                                onPressed: () async {
+                                  if (_formKey.currentState!.validate()) {
+                                    fetchedResult = await sendNewUser(
+                                        expensename.text,
+                                        expenseamount.text,
+                                        expensedate.text,
+                                        paymentType,
+                                        expenseperson.text,
+                                        widget.user);
+                                    isSuccessful = fetchedResult!['isSuccessful'];
+                                    if (isSuccessful == true) {
+                                      // ignore: use_build_context_synchronously
+                                      Navigator.pop(context);
+                                    } else {
+                                      // ignore: use_build_context_synchronously
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                          const SnackBar(
+                                              content:
+                                              Text('Failed to input transactions')));
+                                    }
+                                  }
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(builder: (context) => SettingView(widget.user)),
+                                  // );
+                                },
+                                child: const Text('Input Transactions',
+                                    style: TextStyle(color: Colors.white)
+                                ),
                               ),
                             ),
                             const SizedBox(height: 24),
-                            const InputTransactions(),
-                            const SizedBox(height: 24),
-                            const Cancelpayment()
+                            Container(
+                              alignment: Alignment.center,
+                              margin: const EdgeInsets.only(left: 20),
+                              child: ElevatedButton(
+                                key: const Key("createCancelButton"),
+                                style: ElevatedButton.styleFrom(
+                                    minimumSize: const Size.fromHeight(48), backgroundColor: Colors.white70,
+                                    elevation: 0,
+                                    // backgroundColor: const Color(0xffb74093),
+                                    shape:
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(48),)),
+                                // style: ElevatedButton.styleFrom(
+                                //     primary: Colors.white70,),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => SettingView(widget.user)),
+                                  );
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(builder: (context) => const HomeView()),
+                                  // );
+                                },
+                                child: const Text('Cancel',
+                                    style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFFD3180C))
+                                ),
+                              ),
+                            )
                           ]
                       )
                   ),
                 ]
             )
         )
-    );
-  }
-}
-class InputTransactions extends StatelessWidget{
-  const InputTransactions({super.key});
-
-  @override
-  Widget build(BuildContext context){
-    return Container(
-      alignment: Alignment.center,
-      margin: const EdgeInsets.only(left: 20),
-      child: ElevatedButton(
-        key: const Key("createInputTransactions"),
-        style: ElevatedButton.styleFrom(
-            minimumSize: const Size.fromHeight(48),
-            elevation: 0,
-            backgroundColor: const Color(0XFF4054FF),
-            shape:
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(48),)),
-        onPressed: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => SettingView(widget.user)),
-          // );
-        },
-        child: const Text('Input Transactions',
-            style: TextStyle(color: Colors.white)
-        ),
-      ),
-    );
-  }
-}
-class Cancelpayment extends StatelessWidget{
-  const Cancelpayment({super.key});
-
-  @override
-  Widget build(BuildContext context){
-    return Container(
-      alignment: Alignment.center,
-      margin: const EdgeInsets.only(left: 20),
-      child: ElevatedButton(
-        key: const Key("createCancelButton"),
-        style: ElevatedButton.styleFrom(
-            minimumSize: const Size.fromHeight(48), backgroundColor: Colors.white70,
-            elevation: 0,
-            // backgroundColor: const Color(0xffb74093),
-            shape:
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(48),)),
-        // style: ElevatedButton.styleFrom(
-        //     primary: Colors.white70,),
-        onPressed: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => const HomeView()),
-          // );
-        },
-        child: const Text('Cancel',
-            style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFFD3180C))
-        ),
-      ),
-    );
+    ));
   }
 }

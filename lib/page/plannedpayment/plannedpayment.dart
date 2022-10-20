@@ -9,8 +9,8 @@ import 'dart:convert';
 
 Future<Map<String, dynamic>> sendNewUser(
     String payname, String payamount, String paydate, String paytype, User user) async {
-  // const url = 'http://127.0.0.1:8000/payment/flu-add-payment/';
-  const url = 'https://isaveit-staging.herokuapp.com/payment/flu-add-payment/';
+  // const url = 'http://127.0.0.1:8000/expense/add-expense/';
+  const url = 'https://isaveit-staging.herokuapp.com/expense/add-expense/';
 
   try {
     final response = await http.post(
@@ -95,7 +95,6 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                     TextFormField(
                       controller: payname,
                       key: const Key("addPaymentName"),
-                      cursorWidth: 50,
                       decoration: const InputDecoration(
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(8.0)),
