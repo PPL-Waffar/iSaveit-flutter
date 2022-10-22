@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
-import 'edit_profile.dart';
+import 'package:isaveit/page/profile/profile_detail.dart';
 
 // heroku link: 
 
 // ignore: must_be_immutable
-class ProfileView extends StatefulWidget {
-  const ProfileView({super.key});
+class EditProfile extends StatefulWidget {
+  const EditProfile({super.key});
 
 
   @override
   // ignore: library_private_types_in_public_api
-  _ProfileDetailPage createState() => _ProfileDetailPage();
+  _EditProfilePage createState() => _EditProfilePage();
 }
 
-class _ProfileDetailPage extends State<ProfileView> {
+class _EditProfilePage extends State<EditProfile> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController userName = TextEditingController();
   TextEditingController userEmail = TextEditingController();
-  TextEditingController userOccupation = TextEditingController();
+  TextEditingController userOccupation= TextEditingController();
 
   TextEditingController transactionDate = TextEditingController(); 
     @override
@@ -66,7 +65,6 @@ class _ProfileDetailPage extends State<ProfileView> {
                                       fontWeight: FontWeight.w700)),
                               const SizedBox(height: 8),
                               TextFormField(
-                                  enabled: false,
                                   controller: userName,
                                   key: const Key("editName"),
                                   decoration: const InputDecoration(
@@ -101,7 +99,6 @@ class _ProfileDetailPage extends State<ProfileView> {
                                       fontWeight: FontWeight.w700)),
                               const SizedBox(height: 8),
                               TextFormField(
-                                  enabled: false,
                                   controller: userEmail,
                                   key: const Key("editEmail"),
                                   decoration: const InputDecoration(
@@ -123,7 +120,6 @@ class _ProfileDetailPage extends State<ProfileView> {
                     
                     const SizedBox(height: 32),
 
-                    //Birth Date
                     SingleChildScrollView(
                       padding: const EdgeInsets.only(left: 30, right: 30),
                         child: Column(
@@ -140,7 +136,6 @@ class _ProfileDetailPage extends State<ProfileView> {
                         Container(
                           child:Center( 
                             child:TextField(
-                                enabled: false,
                                 key: const Key("birthDate"),
                                 controller: transactionDate,
                                 decoration: const InputDecoration(
@@ -184,7 +179,6 @@ class _ProfileDetailPage extends State<ProfileView> {
                                       fontWeight: FontWeight.w700)),
                               const SizedBox(height: 8),
                               TextFormField(
-                                enabled: false,
                                   controller: userOccupation,
                                   key: const Key("editOccupation"),
                                   decoration: const InputDecoration(
@@ -203,15 +197,15 @@ class _ProfileDetailPage extends State<ProfileView> {
                                     return null;
                                   }),
                             ])),
-                    
+
                     const SizedBox(height: 32),
-                    
+
                     //Edit Profile Button
                     Container(
                       alignment: Alignment.center,
                       margin: const EdgeInsets.only(left: 30, right: 30),
                       child: ElevatedButton(
-                          key: const Key("editProfileButton"),
+                          key: const Key("saveEditProfile"),
                           style: ElevatedButton.styleFrom(
                               minimumSize: const Size.fromHeight(48),
                               elevation: 0,
@@ -220,12 +214,31 @@ class _ProfileDetailPage extends State<ProfileView> {
                                 borderRadius: BorderRadius.circular(48),
                               )),
                           onPressed: () => 
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const EditProfile())), 
-                          child: const Text('Edit Profile'),
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ProfileView())), 
+                          child: const Text('Save Profile'),
                       )
-                    )
-                  ]))
                     ),
-                  );
+                    
+                    const SizedBox(height: 32),
+
+                    //cancel text button
+                    Container(
+                      alignment: Alignment.center,
+                      margin: const EdgeInsets.only(left: 30, right: 30),
+                      child: TextButton(
+                          key: const Key("cancelEditProfile"),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text('Cancel',
+                              style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.red))),
+                    ),
+                    
+                  ],
+                ))));
   }
 }
