@@ -6,6 +6,8 @@ import 'package:isaveit/page/pocket/create_pocket.dart';
 import 'package:isaveit/models/user.dart';
 import 'package:isaveit/page/pocket/pocket_details.dart';
 
+import 'profile/profile_detail.dart';
+
 // import '../page//profile.dart';
 
 //----------------------------------------//
@@ -479,6 +481,24 @@ class HomePage extends State<HomeView> {
                 ),
               ),
             ),
+
+            Container(
+                      alignment: Alignment.center,
+                      margin: const EdgeInsets.only(left: 30, right: 30),
+                      child: ElevatedButton(
+                          key: const Key("saveEditProfile"),
+                          style: ElevatedButton.styleFrom(
+                              minimumSize: const Size.fromHeight(48),
+                              elevation: 0,
+                              backgroundColor: const Color(0XFF4054FF),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(48),
+                              )),
+                          onPressed: () => 
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ProfileView())), 
+                          child: const Text('See Profile'),
+                      )
+                    ),
           ],
         ),
       ),
