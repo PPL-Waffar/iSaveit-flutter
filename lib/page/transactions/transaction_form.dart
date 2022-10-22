@@ -1,9 +1,12 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:isaveit/models/user.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
+
 
 Future<Map<String, dynamic>> sendNewUser(
     String transactionName, String transactionAmount, String transactionDate, String transacType, String paymentType, User user) async {
@@ -169,6 +172,13 @@ class CreateTransactionPage extends State<CreateTransaction> {
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
                           borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
                           hintText: 'Rp 0'),
+                          inputFormatters: <TextInputFormatter>[
+                            CurrencyTextInputFormatter(
+                              locale: 'id',
+                              decimalDigits: 0,
+                              symbol: 'Rp ',
+                            ),
+                          ],
                           keyboardType: TextInputType.number,),
                   ),
                 ],
