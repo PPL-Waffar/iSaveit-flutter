@@ -447,6 +447,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
               padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
               child: Center(
                 child: TextButton(
+                  key: const Key("cancelTransaction"),
                   onPressed: () {
                     Navigator.pop(
                       context,
