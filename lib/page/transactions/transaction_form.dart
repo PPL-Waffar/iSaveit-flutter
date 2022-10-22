@@ -272,7 +272,6 @@ class CreateTransactionPage extends State<CreateTransaction> {
                                   color: Colors.black,
                                 ),
                               )),
-                          
                         ]),
                   ),
                 ],

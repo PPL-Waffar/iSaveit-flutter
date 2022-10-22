@@ -73,17 +73,6 @@ void main() {
     await tester.tap(paymentItem);
     await tester.pumpAndSettle();
 
-    //Test button
-    expect(find.byType(ElevatedButton), findsOneWidget);
-    await tester.pump(const Duration(milliseconds: 100));
-    await tester.tap(find.byType(ElevatedButton));
-    await tester.pumpAndSettle();
-
-    expect(find.byType(TextButton), findsOneWidget);
-    await tester.pump(const Duration(milliseconds: 100));
-    await tester.tap(find.byType(TextButton));
-    await tester.pumpAndSettle();
-
   });
 
 }
