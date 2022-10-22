@@ -9,8 +9,8 @@ Future<Map<String, dynamic>> sendNewUser(
     String expensename, String expenseamount, String expensedate, String paymentType, String expenseperson,
     // String expensechoice, String expensepocket,
     User user) async {
-  // const url = 'http://127.0.0.1:8000/payment/flu-add-payment/';
-  const url = 'https://isaveit-staging.herokuapp.com/payment/flu-add-payment/';
+  const url = 'http://127.0.0.1:8000/payment/flu-add-payment/';
+  // const url = 'https://isaveit-staging.herokuapp.com/payment/flu-add-payment/';
 
   try {
     final response = await http.post(
@@ -153,7 +153,6 @@ class CreateBorrowPage extends State<CreateBorrow> {
                             TextFormField(
                               controller: expensename,
                               key: const Key("addPaymentName"),
-                              cursorWidth: 50,
                               decoration: const InputDecoration(
                                   enabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
