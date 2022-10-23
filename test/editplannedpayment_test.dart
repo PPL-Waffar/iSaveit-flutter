@@ -16,9 +16,6 @@ void main() {
     final transactionDate = find.byKey(const ValueKey("transactionDate"));
     final addPaymentType = find.byKey(const ValueKey("addPaymentType"));
     final addPocketName = find.byKey(const ValueKey("addPocketName"));
-    final editPlannedPayment = find.byKey(const ValueKey("editPlannedPayment"));
-    final deletePlannedPayment = find.byKey(const ValueKey("deletePlannedPayment"));
-    final cancelEditPocket = find.byKey(const ValueKey("cancelEditPocket"));
 
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MaterialApp(

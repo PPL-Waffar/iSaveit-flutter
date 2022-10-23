@@ -9,5 +9,9 @@ void main() {
       home: ReportView(),
     ));
     expect(find.text("My Spendings"), findsOneWidget);
+    expect(find.text('September 2022'), findsOneWidget);
+    expect(find.text('Overview'), findsOneWidget);
+    expect(find.text("This month's spending"), findsOneWidget);
+
   });
 }
