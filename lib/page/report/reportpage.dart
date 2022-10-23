@@ -33,32 +33,38 @@ class ReportPage extends State<ReportView> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Row(
-              children: [
-                const SizedBox(width: 50,),
+            Padding(
+              padding: EdgeInsets.fromLTRB(45, 0, 45,0),
+              child: Row(
+                children: [
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
+                      backgroundColor: Colors.white
                     ),
                     onPressed: () {},
                     child: const Icon(Icons.arrow_back_sharp, color: Colors.black,),),
-                const SizedBox(width: 75,),
+  
+                const SizedBox(width: 70,),
                 const Text('September 2022', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),),
-                const SizedBox(width: 75,),
+                const SizedBox(width: 70,),
                 ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      elevation: 0,
+                    ),
                     onPressed: () {},
                     child: const Icon(Icons.arrow_forward_sharp, color: Colors.black,),),
-                const SizedBox(width: 50,)
-                ]
-              ), 
-              
+                const SizedBox(width: 50,),
+               ]
+              )
+            ), 
             Container(
               padding: const EdgeInsets.all(16),
               child: const Text('Overview', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),),
             ),
+            SizedBox(height: 7,),
             PieChart(
               dataMap: dataMap,
               animationDuration: const Duration(milliseconds: 800),
@@ -99,26 +105,50 @@ class ReportPage extends State<ReportView> {
                           endIndent: 0,
                         ),
                     ),
+                    SizedBox(height: 15,),
                     Row(
                       children: [
+                        SizedBox(width: 40,),
                         Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: const Color(0xffDFE2FF),
+                          ),
                           padding: const EdgeInsets.all(10),
-                          color: const Color(0xffDFE2FF),
-                          child: Column(
-                            children: const [
-                              Text('Income', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Color(0xff4054FF)),),
-                              SizedBox(height: 7,),
-                              Text('Rp 400.000', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),)
-                            ],
+                          width: 164,
+                          height: 68,
+                          child: RichText(
+                            text: TextSpan(
+                              style: DefaultTextStyle.of(context).style,
+                              children: const <TextSpan>[
+                              TextSpan(
+                                  text: 'Income\n', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Color(0xff4054FF))),
+                              TextSpan(
+                                  text: 'Rp 400.000', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+                              ],
+                            ),
                           ),
                         ),
                         const SizedBox(width: 16,),
-                        Column(
-                          children: const [
-                            Text('Expense', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Color(0xff4054FF)),),
-                            SizedBox(height: 7,),
-                            Text('Rp 500.000', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),)
-                          ])
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: const Color(0xffDFE2FF),),
+                          width: 164,
+                          height: 68,
+                          child: RichText(
+                            text: TextSpan(
+                              style: DefaultTextStyle.of(context).style,
+                              children: const <TextSpan>[
+                              TextSpan(
+                                  text: 'Expense\n', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Color(0xff4054FF))),
+                              TextSpan(
+                                  text: 'Rp 400.000', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                     Container(
@@ -132,48 +162,85 @@ class ReportPage extends State<ReportView> {
                         ),
                     ),
                     const SizedBox(height: 10,),
-                    const Text("This month's spending"),
+                    const Text("This month's spending", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),),
+                    SizedBox(height: 14,),
                     Container(
                       padding: const EdgeInsets.all(14),
                       width: 342,
                       height: 72,
-                      child: Column(
-                        children: const [
-                          Text('Groceries', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),),
-                          SizedBox(height: 7,),
-                          Text('-Rp 13.000', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Color(0xffFF0000)),)
+                      decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: const Color(0xffDFE2FF),
+                          ),
+                      child: RichText(
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: const <TextSpan>[
+                          TextSpan(
+                              text: 'Groceries\n',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16,)),
+                          TextSpan(
+                              text: 'Rp 150.000',
+                              style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500, color: Color(0xff4CD471))),
                         ],
                       ),
                     ),
+                    ),
+                    SizedBox(height: 14,),
                     Container(
                       padding: const EdgeInsets.all(14),
                       width: 342,
                       height: 72,
-                      child: Column(
-                        children: const [
-                          Text('Groceries', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),),
-                          SizedBox(height: 7,),
-                          Text('-Rp 13.000', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Color(0xff4CD471)),)
+                      decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: const Color(0xffDFE2FF),
+                          ),
+                      child: RichText(
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: const <TextSpan>[
+                          TextSpan(
+                              text: 'Groceries\n',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16,)),
+                          TextSpan(
+                              text: 'Rp 150.000',
+                              style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500, color: Color(0xff4CD471))),
                         ],
                       ),
                     ),
+                    ),
+                    SizedBox(height: 14,),
                     Container(
                       padding: const EdgeInsets.all(14),
                       width: 342,
                       height: 72,
-                      child: Column(
-                        children: const [
-                          Text('Health', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),),
-                          SizedBox(height: 7,),
-                          Text('-Rp 150.000', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Color(0xff4CD471)),)
-                        ],
-                      ),
+                      decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: const Color(0xffDFE2FF),
+                          ),
+                      child: RichText(
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: const <TextSpan>[
+                          TextSpan(
+                              text: 'Groceries\n',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16,)),
+                          TextSpan(
+                              text: 'Rp 150.000',
+                              style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500, color: Color(0xffff0000))),
+                          ],
+                        ),
+                     ),
                     ),
-
                   ]
                 ),
               )
-            
             ],
           )
         
