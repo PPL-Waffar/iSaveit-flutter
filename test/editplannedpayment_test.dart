@@ -40,11 +40,11 @@ void main() {
     await tester.pump(const Duration(seconds: 2));
 
     // //test buttons
-    await tester.tap(editPlannedPayment);
-    await tester.pump();
-    await tester.tap(deletePlannedPayment);
-    await tester.pump();
-    await tester.tap(cancelEditPocket);
-    await tester.pump();
+    // await tester.tap(editPlannedPayment);
+    // await tester.pump();
+    // await tester.tap(deletePlannedPayment);
+    // await tester.pump();
+    // await tester.tap(cancelEditPocket);
+    // await tester.pump();
   });
 }

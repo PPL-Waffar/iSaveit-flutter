@@ -8,6 +8,6 @@ void main() {
     await tester.pumpWidget(const MaterialApp(
       home: ReportView(),
     ));
-    expect(find.text("Your Report"), findsOneWidget);
+    expect(find.text("My Spendings"), findsOneWidget);
   });
 }
