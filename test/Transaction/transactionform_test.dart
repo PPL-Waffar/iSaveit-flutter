@@ -9,20 +9,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isaveit/page/transactions/transaction_form.dart';
+import 'package:isaveit/models/user.dart';
 
 
 void main() {
   
   testWidgets('Transaction Form', (WidgetTester tester) async {
+    User user = User(
+        datetime: "2021-05-01 00:00:00.000000",
+        sessionId: "1234567890",
+        isCitizen: true,
+        email: "usertest@gmail.com",
+        name: "Amanda");
 
     final transactionName = find.byKey(const ValueKey("transactionName"));
     final transactionAmount = find.byKey(const ValueKey("transactionAmount"));
     final transactionDate = find.byKey(const ValueKey("transactionDate"));
+    final transactionButton = find.byKey(const ValueKey("inputTransactionButton"));
+    final cancelTransaction = find.byKey(const ValueKey("cancelTransaction"));
     
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MaterialApp(
-      home: CreateTransaction(),
+    await tester.pumpWidget(MaterialApp(
+      home: CreateTransaction(user),
     ));
+
     expect(find.byIcon(Icons.add), findsNothing);
     expect(find.text('My Balance'), findsOneWidget);
     expect(find.text("Payment Name"), findsOneWidget);
@@ -30,10 +40,9 @@ void main() {
     expect(find.text("Amount"), findsOneWidget);
     expect(find.text("Type of Transaction"), findsOneWidget);
     expect(find.text("Type of Payment"), findsOneWidget);
-    expect(find.text("Pocket"), findsOneWidget);
 
     await tester.pump();
-
+    
     await tester.enterText(transactionName, "Jajan kantin nasi goreng");
     await tester.pumpAndSettle();
     await tester.enterText(transactionAmount, "30.000");
@@ -41,13 +50,13 @@ void main() {
 
     await tester.pump(const Duration(seconds: 2));
 
-
+    //Test calendar widget
     await tester.enterText(transactionDate, "2022-10-02");
     final dateTextField = find.byIcon(Icons.calendar_today);
         await tester.tap(dateTextField);
  
     //Test transaction type widget
-    final transacDropdown = find.byKey(const ValueKey('TransacType'));
+    final transacDropdown = find.byKey(const ValueKey('transactionType'));
       await tester.tap(transacDropdown);
       await tester.pumpAndSettle();
 
@@ -57,38 +66,21 @@ void main() {
     await tester.tap(transacItem);
     await tester.pumpAndSettle();
 
-        //Test transaction type widget
+    // Test payment type widget
     final paymentDropdown = find.byKey(const ValueKey('PaymentType'));
-    await tester.tap(paymentDropdown);
-    await tester.pumpAndSettle();
+      await tester.tap(paymentDropdown);
+      await tester.pumpAndSettle();
 
     ///if you want to tap first item
-    final paymentItem = find.text('Debit').last;
+    final paymentItem = find.text('debit card').last;
 
     await tester.tap(paymentItem);
     await tester.pumpAndSettle();
 
-    //Test transaction type widget
-    final pocketDropdown = find.byKey(const ValueKey('PocketName'));
-    await tester.tap(pocketDropdown);
-    await tester.pumpAndSettle();
-
-    ///if you want to tap first item
-    final pocketItem = find.text('Groceries').last;
-
-    await tester.tap(pocketItem);
-    await tester.pumpAndSettle();
-
     //Test button
-    expect(find.byType(ElevatedButton), findsOneWidget);
-    await tester.pump(const Duration(milliseconds: 100));
-    await tester.tap(find.byType(ElevatedButton));
-    await tester.pumpAndSettle();
-
-    expect(find.byType(TextButton), findsOneWidget);
-    await tester.pump(const Duration(milliseconds: 100));
-    await tester.tap(find.byType(TextButton));
-    await tester.pumpAndSettle();
+    await tester.tap(transactionButton);
+    await tester.pump();
+    await tester.tap(cancelTransaction);
 
   });
 

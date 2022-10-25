@@ -27,7 +27,7 @@ class _SettingViewState extends State<SettingView> {
     screens = [
       HomeView(widget.user),
       const ReportView(),
-      const Transaction(),
+      Transaction(widget.user),
     ];
   }
 
