@@ -47,7 +47,8 @@ class ReportPage extends State<ReportView> {
         children: <Widget>[
           Padding(
               padding: const EdgeInsets.fromLTRB(45, 0, 45, 0),
-              child: Row(children: [
+              child: Row(
+                children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       elevation: 0, backgroundColor: Colors.white),
