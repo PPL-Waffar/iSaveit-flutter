@@ -8,9 +8,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:isaveit/page/transactions/transaction_form.dart';
 import 'package:isaveit/models/user.dart';
-
+import 'package:isaveit/page/transactions/transaction_form.dart';
 
 void main() {
   
@@ -22,9 +21,9 @@ void main() {
         email: "usertest@gmail.com",
         name: "Amanda");
 
-    final transactionName = find.byKey(const ValueKey("transactionName"));
-    final transactionAmount = find.byKey(const ValueKey("transactionAmount"));
-    final transactionDate = find.byKey(const ValueKey("transactionDate"));
+    final transactionName = find.byKey(const ValueKey("addTransactionName"));
+    final transactionAmount = find.byKey(const ValueKey("addTransactionAmount"));
+    final transactionDate = find.byKey(const ValueKey("addTransactionDate"));
     final transactionButton = find.byKey(const ValueKey("inputTransactionButton"));
     final cancelTransaction = find.byKey(const ValueKey("cancelTransaction"));
     
@@ -46,7 +45,6 @@ void main() {
     await tester.enterText(transactionName, "Jajan kantin nasi goreng");
     await tester.pumpAndSettle();
     await tester.enterText(transactionAmount, "30.000");
-    await tester.pumpAndSettle();
 
     await tester.pump(const Duration(seconds: 2));
 
