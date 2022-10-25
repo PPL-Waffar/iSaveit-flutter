@@ -19,7 +19,7 @@ void main() {
     final addEmail = find.byKey(const ValueKey("addEmail"));
     final addPassword = find.byKey(const ValueKey("addPassword"));
     final addAccount = find.byKey(const ValueKey("addAccount"));
-    // Build our app and trigger a frame.
+
     await tester.pumpWidget(const MaterialApp(
       home: Register(),
     ));
@@ -37,7 +37,10 @@ void main() {
 
 
     await tester.enterText(addName, "Budiman");
-    await tester.enterText(addDate, "25-10-2002");
+    await tester.enterText(addDate, "2022-10-02");
+    final dateTextField = find.byIcon(Icons.calendar_today);
+        await tester.tap(dateTextField);
+ 
     await tester.enterText(addEmail, "budiman@gmail.com");
     await tester.enterText(addPassword, "budidibudi25");
     await tester.tap(addAccount);

@@ -1,31 +1,30 @@
 import 'dart:convert';
-
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:isaveit/models/user.dart';
 import '../page/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-//url heroku: "https://isaveit-staging.herokuapp.com/user/flu-register-user/"
-//url local: "http://127.0.0.1:8000//user/flu-register-user/
+
 Future<User> registerUser(
-    String email,
-    String password,
-    String name,
-    String datetime,
-    ) async {
+  String email,
+  String password,
+  String name,
+  String datetime,
+) async {
   Response response;
   try {
     response =
-    await post(Uri.parse("https://isaveit-staging.herokuapp.com/user/flu-register-user/"),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode({
-          "email": email,
-          "password": password,
-          "name": name,
-          "datetime": datetime,
-        }));
+        await post(Uri.parse("https://isaveit-staging.herokuapp.com/user/flu-register-user/"),
+            headers: <String, String>{
+              'Content-Type': 'application/json; charset=UTF-8',
+            },
+            body: jsonEncode({
+              "email": email,
+              "password": password,
+              "name": name,
+              "datetime": datetime,
+            }));
   } catch (e) {
     return Future.error("offline");
   }
@@ -61,6 +60,13 @@ class Register extends StatefulWidget {
 }
 
 class RegisterPage extends State<Register> {
+  TextEditingController dateinput = TextEditingController();
+  @override
+  void initState() {
+    dateinput.text = ""; //set the initial value of text field
+    super.initState();
+  }
+
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final TextEditingController _name = TextEditingController();
@@ -76,178 +82,185 @@ class RegisterPage extends State<Register> {
       ),
       body: SingleChildScrollView(
           child: Column(children: <Widget>[
-            const SizedBox(
-              height: 20,
-            ),
-            const Text(
-              'Create an account',
-              style: TextStyle(fontSize: 24, color: Color(0xff3444CE)),
-            ),
-            const SizedBox(
-              height: 7,
-            ),
-            const Text(
-              'Welcome to iSaveIt!',
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Text(
-              'Name',
-              textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 14),
-            ),
-            Card(
-              margin: const EdgeInsets.all(20),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                        key: const Key("addName"),
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'Enter your name'),
-                        controller: _name,
-                      ),
-                    ),
-                  ],
+        const SizedBox(
+          height: 20,
+        ),
+        const Text(
+          'Create an account',
+          style: TextStyle(fontSize: 24, color: Color(0xff3444CE)),
+        ),
+        const SizedBox(
+          height: 7,
+        ),
+        const Text(
+          'Welcome to iSaveIt!',
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        const Text(
+          'Name',
+          textAlign: TextAlign.left,
+          style: TextStyle(fontSize: 14),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: TextFormField(
+                  key: const Key("addName"),
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter your name'),
+                  controller: _name,
                 ),
               ),
-            ),
-            const Text(
-              'Date of Birth',
-              style: TextStyle(fontSize: 14),
-            ),
-            Card(
-              margin: const EdgeInsets.all(20),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                        key: const Key("addDate"),
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'Enter your date of birth'),
-                        controller: _datetime,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const Text(
-              'Email',
-              style: TextStyle(fontSize: 14),
-            ),
-            Card(
-              margin: const EdgeInsets.all(20),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                        key: const Key("addEmail"),
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'Enter your email'),
-                        controller: _email,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const Text(
-              'Password',
-              style: TextStyle(fontSize: 14),
-            ),
-            Card(
-              margin: const EdgeInsets.all(20),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                        key: const Key("addPassword"),
-                        obscureText: true,
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'Enter your password'),
-                        controller: _password,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            Container(
-              height: 48,
-              width: 327,
-              padding: const EdgeInsets.fromLTRB(70, 16, 70, 16),
-              decoration: const BoxDecoration(color: Color(0xff4054FF)),
-              child: ElevatedButton(
-                key: const Key("addAccount"),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size.fromHeight(48),
-                  elevation: 0,
-                  backgroundColor: const Color(0XFF4054FF),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+            ],
+          ),
+        ),
+        const Text(
+          'Date of Birth',
+          style: TextStyle(fontSize: 14),
+        ),
+        Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Center(
+                child: TextField(
+              key: const Key("addDate"),
+              controller: dateinput,
+              decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.calendar_today),
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      borderSide:
+                          BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                  hintText:
+                      'YYYY-MM-dd'), //editing controller of this TextField
+
+              readOnly:
+                  true, //set it true, so that user will not able to edit text
+              onTap: () async {
+                DateTime? pickedDate = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(
+                        2000), //DateTime.now() - not to allow to choose before today.
+                    lastDate: DateTime(2101));
+
+                if (pickedDate != null) {
+                  String formattedDate =
+                      DateFormat('yyyy-MM-dd').format(pickedDate);
+                  setState(() {
+                    dateinput.text =
+                        formattedDate; //set output date to TextField value.
+                  });
+                } else {}
+              },
+            ))),
+        const Text(
+          'Email',
+          style: TextStyle(fontSize: 14),
+        ),
+        Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    key: const Key("addEmail"),
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'Enter your email'),
+                    controller: _email,
                   ),
                 ),
-                onPressed: submitting
-                    ? null
-                    : () async {
-                  setState(() {
-                    submitting = true;
-                  });
-                  {
-                    await registerUser(_email.text, _password.text,
-                        _name.text, _datetime.text)
-                        .then((user) {
-                      // create User and then pushAndRemoveUntil(MyHomePage(user:uset))
-                      Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute<void>(
-                              builder: (BuildContext context) =>
-                              // ignore: prefer_const_constructors
-                              Login()),
-                              (Route<dynamic> route) => false);
+              ],
+            ),
+          ),
+        const Text(
+          'Password',
+          style: TextStyle(fontSize: 14),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: TextFormField(
+                  key: const Key("addPassword"),
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter your password'),
+                  controller: _password,
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 25,
+        ),
+        Container(
+          height: 48,
+          width: 327,
+          padding: const EdgeInsets.fromLTRB(70, 16, 70, 16),
+          decoration: const BoxDecoration(color: Color(0xff4054FF)),
+          child: ElevatedButton(
+            key: const Key("addAccount"),
+            style: ElevatedButton.styleFrom(
+              minimumSize: const Size.fromHeight(48),
+              elevation: 0,
+              backgroundColor: const Color(0XFF4054FF),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+            onPressed: submitting
+                ? null
+                : () async {
+                    setState(() {
+                      submitting = true;
                     });
-                  }
-                },
-                child: const Text(
-                  'Create Account',
-                  style: TextStyle(fontSize: 16, color: Colors.white),
-                ),
-              ),
+                    {
+                      await registerUser(_email.text, _password.text,
+                              _name.text, _datetime.text)
+                          .then((user) {
+                        // create User and then pushAndRemoveUntil(MyHomePage(user:uset))
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute<void>(
+                                builder: (BuildContext context) =>
+                                    // ignore: prefer_const_constructors
+                                    Login()),
+                            (Route<dynamic> route) => false);
+                      });
+                    }
+                  },
+            child: const Text(
+              'Create Account',
+              style: TextStyle(fontSize: 16, color: Colors.white),
             ),
-            const SizedBox(
-              height: 20,
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        TextButton(
+          // <-- TextButton
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Login()));
+          },
+          child: const Text(
+            'Already have an account?',
+            style: TextStyle(
+              color: Color(0XFF4054FF),
             ),
-            TextButton(
-              // <-- TextButton
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Login()));
-              },
-              child: const Text(
-                'Already have an account?',
-                style: TextStyle(
-                  color: Color(0XFF4054FF),
-                ),
-              ),
-            ),
-          ])),
+          ),
+        ),
+      ])),
     );
   }
 }
