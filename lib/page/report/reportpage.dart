@@ -46,10 +46,11 @@ class ReportPage extends State<ReportView> {
           child: Column(
         children: <Widget>[
           Padding(
-              padding: const EdgeInsets.fromLTRB(45, 0, 45, 0),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: Row(
                 children: [
                 ElevatedButton(
+                  key: const Key("previousPage"),
                   style: ElevatedButton.styleFrom(
                       elevation: 0, backgroundColor: Colors.white),
                   onPressed: () => _controller.previousPage(),
@@ -67,6 +68,7 @@ class ReportPage extends State<ReportView> {
                   width: 70,
                 ),
                 ElevatedButton(
+                  key: const Key("nextPage"),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     elevation: 0,

@@ -5,6 +5,9 @@ import 'package:isaveit/page/report/reportpage.dart';
 void main() {
   testWidgets('Testing Report page', (WidgetTester tester) async {
     // Build our app and trigger a frame.
+    final previousReport = find.byKey(const ValueKey("previousPage"));
+    final nextReport = find.byKey(const ValueKey("nextPage"));
+    
     await tester.pumpWidget(const MaterialApp(
       home: ReportView(),
     ));
@@ -14,7 +17,8 @@ void main() {
     expect(find.text('Overview'), findsOneWidget);
     
     
-
+    await tester.tap(previousReport);
+    await tester.tap(nextReport);
     await tester.pump();
     expect(find.text("This month's spending"), findsOneWidget);
     
