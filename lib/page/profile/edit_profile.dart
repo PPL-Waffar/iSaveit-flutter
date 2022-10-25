@@ -75,13 +75,14 @@ class _EditProfilePage extends State<EditProfile> {
                                               width: 1.0,
                                               color: Color(0xFFDBDBDB))),
                                       hintText: 'John Doe'),
-                                  validator: (String? value) {
-                                    if (value!.isEmpty) {
-                                      return "Name cannot be empty";
-                                    }
+                                  // validator: (String? value) {
+                                  //   if (value!.isEmpty) {
+                                  //     return "Name cannot be empty";
+                                  //   }
 
-                                    return null;
-                                  }),
+                                  //   return null;
+                                  // }
+                                  ),
                             ])),
 
                     const SizedBox(height: 32),
@@ -109,13 +110,14 @@ class _EditProfilePage extends State<EditProfile> {
                                               width: 1.0,
                                               color: Color(0xFFDBDBDB))),
                                       hintText: 'johndoe@isaveit.com'),
-                                  validator: (String? value) {
-                                    if (value!.isEmpty) {
-                                      return "Email cannot be empty";
-                                    }
+                                  // validator: (String? value) {
+                                  //   if (value!.isEmpty) {
+                                  //     return "Email cannot be empty";
+                                  //   }
 
-                                    return null;
-                                  })
+                                  //   return null;
+                                  // }
+                                  )
                             ])),
                     
                     const SizedBox(height: 32),
@@ -189,13 +191,14 @@ class _EditProfilePage extends State<EditProfile> {
                                               width: 1.0,
                                               color: Color(0xFFDBDBDB))),
                                       hintText: 'Student'),
-                                  validator: (String? value) {
-                                    if (value!.isEmpty) {
-                                      return "Occupation cannot be empty";
-                                    }
+                                  // validator: (String? value) {
+                                  //   if (value!.isEmpty) {
+                                  //     return "Occupation cannot be empty";
+                                  //   }
 
-                                    return null;
-                                  }),
+                                  //   return null;
+                                  // }
+                                  ),
                             ])),
 
                     const SizedBox(height: 32),

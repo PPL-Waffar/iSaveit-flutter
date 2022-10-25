@@ -77,13 +77,7 @@ class _ProfileDetailPage extends State<ProfileView> {
                                               width: 1.0,
                                               color: Color(0xFFDBDBDB))),
                                       hintText: 'John Doe'),
-                                  validator: (String? value) {
-                                    if (value!.isEmpty) {
-                                      return "Name cannot be empty";
-                                    }
-
-                                    return null;
-                                  }),
+                                  ),
                             ])),
 
                     const SizedBox(height: 32),
@@ -112,13 +106,7 @@ class _ProfileDetailPage extends State<ProfileView> {
                                               width: 1.0,
                                               color: Color(0xFFDBDBDB))),
                                       hintText: 'johndoe@isaveit.com'),
-                                  validator: (String? value) {
-                                    if (value!.isEmpty) {
-                                      return "Email cannot be empty";
-                                    }
-
-                                    return null;
-                                  })
+                                  )
                             ])),
                     
                     const SizedBox(height: 32),

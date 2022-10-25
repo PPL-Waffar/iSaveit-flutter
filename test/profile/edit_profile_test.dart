@@ -11,11 +11,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:isaveit/page/profile/edit_profile.dart';
 
 void main() {
-  testWidgets('Create Pocket', (WidgetTester tester) async {
+  testWidgets('Edit Profile', (WidgetTester tester) async {
 
     final editName = find.byKey(const ValueKey("editName"));
     final editEmail = find.byKey(const ValueKey("editEmail"));
     final editOccupation = find.byKey(const ValueKey("editOccupation"));
+    final transactionDate = find.byKey(const ValueKey("birthDate"));
     final saveEditProfile = find.byKey(const ValueKey("saveEditProfile"));
     final cancelEditProfile = find.byKey(const ValueKey("cancelEditProfile"));
 
@@ -38,10 +39,16 @@ void main() {
     await tester.enterText(editOccupation, "Social worker");
     await tester.pump(const Duration(seconds: 2));
 
+    //Test calendar widget
+    await tester.enterText(transactionDate, "2022-10-02");
+    final dateTextField = find.byIcon(Icons.calendar_today);
+        await tester.tap(dateTextField);
 
     // //test buttons
+    await tester.pumpAndSettle();
     await tester.tap(saveEditProfile);
-        await tester.pump();
+    
+    await tester.pumpAndSettle();
     await tester.tap(cancelEditProfile);
   });
 
