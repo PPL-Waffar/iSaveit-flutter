@@ -19,16 +19,17 @@ void main() {
     ));
 
     
-    expect(find.byIcon(Icons.add), findsOneWidget);
-    expect(find.text('Welcome Back! \nYourname'), findsOneWidget);
+    //expect(find.text('Rp 5.000.000'), findsOneWidget);
+    expect(find.text('Loading'), findsOneWidget);
+    //expect(find.text('My Pocket'), findsOneWidget);
 
     
-    await tester.tap(find.byIcon(Icons.add));
+   // await tester.tap(find.byIcon(Icons.add));
     await tester.pump();
 
     
-    expect(find.text('Welcome Back! \nYourname'), findsOneWidget);
+    //expect(find.text('Welcome Back! \nYourname'), findsOneWidget);
 
-    expect(find.text('Welcome Back!'), findsNothing);
+    expect(find.text('Loading'), findsOneWidget);
   });
 }

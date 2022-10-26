@@ -40,6 +40,7 @@ dependencies:
   http: ^0.13.5
   shared_preferences: ^2.0.15
   currency_text_input_formatter: ^2.1.7
+  splashscreen : ^1.3.5
 
 
 dev_dependencies:
