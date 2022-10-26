@@ -13,6 +13,7 @@ class DownloadReportPage extends State<DownloadReport> {
     return Row(
         children: [
           ElevatedButton(
+        key: const Key("DownloadButton"),
             onPressed: () {
               showDialog<String>(
                 context: context,

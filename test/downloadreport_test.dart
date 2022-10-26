@@ -10,6 +10,17 @@ void main() {
     ));
 
     expect(find.byIcon(Icons.arrow_back), findsNothing);
+    expect(find.byIcon(Icons.download), findsOneWidget);
+    expect(find.text("Download Report"), findsNothing);
+    expect(find.text("Are you sure you want to download this report?"), findsNothing);
+
+
+    // final cancelDownloadReport = find.byKey(const ValueKey("cancelDownloadReport"));
+    // final confirmDownloadReport = find.byKey(const ValueKey("confirmDownloadReport"));
+    //
+    // await tester.tap(cancelDownloadReport);
+    // await tester.pump();
+    // await tester.tap(confirmDownloadReport);
 
 
   });
