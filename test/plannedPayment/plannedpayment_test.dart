@@ -22,7 +22,6 @@ void main() {
     final addExpense = find.byKey(const ValueKey("addExpense"));
     final transactionDate = find.byKey(const ValueKey("transactionDate"));
     final addPaymentType = find.byKey(const ValueKey("addPaymentType"));
-    // final addPocketName = find.byKey(const ValueKey("addPocketName"));
     final createSubmitButton = find.byKey(const ValueKey("createSubmitButton"));
     final createCancelButton = find.byKey(const ValueKey("createCancelButton"));
 
@@ -36,12 +35,14 @@ void main() {
 
     await tester.pump();
 
-    //Test textfields
+
     expect(find.text('Payment Name'), findsOneWidget);
     expect(find.text('Expense'), findsOneWidget);
     expect(find.text('Date',),findsNothing);
     expect(find.text('Type of Payment'), findsOneWidget);
     expect(find.text('Pocket'), findsOneWidget);
+    await tester.pump();
+    //Test textfields
     await tester.enterText(addPaymentName, "Spotify");
     await tester.pumpAndSettle();
     await tester.enterText(addExpense, "Rp 24.000");
@@ -59,5 +60,6 @@ void main() {
     await tester.tap(createSubmitButton);
     await tester.pump();
     await tester.tap(createCancelButton);
+    await tester.pump();
   });
 }
