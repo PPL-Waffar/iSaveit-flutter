@@ -37,6 +37,11 @@ void main() {
     await tester.pump();
 
     //Test textfields
+    expect(find.text('Payment Name'), findsOneWidget);
+    expect(find.text('Expense'), findsOneWidget);
+    expect(find.text('Date',),findsNothing);
+    expect(find.text('Type of Payment'), findsOneWidget);
+    expect(find.text('Pocket'), findsOneWidget);
     await tester.enterText(addPaymentName, "Spotify");
     await tester.pumpAndSettle();
     await tester.enterText(addExpense, "Rp 24.000");

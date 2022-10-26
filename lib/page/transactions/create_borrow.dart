@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter/services.dart';
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
+
 
 class CreateBorrow extends StatefulWidget {
   const CreateBorrow({super.key});
@@ -98,7 +101,6 @@ class CreateBorrowPage extends State<CreateBorrow> {
                             const SizedBox(height: 8),
                             TextFormField(
                               key: const Key("addPaymentName"),
-                              cursorWidth: 50,
                               decoration: const InputDecoration(
                                   enabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -116,6 +118,13 @@ class CreateBorrowPage extends State<CreateBorrow> {
                                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
                                       borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
                                   hintText: 'Rp 0'),
+                              inputFormatters: <TextInputFormatter>[
+                                CurrencyTextInputFormatter(
+                                  locale: 'id',
+                                  decimalDigits: 0,
+                                  symbol: 'Rp ',
+                                ),
+                              ],
                               keyboardType: TextInputType.number,
                             ),
                             const SizedBox(height: 24),

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:isaveit/models/user.dart';
+import 'package:flutter/services.dart';
 import 'package:isaveit/page/navbar.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-// import 'package:dropdownfield/dropdownfield.dart';
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
+
 
 
 Future<Map<String, dynamic>> sendNewUser(
@@ -116,8 +118,16 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                               borderRadius: BorderRadius.all(Radius.circular(8.0)),
                               borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
                           hintText: 'Rp 0'),
+                      inputFormatters: <TextInputFormatter> [
+                        CurrencyTextInputFormatter(
+                          locale: 'id',
+                          decimalDigits: 0,
+                          symbol: 'Rp ',
+                        ),
+                      ],
                       keyboardType: TextInputType.number,
                     ),
+
 
                     const SizedBox(height: 32),
 

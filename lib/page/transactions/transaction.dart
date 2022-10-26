@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:isaveit/page/transactions/transaction_form.dart';
 import 'package:isaveit/models/user.dart';
+import 'package:isaveit/page/transactions/create_borrow.dart';
 
 // ignore: must_be_immutable
 class Transaction extends StatefulWidget {
@@ -64,7 +65,11 @@ class TransactionPage extends State<Transaction> {
                   elevation: 0,
                   
                 ),
-              onPressed: () {},
+              onPressed: () {Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const CreateBorrow()));},
               child: const Text('Borrow Transaction', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               )
               ),
