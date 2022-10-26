@@ -20,7 +20,6 @@ void main() {
 
     
     expect(find.text('Loading'), findsOneWidget);
-    await tester.pump();
-    expect(find.text('Loading'), findsOneWidget);
+    
   });
 }

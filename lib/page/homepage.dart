@@ -1,5 +1,3 @@
-
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:isaveit/page/plannedpayment/plannedpayment.dart';
@@ -10,13 +8,14 @@ import 'package:http/http.dart' as http;
 // ignore: import_of_legacy_library_into_null_safe
 import 'dart:async';
 
+
 // import '../page//profile.dart';
 
 //----------------------------------------//
 
 Future<Map<String, dynamic>> fetchPlanned(User user) async {
   String url =
-      'http://10.0.2.2:8000/payment/flu-get-payment/?session_id=${user.sessionId}';
+      'http://localhost:8000/payment/flu-get-payment/?session_id=${user.sessionId}';
 
   try {
     Map<String, String> headers = {
@@ -52,7 +51,7 @@ Future<Map<String, dynamic>> fetchPlanned(User user) async {
 
 Future<Map<String, dynamic>> fetchGroups(User user) async {
   String url =
-      'http://10.0.2.2:8000/pocket/get-pocket/?session_id=${user.sessionId}';
+      'http://localhost:8000/pocket/get-pocket/?session_id=${user.sessionId}';
 
   try {
     Map<String, String> headers = {
@@ -88,7 +87,7 @@ Future<Map<String, dynamic>> fetchGroups(User user) async {
 
 Future<Map<String, dynamic>> getUserInfo(User user) async {
   String url2 =
-      'http://10.0.2.2:8000/user/user-info/?session_id=${user.sessionId}';
+      'http://localhost:8000/user/user-info/?session_id=${user.sessionId}';
 
   try {
     Map<String, String> headers = {
@@ -143,21 +142,23 @@ class HomePage extends State<HomeView> {
   @override
   void initState() {
     super.initState();
-
   }
 
   Future<void> _intializeData() async {
     response = await fetchGroups(widget.user);
     if (response["isSuccessful"]) {
       allpocket = response["data"];
+      print('test');
     }
     response3 = await getUserInfo(widget.user);
     if (response3["isSuccessful"]) {
       thedata = response3["data"];
+      print('test1');
     }
     response4 = await fetchPlanned(widget.user);
     if (response4["isSuccessful"]) {
       allplanned = response4["data"];
+      print('test2');
     }
   }
 
@@ -293,8 +294,7 @@ class HomePage extends State<HomeView> {
                               height: 30,
                               width: 200,
                               child: ElevatedButton(
-                                onPressed: () => 
-                                {
+                                onPressed: () => {
                                   // Navigator.push(
                                   //     context,
                                   //     MaterialPageRoute(
@@ -368,46 +368,46 @@ class HomePage extends State<HomeView> {
                   builder: (context, snapshot) {
                     return Column(children: [
                       for (int i = 0; i < allpocket.length; i++)
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                      child: SizedBox(
-                        height: 72,
-                        width: 343,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xffDFE2FF),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8))),
-                          onPressed: () => {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => Pocket(
-                            //             widget.user,
-                            //             // allpocket[i]["pocket_name"],
-                            //             allpocket[i]["pocket_budget"])))
-                          },
-                          child: RichText(
-                            text: TextSpan(
-                              style: DefaultTextStyle.of(context).style,
-                              children: <TextSpan>[
-                                TextSpan(
-                                  text: allpocket[i]["pocket_name"] + '\n',
-                                  style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w700),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                          child: SizedBox(
+                            height: 72,
+                            width: 343,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xffDFE2FF),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8))),
+                              onPressed: () => {
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //         builder: (context) => Pocket(
+                                //             widget.user,
+                                //             // allpocket[i]["pocket_name"],
+                                //             allpocket[i]["pocket_budget"])))
+                              },
+                              child: RichText(
+                                text: TextSpan(
+                                  style: DefaultTextStyle.of(context).style,
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: allpocket[i]["pocket_name"] + '\n',
+                                      style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                    TextSpan(
+                                        text: allpocket[i]["pocket_budget"],
+                                        style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500))
+                                  ],
                                 ),
-                                TextSpan(
-                                    text: allpocket[i]["pocket_budget"],
-                                    style: const TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500))
-                              ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
                     ]);
                   })
             ],
@@ -415,14 +415,9 @@ class HomePage extends State<HomeView> {
         ),
       );
     } else {
-      return const Scaffold(
-          body: SizedBox(
-          child: 
-        Text('Loading'),
-        
-        ),
-       
-      );
+      return Scaffold(
+          body: Text('Loading')
+          );
     }
   }
 }
