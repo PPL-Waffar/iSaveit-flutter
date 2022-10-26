@@ -15,7 +15,7 @@ void main() {
   testWidgets('Test Login', (WidgetTester tester) async {
     final addEmail = find.byKey(const ValueKey("addEmail"));
     final addPassword = find.byKey(const ValueKey("addPassword"));
-    
+
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MaterialApp(
       home: Login(),
@@ -35,7 +35,7 @@ void main() {
 
     await tester.enterText(addEmail, "angel@gmail.com");
     await tester.enterText(addPassword, "ngelangel18");
-    
+
   });
 
 }

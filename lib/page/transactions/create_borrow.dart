@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:isaveit/page/plannedpayment/plannedpayment.dart';
 import 'package:intl/intl.dart';
 
 class CreateBorrow extends StatefulWidget {
@@ -99,7 +98,6 @@ class CreateBorrowPage extends State<CreateBorrow> {
                             const SizedBox(height: 8),
                             TextFormField(
                               key: const Key("addPaymentName"),
-                              cursorWidth: 50,
                               decoration: const InputDecoration(
                                   enabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -348,10 +346,10 @@ class InputTransactions extends StatelessWidget{
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(48),)),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const Plannedpayment()),
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => SettingView(widget.user)),
+          // );
         },
         child: const Text('Input Transactions',
             style: TextStyle(color: Colors.white)

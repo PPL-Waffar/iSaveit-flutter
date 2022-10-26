@@ -10,14 +10,7 @@ void main() {
     ));
 
     expect(find.byIcon(Icons.arrow_back), findsNothing);
-    expect(find.text("Download Report"), findsOneWidget);
-    expect(find.text("Are you sure you want to download this report?"), findsOneWidget);
 
-    final cancelDownloadReport = find.byKey(const ValueKey("cancelDownloadReport"));
-    final confirmDownloadReport = find.byKey(const ValueKey("confirmDownloadReport"));
 
-    await tester.tap(cancelDownloadReport);
-    await tester.pump();
-    await tester.tap(confirmDownloadReport);
   });
 }
