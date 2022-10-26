@@ -148,17 +148,14 @@ class HomePage extends State<HomeView> {
     response = await fetchGroups(widget.user);
     if (response["isSuccessful"]) {
       allpocket = response["data"];
-      print('test');
     }
     response3 = await getUserInfo(widget.user);
     if (response3["isSuccessful"]) {
       thedata = response3["data"];
-      print('test1');
     }
     response4 = await fetchPlanned(widget.user);
     if (response4["isSuccessful"]) {
       allplanned = response4["data"];
-      print('test2');
     }
   }
 
@@ -415,7 +412,7 @@ class HomePage extends State<HomeView> {
         ),
       );
     } else {
-      return Scaffold(
+      return const Scaffold(
           body: Text('Loading')
           );
     }
