@@ -37,40 +37,26 @@ class _ProfileDetailPage extends State<ProfileView> {
           backgroundColor: Colors.white,
           elevation: 0,
           title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-            
-              const Text(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: const [
+              Text(
                 'Profile',
                 style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              IconButton(
-                icon: const Icon(Icons.edit),
-                color: Colors.black,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const EditProfile(),
-                    ),
-                  );
-                },
+                              fontFamily: 'Inter',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700),
               ),
             ],
           ),
-        // actions: <Widget>[
-        //   IconButton(
-        //     icon: const Icon(Icons.edit),
-        //     color: Colors.black,
-        //     onPressed: () => Navigator.of(context)
-        //       .push(MaterialPageRoute(builder: (context) =>  const EditProfile())),
-        //   ),
-        // ],  
-      ),
+                actions: <Widget>[
+              IconButton(
+                icon: const Icon(Icons.edit),
+                color: Colors.black,
+                onPressed: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) =>  const EditProfile())),
+              ),
+            ],  
+                  ),
         body: SingleChildScrollView(
             child: Form(
                 key: _formKey,
@@ -209,13 +195,7 @@ class _ProfileDetailPage extends State<ProfileView> {
                                               width: 1.0,
                                               color: Color(0xFFDBDBDB))),
                                       hintText: 'Student'),
-                                  validator: (String? value) {
-                                    if (value!.isEmpty) {
-                                      return "Occupation cannot be empty";
-                                    }
-
-                                    return null;
-                                  }),
+                                  ),
                             ])),
                     
                     const SizedBox(height: 32),

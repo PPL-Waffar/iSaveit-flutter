@@ -15,7 +15,7 @@ void main() {
 
     final editName = find.byKey(const ValueKey("editName"));
     final editEmail = find.byKey(const ValueKey("editEmail"));
-    final transactionDate = find.byKey(const ValueKey("birthDate"));
+    final birthDate = find.byKey(const ValueKey("birthDate"));
     final editOccupation = find.byKey(const ValueKey("editOccupation"));    
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MaterialApp(
@@ -37,7 +37,7 @@ void main() {
     await tester.enterText(editOccupation, "Social worker");
     await tester.pump(const Duration(seconds: 2));
 
-    await tester.enterText(transactionDate, "2022-10-02");
+    await tester.enterText(birthDate, "2022-10-02");
     final dateTextField = find.byIcon(Icons.calendar_today);
         await tester.tap(dateTextField);
 
