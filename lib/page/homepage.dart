@@ -6,8 +6,6 @@ import 'package:isaveit/page/pocket/create_pocket.dart';
 import 'package:isaveit/models/user.dart';
 import 'package:isaveit/page/pocket/pocket_details.dart';
 
-import 'profile/profile_detail.dart';
-
 // import '../page//profile.dart';
 
 //----------------------------------------//
