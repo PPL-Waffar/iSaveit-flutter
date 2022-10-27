@@ -45,11 +45,11 @@ void main() {
         await tester.tap(dateTextField);
 
     // //test buttons
-    await tester.pumpAndSettle();
     await tester.tap(saveEditProfile);
+    await tester.pump();
     
-    await tester.pumpAndSettle();
     await tester.tap(cancelEditProfile);
+    await tester.pump();
   });
 
 }

@@ -32,31 +32,8 @@ class _ProfileDetailPage extends State<ProfileView> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
-          elevation: 0,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
-              Text(
-                'Profile',
-                style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700),
-              ),
-            ],
-          ),
-                actions: <Widget>[
-              IconButton(
-                icon: const Icon(Icons.edit),
-                color: Colors.black,
-                onPressed: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) =>  const EditProfile())),
-              ),
-            ],  
-                  ),
+        
+
         body: SingleChildScrollView(
             child: Form(
                 key: _formKey,
@@ -64,6 +41,19 @@ class _ProfileDetailPage extends State<ProfileView> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const SizedBox(height: 60),
+
+                    //Page Title
+                    Container(
+                      margin: const EdgeInsets.only(left: 20),
+                      alignment: Alignment.topLeft,
+                      child: const Text('Profile',
+                          style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700)),
+                    ),
+                    const SizedBox(height: 32),
+                    
 
                     //Name
                     SingleChildScrollView(
@@ -135,6 +125,7 @@ class _ProfileDetailPage extends State<ProfileView> {
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700)),
                           const SizedBox(height: 8),
+                          
                       //Date Picker
                         // ignore: avoid_unnecessary_containers
                         Container(
@@ -199,7 +190,26 @@ class _ProfileDetailPage extends State<ProfileView> {
                             ])),
                     
                     const SizedBox(height: 32),
-                    
+
+                    // Edit Profile Button
+                    Container(
+                      alignment: Alignment.center,
+                      margin: const EdgeInsets.only(left: 30, right: 30),
+                      child: 
+                          ElevatedButton(
+                          key: const Key("editProfileButton"),
+                          style: ElevatedButton.styleFrom(
+                              minimumSize: const Size.fromHeight(48),
+                              elevation: 0,
+                              backgroundColor: const Color(0XFF4054FF),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(48),
+                              )),
+                          onPressed: () => 
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const EditProfile())), 
+                          child: const Text('Edit Profile'),
+                    )
+                    )
 
                   ]))
                     ),

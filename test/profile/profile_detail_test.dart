@@ -16,14 +16,15 @@ void main() {
     final editName = find.byKey(const ValueKey("editName"));
     final editEmail = find.byKey(const ValueKey("editEmail"));
     final birthDate = find.byKey(const ValueKey("birthDate"));
-    final editOccupation = find.byKey(const ValueKey("editOccupation"));    
+    final editOccupation = find.byKey(const ValueKey("editOccupation"));   
+    final editProfileButton = find.byKey(const ValueKey("editProfileButton")); 
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MaterialApp(
       home: ProfileView(),
     ));
 
     expect(find.byIcon(Icons.arrow_back), findsNothing);
-    expect(find.byIcon(Icons.edit), findsOneWidget);
+    
     expect(find.text('Edit Pocket'), findsNothing);
     expect(find.text('Profile'), findsOneWidget);
 
@@ -41,6 +42,8 @@ void main() {
     final dateTextField = find.byIcon(Icons.calendar_today);
         await tester.tap(dateTextField);
 
+    await tester.tap(editProfileButton);
+    await tester.pump();
   });
 
 }

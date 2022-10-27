@@ -75,13 +75,6 @@ class _EditProfilePage extends State<EditProfile> {
                                               width: 1.0,
                                               color: Color(0xFFDBDBDB))),
                                       hintText: 'John Doe'),
-                                  // validator: (String? value) {
-                                  //   if (value!.isEmpty) {
-                                  //     return "Name cannot be empty";
-                                  //   }
-
-                                  //   return null;
-                                  // }
                                   ),
                             ])),
 
@@ -110,13 +103,6 @@ class _EditProfilePage extends State<EditProfile> {
                                               width: 1.0,
                                               color: Color(0xFFDBDBDB))),
                                       hintText: 'johndoe@isaveit.com'),
-                                  // validator: (String? value) {
-                                  //   if (value!.isEmpty) {
-                                  //     return "Email cannot be empty";
-                                  //   }
-
-                                  //   return null;
-                                  // }
                                   )
                             ])),
                     
@@ -191,13 +177,6 @@ class _EditProfilePage extends State<EditProfile> {
                                               width: 1.0,
                                               color: Color(0xFFDBDBDB))),
                                       hintText: 'Student'),
-                                  // validator: (String? value) {
-                                  //   if (value!.isEmpty) {
-                                  //     return "Occupation cannot be empty";
-                                  //   }
-
-                                  //   return null;
-                                  // }
                                   ),
                             ])),
 
@@ -224,21 +203,28 @@ class _EditProfilePage extends State<EditProfile> {
                     
                     const SizedBox(height: 32),
 
-                    //cancel text button
                     Container(
                       alignment: Alignment.center,
                       margin: const EdgeInsets.only(left: 30, right: 30),
-                      child: TextButton(
+                      child: ElevatedButton(
                           key: const Key("cancelEditProfile"),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
+                          style: ElevatedButton.styleFrom(
+                              minimumSize: const Size.fromHeight(48),
+                              elevation: 0,
+                              shadowColor: Colors.transparent,
+                              backgroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(48),
+                              )),
+                          onPressed: () => 
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ProfileView())), 
                           child: const Text('Cancel',
-                              style: TextStyle(
+                          style: TextStyle(
                                   fontFamily: 'Inter',
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.red))),
+                                  color: Colors.red)),
+                      )
                     ),
                     
                   ],
