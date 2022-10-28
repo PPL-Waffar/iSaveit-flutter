@@ -41,9 +41,10 @@ class _ProfileDetailPage extends State<ProfileView> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const SizedBox(height: 60),
-
+                    Row(
                     //Page Title
-                    Container(
+                    children: <Widget>[
+                      Container(
                       margin: const EdgeInsets.only(left: 20),
                       alignment: Alignment.topLeft,
                       child: const Text('Profile',
@@ -52,6 +53,12 @@ class _ProfileDetailPage extends State<ProfileView> {
                               fontSize: 16,
                               fontWeight: FontWeight.w700)),
                     ),
+                    const Spacer(),
+                    IconButton(onPressed: () => 
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const EditProfile())), 
+                           icon: const Icon(Icons.edit, color: Colors.black, size: 20))
+                    ]),
+
                     const SizedBox(height: 32),
                     
 
@@ -189,27 +196,7 @@ class _ProfileDetailPage extends State<ProfileView> {
                                   ),
                             ])),
                     
-                    const SizedBox(height: 32),
-
-                    // Edit Profile Button
-                    Container(
-                      alignment: Alignment.center,
-                      margin: const EdgeInsets.only(left: 30, right: 30),
-                      child: 
-                          ElevatedButton(
-                          key: const Key("editProfileButton"),
-                          style: ElevatedButton.styleFrom(
-                              minimumSize: const Size.fromHeight(48),
-                              elevation: 0,
-                              backgroundColor: const Color(0XFF4054FF),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(48),
-                              )),
-                          onPressed: () => 
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const EditProfile())), 
-                          child: const Text('Edit Profile'),
-                    )
-                    )
+                    const SizedBox(height: 32)
 
                   ]))
                     ),

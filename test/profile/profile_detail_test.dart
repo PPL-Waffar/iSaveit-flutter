@@ -17,7 +17,7 @@ void main() {
     final editEmail = find.byKey(const ValueKey("editEmail"));
     final birthDate = find.byKey(const ValueKey("birthDate"));
     final editOccupation = find.byKey(const ValueKey("editOccupation"));   
-    final editProfileButton = find.byKey(const ValueKey("editProfileButton")); 
+
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MaterialApp(
       home: ProfileView(),
@@ -42,8 +42,6 @@ void main() {
     final dateTextField = find.byIcon(Icons.calendar_today);
         await tester.tap(dateTextField);
 
-    await tester.tap(editProfileButton);
-    await tester.pump();
   });
 
 }
