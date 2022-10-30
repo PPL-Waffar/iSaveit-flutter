@@ -22,6 +22,7 @@ void main() {
     final addExpense = find.byKey(const ValueKey("addExpense"));
     final transactionDate = find.byKey(const ValueKey("transactionDate"));
     final addPaymentType = find.byKey(const ValueKey("addPaymentType"));
+    // final addPocketName = find.byKey(const ValueKey("addPocketName"));
     final createSubmitButton = find.byKey(const ValueKey("createSubmitButton"));
     final createCancelButton = find.byKey(const ValueKey("createCancelButton"));
 
@@ -43,10 +44,10 @@ void main() {
     await tester.enterText(transactionDate, "YYYY-MM-dd");
     await tester.pumpAndSettle();
     await tester.tap(addPaymentType);
-    // await tester.pumpAndSettle();
+    await tester.pumpAndSettle();
     // await tester.tap(addPocketName);
-    // await tester.pumpAndSettle();
-    // await tester.pump(const Duration(seconds: 2));
+    await tester.pumpAndSettle();
+    await tester.pump(const Duration(seconds: 2));
 
 
     // //test buttons

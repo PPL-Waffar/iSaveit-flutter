@@ -1,9 +1,12 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:isaveit/models/user.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
+
 
 Future<Map<String, dynamic>> sendNewUser(
     String transactionName, String transactionAmount, String transactionDate, String transacType, String paymentType, User user) async {
@@ -134,7 +137,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
                 children: [
                   Expanded(
                     child: TextFormField(
-                      key: const Key("transactionName"),
+                      key: const Key("addTransactionName"),
                       controller: transactionName,
                       decoration: const InputDecoration(
                         enabledBorder: OutlineInputBorder(
@@ -163,12 +166,19 @@ class CreateTransactionPage extends State<CreateTransaction> {
                   Expanded(
                     child: TextFormField(
                       controller: transactionAmount,
-                      key: const Key("transactionAmount"),
+                      key: const Key("addTransactionAmount"),
                       decoration: const InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
                           borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
                           hintText: 'Rp 0'),
+                          inputFormatters: <TextInputFormatter>[
+                            CurrencyTextInputFormatter(
+                              locale: 'id',
+                              decimalDigits: 0,
+                              symbol: 'Rp ',
+                            ),
+                          ],
                           keyboardType: TextInputType.number,),
                   ),
                 ],
@@ -189,7 +199,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
           padding: const EdgeInsets.only(left: 30, right: 30),
           child:Center( 
              child:TextField(
-                key: const Key("transactionDate"),
+                key: const Key("addTransactionDate"),
                 controller: transactionDate,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.calendar_today),
@@ -262,7 +272,6 @@ class CreateTransactionPage extends State<CreateTransaction> {
                                   color: Colors.black,
                                 ),
                               )),
-                          
                         ]),
                   ),
                 ],
@@ -332,64 +341,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
 
             const SizedBox(height: 32),
 
-            // const Padding(
-            //   padding: EdgeInsets.only(left: 30, right: 30),
-            //   child: Text(
-            //     'Pocket',
-            //     style: TextStyle(fontWeight: FontWeight.bold),
-            //   ),
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.only(left: 30, right: 30),
-            //   child: Row(
-            //     children: [
-            //       Expanded(
-            //         child: DropdownButtonFormField<String>(
-            //             key: const ValueKey("PocketName"),
-            //             style: const TextStyle(height: 0),
-            //             decoration: const InputDecoration(
-            //               fillColor: Color(0XFFF9F9F9),
-            //               enabledBorder: OutlineInputBorder(
-            //                   borderRadius:
-            //                       BorderRadius.all(Radius.circular(8.0)),
-            //                   borderSide:
-            //                       BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-            //               hintText: 'Enter your pocket',
-            //               filled: true,
-            //             ),
-            //             value: _pocketType,
-            //             onChanged: (String? value) => {_pocketType = value!},
-            //             items: const [
-            //               DropdownMenuItem<String>(
-            //                 value: "Groceries",
-            //                 child: Text(
-            //                   "Groceries",
-            //                   style: TextStyle(
-            //                     color: Colors.black,
-            //                   ),
-            //                 ),
-            //               ),
-            //               DropdownMenuItem(
-            //                   value: "Health",
-            //                   child: Text(
-            //                     "Health",
-            //                     style: TextStyle(
-            //                       color: Colors.black,
-            //                     ),
-            //                   )),
-            //               DropdownMenuItem(
-            //                   value: "Food And Beverages",
-            //                   child: Text(
-            //                     "Food And Beverages",
-            //                     style: TextStyle(
-            //                       color: Colors.black,
-            //                     ),
-            //                   )),
-            //             ]),
-            //       ),
-            //     ],
-            //   ),
-            // ),
+
             
             const SizedBox(height: 32),
 
@@ -438,6 +390,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
               padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
               child: Center(
                 child: TextButton(
+                  key: const Key("cancelTransaction"),
                   onPressed: () {
                     Navigator.pop(
                       context,
