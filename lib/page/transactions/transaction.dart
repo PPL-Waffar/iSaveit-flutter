@@ -19,7 +19,7 @@ class TransactionPage extends State<Transaction> {
       mainAxisAlignment: MainAxisAlignment.start,
      children : <Widget>[
       const SizedBox(
-        height: 300,
+        height: 250,
       ),
       AlertDialog(
       title: const Text('Input', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),),
