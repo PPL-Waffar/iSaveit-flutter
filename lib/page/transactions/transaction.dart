@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:isaveit/page/transactions/transaction_form.dart';
+import 'package:isaveit/page/transactions/create_borrow.dart';
 import 'package:isaveit/models/user.dart';
 
 // ignore: must_be_immutable
@@ -64,7 +65,13 @@ class TransactionPage extends State<Transaction> {
                   elevation: 0,
                   
                 ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            CreateBorrow(widget.user)));
+              },
               child: const Text('Borrow Transaction', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               )
               ),
