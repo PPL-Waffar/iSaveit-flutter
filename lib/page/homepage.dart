@@ -482,6 +482,10 @@ class HomePage extends State<HomeView> {
                 ),
               ),
             ),
+
+            const SizedBox(
+              height: 10,
+            ),
           ],
         ),
       ),
