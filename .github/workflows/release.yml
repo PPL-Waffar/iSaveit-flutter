@@ -2,11 +2,12 @@
 name: Release
 
 # Controls when the workflow will run
-on: 
+on:
   # Triggers the workflow on push events but only for the main branch
   push:
+
     branches: [staging]
-  
+
   # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "Build and Release APK"
@@ -17,7 +18,7 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
-      
+
       - name: Get version from pubspec.yaml
         id: version
         run: echo "::set-output name=version::$(grep "version:" pubspec.yaml | cut -c10-)"
@@ -32,13 +33,20 @@ jobs:
         uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-      
+
       - name: Get packages
         run: flutter packages get
+      - name: Install dependencies 
+        run: flutter pub get
 
-      - name: Analyze
-        run: flutter analyze
-              
+      - name: Test app
+        run: flutter test --coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1.0.2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage/lcov.info
+
       - name: Build APK
         run: flutter build apk --split-per-abi
 
@@ -55,3 +63,4 @@ jobs:
           name: 'v${{ steps.version.outputs.version }}'
           token: ${{ secrets.GH_TOKEN }}
           tag: ${{ steps.version.outputs.version }}
+        
