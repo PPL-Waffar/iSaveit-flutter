@@ -36,4 +36,8 @@ jobs:
         run: flutter analyze
               
       - name: Build APK
+<<<<<<< HEAD
         run: flutter build apk --split-per-abi
+=======
+        run: flutter build apk --split-per-abi
+>>>>>>> staging

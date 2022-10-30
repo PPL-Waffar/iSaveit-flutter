@@ -35,7 +35,7 @@ jobs:
       
       - name: Get packages
         run: flutter packages get
-      - name: Install dependencies 
+      - name: Install dependencies
         run: flutter pub get
 
       - name: Test app
@@ -52,5 +52,8 @@ jobs:
       - name: Get current date
         id: date
         run: echo "::set-output name=date::$(TZ='Asia/Jakarta' date +'%A %d-%m-%Y %T WIB')"
+<<<<<<< HEAD
+=======
     
         
+>>>>>>> staging

@@ -98,7 +98,6 @@ class CreateBorrowPage extends State<CreateBorrow> {
                             const SizedBox(height: 8),
                             TextFormField(
                               key: const Key("addPaymentName"),
-                              cursorWidth: 50,
                               decoration: const InputDecoration(
                                   enabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.all(Radius.circular(8.0)),

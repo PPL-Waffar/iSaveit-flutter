@@ -43,7 +43,7 @@ void main() {
 
     await tester.enterText(addEmail, "angel@gmail.com");
     await tester.enterText(addPassword, "ngelangel18");
-    
+
   });
 
 }

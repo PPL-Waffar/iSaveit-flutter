@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:isaveit/page/report/downloadreport.dart';
 import 'package:pie_chart/pie_chart.dart';
 
 class ReportView extends StatefulWidget {
@@ -242,9 +243,12 @@ class ReportPage extends State<ReportView> {
               const SizedBox(
                 height: 10,
               ),
-              const Text(
-                "This month's spending",
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+              Row(
+                children: const [
+                  Text("This month's spending"),
+                  SizedBox(width: 16,),
+                  DownloadReport()
+                ],
               ),
               const SizedBox(
                 height: 14,

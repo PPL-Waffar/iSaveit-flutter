@@ -1,3 +1,7 @@
+// // This is a basic Flutter widget test.
+// //
+// // To perform an interaction with a widget in your test, use the WidgetTester
+// // utility in the flutter_test package. For example, you can send tap and scroll
 // This is a basic Flutter widget test.
 //
 // To perform an interaction with a widget in your test, use the WidgetTester
@@ -51,8 +55,8 @@ void main() {
     //Test calendar widget
     await tester.enterText(transactionDate, "2022-10-02");
     final dateTextField = find.byIcon(Icons.calendar_today);
-        await tester.tap(dateTextField);
- 
+    await tester.tap(dateTextField);
+
     //Test transaction type widget
     final transacDropdown = find.byKey(const ValueKey('transactionType'));
       await tester.tap(transacDropdown);
