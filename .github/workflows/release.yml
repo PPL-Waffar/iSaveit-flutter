@@ -11,13 +11,13 @@ on:
 jobs:
   # This workflow contains a single job called "Build and Release APK"
   releases:
-    name: Build APK
+    name: Build and Release APK
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
-        
+      
       - name: Get version from pubspec.yaml
         id: version
         run: echo "::set-output name=version::$(grep "version:" pubspec.yaml | cut -c10-)"
@@ -35,25 +35,23 @@ jobs:
       
       - name: Get packages
         run: flutter packages get
-      - name: Install dependencies
-        run: flutter pub get
 
-      - name: Test app
-        run: flutter test --coverage
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1.0.2
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage/lcov.info
+      - name: Analyze
+        run: flutter analyze
               
       - name: Build APK
         run: flutter build apk --split-per-abi
-  
+
       - name: Get current date
         id: date
         run: echo "::set-output name=date::$(TZ='Asia/Jakarta' date +'%A %d-%m-%Y %T WIB')"
-<<<<<<< HEAD
-=======
-    
-        
->>>>>>> staging
+      
+      - name: Release APK
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          artifacts: "build/app/outputs/flutter-apk/*.apk"
+          body: 'Published at ${{ steps.date.outputs.date }}'
+          name: 'v${{ steps.version.outputs.version }}'
+          token: ${{ secrets.GH_TOKEN }}
+          tag: ${{ steps.version.outputs.version }}

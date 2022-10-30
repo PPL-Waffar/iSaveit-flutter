@@ -11,7 +11,7 @@ on:
 jobs:
   # This workflow contains a single job called "Build and Pre-Release APK"
   releases:
-    name: Build APK
+    name: Build and Pre-Release APK
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
@@ -36,8 +36,10 @@ jobs:
         run: flutter analyze
               
       - name: Build APK
-<<<<<<< HEAD
         run: flutter build apk --split-per-abi
-=======
-        run: flutter build apk --split-per-abi
->>>>>>> staging
+      
+      - name: Pre-release APK by uploading it to Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: APKS
+          path: build/app/outputs/flutter-apk/*.apk
