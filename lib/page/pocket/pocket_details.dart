@@ -3,255 +3,387 @@
 import 'package:flutter/material.dart';
 import 'package:isaveit/page/navbar.dart';
 import 'package:isaveit/page/pocket/edit_pocket.dart';
-
+import 'package:isaveit/models/user.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:async';
 import '../../models/user.dart';
+
+Future<Map<String, dynamic>> fetchGroups(User user, String pocketname) async {
+  String url =
+      'http://localhost:8000/transaction/view-transaction/?session_id=${user.sessionId}&input_pocketname=$pocketname';
+
+  try {
+    Map<String, String> headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+    Map<String, dynamic> body = {
+      'session_id': user.sessionId,
+      'input_pocketname': pocketname
+    };
+
+    final response = await http.post(
+      Uri.parse(url),
+      headers: headers,
+      body: jsonEncode(body),
+    );
+
+    List<dynamic> extractedData = jsonDecode(response.body);
+
+    // await Future.delayed(Duration(seconds: 10));
+    if (response.statusCode == 200) {
+      return {"isSuccessful": true, "data": extractedData, "error": null};
+    } else {
+      return {
+        "isSuccessful": false,
+        "data": extractedData,
+        "error": "An error has occurred"
+      };
+    }
+  } catch (error) {
+    return {
+      "isSuccessful": false,
+      "data": [],
+      "error": "Our web service is down."
+    };
+  }
+}
 
 class Pocket extends StatefulWidget {
   final User user;
-  const Pocket(this.user, {super.key});
+  final String pocketname;
+  final String pocketbudget;
+  const Pocket(this.user, this.pocketname, this.pocketbudget, {super.key});
 
   @override
   PocketPage createState() => PocketPage();
 }
 
-
 class PocketPage extends State<Pocket> {
+  List<dynamic> allpocket = [];
+  Map<String, dynamic> response = {};
+  late Timer _timer;
 
-   @override
+  void initState() {
+    super.initState();
+
+    _timer = Timer.periodic(Duration(seconds: 8), (timer) async {
+      await _intializeData();
+      if (mounted) {
+        setState(() {});
+      }
+    });
+  }
+
+  Future<void> _intializeData() async {
+    response = await fetchGroups(widget.user, widget.pocketname);
+    if (response["isSuccessful"]) {
+      allpocket = response["data"];
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-        icon: const Icon(Icons.arrow_back, color: Colors.black),
-        onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) =>  SettingView(widget.user)))),
-
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => SettingView(widget.user)))),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.edit),
             color: Colors.black,
-            onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) =>  EditPocket(widget.user))),
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => EditPocket(
+                    widget.user, widget.pocketname, widget.pocketbudget))),
           ),
-        ],  
+        ],
       ),
-
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Column(
-          children: [
-            Container(
-              alignment: Alignment.center,
-              child: const Center(
-                child: 
-                Text('Grocery Balance',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w500)
-                ),
-              )
+          children: <Widget>[
+            Column(
+              children: [
+                Container(
+                    alignment: Alignment.center,
+                    child: Center(
+                      child: Text('${widget.pocketname} Balance',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500)),
+                    )),
+                const SizedBox(height: 10),
+                Container(
+                  alignment: Alignment.center,
+                  child: Center(
+                    child: Text(widget.pocketbudget,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 32,
+                            fontWeight: FontWeight.w700)),
+                  ),
+                )
+              ],
             ),
-            const SizedBox(height: 10),
+            // height gap
+            const SizedBox(height: 32),
+
+            //divider line
             Container(
-              alignment: Alignment.center,
-              child: const Center(
-                child: 
-                Text('Rp 200.000',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontFamily: 'Inter', fontSize: 32, fontWeight: FontWeight.w700)
-                ),
+              margin: const EdgeInsets.only(left: 20, right: 20),
+              child: const Divider(
+                color: Color(0xFFDBDBDB),
+                height: 20,
+                thickness: 1,
+                indent: 0,
+                endIndent: 0,
               ),
-            )
+            ),
+
+            const SizedBox(height: 24),
+
+            //display budget and expense card
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Container(
+                padding: const EdgeInsets.all(15),
+                width: 164,
+                height: 90,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFDFE2FF),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: SingleChildScrollView(
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                      //Text for budget
+                      Text('Budget',
+                          style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFF4054FF))),
+                      SizedBox(height: 5),
+                      //Text for amount of money
+                      Text('Rp 200.000',
+                          style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500)),
+                    ])),
+              ),
+              const SizedBox(width: 20),
+              Container(
+                  padding: const EdgeInsets.all(15),
+                  width: 164,
+                  height: 90,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFDFE2FF),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: SingleChildScrollView(
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                        //Text for budget
+                        Text('Expense',
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 24,
+                                fontWeight: FontWeight.w700,
+                                color: Color(0xFF4054FF))),
+                        SizedBox(height: 5),
+                        //Text for amount of money
+                        Text('Rp 40.000',
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500)),
+                      ])))
+            ]),
+
+            const SizedBox(height: 24),
+
+            //divider line
+            Container(
+              margin: const EdgeInsets.only(left: 20, right: 20),
+              child: const Divider(
+                color: Color(0xFFDBDBDB),
+                height: 20,
+                thickness: 1,
+                indent: 0,
+                endIndent: 0,
+              ),
+            ),
+
+            const SizedBox(height: 24),
+
+            //transaction text
+            Container(
+              alignment: Alignment.centerLeft,
+              margin: const EdgeInsets.only(left: 20),
+              child: const Text('Grocery transactions',
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700)),
+            ),
+
+            const SizedBox(height: 24),
+
+            FutureBuilder(
+                future: _intializeData(),
+                builder: (context, snapshot) {
+                  return Container(
+                      child: Column(children: [
+                    if (allpocket.length == 0)
+                      SizedBox(
+                        child: Image.asset('assets/images/empty_wallet.png',
+                            width: 250, height: 250),
+                      )
+                    else
+                      for (int i = 0; i < allpocket.length; i++)
+
+                        // ignore: prefer_is_empt
+
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                          child: SizedBox(
+                            child: Row(children: [
+                              Flexible(
+                                child: new Container(
+                                  height: 46,
+                                  width: 200,
+                                  padding: new EdgeInsets.only(left: 20.0),
+                                  child: RichText(
+                                    text: TextSpan(
+                                        style:
+                                            DefaultTextStyle.of(context).style,
+                                        children: <TextSpan>[
+                                          TextSpan(
+                                              text: allpocket[i][
+                                                      "transaction_payment_name"] +
+                                                  '\n',
+                                              style: TextStyle(
+                                                fontSize: 14.0,
+                                                fontFamily: 'Roboto',
+                                                color: Color(0xFF212121),
+                                                fontWeight: FontWeight.bold,
+                                              )),
+                                          TextSpan(
+                                              text: allpocket[i][
+                                                  "transaction_transaction_type"],
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: Color(0xff979C9E),
+                                                  fontWeight: FontWeight.w700))
+                                        ]),
+                                  ),
+                                ),
+                              ),
+                              if (allpocket[i]["transaction_payment_type"] ==
+                                  "Expense")
+                                Container(
+                                  height: 46,
+                                  width: 200,
+                                  padding:
+                                      const EdgeInsets.fromLTRB(90, 0, 17, 0),
+                                  child: Text(
+                                      allpocket[i]["transaction_amount"],
+                                      style: TextStyle(
+                                          color: Colors.red,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500)),
+                                )
+                              else
+                                Container(
+                                  height: 46,
+                                  width: 200,
+                                  padding:
+                                      const EdgeInsets.fromLTRB(90, 0, 17, 0),
+                                  child: Text(
+                                      allpocket[i]["transaction_amount"],
+                                      style: TextStyle(
+                                          color: Colors.green,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500)),
+                                ),
+                            ]),
+                          ),
+                        ),
+                  ]));
+                }),
+
+            // SizedBox(
+            //   height: 14,
+            // ),
+            // Container(
+            //   padding: const EdgeInsets.fromLTRB(17, 0, 16, 0),
+            //   child: const MySeparator(),
+            // ),
+            // SizedBox(
+            //   height: 24,
+            // ),
+            // SizedBox(
+            //   child: Row(children: [
+            //     // Flexible(
+            //     //   child: new Container(
+            //     //     height: 46,
+            //     //     width: 200,
+            //     //     padding: new EdgeInsets.only(left: 20.0),
+            //     //     child: RichText(
+            //     //       text: TextSpan(
+            //     //           style: DefaultTextStyle.of(context).style,
+            //     //           children: const <TextSpan>[
+            //     //             TextSpan(
+            //     //                 text: 'Patungan Potluck\n',
+            //     //                 style: TextStyle(
+            //     //                   fontSize: 14.0,
+            //     //                   fontFamily: 'Roboto',
+            //     //                   color: Color(0xFF212121),
+            //     //                   fontWeight: FontWeight.bold,
+            //     //                 )),
+            //     //             TextSpan(
+            //     //                 text: 'Credit card',
+            //     //                 style: TextStyle(
+            //     //                     fontSize: 12,
+            //     //                     color: Color(0xff979C9E),
+            //     //                     fontWeight: FontWeight.w700))
+            //     //           ]),
+            //     //     ),
+            //     //   ),
+            //     // ),
+            //     Container(
+            //       height: 46,
+            //       width: 200,
+            //       padding: const EdgeInsets.fromLTRB(90, 0, 17, 0),
+            //       child: const Text('+Rp 120.000',
+            //           style: TextStyle(
+            //               color: Colors.green,
+            //               fontSize: 14,
+            //               fontWeight: FontWeight.w500)),
+            //     ),
+            //   ]),
+            // ),
+            Container(
+              padding: const EdgeInsets.fromLTRB(17, 0, 16, 0),
+              child: const MySeparator(),
+            ),
           ],
-    ),
-    // height gap
-    const SizedBox(height: 32),
-
-    //divider line
-    Container(
-      margin: const EdgeInsets.only(left: 20, right: 20),
-      child: const Divider(
-        color: Color(0xFFDBDBDB),
-        height: 20,
-        thickness: 1,
-        indent: 0,
-        endIndent: 0,
-      ),
-    ),
-
-    const SizedBox(height: 24),
-
-    //display budget and expense card
-    Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          padding: const EdgeInsets.all(15),
-          width: 164,
-          height: 90,
-          decoration: BoxDecoration(
-          color: const Color(0xFFDFE2FF),
-          borderRadius: BorderRadius.circular(8),
-          ),
-          child:SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                //Text for budget
-                Text('Budget',
-                style: TextStyle(fontFamily: 'Inter', fontSize: 24, 
-                  fontWeight: FontWeight.w700, color: Color(0xFF4054FF))
-                ),
-                SizedBox(height: 5),
-                //Text for amount of money
-                Text('Rp 200.000',
-                style: TextStyle(fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.w500)
-                ),
-              ]
-            )
         ),
-        ),
-        const SizedBox(width: 20),
-        Container(
-          padding: const EdgeInsets.all(15),
-          width: 164,
-          height: 90,
-          decoration: BoxDecoration(
-            color: const Color(0xFFDFE2FF),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child:SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                //Text for budget
-                Text('Expense',
-                style: TextStyle(fontFamily: 'Inter', fontSize: 24, 
-                  fontWeight: FontWeight.w700, color: Color(0xFF4054FF))
-                ),
-                SizedBox(height: 5),
-                //Text for amount of money
-                Text('Rp 40.000',
-                style: TextStyle(fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.w500)
-                ),
-              ]
-            )
-          )
-        )
-      ]
-    ),
-
-    const SizedBox(height: 24),
-
-
-    //divider line
-    Container(
-      margin: const EdgeInsets.only(left: 20, right: 20),
-      child: const Divider(
-        color: Color(0xFFDBDBDB),
-        height: 20,
-        thickness: 1,
-        indent: 0,
-        endIndent: 0,
       ),
-    ),
-
-    const SizedBox(height: 24),
-
-    //transaction text
-    Container(
-      alignment: Alignment.centerLeft,
-      margin: const EdgeInsets.only(left: 20),
-      child: const Text('Grocery transactions',
-      style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)
-      ),
-    ),
-
-    const SizedBox(height: 24),
-    
-    Container(),
-    //empty wallet
-    // SizedBox(
-    //   child: Image.asset( 'assets/images/empty_wallet.png',
-    //   width: 250, height: 250),
-    // )
-    SizedBox(
-      child: Row(children: [
-        Flexible(
-          child: new Container(
-            height: 46,
-            width: 200,
-          padding: new EdgeInsets.only(left: 20.0),
-          child: RichText(
-            text: TextSpan(
-              style: DefaultTextStyle.of(context).style,
-              children: const <TextSpan>[
-              TextSpan(text: 'Belanja September minggu kedua\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121),fontWeight: FontWeight.bold,)), 
-              TextSpan(text: 'Debit card', style: TextStyle(fontSize: 12, color: Color(0xff979C9E), fontWeight: FontWeight.w700))
-              ]
-            ),
-          ),
-          ),
-        ),
-        Container(
-          height: 46,
-          width: 200,
-          padding: const EdgeInsets.fromLTRB(90, 0, 17, 0),
-          child: const Text('-Rp 120.000', style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
-        ),
-        ]
-      ),
-    ),
-    SizedBox(height: 14,),
-    Container(
-      padding: const EdgeInsets.fromLTRB(17, 0, 16, 0),
-      child: const MySeparator(),
-    ),
-    SizedBox(height: 24,),
-     SizedBox(
-      child: Row(children: [
-        Flexible(
-          child: new Container(
-            height: 46,
-            width: 200,
-          padding: new EdgeInsets.only(left: 20.0),
-          child: RichText(
-            text: TextSpan(
-              style: DefaultTextStyle.of(context).style,
-              children: const <TextSpan>[
-              TextSpan(text: 'Patungan Potluck\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121),fontWeight: FontWeight.bold,)), 
-              TextSpan(text: 'Credit card', style: TextStyle(fontSize: 12, color: Color(0xff979C9E), fontWeight: FontWeight.w700))
-              ]
-            ),
-          ),
-          ),
-        ),
-        Container(
-          height: 46,
-          width: 200,
-          padding: const EdgeInsets.fromLTRB(90, 0, 17, 0),
-          child: const Text('+Rp 120.000', style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)),
-        ),
-        ]
-      ),
-    ),
-    Container(
-      padding: const EdgeInsets.fromLTRB(17, 0, 16, 0),
-      child: const MySeparator(),
-    ),
-    
-
-        ],
-      ),
-      ),
-    );    
+    );
   }
 }
-
 
 class MySeparator extends StatelessWidget {
   const MySeparator({Key? key, this.height = 1, this.color = Colors.black})
@@ -284,4 +416,3 @@ class MySeparator extends StatelessWidget {
     );
   }
 }
-    

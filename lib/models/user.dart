@@ -7,8 +7,8 @@ class User {
 
   User(
       {required this.sessionId,
-      required this.datetime,
+      this.datetime,
       this.isCitizen,
       required this.email,
-      required this.name});
+      this.name});
 }
