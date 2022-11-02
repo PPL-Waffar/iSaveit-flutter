@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'plannedpaymentdetails.dart';
 import 'package:intl/intl.dart';
 
 class Editplannedpayment extends StatefulWidget{
@@ -226,10 +227,10 @@ class EditplannedpaymentState extends State<Editplannedpayment> {
                         )
                     ),
                     onPressed: () => {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => const Plannedpaymentdetails()))
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Plannedpaymentdetails()))
                     },
                     child: const Text('Edit Planned Payment', style: TextStyle(color: Colors.white),
                     )
@@ -279,10 +280,10 @@ class EditplannedpaymentState extends State<Editplannedpayment> {
                   child: TextButton(
                     key: const Key("cancelEditPocket"),
                     onPressed: () {
-                    // Navigator.push(
-                    // context,
-                    // MaterialPageRoute(builder: (context) => const Plannedpaymentdetails()),
-                    //  );
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Plannedpaymentdetails()),
+                     );
                    },
                   child: const Text(
                           'Cancel',

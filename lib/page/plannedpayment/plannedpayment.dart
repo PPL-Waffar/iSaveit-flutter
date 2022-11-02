@@ -4,64 +4,15 @@ import 'package:isaveit/page/navbar.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:isaveit/models/user.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'dart:async';
-import "package:flutter/material.dart";
-import 'dart:async';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:isaveit/page/navbar.dart';
 // import 'package:dropdownfield/dropdownfield.dart';
 
-Future<Map<String, dynamic>> fetchGroups(User user) async {
-  String url =
-      'http://localhost:8000/pocket/get-pocket/?session_id=${user.sessionId}';
 
-  try {
-    
-    Map<String, String> headers = {
-      'Content-Type': 'application/json; charset=UTF-8',
-    };
-    Map<String, dynamic> body = {'session_id': user.sessionId};
-
-    final response = await http.post(
-      Uri.parse(url),
-      headers: headers,
-      body: jsonEncode(body),
-    );
-
-    List<dynamic> extractedData = jsonDecode(response.body);
-
-    // await Future.delayed(Duration(seconds: 10));
-    if (response.statusCode == 200) {
-      return {"isSuccessful": true, "data": extractedData, "error": null};
-    } else {
-      return {
-        "isSuccessful": false,
-        "data": extractedData,
-        "error": "An error has occurred"
-      };
-    }
-  } catch (error) {
-    return {
-      "isSuccessful": false,
-      "data": [],
-      "error": "Our web service is down."
-    };
-  }
-}
-
-Future<Map<String, dynamic>> sendNewUser(String payname, String payamount,
-    String paydate, String paytype, String _valPocket, User user) async {
+Future<Map<String, dynamic>> sendNewUser(
+    String payname, String payamount, String paydate, String paytype, User user) async {
   // const url = 'http://127.0.0.1:8000/payment/flu-add-payment/';
-  const url = 'http://localhost:8000/payment/flu-add-payment/';
+  const url = 'https://isaveit-staging.herokuapp.com/payment/flu-add-payment/';
 
   try {
-    
     final response = await http.post(
       Uri.parse(url),
       headers: <String, String>{
@@ -72,7 +23,6 @@ Future<Map<String, dynamic>> sendNewUser(String payname, String payamount,
         'input_payamount': payamount,
         'input_paydate': paydate,
         'input_paymentchoice': paytype,
-        'input_paycategories': _valPocket,
         'session_id': user.sessionId,
       }),
     );
@@ -88,7 +38,6 @@ Future<Map<String, dynamic>> sendNewUser(String payname, String payamount,
     return {'isSuccessful': false, 'error': ''};
   }
 }
-
 //ignore: must_be_immutable
 class PlannedPayment extends StatefulWidget {
   User user;
@@ -100,36 +49,18 @@ class PlannedPayment extends StatefulWidget {
 }
 
 class _CreatePlannedPayment extends State<PlannedPayment> {
+
   // String _adminType = "Debit";
-  List allpocket = [];
-  String? _valPocket;
   final _formKey = GlobalKey<FormState>();
-  late Timer _timer;
+
   TextEditingController dateinput = TextEditingController();
-  String paytype = "debit card";
-  Map<String, dynamic> response = {};
+  String paytype= "debit card";
   // String _pocketType = "Groceries";
   @override
   void initState() {
-    super.initState();
-
-    _timer = Timer.periodic(Duration(seconds: 2), (timer) async {
-      await _intializeData();
-      if (mounted) {
-        setState(() {});
-      }
-    });
     dateinput.text = ""; //set the initial value of text field
     super.initState();
   }
-
-  Future<void> _intializeData() async {
-    response = await fetchGroups(widget.user);
-    if (response["isSuccessful"]) {
-      allpocket = response["data"];
-    }
-  }
-
   TextEditingController payname = TextEditingController();
   TextEditingController payamount = TextEditingController();
   TextEditingController paydate = TextEditingController();
@@ -138,7 +69,7 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
   bool? isSuccessful;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -149,24 +80,17 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
               icon: const Icon(Icons.arrow_back, color: Colors.black),
               onPressed: () => Navigator.of(context).pop()),
         ),
-        body: SingleChildScrollView(
+        body:
+        SingleChildScrollView(
           child: Form(
               key: _formKey,
               // padding: const EdgeInsets.only(left: 30, right: 30),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Create your planned payment',
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700)),
+                    const Text('Create your planned payment', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
                     const SizedBox(height: 32),
-                    const Text('Payment Name',
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700)),
+                    const Text('Payment Name', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
                     const SizedBox(height: 8),
                     TextFormField(
                       controller: payname,
@@ -174,83 +98,62 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                       cursorWidth: 50,
                       decoration: const InputDecoration(
                           enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8.0)),
-                              borderSide: BorderSide(
-                                  width: 1.0, color: Color(0xFFDBDBDB))),
+                              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                              borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
                           hintText: 'Enter your payment'),
                       keyboardType: TextInputType.number,
                     ),
 
                     const SizedBox(height: 32),
 
-                    const Text('Expense',
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700)),
+                    const Text('Expense', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
                     const SizedBox(height: 8),
                     TextFormField(
                       controller: payamount,
                       key: const Key("addExpense"),
                       decoration: const InputDecoration(
                           enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8.0)),
-                              borderSide: BorderSide(
-                                  width: 1.0, color: Color(0xFFDBDBDB))),
+                              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                              borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
                           hintText: 'Rp 0'),
                       keyboardType: TextInputType.number,
                     ),
 
                     const SizedBox(height: 32),
 
-                    const Text('Date',
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700)),
+                    const Text('Date', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
                     const SizedBox(height: 8),
                     Container(
                         padding: const EdgeInsets.only(),
-                        child: Center(
-                            child: TextField(
-                          key: const Key("transactionDate"),
-                          controller: dateinput,
-                          cursorWidth: 50,
-                          decoration: const InputDecoration(
-                              prefixIcon: Icon(Icons.calendar_today),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8.0)),
-                                  borderSide: BorderSide(
-                                      width: 1.0, color: Color(0xFFDBDBDB))),
-                              hintText: 'YYYY-MM'),
-                          readOnly:
-                              true, //set it true, so that user will not able to edit text
-                          onTap: () async {
-                            DateTime? pickedDate = await showDatePicker(
-                                context: context,
-                                initialDate: DateTime.now(),
-                                firstDate: DateTime(
-                                    2000), //DateTime.now() - not to allow to choose before today.
-                                lastDate: DateTime(2101));
-                            if (pickedDate != null) {
-                              String formattedDate =
-                                  DateFormat('yyyy-MM-dd').format(pickedDate);
-                              setState(() {
-                                dateinput.text =
-                                    formattedDate; //set output date to TextField value.
-                              });
-                            } else {}
-                          },
-                        ))),
+                        child:Center(
+                            child:TextField(
+                              key: const Key("transactionDate"),
+                              controller: dateinput,
+                              cursorWidth: 50,
+                              decoration: const InputDecoration(
+                                  prefixIcon: Icon(Icons.calendar_today),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                      borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                                  hintText: 'YYYY-MM'),
+                              readOnly: true,  //set it true, so that user will not able to edit text
+                              onTap: () async {
+                                DateTime? pickedDate = await showDatePicker(
+                                    context: context, initialDate: DateTime.now(),
+                                    firstDate: DateTime(2000), //DateTime.now() - not to allow to choose before today.
+                                    lastDate: DateTime(2101)
+                                );
+                                if(pickedDate != null ){
+                                  String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
+                                  setState(() {
+                                    dateinput.text = formattedDate; //set output date to TextField value.
+                                  });
+                                }else{
+                                }
+                              },
+                            ))),
                     const SizedBox(height: 24),
-                    const Text('Type of Payment',
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700)),
+                    const Text('Type of Payment', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
                     const SizedBox(height: 8),
                     Padding(
                       padding: const EdgeInsets.only(),
@@ -264,16 +167,14 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                                 decoration: const InputDecoration(
                                   fillColor: Color(0XFFF9F9F9),
                                   enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(8.0)),
-                                      borderSide: BorderSide(
-                                          width: 1.0,
-                                          color: Color(0xFFDBDBDB))),
+                                      borderRadius:
+                                      BorderRadius.all(Radius.circular(8.0)),
+                                      borderSide:
+                                      BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
                                   hintText: 'Enter your payment method',
                                   filled: true,
                                 ),
-                                onChanged: (String? value) =>
-                                    {paytype = value!},
+                                onChanged: (String? value) => {paytype = value!},
                                 items: const [
                                   DropdownMenuItem<String>(
                                     value: "debit card",
@@ -303,48 +204,6 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                                 ]),
                           ),
                         ],
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    const Text('Type of Pocketr',
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700)),
-                    const SizedBox(height: 24),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 0, right: 0),
-                      child: DropdownButtonFormField(
-                        style: const TextStyle(height: 0),
-                        decoration: const InputDecoration(
-                          fillColor: Color(0XFFF9F9F9),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8.0)),
-                              borderSide: BorderSide(
-                                  width: 1.0, color: Color(0xFFDBDBDB))),
-                          hintText: 'Enter your pocket name',
-                          filled: true,
-                        ),
-                        key: const ValueKey("PocketType"),
-                        items: allpocket.map((item) {
-                          return DropdownMenuItem(
-                            // ignore: sort_child_properties_last
-                            child: Text(item['pocket_name'],
-                                // ignore: prefer_const_constructors
-                                style: TextStyle(
-                                  color: Colors.black,
-                                )),
-                            value: item['pocket_name'].toString(),
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(() {
-                            _valPocket = value;
-                          });
-                        },
-                        value: _valPocket,
-                        isExpanded: true,
                       ),
                     ),
                     // const SizedBox(height: 24),
@@ -411,9 +270,9 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                             minimumSize: const Size.fromHeight(48),
                             elevation: 0,
                             backgroundColor: const Color(0XFF4054FF),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(48),
-                            )),
+                            shape:
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(48),)),
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
                             fetchedResult = await sendNewUser(
@@ -421,7 +280,6 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                                 payamount.text,
                                 paydate.text,
                                 paytype,
-                                _valPocket!,
                                 widget.user);
                             isSuccessful = fetchedResult!['isSuccessful'];
                             if (isSuccessful == true) {
@@ -431,13 +289,14 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                               // ignore: use_build_context_synchronously
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
-                                      content: Text(
-                                          'Failed to create planned payment')));
+                                      content:
+                                      Text('Failed to create planned payment')));
                             }
                           }
                         },
                         child: const Text('Create Planned Payment',
-                            style: TextStyle(color: Colors.white)),
+                            style: TextStyle(color: Colors.white)
+                        ),
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -447,27 +306,29 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                       child: ElevatedButton(
                         key: const Key("createCancelButton"),
                         style: ElevatedButton.styleFrom(
-                            minimumSize: const Size.fromHeight(48),
-                            backgroundColor: Colors.white70,
+                            minimumSize: const Size.fromHeight(48), backgroundColor: Colors.white70,
                             elevation: 0,
                             // backgroundColor: const Color(0xffb74093),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(48),
-                            )),
+                            shape:
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(48),)),
                         // style: ElevatedButton.styleFrom(
                         //     primary: Colors.white70,),
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => SettingView(widget.user)),
+                            MaterialPageRoute(builder: (context) => SettingView(widget.user)),
                           );
                         },
                         child: const Text('Cancel',
-                            style: TextStyle(color: Color(0xFFD3180C))),
+                            style: TextStyle(color: Color(0xFFD3180C))
+                        ),
                       ),
                     ),
-                  ])),
-        ));
+                  ]
+              )
+          ),
+        )
+    );
   }
 }

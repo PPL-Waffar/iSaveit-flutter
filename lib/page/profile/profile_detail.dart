@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:isaveit/page/profile/feedback.dart';
 
 import 'edit_profile.dart';
 
@@ -196,9 +197,26 @@ class _ProfileDetailPage extends State<ProfileView> {
                                   ),
                             ])),
                     
-                    const SizedBox(height: 32)
-
-                  ]))
+                    const SizedBox(height: 32),
+                   SizedBox(
+                      height: 48,
+                      width: 327,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        backgroundColor: const Color(0xff4054FF),
+                        shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8))),
+                        onPressed: () => {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> FeedbackPage()))
+                        },
+                        child: Text('See Feedback', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),),
+                      ),
+                    ),
+                  ]
+                  )
+                  ),
+              
                     ),
                   );
   }

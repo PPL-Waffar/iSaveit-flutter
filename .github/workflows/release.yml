@@ -2,7 +2,7 @@
 name: Release
 
 # Controls when the workflow will run
-on: 
+on:
   # Triggers the workflow on push events but only for the main branch
   push:
     branches: [PBI-26-Delete_feedback_report]
@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
-        
+
       - name: Get version from pubspec.yaml
         id: version
         run: echo "::set-output name=version::$(grep "version:" pubspec.yaml | cut -c10-)"
@@ -32,10 +32,10 @@ jobs:
         uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-      
+
       - name: Get packages
         run: flutter packages get
-      - name: Install dependencies
+      - name: Install dependencies 
         run: flutter pub get
 
       - name: Test app
@@ -45,10 +45,10 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ./coverage/lcov.info
-              
+
       - name: Build APK
         run: flutter build apk --split-per-abi
-  
+
       - name: Get current date
         id: date
         run: echo "::set-output name=date::$(TZ='Asia/Jakarta' date +'%A %d-%m-%Y %T WIB')"
