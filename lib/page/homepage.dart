@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:isaveit/page/feedback/read_feedback.dart';
 import 'package:isaveit/page/plannedpayment/plannedpaymentdetails.dart';
 import 'package:isaveit/page/pocket/create_pocket.dart';
 import 'package:isaveit/models/user.dart';
@@ -126,7 +127,7 @@ class HomePage extends State<HomeView> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  const Plannedpaymentdetails()))
+                                  const ReadFeedback()))
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xffDFE2FF),
