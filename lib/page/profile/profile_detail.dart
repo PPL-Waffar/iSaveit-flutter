@@ -208,9 +208,9 @@ class _ProfileDetailPage extends State<ProfileView> {
                         shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8))),
                         onPressed: () => {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> FeedbackPage()))
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> const FeedbackPage()))
                         },
-                        child: Text('See Feedback', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),),
+                        child: const Text('See Feedback', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),),
                       ),
                     ),
                   ]

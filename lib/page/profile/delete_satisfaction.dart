@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:isaveit/page/profile/feedback.dart';
 
 class DeleteFeedback extends StatefulWidget {
-  DeleteFeedback({super.key});
+  const DeleteFeedback({super.key});
   @override
+  // ignore: library_private_types_in_public_api
   _DeleteFeedback createState() => _DeleteFeedback();
 }
 
@@ -17,10 +18,12 @@ class _DeleteFeedback extends State<DeleteFeedback> {
         children : <Widget>[
         
         AlertDialog(
-          title: const Text('Delete Feedback', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),),
-          content: Text('Are you sure you want to delete this feedback report?'),
+          title: const Text('Delete Satisfaction Report', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),),
+          content: const Text('Are you sure you want to delete a report card that is more than 4 months old?'),
           actions: <Widget>[
-            Container(
+            Column(
+              children: [
+                Container(
               height: 48,
               width: 327,
               decoration:BoxDecoration(borderRadius: BorderRadius.circular(12), color: const Color(0xff4054FF),),
@@ -33,7 +36,7 @@ class _DeleteFeedback extends State<DeleteFeedback> {
                 context,
                 MaterialPageRoute(
                   builder: (context) =>
-                  FeedbackPage()));},
+                  const FeedbackPage()));},
                 child: const Text('Yes', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 )
               ),
@@ -49,6 +52,9 @@ class _DeleteFeedback extends State<DeleteFeedback> {
               style: TextStyle(color: Colors.red),
             ),
           ),
+              ],
+            )
+            
         ],
       ),
       ]

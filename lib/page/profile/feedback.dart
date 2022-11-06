@@ -1,12 +1,13 @@
-import 'package:isaveit/page/profile/delete_feedback.dart';
-import 'package:meta/meta.dart';
+// ignore_for_file: unnecessary_new
+
+import 'package:isaveit/page/profile/delete_satisfaction.dart';
 
 import 'package:flutter/material.dart';
 
 class Feedback extends StatefulWidget {
   final String text;
 
-  const Feedback({required this.text});
+  const Feedback({super.key, required this.text});
 
   @override
   DescriptionFeedback createState() => DescriptionFeedback();
@@ -75,20 +76,20 @@ class FeedbackPage extends StatelessWidget {
         body: SingleChildScrollView(
             child: Column(children: [
           Padding(
-            padding: EdgeInsets.all(12),
+            padding: const EdgeInsets.all(12),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Feedback Report', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),),
-                      SizedBox(height: 15,),
-                      Text(
+                      const Text('Feedback Report', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),),
+                      const SizedBox(height: 15,),
+                      const Text(
                         'John Doe',
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
@@ -103,7 +104,7 @@ class FeedbackPage extends StatelessWidget {
                           endIndent: 0,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Center(
@@ -121,9 +122,9 @@ class FeedbackPage extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => DeleteFeedback()))
+                                      builder: (context) => const DeleteFeedback()))
                             },
-                            child: Text(
+                            child: const Text(
                               'Delete Feedback',
                               style: TextStyle(
                                   fontSize: 16,
@@ -133,7 +134,7 @@ class FeedbackPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       Padding(
