@@ -110,28 +110,9 @@ class FeedbackPage extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      Center(
+                      const Center(
                         child: 
-                        SizedBox(
-                          height: 48,
-                          width: 327,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                backgroundColor: const Color(0xff4054FF),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8))),
-                            onPressed: () => {Navigator.push(context,MaterialPageRoute(builder: (context) =>  const DeleteFeedback()))
-                            },
-                            child: const Text(
-                              'Delete Feedback',
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white),
-                            ),
-                          ),
-                        ),
+                        DeleteReport()
                       ),
                       const SizedBox(
                         height: 15,

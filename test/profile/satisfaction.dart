@@ -3,12 +3,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:isaveit/page/profile/feedback.dart';
 
 void main() {
-  testWidgets('Delete Satisfaction', (WidgetTester tester) async {
+  testWidgets('Satisfaction Report', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MaterialApp(
+
+    await tester.pumpWidget( const MaterialApp(
       home: FeedbackPage(),
     ));
 
+    
     expect(find.text('Delete Satisfaction Report'), findsNothing);
     expect(find.text('Feedback Report'), findsOneWidget);
     await tester.pump();

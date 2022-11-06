@@ -1,65 +1,62 @@
 import 'package:flutter/material.dart';
-import 'package:isaveit/page/profile/feedback.dart';
 
-class DeleteFeedback extends StatefulWidget {
-  const DeleteFeedback({super.key});
+// ignore: must_be_immutable
+class DeleteReport extends StatefulWidget {
+  const DeleteReport({super.key});
   @override
-  
-  DeleteFeedbacks createState() => DeleteFeedbacks();
+  DeleteReportPage createState() => DeleteReportPage();
 }
 
-class DeleteFeedbacks extends State<DeleteFeedback> {
+class DeleteReportPage extends State<DeleteReport> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body :Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-        children : <Widget>[
-        AlertDialog(
-          title: const Text('Delete Satisfaction Report', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),),
-          content: const Text('Are you sure you want to delete a report card that is more than 4 months old?'),
-          actions: <Widget>[
-            Column(
-              children: [
-            Container(
-          height: 52,
-          width: 384,
-          decoration:BoxDecoration(borderRadius: BorderRadius.circular(12), color: const Color(0xff4054FF),),
-          child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xff4054FF),
-                  elevation: 0,
-                ),
-              onPressed: () { Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const FeedbackPage()));},
-              child: const Text('Yes', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-              )
-              ),
+    return Row(
+        children: [
+        SizedBox(
+          width: 327,
+          height: 48,
+          
+        child:
+          ElevatedButton(
             
-        ),
-        const SizedBox(height: 15,),
-        
-        TextButton(
-        // <-- TextButton
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        child: const Text(
-          'Cancel',
-          style: TextStyle(color: Colors.red),
-        ),
-      ),
-      ],
-            )
-            
-        ],
-      ),
-      ]
-      ),
-    );  
+        key: const Key("DeleteButton"),
+            onPressed: () {
+              showDialog<String>(
+                context: context,
+                builder: (BuildContext context) =>
+                    AlertDialog(
+                      title: const Text('Delete Satisfaction Report'),
+                      content: const Text(
+                          'Are you sure you want to delete a report card that is more than 4 months old?'),
+                      actions: <Widget>[
+                        TextButton(
+                          key: const Key("cancelDeleteReport"),
+                          onPressed: () => Navigator.pop(context, 'Cancel'),
+                          child: const Text('Cancel',
+                              style: TextStyle(color: Color(0xFFD3180C))),
+                        ),
+                        const SizedBox(height: 8),
+                        TextButton(
+                          key: const Key("DeleteReport"),
+                          onPressed: () => Navigator.pop(context, 'Yes'),
+                          child: const Text('Yes',
+                              style: TextStyle(color: Color(0xFF26A69A))),
+                        ),
+                      ],
+                    ),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+              backgroundColor: const Color(0xff4054FF),
+            ),
+            child: const Text('Delete Report', style: TextStyle(fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white),)
+    )
+    )
+    ]
+    );
   }
 }
+
