@@ -5,6 +5,8 @@ import 'package:isaveit/page/profile/delete_satisfaction.dart';
 import 'package:flutter/material.dart';
 
 class Feedback extends StatefulWidget {
+  
+  
   final String text;
 
   const Feedback({super.key, required this.text});
@@ -70,6 +72,7 @@ class FeedbackPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
         backgroundColor: Colors.white,
         
@@ -118,11 +121,7 @@ class FeedbackPage extends StatelessWidget {
                                 backgroundColor: const Color(0xff4054FF),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8))),
-                            onPressed: () => {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const DeleteFeedback()))
+                            onPressed: () => {Navigator.push(context,MaterialPageRoute(builder: (context) =>  const DeleteFeedback()))
                             },
                             child: const Text(
                               'Delete Feedback',
@@ -142,8 +141,7 @@ class FeedbackPage extends StatelessWidget {
                         child: Center(
                           child: TextButton(
                             key: const Key("cancel"),
-                            onPressed: () {
-                              Navigator.pop(context);},
+                            onPressed: () {Navigator.pop(context);},
                             child: const Text(
                               'Cancel',
                               style: TextStyle(color: Colors.red),

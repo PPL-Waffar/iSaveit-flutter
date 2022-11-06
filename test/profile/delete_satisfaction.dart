@@ -15,31 +15,11 @@ void main() {
 
     expect(find.text('Yes'), findsOneWidget);
 
-    await tester.pumpWidget(
-      Directionality(
-        textDirection: TextDirection.ltr,
-        child: Material(
-          child: Center(
-            child: ElevatedButton(onPressed: () {}, child: const Text('Yes')),
-          ),
-        ),
-      ),
-    );
+    expect(find.byType(Dialog), findsOneWidget);
 
-    await tester.pumpWidget(
-      Directionality(
-        textDirection: TextDirection.ltr,
-        child: Material(
-          child: Center(
-            child: TextButton(
-                onPressed: () {
-                  Navigator.pop;
-                },
-                child: const Text('Cancel')),
-          ),
-        ),
-      ),
-    );
+    expect(find.descendant(of: find.byType(Dialog), matching: find.text("Delete Satisfaction Report")),findsOneWidget);
+    expect(find.descendant(of: find.byType(Dialog), matching: find.text("Are you sure you want to delete a report card that is more than 4 months old?")),findsOneWidget);
+
     await tester.pump();
   });
 }
