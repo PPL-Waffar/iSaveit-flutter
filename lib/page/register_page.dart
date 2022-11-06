@@ -67,7 +67,7 @@ Future<User> registerUser(
 
     return Future.delayed(const Duration(seconds: 0), () => user);
   } else {
-    return Future.error("internal");
+    return Future.error("Register Error");
   }
 }
 

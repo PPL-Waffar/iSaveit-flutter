@@ -14,12 +14,7 @@ import 'package:isaveit/page/register_page.dart';
 
 void main() {
   testWidgets('Test Register', (WidgetTester tester) async {
-    final addName = find.byKey(const ValueKey("addName"));
-    final addDate = find.byKey(const ValueKey("addDate"));
-    final addEmail = find.byKey(const ValueKey("addEmail"));
-    final addPassword = find.byKey(const ValueKey("addPassword"));
-    final addAccount = find.byKey(const ValueKey("addAccount"));
-    // Build our app and trigger a frame.
+    
     await tester.pumpWidget(const MaterialApp(
       home: Register(),
     ));
@@ -27,7 +22,7 @@ void main() {
 
     expect(find.byIcon(Icons.add), findsNothing);
     expect(find.text('Create an account'), findsOneWidget);
-    expect(find.text('Welcome to iSaveIt!'), findsOneWidget);
+    expect(find.text('Register Error'), findsNothing);
 
 
     await tester.pump();
@@ -36,14 +31,7 @@ void main() {
     expect(find.text('Welcome Back! \nYourname'), findsNothing);
 
 
-    await tester.enterText(addName, "Budiman");
-    await tester.enterText(addDate, "25-10-2002");
-    await tester.enterText(addEmail, "budiman@gmail.com");
-    await tester.enterText(addPassword, "budidibudi25");
-    await tester.tap(addAccount);
-    await tester.pump();
-
-    expect(find.text('Welcome to iSaveIt!'), findsOneWidget);
+    expect(find.text('Register Error'), findsNothing);
     expect(find.text('Welcome Back! \nYourname'), findsNothing);
 
   });
