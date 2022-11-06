@@ -5,7 +5,7 @@ name: Pre-Release
 on:
   # Triggers the workflow on pull request events but only for the main branch
   pull_request:
-    branches: [PBI-26-Delete_feedback_report]
+    branches: [PBI-26-Delete_Satisfaction_Report]
   
   # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
