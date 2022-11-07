@@ -194,8 +194,7 @@ class _CreateFeedbackPage extends State<CreateFeedback> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(48),
                               )),
-                          onPressed: () => 
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ProfileView())), 
+                          onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ProfileView())), 
                           child: const Text('Submit'),
                       )
                     ),
@@ -215,8 +214,7 @@ class _CreateFeedbackPage extends State<CreateFeedback> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(48),
                               )),
-                          onPressed: () => 
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ProfileView())), 
+                          onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ProfileView())), 
                           child: const Text('Cancel',
                           style: TextStyle(
                                   fontFamily: 'Inter',
