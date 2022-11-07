@@ -14,7 +14,11 @@ void main() {
   testWidgets('Create Feedback', (WidgetTester tester) async {
 
 
-    final feedbackText = find.byKey(const ValueKey("feedback"));
+    final question1 = find.byKey(const ValueKey("question1"));
+    final question2 = find.byKey(const ValueKey("question2"));
+    final question3 = find.byKey(const ValueKey("question3"));
+    final question4 = find.byKey(const ValueKey("question4"));
+    final question5 = find.byKey(const ValueKey("question5"));
     final createFeedbackButton = find.byKey(const ValueKey("submitFeedback"));
     final cancelFeedback = find.byKey(const ValueKey("cancelFeedback"));
     
@@ -29,7 +33,23 @@ void main() {
     await tester.pump();
 
     //Test textfields
-    await tester.enterText(feedbackText, "I am a user and I'd like to file a complaint");
+    await tester.enterText(question1, "4/5");
+    await tester.pumpAndSettle();
+    await tester.pump(const Duration(seconds: 2));
+
+    await tester.enterText(question2, "I hope to save up more money next month");
+    await tester.pumpAndSettle();
+    await tester.pump(const Duration(seconds: 2));
+
+    await tester.enterText(question3, "I will eat outside less often");
+    await tester.pumpAndSettle();
+    await tester.pump(const Duration(seconds: 2));
+
+    await tester.enterText(question4, "I think this app helps me to save money");
+    await tester.pumpAndSettle();
+    await tester.pump(const Duration(seconds: 2));
+
+    await tester.enterText(question5, "I hope they have qr scan feature");
     await tester.pumpAndSettle();
     await tester.pump(const Duration(seconds: 2));
 
