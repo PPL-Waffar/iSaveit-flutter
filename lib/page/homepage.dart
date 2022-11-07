@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:isaveit/page/plannedpayment/plannedpayment.dart';
@@ -38,44 +40,27 @@ class HomePage extends State<HomeView> {
               onPressed: () => showDialog<String>(
                 context: context,
                 builder: (BuildContext context) =>
-                    AlertDialog(title: const Text('Add'), actions: <Widget>[
+                    AlertDialog(title: Text('Add'), actions: <Widget>[
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor:
                             Colors.indigo), // <-- ElevatedButton
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      CreatePocket(widget.user)));
-                        },
-                        child: const Text('New Pocket'),
+                        onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) =>CreatePocket(widget.user)));},
+                        child: Text('New Pocket'),
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor:
                             Colors.indigo), // <-- ElevatedButton
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      PlannedPayment(widget.user)));
-                        },
-                        child: const Text(
+                        onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) =>PlannedPayment(widget.user)));},
+                        child: Text(
                           'Planned Payment',
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
                       TextButton(
-                        // <-- TextButton
-                        onPressed: () {
-                          Navigator.pop(
-                            context,
-                          );
-                        },
-                        child: const Text(
+                        onPressed: () {Navigator.pop(context,);},
+                        child: Text(
                           'Cancel',
                           style: TextStyle(color: Colors.red),
                         ),
@@ -92,15 +77,15 @@ class HomePage extends State<HomeView> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
-            const Text(
+            Text(
               'My balance ',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 20),
             ),
-            const Text(
+            Text(
               'Rp 5.000.000',
               style: TextStyle(
                 fontSize: 25,
@@ -116,7 +101,7 @@ class HomePage extends State<HomeView> {
                 endIndent: 0,
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 15,
             ),
             CarouselSlider(
@@ -140,7 +125,7 @@ class HomePage extends State<HomeView> {
                     child: RichText(
                       text: TextSpan(
                         style: DefaultTextStyle.of(context).style,
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
                               text: 'Spotify\n',
                               style: TextStyle(
@@ -179,7 +164,7 @@ class HomePage extends State<HomeView> {
                     child: RichText(
                       text: TextSpan(
                         style: DefaultTextStyle.of(context).style,
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
                               text: 'Youtube\n',
                               style: TextStyle(
@@ -217,7 +202,7 @@ class HomePage extends State<HomeView> {
                     child: RichText(
                       text: TextSpan(
                         style: DefaultTextStyle.of(context).style,
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
                               text: 'Netflix\n',
                               style: TextStyle(
@@ -255,7 +240,7 @@ class HomePage extends State<HomeView> {
                     child: RichText(
                       text: TextSpan(
                         style: DefaultTextStyle.of(context).style,
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
                               text: 'HBO GO\n',
                               style: TextStyle(
@@ -293,7 +278,7 @@ class HomePage extends State<HomeView> {
                     child: RichText(
                       text: TextSpan(
                         style: DefaultTextStyle.of(context).style,
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
                               text: 'Code Academy\n',
                               style: TextStyle(
@@ -331,7 +316,7 @@ class HomePage extends State<HomeView> {
                 viewportFraction: 0.8,
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 15,
             ),
             Container(
@@ -344,10 +329,10 @@ class HomePage extends State<HomeView> {
                 endIndent: 0,
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 15,
             ),
-            const Text(
+            Text(
               'My Pocket',
               style: TextStyle(
                 fontSize: 18,
@@ -421,7 +406,7 @@ class HomePage extends State<HomeView> {
                 ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             SizedBox(
@@ -451,7 +436,7 @@ class HomePage extends State<HomeView> {
                 ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             SizedBox(
@@ -483,7 +468,7 @@ class HomePage extends State<HomeView> {
               ),
             ),
 
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
           ],

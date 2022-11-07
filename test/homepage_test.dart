@@ -13,21 +13,20 @@ void main() {
         email: "usertest@gmail.com",
         name: "Amanda");
     // Build our app and trigger a frame.
-    await tester.pumpWidget( MaterialApp(
+    await tester.pumpWidget(MaterialApp(
       home: HomeView(user),
     ));
-
 
     expect(find.byIcon(Icons.add), findsOneWidget);
     expect(find.text('Welcome Back! \nYourname'), findsOneWidget);
 
-
     await tester.tap(find.byIcon(Icons.add));
     await tester.pump();
-
 
     expect(find.text('Welcome Back! \nYourname'), findsOneWidget);
 
     expect(find.text('Welcome Back!'), findsNothing);
+    expect(find.text('My balance '), findsOneWidget);
+    expect(find.text('Rp 5.000.000'), findsOneWidget);
   });
 }
