@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:isaveit/page/feedback/create_feedback.dart';
+import 'package:isaveit/page/feedback/feedback.dart';
 
 import 'edit_profile.dart';
 
@@ -211,8 +211,8 @@ class _ProfileDetailPage extends State<ProfileView> {
                                 borderRadius: BorderRadius.circular(48),
                               )),
                           onPressed: () => 
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CreateFeedback())), 
-                          child: const Text('Create Feedback'),
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Feedbacks())), 
+                          child: const Text('See Feedback'),
                       )
                     ),
                 
