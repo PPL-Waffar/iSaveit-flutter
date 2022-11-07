@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -142,7 +142,7 @@ class HomePage extends State<HomeView> {
                     child: RichText(
                       text: TextSpan(
                         style: DefaultTextStyle.of(context).style,
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
                               text: 'Spotify\n',
                               style: TextStyle(
@@ -181,7 +181,7 @@ class HomePage extends State<HomeView> {
                     child: RichText(
                       text: TextSpan(
                         style: DefaultTextStyle.of(context).style,
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
                               text: 'Youtube\n',
                               style: TextStyle(
@@ -219,7 +219,7 @@ class HomePage extends State<HomeView> {
                     child: RichText(
                       text: TextSpan(
                         style: DefaultTextStyle.of(context).style,
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
                               text: 'Netflix\n',
                               style: TextStyle(
@@ -257,7 +257,7 @@ class HomePage extends State<HomeView> {
                     child: RichText(
                       text: TextSpan(
                         style: DefaultTextStyle.of(context).style,
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
                               text: 'HBO GO\n',
                               style: TextStyle(
@@ -295,7 +295,7 @@ class HomePage extends State<HomeView> {
                     child: RichText(
                       text: TextSpan(
                         style: DefaultTextStyle.of(context).style,
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
                               text: 'Code Academy\n',
                               style: TextStyle(
