@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:isaveit/page/plannedpayment/plannedpayment.dart';
@@ -92,15 +94,15 @@ class HomePage extends State<HomeView> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
-            const Text(
+            Text(
               'My balance ',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 20),
             ),
-            const Text(
+            Text(
               'Rp 5.000.000',
               style: TextStyle(
                 fontSize: 25,
@@ -116,7 +118,7 @@ class HomePage extends State<HomeView> {
                 endIndent: 0,
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 15,
             ),
             CarouselSlider(
@@ -331,7 +333,7 @@ class HomePage extends State<HomeView> {
                 viewportFraction: 0.8,
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 15,
             ),
             Container(
@@ -344,10 +346,10 @@ class HomePage extends State<HomeView> {
                 endIndent: 0,
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 15,
             ),
-            const Text(
+            Text(
               'My Pocket',
               style: TextStyle(
                 fontSize: 18,
@@ -421,7 +423,7 @@ class HomePage extends State<HomeView> {
                 ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             SizedBox(
@@ -451,7 +453,7 @@ class HomePage extends State<HomeView> {
                 ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             SizedBox(
@@ -483,7 +485,7 @@ class HomePage extends State<HomeView> {
               ),
             ),
 
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
           ],
