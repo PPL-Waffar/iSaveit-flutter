@@ -167,11 +167,9 @@ class ReportPage extends State<ReportView> {
               const SizedBox(
                 height: 15,
               ),
-              Row(
-                children: [
-                  const SizedBox(
-                    width: 40,
-                  ),
+              Padding(padding: EdgeInsets.fromLTRB(50,0,50,0,),
+                child: Row(
+                  children: [ 
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
@@ -228,7 +226,7 @@ class ReportPage extends State<ReportView> {
                     ),
                   ),
                 ],
-              ),
+              ),),
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
                 child: const Divider(
@@ -249,14 +247,13 @@ class ReportPage extends State<ReportView> {
               const SizedBox(
                 height: 14,
               ),
+              Padding(padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+              child:
               Container(
-                padding: const EdgeInsets.all(14),
-                width: 342,
-                height: 72,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: const Color(0xffDFE2FF),
-                ),
+                padding: const EdgeInsets.fromLTRB(15,10,15,0),
+                width: 352,
+                height: 50,
+                
                 child: RichText(
                   text: TextSpan(
                     style: DefaultTextStyle.of(context).style,
@@ -273,21 +270,24 @@ class ReportPage extends State<ReportView> {
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
                               color: Color(0xff4CD471))),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 14,
-              ),
               Container(
-                padding: const EdgeInsets.all(14),
-                width: 342,
-                height: 72,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: const Color(0xffDFE2FF),
-                ),
+                width: 352,
+                height: 10,
+                padding: const EdgeInsets.fromLTRB(5, 0, 5, 5),
+                child: const MySeparator(),
+              ),
+              Padding(padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+              child:
+              Container(
+                padding: const EdgeInsets.fromLTRB(15,10,15,0),
+                width: 352,
+                height: 50,
+                
                 child: RichText(
                   text: TextSpan(
                     style: DefaultTextStyle.of(context).style,
@@ -304,21 +304,24 @@ class ReportPage extends State<ReportView> {
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
                               color: Color(0xff4CD471))),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 14,
-              ),
               Container(
-                padding: const EdgeInsets.all(14),
-                width: 342,
-                height: 72,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: const Color(0xffDFE2FF),
-                ),
+                width: 352,
+                height: 10,
+                padding: const EdgeInsets.fromLTRB(5, 0, 5, 5),
+                child: const MySeparator(),
+              ),
+              Padding(padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+              child:
+              Container(
+                padding: const EdgeInsets.fromLTRB(15,10,15,0),
+                width: 352,
+                height: 50,
+                
                 child: RichText(
                   text: TextSpan(
                     style: DefaultTextStyle.of(context).style,
@@ -334,10 +337,17 @@ class ReportPage extends State<ReportView> {
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xffff0000))),
-                    ],
+                              color: Color(0xff4CD471))),
+                      ],
+                    ),
                   ),
                 ),
+              ),
+              Container(
+                width: 352,
+                height: 10,
+                padding: const EdgeInsets.fromLTRB(5, 0, 5, 5),
+                child: const MySeparator(),
               ),
             ]),
           )
@@ -346,3 +356,36 @@ class ReportPage extends State<ReportView> {
     );
   }
 }
+
+class MySeparator extends StatelessWidget {
+  const MySeparator({Key? key, this.height = 1, this.color = Colors.black})
+      : super(key: key);
+  final double height;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        final boxWidth = constraints.constrainWidth();
+        const dashWidth = 10.0;
+        final dashHeight = height;
+        final dashCount = (boxWidth / (2 * dashWidth)).floor();
+        return Flex(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          direction: Axis.horizontal,
+          children: List.generate(dashCount, (_) {
+            return SizedBox(
+              width: dashWidth,
+              height: dashHeight,
+              child: const DecoratedBox(
+                decoration: BoxDecoration(color: Color(0xffCDCFD0)),
+              ),
+            );
+          }),
+        );
+      },
+    );
+  }
+}
+    
