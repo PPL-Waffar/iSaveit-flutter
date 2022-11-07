@@ -14,6 +14,26 @@ class ReadFeedbackPage extends State<ReadFeedback> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: IconButton(
+              icon: const Icon(Icons.add, color: Colors.black),
+              onPressed: () => Navigator.of(context).pop()),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.add),
+              color: Colors.black,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ReadFeedback()),
+                );
+              },
+            ),
+          ],
+        ),
         body: SingleChildScrollView(
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -25,7 +45,7 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                     margin: const EdgeInsets.only(left: 20),
                     alignment: Alignment.topLeft,
                     child:
-                    const Text('Feedback Report',
+                    const Text('Your Satisfaction Report',
                         style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)
                     ),
                   ),
@@ -47,8 +67,8 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                             Container(
                               alignment: Alignment.centerLeft,
                               margin: const EdgeInsets.only(left: 20),
-                              child: const Text('John Doe',
-                                  style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)
+                              child: const Text('12 June 2022',
+                                  style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFF4054FF))
                               ),
                             ),
 
@@ -66,8 +86,7 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                                       text: TextSpan(
                                           style: DefaultTextStyle.of(context).style,
                                           children: const <TextSpan>[
-                                            TextSpan(text: 'I think the application is good, however there are...\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121),fontWeight: FontWeight.bold,)),
-                                            TextSpan(text: 'See more', style: TextStyle(fontSize: 12, color: Color(0xff979C9E), fontWeight: FontWeight.w700))
+                                            TextSpan(text: 'Save money for buying new phone\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121))),
                                           ]
                                       ),
                                     ),
@@ -75,6 +94,19 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                                 ),
                               ]
                               ),
+                            ),
+                            TextButton(onPressed: () => Navigator.of(context).pop(),
+                                style: ButtonStyle(
+                                  padding: MaterialStateProperty.all<EdgeInsets>(
+                                      const EdgeInsets.all(20)),
+                                ),
+                                child:RichText(
+                                  text: const TextSpan(
+                                      children: <TextSpan>[
+                                        TextSpan(text: 'See more', style: TextStyle(fontSize: 12, color: Color(0xff979C9E), fontWeight: FontWeight.w700))
+                                      ]
+                                  ),
+                                )
                             ),
 
                             //divider
@@ -94,13 +126,14 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                             Container(
                               alignment: Alignment.centerLeft,
                               margin: const EdgeInsets.only(left: 20),
-                              child: const Text('John Doe',
-                                  style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)
+                              child: const Text('13 May 2022',
+                                  style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFF4054FF))
                               ),
                             ),
 
                             const SizedBox(height: 12),
 
+                            //Feedback content
                             SizedBox(
                               child: Row(children: [
                                 Flexible(
@@ -112,8 +145,7 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                                       text: TextSpan(
                                           style: DefaultTextStyle.of(context).style,
                                           children: const <TextSpan>[
-                                            TextSpan(text: 'I think the application is good, however there are...\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121),fontWeight: FontWeight.bold,)),
-                                            TextSpan(text: 'See more', style: TextStyle(fontSize: 12, color: Color(0xff979C9E), fontWeight: FontWeight.w700))
+                                            TextSpan(text: 'Reduce unnecessary expense and save income weekly\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121))),
                                           ]
                                       ),
                                     ),
@@ -121,6 +153,19 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                                 ),
                               ]
                               ),
+                            ),
+                            TextButton(onPressed: () => Navigator.of(context).pop(),
+                                style: ButtonStyle(
+                                  padding: MaterialStateProperty.all<EdgeInsets>(
+                                      const EdgeInsets.all(20)),
+                                ),
+                                child:RichText(
+                                  text: const TextSpan(
+                                      children: <TextSpan>[
+                                        TextSpan(text: 'See more', style: TextStyle(fontSize: 12, color: Color(0xff979C9E), fontWeight: FontWeight.w700))
+                                      ]
+                                  ),
+                                )
                             ),
                             Container(
                               margin: const EdgeInsets.only(left: 20, right: 20),
@@ -138,14 +183,14 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                             Container(
                               alignment: Alignment.centerLeft,
                               margin: const EdgeInsets.only(left: 20),
-                              child: const Text('John Doe',
-                                  style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)
+                              child: const Text('15 July 2022',
+                                  style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFF4054FF))
                               ),
                             ),
 
                             const SizedBox(height: 12),
 
-
+                            //Feedback content
                             SizedBox(
                               child: Row(children: [
                                 Flexible(
@@ -157,8 +202,7 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                                       text: TextSpan(
                                           style: DefaultTextStyle.of(context).style,
                                           children: const <TextSpan>[
-                                            TextSpan(text: 'I think the application is good, however there are...\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121),fontWeight: FontWeight.bold,)),
-                                            TextSpan(text: 'See more', style: TextStyle(fontSize: 12, color: Color(0xff979C9E), fontWeight: FontWeight.w700))
+                                            TextSpan(text: 'Keep track of the details of my expenses and incomes\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121))),
                                           ]
                                       ),
                                     ),
@@ -166,6 +210,19 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                                 ),
                               ]
                               ),
+                            ),
+                            TextButton(onPressed: () => Navigator.of(context).pop(),
+                                style: ButtonStyle(
+                                  padding: MaterialStateProperty.all<EdgeInsets>(
+                                      const EdgeInsets.all(20)),
+                                ),
+                                child:RichText(
+                                  text: const TextSpan(
+                                      children: <TextSpan>[
+                                        TextSpan(text: 'See more', style: TextStyle(fontSize: 12, color: Color(0xff979C9E), fontWeight: FontWeight.w700))
+                                      ]
+                                  ),
+                                )
                             ),
                             //divider
                             Container(
@@ -182,13 +239,31 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                             Container(
                               alignment: Alignment.centerLeft,
                               margin: const EdgeInsets.only(left: 20),
-                              child: const Text('John Doe',
-                                  style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)
+                              child: const Text('20 August 2022',
+                                  style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFF4054FF))
                               ),
                             ),
 
                             const SizedBox(height: 12),
-
+                            Row(
+                              crossAxisAlignment:
+                              CrossAxisAlignment.end,
+                              children: const <Widget>[
+                                Align(
+                                    alignment: Alignment.topCenter,
+                                    child: Icon(
+                                      Icons.warning_amber_rounded,
+                                      color: Colors.red,
+                                    )),
+                                Expanded(
+                                    child: Text(
+                                      'This report is over 3 months old, you can delete this',
+                                      style: TextStyle(color: Color(0xFFFF0000)),
+                                    )
+                                )],
+                            ),
+                            const SizedBox(height: 8),
+                            //Feedback content
                             SizedBox(
                               child: Row(children: [
                                 Flexible(
@@ -200,8 +275,7 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                                       text: TextSpan(
                                           style: DefaultTextStyle.of(context).style,
                                           children: const <TextSpan>[
-                                            TextSpan(text: 'I think the application is good, however there are...\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121),fontWeight: FontWeight.bold,)),
-                                            TextSpan(text: 'See more', style: TextStyle(fontSize: 12, color: Color(0xff979C9E), fontWeight: FontWeight.w700))
+                                            TextSpan(text: 'Keep track of the details of my expenses and incomes\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121))),
                                           ]
                                       ),
                                     ),
@@ -209,6 +283,20 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                                 ),
                               ]
                               ),
+                            ),
+                            TextButton(onPressed: () => Navigator.of(context).pop(),
+                                key: const Key("seeMoreButton"),
+                                style: ButtonStyle(
+                                  padding: MaterialStateProperty.all<EdgeInsets>(
+                                      const EdgeInsets.all(20)),
+                                ),
+                                child:RichText(
+                                  text: const TextSpan(
+                                      children: <TextSpan>[
+                                        TextSpan(text: 'See more', style: TextStyle(fontSize: 12, color: Color(0xff979C9E), fontWeight: FontWeight.w700))
+                                      ]
+                                  ),
+                                )
                             ),
                             Container(
                               margin: const EdgeInsets.only(left: 20, right: 20),
@@ -224,13 +312,34 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                             Container(
                               alignment: Alignment.centerLeft,
                               margin: const EdgeInsets.only(left: 20),
-                              child: const Text('John Doe',
-                                  style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)
+                              child: const Text('21 June 2022',
+                                  style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFF4054FF))
                               ),
                             ),
 
                             const SizedBox(height: 12),
 
+                            Row(
+                              crossAxisAlignment:
+                              CrossAxisAlignment.end,
+                              children: const <Widget>[
+                                Align(
+                                    alignment: Alignment.topCenter,
+                                    child: Icon(
+                                      Icons.warning_amber_rounded,
+                                      color: Colors.red,
+                                    )),
+                                Expanded(
+                                    child: Text(
+                                      'This report is over 3 months old, you can delete this',
+                                        style: TextStyle(color: Color(0xFFFF0000)),
+                                        )
+                                )],
+                            ),
+                            const SizedBox(height: 8),
+
+
+                            //Feedback content
                             SizedBox(
                               child: Row(children: [
                                 Flexible(
@@ -242,7 +351,7 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                                       text: TextSpan(
                                           style: DefaultTextStyle.of(context).style,
                                           children: const <TextSpan>[
-                                            TextSpan(text: 'I think the application is good, however there are...\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121),fontWeight: FontWeight.bold,)),
+                                            TextSpan(text: 'Stop over spending money on clothing and food\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121))),
                                             TextSpan(text: 'See more', style: TextStyle(fontSize: 12, color: Color(0xff979C9E), fontWeight: FontWeight.w700))
                                           ]
                                       ),
