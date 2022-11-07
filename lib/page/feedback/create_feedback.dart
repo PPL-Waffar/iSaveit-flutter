@@ -66,12 +66,7 @@ class _CreateFeedbackPage extends State<CreateFeedback> {
                                                       width: 1.0,
                                                       color: Color(0xFFDBDBDB))),
                                               hintText: 'Enter your rating'),
-                                          validator: (String? value) {
-                                            if (value!.isEmpty) {
-                                              return "Textfield cannot be empty";
-                                            }
-                                            return null;
-                                          }),
+                                          ),
                               ])),
 
                     const SizedBox(height: 24),
@@ -97,13 +92,7 @@ class _CreateFeedbackPage extends State<CreateFeedback> {
                                             width: 1.0,
                                             color: Color(0xFFDBDBDB))),
                                     hintText: 'Enter your goals'),
-                                validator: (String? value) {
-                                  if (value!.isEmpty) {
-                                    return "Textfield cannot be empty";
-                                  }
-
-                                  return null;
-                                }),
+                                ),
                     ])),
 
                     const SizedBox(height: 24),
@@ -161,13 +150,7 @@ class _CreateFeedbackPage extends State<CreateFeedback> {
                                             width: 1.0,
                                             color: Color(0xFFDBDBDB))),
                                     hintText: 'Enter your thoughts'),
-                                validator: (String? value) {
-                                  if (value!.isEmpty) {
-                                    return "Textfield cannot be empty";
-                                  }
-
-                                  return null;
-                                }),
+                                ),
                     ])),
 
                     const SizedBox(height: 24),
@@ -193,13 +176,7 @@ class _CreateFeedbackPage extends State<CreateFeedback> {
                                             width: 1.0,
                                             color: Color(0xFFDBDBDB))),
                                     hintText: 'Enter your thoughts'),
-                                validator: (String? value) {
-                                  if (value!.isEmpty) {
-                                    return "Textfield cannot be empty";
-                                  }
-
-                                  return null;
-                                }),
+                                ),
                     ])),
 
                     const SizedBox(height: 24),
