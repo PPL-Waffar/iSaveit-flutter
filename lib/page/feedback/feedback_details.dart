@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:isaveit/page/feedback/delete_report.dart';
 
@@ -22,12 +24,8 @@ class _FeedbackDetails extends State<FeedbackDetails> {
             icon: const Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () => Navigator.pop(context),
           ),
-          actions: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.delete),
-              color: Colors.black,
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const DeleteReport())),
-            ),
+          actions: const <Widget>[
+            DeleteFeedback()
           ],
         ),
         body: SingleChildScrollView(
@@ -44,22 +42,22 @@ class _FeedbackDetails extends State<FeedbackDetails> {
                       color: Color(0xff4054FF),
                       fontWeight: FontWeight.w700),
                 ),
-              const Text(
+              Text(
                   '!  This report is over 3 months old, you can delete this',
                   style: TextStyle(
                       fontSize: 12,
                       color: Colors.red,
                       fontWeight: FontWeight.w500),
                 ),
-              const SizedBox(
+              SizedBox(
                 height: 20,
               ),
-              const Text(
+              Text(
                 "How satisfied are you with this month’s money management?",
                 style: TextStyle(
                     fontSize: 14, fontWeight: FontWeight.w700),
               ),
-              const Text(
+              Text(
                 '9/10',
                 style: TextStyle(
                     fontSize: 14, fontWeight: FontWeight.w400),
@@ -74,12 +72,12 @@ class _FeedbackDetails extends State<FeedbackDetails> {
                   endIndent: 0,
                 ),
               ),
-              const Text(
+              Text(
                 'What goals do you hope to achieve next month?',
                 style: TextStyle(
                     fontSize: 14, fontWeight: FontWeight.w700),
               ),
-              const Text(
+              Text(
                 'Reduce unecessary expense and save income weekly',
                 style: TextStyle(
                     fontSize: 14, fontWeight: FontWeight.w400),
@@ -94,12 +92,12 @@ class _FeedbackDetails extends State<FeedbackDetails> {
                   endIndent: 0,
                 ),
               ),
-              const Text(
+              Text(
                 'What are you looking to improve in managing your money?',
                 style: TextStyle(
                     fontWeight: FontWeight.w700, fontSize: 14),
               ),
-              const Text(
+              Text(
                 'I think the application has quiet good features, however it is preferable to have..',
                 style: TextStyle(
                     fontWeight: FontWeight.w400, fontSize: 14),
@@ -114,16 +112,26 @@ class _FeedbackDetails extends State<FeedbackDetails> {
                   endIndent: 0,
                 ),
               ),
-              const Text(
+              Text(
                 'How helpful do you think this service in your daily life?',
                 style: TextStyle(
                     fontWeight: FontWeight.w700, fontSize: 14),
               ),
-              const Text(
+              Text(
                 'Very helpful especially in keeping track of my expenses',
                 style: TextStyle(
                     fontWeight: FontWeight.w400, fontSize: 14),
-              )
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 10, bottom: 10),
+                child: const Divider(
+                  color: Color(0xFFDBDBDB),
+                  height: 20,
+                  thickness: 1,
+                  indent: 0,
+                  endIndent: 0,
+                ),
+              ),
                     ]),
               )
           
