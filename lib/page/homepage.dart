@@ -40,44 +40,27 @@ class HomePage extends State<HomeView> {
               onPressed: () => showDialog<String>(
                 context: context,
                 builder: (BuildContext context) =>
-                    AlertDialog(title: const Text('Add'), actions: <Widget>[
+                    AlertDialog(title: Text('Add'), actions: <Widget>[
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor:
                             Colors.indigo), // <-- ElevatedButton
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      CreatePocket(widget.user)));
-                        },
-                        child: const Text('New Pocket'),
+                        onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) =>CreatePocket(widget.user)));},
+                        child: Text('New Pocket'),
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor:
                             Colors.indigo), // <-- ElevatedButton
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      PlannedPayment(widget.user)));
-                        },
-                        child: const Text(
+                        onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) =>PlannedPayment(widget.user)));},
+                        child: Text(
                           'Planned Payment',
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
                       TextButton(
-                        // <-- TextButton
-                        onPressed: () {
-                          Navigator.pop(
-                            context,
-                          );
-                        },
-                        child: const Text(
+                        onPressed: () {Navigator.pop(context,);},
+                        child: Text(
                           'Cancel',
                           style: TextStyle(color: Colors.red),
                         ),
