@@ -1,61 +1,59 @@
 import 'package:flutter/material.dart';
+import 'package:isaveit/page/feedback/create_feedback.dart';
 
 // ignore: must_be_immutable
-class DeleteReport extends StatefulWidget {
-  const DeleteReport({super.key});
+class DeleteFeedback extends StatefulWidget {
+  const DeleteFeedback({super.key});
   @override
-  DeleteReportPage createState() => DeleteReportPage();
+  DeleteFeedbackPage createState() => DeleteFeedbackPage();
 }
 
-class DeleteReportPage extends State<DeleteReport> {
+class DeleteFeedbackPage extends State<DeleteFeedback> {
   @override
   Widget build(BuildContext context) {
     return Row(
         children: [
-        SizedBox(
-          width: 327,
-          height: 48,
-
-        child:
           ElevatedButton(
-
         key: const Key("DeleteButton"),
             onPressed: () {
               showDialog<String>(
                 context: context,
                 builder: (BuildContext context) =>
                     AlertDialog(
-                      title: const Text('Delete Satisfaction Report'),
+                      title: const Text('Delete Feedback'),
                       content: const Text(
-                          'Are you sure you want to delete a report card that is more than 4 months old?'),
+                          'Are you sure you want to delete this satisfaction feedback?'),
                       actions: <Widget>[
-                        TextButton(
-                          key: const Key("cancelDeleteReport"),
-                          onPressed: () => Navigator.pop(context, 'Cancel'),
-                          child: const Text('Cancel',
-                              style: TextStyle(color: Color(0xFFD3180C))),
-                        ),
-                        const SizedBox(height: 8),
-                        TextButton(
-                          key: const Key("DeleteReport"),
-                          onPressed: () => Navigator.pop(context, 'Yes'),
-                          child: const Text('Yes',
-                              style: TextStyle(color: Color(0xFF26A69A))),
-                        ),
+                        Center(
+                          child: Column(
+                            children: [
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                minimumSize: const Size.fromHeight(48),
+                                elevation: 0,
+                                backgroundColor: const Color(0XFF4054FF),
+                                shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(48),
+                              )),
+                              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CreateFeedback())), 
+                          child: const Text('Yes'),
+                          ),
+                            TextButton(
+                            onPressed: () => Navigator.pop(context, 'Cancel'),
+                            child: const Text('Cancel',
+                                style: TextStyle(color: Color(0xFFD3180C))),
+                            ),
+                          ]),
+                        )
                       ],
                     ),
               );
             },
             style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-              backgroundColor: const Color(0xff4054FF),
+              backgroundColor: Colors.white,
             ),
-            child: const Text('Delete Report', style: TextStyle(fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white),)
-    )
-    )
-    ]
+            child: const Icon(Icons.delete, color: Colors.black,),)
+        ]
     );
   }
 }
