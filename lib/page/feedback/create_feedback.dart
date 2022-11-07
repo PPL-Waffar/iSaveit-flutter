@@ -31,35 +31,180 @@ class _CreateFeedbackPage extends State<CreateFeedback> {
 
                     //Name
                     SingleChildScrollView(
-                        padding: const EdgeInsets.only(left: 30, right: 30),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text('Give us your feedback, please!',
+                              const Padding(
+                                padding: EdgeInsets.only(left: 30, right: 30),
+                              child: Text('Monthly Satisfaction Survey',
+                              
                                   style: TextStyle(
                                       fontFamily: 'Inter',
                                       fontSize: 16,
-                                      fontWeight: FontWeight.w700)),
-                              const SizedBox(height: 8),
-                              TextFormField(
-                                  keyboardType: TextInputType.multiline,
-                                  maxLines: null,
-                                  controller: feedbackText,
-                                  key: const Key("feedback"),
-                                  decoration: const InputDecoration(
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(8.0)),
-                                          borderSide: BorderSide(
-                                              width: 1.0,
-                                              color: Color(0xFFDBDBDB))),
-                                      hintText: 'Tell us what you think'),
-                                  ),
-                            ])),
+                                      fontWeight: FontWeight.w700))),
 
-                    const SizedBox(height: 32),
+                              const SizedBox(height: 32),
 
-                    //Edit Profile Button
+                              SingleChildScrollView(
+                                padding: const EdgeInsets.only(left: 30, right: 30),
+                                child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const Text("In 1-5, How satisfied are you with this month's money management?",
+                                          style: TextStyle(
+                                              fontFamily: 'Inter',
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w700)),
+                                      const SizedBox(height: 8),
+                                      TextFormField(
+                                          key: const Key("question1"),
+                                          decoration: const InputDecoration(
+                                              enabledBorder: OutlineInputBorder(
+                                                  borderRadius: BorderRadius.all(
+                                                      Radius.circular(8.0)),
+                                                  borderSide: BorderSide(
+                                                      width: 1.0,
+                                                      color: Color(0xFFDBDBDB))),
+                                              hintText: 'Enter your rating'),
+                                          validator: (String? value) {
+                                            if (value!.isEmpty) {
+                                              return "Textfield cannot be empty";
+                                            }
+                                            return null;
+                                          }),
+                              ])),
+
+                    const SizedBox(height: 24),
+
+                    SingleChildScrollView(
+                      padding: const EdgeInsets.only(left: 30, right: 30),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text("What goals do you hope to achieve next month?",
+                                style: TextStyle(
+                                    fontFamily: 'Inter',
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700)),
+                            const SizedBox(height: 8),
+                            TextFormField(
+                                key: const Key("question2"),
+                                decoration: const InputDecoration(
+                                    enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(8.0)),
+                                        borderSide: BorderSide(
+                                            width: 1.0,
+                                            color: Color(0xFFDBDBDB))),
+                                    hintText: 'Enter your goals'),
+                                validator: (String? value) {
+                                  if (value!.isEmpty) {
+                                    return "Textfield cannot be empty";
+                                  }
+
+                                  return null;
+                                }),
+                    ])),
+
+                    const SizedBox(height: 24),
+
+                    SingleChildScrollView(
+                      padding: const EdgeInsets.only(left: 30, right: 30),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text("What are you looking to improve in managing your money?",
+                                style: TextStyle(
+                                    fontFamily: 'Inter',
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700)),
+                            const SizedBox(height: 8),
+                            TextFormField(
+                                key: const Key("question3"),
+                                decoration: const InputDecoration(
+                                    enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(8.0)),
+                                        borderSide: BorderSide(
+                                            width: 1.0,
+                                            color: Color(0xFFDBDBDB))),
+                                    hintText: 'Enter your thoughts'),
+                                validator: (String? value) {
+                                  if (value!.isEmpty) {
+                                    return "Textfield cannot be empty";
+                                  }
+
+                                  return null;
+                                }),
+                    ])),
+
+                    const SizedBox(height: 24),
+
+                    SingleChildScrollView(
+                      padding: const EdgeInsets.only(left: 30, right: 30),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text("How helpful do you think this service in your daily life?",
+                                style: TextStyle(
+                                    fontFamily: 'Inter',
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700)),
+                            const SizedBox(height: 8),
+                            TextFormField(
+                                key: const Key("question4"),
+                                decoration: const InputDecoration(
+                                    enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(8.0)),
+                                        borderSide: BorderSide(
+                                            width: 1.0,
+                                            color: Color(0xFFDBDBDB))),
+                                    hintText: 'Enter your thoughts'),
+                                validator: (String? value) {
+                                  if (value!.isEmpty) {
+                                    return "Textfield cannot be empty";
+                                  }
+
+                                  return null;
+                                }),
+                    ])),
+
+                    const SizedBox(height: 24),
+
+                    SingleChildScrollView(
+                      padding: const EdgeInsets.only(left: 30, right: 30),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text("Do you have any feedback for the application to ease your experience?",
+                                style: TextStyle(
+                                    fontFamily: 'Inter',
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700)),
+                            const SizedBox(height: 8),
+                            TextFormField(
+                                key: const Key("question5"),
+                                decoration: const InputDecoration(
+                                    enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(8.0)),
+                                        borderSide: BorderSide(
+                                            width: 1.0,
+                                            color: Color(0xFFDBDBDB))),
+                                    hintText: 'Enter your thoughts'),
+                                validator: (String? value) {
+                                  if (value!.isEmpty) {
+                                    return "Textfield cannot be empty";
+                                  }
+
+                                  return null;
+                                }),
+                    ])),
+
+                    const SizedBox(height: 24),
+
+                    //submit feedback Button
                     Container(
                       alignment: Alignment.center,
                       margin: const EdgeInsets.only(left: 30, right: 30),
@@ -74,11 +219,11 @@ class _CreateFeedbackPage extends State<CreateFeedback> {
                               )),
                           onPressed: () => 
                           Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ProfileView())), 
-                          child: const Text('Submit Feedback'),
+                          child: const Text('Submit'),
                       )
                     ),
                     
-                    const SizedBox(height: 32),
+                    const SizedBox(height: 12),
 
                     Container(
                       alignment: Alignment.center,
@@ -103,8 +248,11 @@ class _CreateFeedbackPage extends State<CreateFeedback> {
                                   color: Colors.red)),
                       )
                     ),
+                    const SizedBox(height: 32),
                     
                   ],
-                ))));
+                        )
+                    )
+                ]))));
   }
 }
