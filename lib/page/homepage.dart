@@ -185,12 +185,14 @@ class HomePage extends State<HomeView> {
 
     if (_isLoading) {
       return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
+          elevation: 0,
+          leadingWidth: 150,
           backgroundColor: Colors.white,
-          title: Text(
-            "Welcome Back \n ${thedata["name"]}",
-            style: TextStyle(color: Colors.black),
-          ),
+          leading: Center(
+            child: Text('Welcome Back \n ${thedata["name"]}', style: TextStyle(fontSize: 16, color: Colors.black),)),
+          
           actions: [
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -201,10 +203,20 @@ class HomePage extends State<HomeView> {
                       builder: (BuildContext context) => AlertDialog(
                           title: const Text('Add'),
                           actions: <Widget>[
-                            ElevatedButton(
+                            Center(
+                              child:Column(
+                              children: [
+                              SizedBox(  
+                                height: 48,
+                                width: 279,
+                                child :ElevatedButton(
                               style: ElevatedButton.styleFrom(
+                                minimumSize: const Size.fromHeight(48),
                                   backgroundColor:
-                                      Colors.indigo), // <-- ElevatedButton
+                                      Color(0xff4054FF),
+                                      shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(48),)
+                                      ), // <-- ElevatedButton
                               onPressed: () {
                                 Navigator.push(
                                     context,
@@ -212,12 +224,21 @@ class HomePage extends State<HomeView> {
                                         builder: (context) =>
                                             CreatePocket(widget.user)));
                               },
-                              child: const Text('New Pocket'),
+                              child: const Text('New Pocket', style: TextStyle(fontSize: 16, color: Colors.white),),
+                             
                             ),
-                            ElevatedButton(
+                              ),
+                            SizedBox(height: 10,),
+                            SizedBox(
+                              height: 48,
+                              width: 279,
+                            child:ElevatedButton(
                               style: ElevatedButton.styleFrom(
+                                minimumSize: const Size.fromHeight(48),
                                   backgroundColor:
-                                      Colors.indigo), // <-- ElevatedButton
+                                      Color(0xffDFE2FF),
+                                      shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(48),)), // <-- ElevatedButton
                               onPressed: () {
                                 Navigator.push(
                                     context,
@@ -227,9 +248,11 @@ class HomePage extends State<HomeView> {
                               },
                               child: const Text(
                                 'Planned Payment',
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Color(0xff4054FF)),
                               ),
                             ),
+                            ),
+                            SizedBox(height: 10,),
                             TextButton(
                               // <-- TextButton
                               onPressed: () {
@@ -241,7 +264,9 @@ class HomePage extends State<HomeView> {
                                 'Cancel',
                                 style: TextStyle(color: Colors.red),
                               ),
-                            ),
+                            ),],
+                            ),)
+                            
                           ]),
                     ),
                 child: const Icon(
@@ -362,6 +387,16 @@ class HomePage extends State<HomeView> {
               const SizedBox(
                 height: 15,
               ),
+              Container(
+                margin: const EdgeInsets.only(left: 20, right: 20),
+                child: const Divider(
+                  color: Color(0xFFDBDBDB),
+                  height: 20,
+                  thickness: 1,
+                  indent: 0,
+                  endIndent: 0,
+                ),
+              ),
               const SizedBox(
                 height: 15,
               ),
@@ -375,12 +410,15 @@ class HomePage extends State<HomeView> {
               FutureBuilder(
                   future: _intializeData(),
                   builder: (context, snapshot) {
-                    return Container(
-                        child: Column(children: [
+                    return Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
                       for (int i = 0; i < allpocket.length; i++)
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                          child: SizedBox(
+                      Padding(
+                        padding: EdgeInsets.all(10),
+                        child:
+                        SizedBox(
                             height: 72,
                             width: 343,
                             child: ElevatedButton(
@@ -397,28 +435,21 @@ class HomePage extends State<HomeView> {
                                             allpocket[i]["pocket_name"],
                                             allpocket[i]["pocket_budget"])))
                               },
-                              child: RichText(
-                                text: TextSpan(
-                                  style: DefaultTextStyle.of(context).style,
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: allpocket[i]["pocket_name"] + '\n',
-                                      style: TextStyle(
+                              child: 
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(10,15,15,10),
+                              child :Align(
+                                alignment: Alignment.centerLeft,
+                                child: Column(
+                                children: [
+                                  Text(allpocket[i]["pocket_name"] + '\n' + allpocket[i]["pocket_budget"],style: TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                    TextSpan(
-                                        text: allpocket[i]["pocket_budget"],
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500))
-                                  ],
-                                ),
-                              ),
+                                          fontWeight: FontWeight.w700, color: Colors.black), textAlign: TextAlign.left,),
+                              ],
+                            ), 
                             ),
                           ),
-                        ),
-                    ]));
+                     )))]);
                   })
             ],
           ),
@@ -427,8 +458,11 @@ class HomePage extends State<HomeView> {
     } else {
       return Scaffold(
           body: Center(
-            child: Text("Loading", style:TextStyle(fontSize: 20, fontWeight: FontWeight.w700),),
-          )// this will show when loading is false
+        child: Text(
+          "Loading",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+        ),
+      ) // this will show when loading is false
           );
     }
   }

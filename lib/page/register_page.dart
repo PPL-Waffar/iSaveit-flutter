@@ -4,28 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:isaveit/models/user.dart';
 import '../page/login_page.dart';
-import '../page/navbar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //heroku link: https://isaveit-staging.herokuapp.com/user/flu-register-user/"
-
-late String finalemail;
-late String finalsession;
-late String finalname;
-
-Future getValidationData() async {
-  final SharedPreferences prefs = await SharedPreferences.getInstance();
-  var obtainedEmail = prefs.getString('email');
-  var sessionId = prefs.getString('sessionId');
-  // var name2 = prefs.getString('name');
-  finalemail = obtainedEmail!;
-  finalsession = sessionId!;
-  // finalname = name2!;
-  User userakhir = User(
-    sessionId: finalsession,
-    email: finalemail,
-  );
-  return userakhir;
-}
 
 Future<User> registerUser(
   String email,
@@ -36,7 +16,7 @@ Future<User> registerUser(
   Response response;
   try {
     response =
-        await post(Uri.parse("http://localhost:8000/user/flu-register-user/"),
+        await post(Uri.parse("http://10.0.2.2:8000/user/flu-register-user/"),
             headers: <String, String>{
               'Content-Type': 'application/json; charset=UTF-8',
             },
@@ -84,14 +64,6 @@ class RegisterPage extends State<Register> {
   TextEditingController dateinput = TextEditingController();
   @override
   void initState() {
-    getValidationData().whenComplete(() async {
-      final user = await getValidationData();
-      if (user.email != null) {
-        // ignore: use_build_context_synchronously
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => SettingView(user)));
-      }
-    });
     dateinput.text = ""; //set the initial value of text field
     super.initState();
   }
@@ -116,14 +88,14 @@ class RegisterPage extends State<Register> {
         ),
         const Text(
           'Create an account',
-          style: TextStyle(fontSize: 24, color: Color(0xff3444CE)),
+          style: TextStyle(fontSize: 24, color: Color(0xff3444CE), fontWeight: FontWeight.w700),
         ),
         const SizedBox(
           height: 7,
         ),
         const Text(
           'Welcome to iSaveIt!',
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, ),
         ),
         const SizedBox(
           height: 20,
@@ -141,7 +113,9 @@ class RegisterPage extends State<Register> {
                 child: TextFormField(
                   key: const Key("addName"),
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      borderSide:
+                          BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
                       hintText: 'Enter your name'),
                   controller: _name,
                 ),
@@ -193,21 +167,23 @@ class RegisterPage extends State<Register> {
           style: TextStyle(fontSize: 14),
         ),
         Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Row(
-            children: [
-              Expanded(
-                child: TextFormField(
-                  key: const Key("addEmail"),
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Enter your email'),
-                  controller: _email,
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    key: const Key("addEmail"),
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      borderSide:
+                          BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                        hintText: 'Enter your email'),
+                    controller: _email,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
         const Text(
           'Password',
           style: TextStyle(fontSize: 14),
@@ -221,7 +197,9 @@ class RegisterPage extends State<Register> {
                   key: const Key("addPassword"),
                   obscureText: true,
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      borderSide:
+                          BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
                       hintText: 'Enter your password'),
                   controller: _password,
                 ),
@@ -232,11 +210,9 @@ class RegisterPage extends State<Register> {
         const SizedBox(
           height: 25,
         ),
-        Container(
+        SizedBox(
           height: 48,
           width: 327,
-          padding: const EdgeInsets.fromLTRB(70, 16, 70, 16),
-          decoration: const BoxDecoration(color: Color(0xff4054FF)),
           child: ElevatedButton(
             key: const Key("addAccount"),
             style: ElevatedButton.styleFrom(
@@ -244,7 +220,7 @@ class RegisterPage extends State<Register> {
               elevation: 0,
               backgroundColor: const Color(0XFF4054FF),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(48),
               ),
             ),
             onPressed: submitting
@@ -257,10 +233,6 @@ class RegisterPage extends State<Register> {
                       await registerUser(_email.text, _password.text,
                               _name.text, _datetime.text)
                           .then((user) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content:
-                                    Text('You have successfully registered!')));
                         // create User and then pushAndRemoveUntil(MyHomePage(user:uset))
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute<void>(

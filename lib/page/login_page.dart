@@ -53,6 +53,7 @@ class LoginPage extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
@@ -65,14 +66,14 @@ class LoginPage extends State<Login> {
         ),
         const Text(
           'Login to your account',
-          style: TextStyle(fontSize: 24, color: Color(0xff3444CE)),
+          style: TextStyle(fontSize: 24, color: Color(0xff3444CE), fontWeight: FontWeight.w700),
         ),
         const SizedBox(
           height: 7,
         ),
         const Text(
-          "Welcome back, you've been missed",
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          "Welcome back, you've been missed!",
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
         ),
         const SizedBox(
           height: 20,
@@ -87,11 +88,20 @@ class LoginPage extends State<Login> {
             child: Row(
               children: [
                 Expanded(
-                  child: TextFormField(
+                  child: 
+                  TextFormField(
                     key: const Key("addEmail"),
                     controller: _email,
                     decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(8)
+                          ),
+                          borderSide: BorderSide(
+                            width: 1.0,
+                            color: Color(0xFFDBDBDB)
+                          )
+                        ),
                         hintText: 'Enter your name'),
                   ),
                 ),
@@ -113,7 +123,15 @@ class LoginPage extends State<Login> {
                     controller: _password,
                     obscureText: true,
                     decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(8)
+                          ),
+                          borderSide: BorderSide(
+                            width: 1.0,
+                            color: Color(0xFFDBDBDB)
+                          )
+                        ),
                         hintText: 'Enter your password'),
                   ),
                 ),
@@ -124,11 +142,9 @@ class LoginPage extends State<Login> {
         const SizedBox(
           height: 25,
         ),
-        Container(
+        SizedBox(
           height: 48,
           width: 327,
-          padding: const EdgeInsets.fromLTRB(70, 16, 70, 16),
-          decoration: const BoxDecoration(color: Color(0xff4054FF)),
           child: ElevatedButton(
             key: const Key("loginAccount"),
             style: ElevatedButton.styleFrom(
@@ -136,7 +152,7 @@ class LoginPage extends State<Login> {
               elevation: 0,
               backgroundColor: const Color(0XFF4054FF),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(48),
               ),
             ),
             onPressed: () async {
