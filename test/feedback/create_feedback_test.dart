@@ -29,6 +29,8 @@ void main() {
 
     expect(find.byIcon(Icons.arrow_back), findsNothing);
     expect(find.text('Edit Pocket'), findsNothing);
+    expect(find.text("In 1-5, How satisfied are you with this month's money management?" ), findsOneWidget);
+    expect(find.text("How helpful do you think this service in your daily life?" ), findsOneWidget);
 
     await tester.pump();
 
