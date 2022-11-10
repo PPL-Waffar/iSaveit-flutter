@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isaveit/page/transactions/transaction.dart';
@@ -32,8 +31,8 @@ void main() {
         child: Material(
           child: Center(
             child: ElevatedButton(
-              onPressed: () { },
-              child: const Text('Input Transaction')
+                onPressed: () { },
+                child: const Text('Input Transaction')
             ),
           ),
         ),
@@ -45,8 +44,8 @@ void main() {
         child: Material(
           child: Center(
             child: ElevatedButton(
-              onPressed: () { },
-              child: const Text('Borrow Transaction')
+                onPressed: () { },
+                child: const Text('Borrow Transaction')
             ),
           ),
         ),
@@ -58,8 +57,8 @@ void main() {
         child: Material(
           child: Center(
             child: TextButton(
-              onPressed: () {Navigator.pop; },
-              child: const Text('Cancel')
+                onPressed: () {Navigator.pop; },
+                child: const Text('Cancel')
             ),
           ),
         ),

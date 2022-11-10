@@ -137,7 +137,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
                 children: [
                   Expanded(
                     child: TextFormField(
-                      key: const Key("transactionName"),
+                      key: const Key("addTransactionName"),
                       controller: transactionName,
                       decoration: const InputDecoration(
                         enabledBorder: OutlineInputBorder(
@@ -166,7 +166,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
                   Expanded(
                     child: TextFormField(
                       controller: transactionAmount,
-                      key: const Key("transactionAmount"),
+                      key: const Key("addTransactionAmount"),
                       decoration: const InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -199,7 +199,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
           padding: const EdgeInsets.only(left: 30, right: 30),
           child:Center( 
              child:TextField(
-                key: const Key("transactionDate"),
+                key: const Key("addTransactionDate"),
                 controller: transactionDate,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.calendar_today),
@@ -341,64 +341,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
 
             const SizedBox(height: 32),
 
-            // const Padding(
-            //   padding: EdgeInsets.only(left: 30, right: 30),
-            //   child: Text(
-            //     'Pocket',
-            //     style: TextStyle(fontWeight: FontWeight.bold),
-            //   ),
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.only(left: 30, right: 30),
-            //   child: Row(
-            //     children: [
-            //       Expanded(
-            //         child: DropdownButtonFormField<String>(
-            //             key: const ValueKey("PocketName"),
-            //             style: const TextStyle(height: 0),
-            //             decoration: const InputDecoration(
-            //               fillColor: Color(0XFFF9F9F9),
-            //               enabledBorder: OutlineInputBorder(
-            //                   borderRadius:
-            //                       BorderRadius.all(Radius.circular(8.0)),
-            //                   borderSide:
-            //                       BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-            //               hintText: 'Enter your pocket',
-            //               filled: true,
-            //             ),
-            //             value: _pocketType,
-            //             onChanged: (String? value) => {_pocketType = value!},
-            //             items: const [
-            //               DropdownMenuItem<String>(
-            //                 value: "Groceries",
-            //                 child: Text(
-            //                   "Groceries",
-            //                   style: TextStyle(
-            //                     color: Colors.black,
-            //                   ),
-            //                 ),
-            //               ),
-            //               DropdownMenuItem(
-            //                   value: "Health",
-            //                   child: Text(
-            //                     "Health",
-            //                     style: TextStyle(
-            //                       color: Colors.black,
-            //                     ),
-            //                   )),
-            //               DropdownMenuItem(
-            //                   value: "Food And Beverages",
-            //                   child: Text(
-            //                     "Food And Beverages",
-            //                     style: TextStyle(
-            //                       color: Colors.black,
-            //                     ),
-            //                   )),
-            //             ]),
-            //       ),
-            //     ],
-            //   ),
-            // ),
+
             
             const SizedBox(height: 32),
 

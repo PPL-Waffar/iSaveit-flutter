@@ -14,18 +14,18 @@ import 'package:isaveit/page/pocket/edit_pocket.dart';
 void main() {
   testWidgets('Edit Pocket', (WidgetTester tester) async {
     User user = User(
-      datetime: "2021-05-01 00:00:00.000000",
-      sessionId: "1234567890",
-      isCitizen: true,
-      email: "usertest@gmail.com",
-      name: "Amanda");
+        datetime: "2021-05-01 00:00:00.000000",
+        sessionId: "1234567890",
+        isCitizen: true,
+        email: "usertest@gmail.com",
+        name: "Amanda");
 
     final editPocketName = find.byKey(const ValueKey("editPocketName"));
     final editPocketBudget = find.byKey(const ValueKey("editPocketBudget"));
     final editPocketButton = find.byKey(const ValueKey("editPocketButton"));
     final deletePocket= find.byKey(const ValueKey("deletePocket"));
     final cancelEditPocket = find.byKey(const ValueKey("cancelEditPocket"));
-    
+
     // Build our app and trigger a frame.
     await tester.pumpWidget( MaterialApp(
       home: EditPocket(user),
@@ -48,9 +48,9 @@ void main() {
 
     // //test buttons
     await tester.tap(editPocketButton);
-        await tester.pump();
+    await tester.pump();
     await tester.tap(deletePocket);
-       await tester.pump();
+    await tester.pump();
     await tester.tap(cancelEditPocket);
 
   });
