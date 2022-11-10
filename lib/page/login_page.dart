@@ -15,7 +15,7 @@ class Login extends StatefulWidget {
   const Login({super.key});
   Future<User> webServiceLogin(String telephone, String password) async {
     var response =
-    await post(Uri.parse("http://10.0.2.2:8000/user/flu-login/"),
+    await post(Uri.parse("http://localhost:8000/user/flu-login/"),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
