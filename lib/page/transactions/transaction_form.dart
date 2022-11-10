@@ -1,3 +1,5 @@
+// ignore_for_file: duplicate_import, no_leading_underscores_for_local_identifiers, avoid_print, unused_field, annotate_overrides, prefer_const_constructors, duplicate_ignore, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:isaveit/models/user.dart';

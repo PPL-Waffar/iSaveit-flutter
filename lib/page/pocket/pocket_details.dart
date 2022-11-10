@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_new
+// ignore_for_file: prefer_const_constructors, unnecessary_new, unused_field, prefer_is_empty
 
 import 'package:flutter/material.dart';
 import 'package:isaveit/page/navbar.dart';
@@ -6,9 +6,7 @@ import 'package:isaveit/page/pocket/edit_pocket.dart';
 import 'package:isaveit/models/user.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'dart:async';
-import '../../models/user.dart';
 
 Future<Map<String, dynamic>> fetchGroups(User user, String pocketname) async {
   String url =
@@ -65,6 +63,7 @@ class PocketPage extends State<Pocket> {
   Map<String, dynamic> response = {};
   late Timer _timer;
 
+  @override
   void initState() {
     super.initState();
 
@@ -243,8 +242,7 @@ class PocketPage extends State<Pocket> {
             FutureBuilder(
                 future: _intializeData(),
                 builder: (context, snapshot) {
-                  return Container(
-                      child: Column(children: [
+                  return Column(children: [
                     if (allpocket.length == 0)
                       SizedBox(
                         child: Image.asset('assets/images/empty_wallet.png',
@@ -320,7 +318,7 @@ class PocketPage extends State<Pocket> {
                             ]),
                           ),
                         ),
-                  ]));
+                  ]);
                 }),
 
             // SizedBox(

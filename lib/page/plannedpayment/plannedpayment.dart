@@ -1,20 +1,12 @@
+// ignore_for_file: unused_field, no_leading_underscores_for_local_identifiers, prefer_const_constructors, duplicate_ignore
+
 import 'package:flutter/material.dart';
 import 'package:isaveit/models/user.dart';
 import 'package:isaveit/page/navbar.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:isaveit/models/user.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'dart:async';
-import "package:flutter/material.dart";
-import 'dart:async';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:isaveit/page/navbar.dart';
 // import 'package:dropdownfield/dropdownfield.dart';
 
 Future<Map<String, dynamic>> fetchGroups(User user) async {
@@ -22,7 +14,6 @@ Future<Map<String, dynamic>> fetchGroups(User user) async {
       'http://localhost:8000/pocket/get-pocket/?session_id=${user.sessionId}';
 
   try {
-    
     Map<String, String> headers = {
       'Content-Type': 'application/json; charset=UTF-8',
     };
@@ -61,7 +52,6 @@ Future<Map<String, dynamic>> sendNewUser(String payname, String payamount,
   const url = 'http://localhost:8000/payment/flu-add-payment/';
 
   try {
-    
     final response = await http.post(
       Uri.parse(url),
       headers: <String, String>{
