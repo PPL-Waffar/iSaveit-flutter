@@ -16,7 +16,7 @@ import 'package:isaveit/models/user.dart';
 import 'package:isaveit/page/transactions/transaction_form.dart';
 
 void main() {
-
+  
   testWidgets('Transaction Form', (WidgetTester tester) async {
     User user = User(
         datetime: "2021-05-01 00:00:00.000000",
@@ -30,7 +30,7 @@ void main() {
     final transactionDate = find.byKey(const ValueKey("addTransactionDate"));
     final transactionButton = find.byKey(const ValueKey("inputTransactionButton"));
     final cancelTransaction = find.byKey(const ValueKey("cancelTransaction"));
-
+    
     // Build our app and trigger a frame.
     await tester.pumpWidget(MaterialApp(
       home: CreateTransaction(user),
@@ -45,7 +45,7 @@ void main() {
     expect(find.text("Type of Payment"), findsOneWidget);
 
     await tester.pump();
-
+    
     await tester.enterText(transactionName, "Jajan kantin nasi goreng");
     await tester.pumpAndSettle();
     await tester.enterText(transactionAmount, "30.000");
@@ -59,8 +59,8 @@ void main() {
 
     //Test transaction type widget
     final transacDropdown = find.byKey(const ValueKey('transactionType'));
-    await tester.tap(transacDropdown);
-    await tester.pumpAndSettle();
+      await tester.tap(transacDropdown);
+      await tester.pumpAndSettle();
 
     ///if you want to tap first item
     final transacItem = find.text('Income').last;
@@ -70,8 +70,8 @@ void main() {
 
     // Test payment type widget
     final paymentDropdown = find.byKey(const ValueKey('PaymentType'));
-    await tester.tap(paymentDropdown);
-    await tester.pumpAndSettle();
+      await tester.tap(paymentDropdown);
+      await tester.pumpAndSettle();
 
     ///if you want to tap first item
     final paymentItem = find.text('debit card').last;

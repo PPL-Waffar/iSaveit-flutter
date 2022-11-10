@@ -1,9 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:isaveit/page/feedback/read_feedback.dart';
+import 'package:isaveit/page/plannedpayment/plannedpayment.dart';
 import 'package:isaveit/page/plannedpayment/plannedpaymentdetails.dart';
 import 'package:isaveit/page/pocket/create_pocket.dart';
 import 'package:isaveit/models/user.dart';
+import 'package:isaveit/page/pocket/pocket_details.dart';
 
 // import '../page//profile.dart';
 
@@ -32,13 +33,13 @@ class HomePage extends State<HomeView> {
                 backgroundColor: Colors.white,
               ),
               onPressed: () => showDialog<String>(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        AlertDialog(title: const Text('Add'), actions: <Widget>[
+                context: context,
+                builder: (BuildContext context) =>
+                    AlertDialog(title: const Text('Add'), actions: <Widget>[
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor:
-                                Colors.indigo), // <-- ElevatedButton
+                            Colors.indigo), // <-- ElevatedButton
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -48,22 +49,22 @@ class HomePage extends State<HomeView> {
                         },
                         child: const Text('New Pocket'),
                       ),
-                      // ElevatedButton(
-                      //   style: ElevatedButton.styleFrom(
-                      //       backgroundColor:
-                      //           Colors.indigo), // <-- ElevatedButton
-                      //   onPressed: () {
-                      //     Navigator.push(
-                      //         context,
-                      //         MaterialPageRoute(
-                      //             builder: (context) =>
-                      //                 const Plannedpayment()));
-                      //   },
-                      //   child: const Text(
-                      //     'Planned Payment',
-                      //     style: TextStyle(color: Colors.white),
-                      //   ),
-                      // ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                            Colors.indigo), // <-- ElevatedButton
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      PlannedPayment(widget.user)));
+                        },
+                        child: const Text(
+                          'Planned Payment',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
                       TextButton(
                         // <-- TextButton
                         onPressed: () {
@@ -77,7 +78,7 @@ class HomePage extends State<HomeView> {
                         ),
                       ),
                     ]),
-                  ),
+              ),
               child: const Icon(
                 Icons.add,
                 color: Colors.black,
@@ -127,7 +128,7 @@ class HomePage extends State<HomeView> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  const ReadFeedback()))
+                              const Plannedpaymentdetails()))
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xffDFE2FF),
@@ -361,8 +362,8 @@ class HomePage extends State<HomeView> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        //INGET INI HARUS DIUBAH
-                        builder: (context) => const Plannedpaymentdetails()),
+                      //INGET INI HARUS DIUBAH
+                        builder: (context) => Pocket(widget.user)),
                   )
                 },
                 style: ElevatedButton.styleFrom(
@@ -477,6 +478,10 @@ class HomePage extends State<HomeView> {
                   ),
                 ),
               ),
+            ),
+
+            const SizedBox(
+              height: 10,
             ),
           ],
         ),

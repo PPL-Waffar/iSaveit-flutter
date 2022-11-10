@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:isaveit/page/feedback/create_feedback.dart';
 
 
 class ReadFeedback extends StatefulWidget {
@@ -28,7 +29,7 @@ class ReadFeedbackPage extends State<ReadFeedback> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ReadFeedback()),
+                  MaterialPageRoute(builder: (context) => const CreateFeedback()),
                 );
               },
             ),
