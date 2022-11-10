@@ -21,7 +21,7 @@ class ReadFeedbackPage extends State<ReadFeedback> {
           backgroundColor: Colors.white,
           elevation: 0,
           leading: IconButton(
-              icon: const Icon(Icons.add, color: Colors.black),
+              icon: const Icon(Icons.arrow_back, color: Colors.black),
               onPressed: () => Navigator.of(context).pop()),
           actions: <Widget>[
             IconButton(

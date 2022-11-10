@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:isaveit/page/feedback/read_feedback.dart';
 import 'package:isaveit/page/profile/profile_detail.dart';
 
 // heroku link: 
@@ -194,7 +195,7 @@ class _CreateFeedbackPage extends State<CreateFeedback> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(48),
                               )),
-                          onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ProfileView())), 
+                          onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ReadFeedback())), 
                           child: const Text('Submit'),
                       )
                     ),
@@ -214,7 +215,7 @@ class _CreateFeedbackPage extends State<CreateFeedback> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(48),
                               )),
-                          onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ProfileView())), 
+                          onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ReadFeedback())), 
                           child: const Text('Cancel',
                           style: TextStyle(
                                   fontFamily: 'Inter',
