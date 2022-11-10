@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:isaveit/page/feedback/create_feedback.dart';
+import 'package:isaveit/page/feedback/read_feedback.dart';
 
 import 'edit_profile.dart';
 
@@ -241,7 +242,7 @@ class _ProfileDetailPage extends State<ProfileView> {
                           margin: const EdgeInsets.only(left: 30, right: 30, top: 20),
                           child: TextButton(
                               onPressed: () => 
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CreateFeedback())), 
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ReadFeedback())), 
                               child: const Text('Click here to see more', style:TextStyle(color: Color(0xFF4054FF),)),
                           )
                         ),

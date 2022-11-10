@@ -22,14 +22,11 @@ class HomePage extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-         backgroundColor: Colors.white,
-          elevation: 0,
-          leadingWidth: 150, 
-          leading: const Center(
-              child: Text(
-            'Welcome Back! \nYourname',
-            style: TextStyle(fontSize: 16, color: Colors.black),
-          )),
+        backgroundColor: Colors.white,
+        title: const Text(
+          "Welcome Back! \nYourname",
+          style: TextStyle(color: Colors.black),
+        ),
         actions: [
           ElevatedButton(
               style: ElevatedButton.styleFrom(
