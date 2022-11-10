@@ -12,13 +12,13 @@ import 'package:isaveit/page/pocket/pocket_details.dart';
 
 void main() {
   testWidgets('Pocket details', (WidgetTester tester) async {
-      User user = User(
-      datetime: "2021-05-01 00:00:00.000000",
-      sessionId: "1234567890",
-      isCitizen: true,
-      email: "usertest@gmail.com",
-      name: "Amanda");
-        // Build our app and trigger a frame.
+    User user = User(
+        datetime: "2021-05-01 00:00:00.000000",
+        sessionId: "1234567890",
+        isCitizen: true,
+        email: "usertest@gmail.com",
+        name: "Amanda");
+    // Build our app and trigger a frame.
     await tester.pumpWidget( MaterialApp(
       home: Pocket(user),
     ));

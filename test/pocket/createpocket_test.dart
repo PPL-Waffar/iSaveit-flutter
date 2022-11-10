@@ -25,7 +25,7 @@ void main() {
     final addPocketBudget = find.byKey(const ValueKey("addPocketBudget"));
     final createPocketButton = find.byKey(const ValueKey("createPocketButton"));
     final cancelCreatePocket = find.byKey(const ValueKey("cancelCreatePocket"));
-    
+
     // Build our app and trigger a frame.
     await tester.pumpWidget( MaterialApp(
       home: CreatePocket(user),
@@ -45,7 +45,7 @@ void main() {
 
     // //test buttons
     await tester.tap(createPocketButton);
-        await tester.pump();
+    await tester.pump();
     await tester.tap(cancelCreatePocket);
   });
 
