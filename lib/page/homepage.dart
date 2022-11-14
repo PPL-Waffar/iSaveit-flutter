@@ -11,7 +11,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 
-// import '../page//profile.dart';
+// import '../page//profile.dart'; 
 
 //----------------------------------------//
 
@@ -201,7 +201,8 @@ class HomePage extends State<HomeView> {
                 onPressed: () => showDialog<String>(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(
-                          title: const Text('Add'),
+                          title: Center(
+                            child: Text('Add'),),
                           actions: <Widget>[
                             Center(
                               child:Column(
@@ -313,19 +314,18 @@ class HomePage extends State<HomeView> {
                       return CarouselSlider.builder(
                           itemCount: allplanned.length,
                           options: CarouselOptions(
-                            height: 110.0,
+                            height: 120.0,
                             enlargeCenterPage: true,
                             autoPlay: true,
-                            aspectRatio: 16 / 9,
                             autoPlayCurve: Curves.fastOutSlowIn,
                             enableInfiniteScroll: true,
                             autoPlayAnimationDuration:
                                 const Duration(milliseconds: 800),
-                            viewportFraction: 0.8,
+                            viewportFraction: 1,
                           ),
                           itemBuilder: (context, index, realIndex) {
                             return SizedBox(
-                              height: 30,
+                              height: 120,
                               width: 200,
                               child: ElevatedButton(
                                 onPressed: () => {
@@ -341,42 +341,43 @@ class HomePage extends State<HomeView> {
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(8))),
-                                child: RichText(
-                                  text: TextSpan(
-                                    style: DefaultTextStyle.of(context).style,
-                                    children: <TextSpan>[
-                                      TextSpan(
-                                          text: allplanned[index]["pay_name"] +
-                                              '\n',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
+                                child: Padding(padding: EdgeInsets.fromLTRB(5,10,5,3),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(allplanned[index]["pay_name"], style:TextStyle(
+                                              fontWeight: FontWeight.w700,
                                               fontSize: 19,
-                                              color: Color(0xff4054FF))),
-                                      TextSpan(
-                                          text: allplanned[index]
-                                                  ["pay_amount"] +
-                                              '\n',
-                                          style: TextStyle(fontSize: 18)),
-                                      TextSpan(
-                                          text: 'Date            Type\n',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: Color(0xff4054FF),
-                                            fontWeight: FontWeight.bold,
-                                          )),
-                                      TextSpan(
-                                          text: allplanned[index]["pay_date"] +
-                                              '    ' +
-                                              allplanned[index]
-                                                  ["pay_categories"],
-                                          style: TextStyle(
-                                            fontSize: 10,
-                                            color: Color(0xff4054FF),
-                                            fontWeight: FontWeight.bold,
-                                          )),
-                                    ],
-                                  ),
-                                ),
+                                              color: Color(0xff4054FF)) ,),
+                                      Text(allplanned[index]["pay_amount"], style: TextStyle(fontSize: 18, color: Colors.black),),
+                                      SizedBox(height: 15,),
+                                      Row(
+                                        children: [
+                                          Column(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text("Date", style: TextStyle(fontSize: 14,color: Color(0xff4054FF),fontWeight: FontWeight.bold,)),
+                                              Text(allplanned[index]["pay_date"], style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Colors.black),)
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 15,
+                                            height: 15,
+                                          ),
+                                          Column(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text('Type', style: TextStyle(fontSize: 14,color: Color(0xff4054FF),fontWeight: FontWeight.bold,),),
+                                              Text(allplanned[index]["pay_categories"], style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Colors.black))
+                                            ],
+                                          )
+                                        ],)
+
+                                    ]),
+                                )
                               ),
                             );
                           });

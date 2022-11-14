@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:convert';
 import '../page/navbar.dart';
 import '../page/register_page.dart';
@@ -61,21 +63,24 @@ class LoginPage extends State<Login> {
       ),
       body: SingleChildScrollView(
           child: Column(children: <Widget>[
-        const SizedBox(
+        SizedBox(
           height: 20,
         ),
-        const Text(
+        Text(
           'Login to your account',
-          style: TextStyle(fontSize: 24, color: Color(0xff3444CE), fontWeight: FontWeight.w700),
+          style: TextStyle(
+              fontSize: 24,
+              color: Color(0xff3444CE),
+              fontWeight: FontWeight.w700),
         ),
-        const SizedBox(
+        SizedBox(
           height: 7,
         ),
-        const Text(
+        Text(
           "Welcome back, you've been missed!",
           style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
         ),
-        const SizedBox(
+        SizedBox(
           height: 20,
         ),
         const Text(
@@ -84,62 +89,49 @@ class LoginPage extends State<Login> {
           style: TextStyle(fontSize: 14),
         ),
         Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: 
-                  TextFormField(
-                    key: const Key("addEmail"),
-                    controller: _email,
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8)
-                          ),
-                          borderSide: BorderSide(
-                            width: 1.0,
-                            color: Color(0xFFDBDBDB)
-                          )
-                        ),
-                        hintText: 'Enter your name'),
-                  ),
+          padding: EdgeInsets.all(10.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: TextFormField(
+                  key: const Key("addEmail"),
+                  controller: _email,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                          borderSide:
+                              BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                      hintText: 'Enter your name'),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-      
-        const Text(
+        ),
+        Text(
           'Password',
           style: TextStyle(fontSize: 14),
         ),
         Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    key: const Key("addPassword"),
-                    controller: _password,
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8)
-                          ),
-                          borderSide: BorderSide(
-                            width: 1.0,
-                            color: Color(0xFFDBDBDB)
-                          )
-                        ),
-                        hintText: 'Enter your password'),
-                  ),
+          padding: EdgeInsets.all(10.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: TextFormField(
+                  key: const Key("addPassword"),
+                  controller: _password,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                          borderSide:
+                              BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                      hintText: 'Enter your password'),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        
-        const SizedBox(
+        ),
+        SizedBox(
           height: 25,
         ),
         SizedBox(
@@ -176,20 +168,20 @@ class LoginPage extends State<Login> {
               _email.clear();
               _password.clear();
             },
-            child: const Text(
+            child: Text(
               'Login',
               style: TextStyle(fontSize: 16, color: Colors.white),
             ),
           ),
         ),
-        const SizedBox(
+        SizedBox(
           height: 20,
         ),
         TextButton(
           // <-- TextButton
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => const Register()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Register()));
           },
           child: const Text(
             "Don't have an account?",

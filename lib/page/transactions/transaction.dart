@@ -21,20 +21,21 @@ class TransactionPage extends State<Transaction> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           const SizedBox(
-            height: 300,
+            height: 280,
           ),
           AlertDialog(
-            title: const Text(
+            title: Center(
+              child: Text(
               'Input',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
-            ),
+            ),),
             actions: <Widget>[
               Center(
                 child: Column(
                   children: [
                     SizedBox(
                         height: 52,
-                        width: 384,
+                        width: 430,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 0,
@@ -52,7 +53,7 @@ class TransactionPage extends State<Transaction> {
                           },
                           child: Row(children: [
                             SizedBox(
-                              width: 10,
+                              width: 20,
                             ),
                             Icon(
                               Icons.wallet_outlined,
@@ -78,7 +79,7 @@ class TransactionPage extends State<Transaction> {
                     ),
                     SizedBox(
                       height: 52,
-                      width: 384,
+                      width: 430,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             elevation: 0,
@@ -90,9 +91,9 @@ class TransactionPage extends State<Transaction> {
                         onPressed: () {},
                         child: Row(children: [
                           SizedBox(
-                            width: 10,
+                            width: 20,
                           ),
-                          const Icon(
+                          Icon(
                             Icons.card_travel,
                             size: 24,
                             color: Color(0xff4054FF),
