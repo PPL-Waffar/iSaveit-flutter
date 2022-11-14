@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:isaveit/models/user.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:isaveit/page/navbar.dart';
 // heroku link: https://isaveit-staging.herokuapp.com/pocket/add-pocket/
 
 Future<Map<String, dynamic>> sendNewUser(
     String pocketName, String pocketBudget, User user) async {
-  const url = 'http://127.0.0.1:8000/pocket/add-pocket/';
+  const url = 'http://localhost:8000/pocket/add-pocket/';
 
   try {
     final response = await http.post(
@@ -156,14 +157,20 @@ class _CreatePocketPage extends State<CreatePocket> {
                               )),
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              fetchedResult = await sendNewUser(
-                                  pocketName.text,
-                                  pocketBudget.text,
-                                  widget.user);
+                              fetchedResult = await sendNewUser(pocketName.text,
+                                  pocketBudget.text, widget.user);
                               isSuccessful = fetchedResult!['isSuccessful'];
                               if (isSuccessful == true) {
                                 // ignore: use_build_context_synchronously
-                                Navigator.pop(context);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text('Pocket created')));
+                                // ignore: use_build_context_synchronously
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            SettingView(widget.user)));
                               } else {
                                 // ignore: use_build_context_synchronously
                                 ScaffoldMessenger.of(context).showSnackBar(
