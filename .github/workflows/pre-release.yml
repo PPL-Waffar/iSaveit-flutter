@@ -2,16 +2,17 @@
 name: Pre-Release
 
 # Controls when the workflow will run
-on: 
+on:
   # Triggers the workflow on pull request events but only for the main branch
   pull_request:
-    branches: [PBI-1-Connect_to_backend]
+
+  branches: [staging]
   
   # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "Build and Pre-Release APK"
   releases:
-    name: Build APK
+    name: Build and Release APK
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
@@ -28,16 +29,19 @@ jobs:
         uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-      
+
       - name: Get packages
         run: flutter packages get
 
       - name: Analyze
         run: flutter analyze
-              
+
       - name: Build APK
-<<<<<<< HEAD
         run: flutter build apk --split-per-abi
-=======
-        run: flutter build apk --split-per-abi
->>>>>>> staging
+
+      - name: Pre-release APK by uploading it to Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: APKS
+          path: build/app/outputs/flutter-apk/*.apk
+      
