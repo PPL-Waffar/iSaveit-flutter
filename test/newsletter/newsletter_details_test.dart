@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:isaveit/page/newsletter/newsletter_details.dart';
 
 void main() {
-  testWidgets('Testing Newsletter page', (WidgetTester tester) async {
+  testWidgets('Testing Newsletter Details', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MaterialApp(
       home: NewsDetails(),
