@@ -9,5 +9,6 @@ void main() {
       home: NewsView(),
     ));
     expect(find.text("Newsletter"), findsOneWidget);
+    expect(find.text('Newsletter coming soon'), findsNothing);
   });
 }

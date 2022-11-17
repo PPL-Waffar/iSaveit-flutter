@@ -19,23 +19,29 @@ class NewsPage extends State<NewsView> {
           elevation: 0,
           leadingWidth: 150,
           leading: Center(
-              child: Column(
-            children: [
-              // ignore: prefer_const_constructors
-              Text(
+              child: Text(
                 'Newsletter',
                 style: TextStyle(fontSize: 16, color: Colors.black),
               ),
-              ElevatedButton(
+              
+          )),
+          body: SingleChildScrollView(
+            child: Center(
+              child: Column(children: [
+                SizedBox(
+                  height: 30,
+                  width: 100,
+                  child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const NewsDetails()));
                   },
-                  child: Text('See More'))
-            ],
-          ))),
+                  child: Text('See More')),
+                )
+              ]),
+            ) ),
     );
   }
 }
