@@ -69,8 +69,9 @@ class _NewsDetails extends State<NewsDetails> {
               SizedBox(
                 child: Image.asset(
                   'assets/images/newsletter.png',
-                  width: 343,
+                  // width: 343,
                   height: 154,
+                  fit: BoxFit.fill,
                 ),
               ),
               Text(
