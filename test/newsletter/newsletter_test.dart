@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:isaveit/page/newsletter.dart';
+import 'package:isaveit/page/newsletter/newsletter.dart';
 
 void main() {
   testWidgets('Testing Newsletter page', (WidgetTester tester) async {
@@ -8,6 +8,6 @@ void main() {
     await tester.pumpWidget(const MaterialApp(
       home: NewsView(),
     ));
-    expect(find.text("Newsletter coming soon"), findsOneWidget);
+    expect(find.text("Newsletter"), findsOneWidget);
   });
 }
