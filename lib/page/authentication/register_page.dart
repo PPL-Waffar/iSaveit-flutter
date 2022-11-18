@@ -130,35 +130,24 @@ class RegisterPage extends State<Register> {
                             BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
                     hintText: 'Enter your name'),
         ),
-        const Text(
-          'Name',
-          textAlign: TextAlign.left,
-          style: TextStyle(fontSize: 14),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Row(
-            children: [
-              Expanded(
-                child: TextFormField(
-                  key: const Key("addName"),
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Enter your name'),
-                  controller: _name,
-                ),
-              ),
             ],
           ),
         ),
-        const Text(
-          'Date of Birth',
-          style: TextStyle(fontSize: 14),
-        ),
-        Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Center(
-                child: TextField(
+        
+        SizedBox(height: 32),
+
+        //textformfield for Name
+        SingleChildScrollView(
+          padding: const EdgeInsets.only(left: 30, right: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Date of Birth',
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700)),
+              const SizedBox(height: 8),TextField(
               key: const Key("addDate"),
               controller: dateinput,
               decoration: const InputDecoration(
@@ -169,7 +158,6 @@ class RegisterPage extends State<Register> {
                           BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
                   hintText:
                       'YYYY-MM-dd'), //editing controller of this TextField
-
               readOnly:
                   true, //set it true, so that user will not able to edit text
               onTap: () async {
@@ -189,66 +177,71 @@ class RegisterPage extends State<Register> {
                   });
                 } else {}
               },
-            ))),
-        const Text(
-          'Email',
-          style: TextStyle(fontSize: 14),
-        ),
-        Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    key: const Key("addEmail"),
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Enter your email'),
-                    controller: _email,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        const Text(
-          'Password',
-          style: TextStyle(fontSize: 14),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Row(
+            )])),
+        
+        SizedBox(height: 32),
+
+        //textformfield for email
+        SingleChildScrollView(
+          padding: const EdgeInsets.only(left: 30, right: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: TextFormField(
+              const Text('Email',
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700)),
+              const SizedBox(height: 8),
+              TextFormField(
+                key: const Key("addEmail"),
+                controller: _email,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        borderSide:
+                            BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                    hintText: 'Enter your email'),
+        ),
+
+        SizedBox(height: 32),
+        SingleChildScrollView(
+          // padding: const EdgeInsets.only(left: 30, right: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Password',
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700)),
+              const SizedBox(height: 8),
+              TextFormField(
                   key: const Key("addPassword"),
+                  controller: _password,
                   obscureText: true,
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                          borderSide:
+                              BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
                       hintText: 'Enter your password'),
-                  controller: _password,
                 ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 25,
-        ),
+            ])),
+
+        SizedBox(height: 32),
+
         Container(
-          height: 48,
-          width: 327,
-          padding: const EdgeInsets.fromLTRB(70, 16, 70, 16),
-          decoration: const BoxDecoration(color: Color(0xff4054FF)),
+          alignment: Alignment.center,
           child: ElevatedButton(
             key: const Key("addAccount"),
             style: ElevatedButton.styleFrom(
-              minimumSize: const Size.fromHeight(48),
-              elevation: 0,
-              backgroundColor: const Color(0XFF4054FF),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
+                  minimumSize: const Size.fromHeight(48),
+                  elevation: 0,
+                  backgroundColor: const Color(0XFF4054FF),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(48),
+                  )),
             onPressed: submitting
                 ? null
                 : () async {
@@ -269,29 +262,35 @@ class RegisterPage extends State<Register> {
                       });
                     }
                   },
+        
             child: const Text(
               'Create Account',
               style: TextStyle(fontSize: 16, color: Colors.white),
             ),
           ),
         ),
-        const SizedBox(
-          height: 20,
-        ),
+        
+        SizedBox(height: 15),
+
+        Container(
+          alignment: Alignment.center,
+          child:
         TextButton(
           // <-- TextButton
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const Login()));
-          },
+          onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) => const Login()));},
           child: const Text(
             'Already have an account?',
-            style: TextStyle(
-              color: Color(0XFF4054FF),
+            style: TextStyle(color: Color(0XFF4054FF), fontWeight: FontWeight.w500, fontSize: 16),
             ),
           ),
         ),
-      ])),
-    );
+          
+          ]
+  )
+        )
+            ]
+          )
+        )
+      );
   }
 }
