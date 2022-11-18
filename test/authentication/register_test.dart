@@ -8,31 +8,26 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:isaveit/models/user.dart';
+
+
 import 'package:isaveit/page/authentication/register_page.dart';
 
 void main() {
-  testWidgets('Test Login', (WidgetTester tester) async {
+  testWidgets('Test Register Page', (WidgetTester tester) async {
+    final addName = find.byKey(const ValueKey("addName"));
+    final addDate = find.byKey(const ValueKey("addDate"));
     final addEmail = find.byKey(const ValueKey("addEmail"));
     final addPassword = find.byKey(const ValueKey("addPassword"));
-    
-    // ignore: unused_local_variable
-    User user = User(
-        datetime: "2021-05-01 00:00:00.000000",
-        sessionId: "1234567890",
-        isCitizen: true,
-        email: "usertest@gmail.com",
-        name: "Amanda");
+    final addAccount = find.byKey(const ValueKey("addAccount"));
 
-    // Build our app and trigger a frame.
     await tester.pumpWidget(const MaterialApp(
       home: Register(),
     ));
 
 
     expect(find.byIcon(Icons.add), findsNothing);
-    expect(find.text('Login to your account'), findsOneWidget);
-    expect(find.text("Welcome back, you've been missed"), findsOneWidget);
+    expect(find.text('Create an account'), findsOneWidget);
+    expect(find.text('Welcome to iSaveIt!'), findsOneWidget);
 
 
     await tester.pump();
@@ -41,8 +36,18 @@ void main() {
     expect(find.text('Welcome Back! \nYourname'), findsNothing);
 
 
-    await tester.enterText(addEmail, "angel@gmail.com");
-    await tester.enterText(addPassword, "ngelangel18");
+    await tester.enterText(addName, "Budiman");
+    await tester.enterText(addDate, "2022-10-02");
+    final dateTextField = find.byIcon(Icons.calendar_today);
+        await tester.tap(dateTextField);
+ 
+    await tester.enterText(addEmail, "budiman@gmail.com");
+    await tester.enterText(addPassword, "budidibudi25");
+    await tester.tap(addAccount);
+    await tester.pump();
+
+    expect(find.text('Welcome to iSaveIt!'), findsOneWidget);
+    expect(find.text('Welcome Back! \nYourname'), findsNothing);
 
   });
 
