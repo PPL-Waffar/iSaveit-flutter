@@ -42,6 +42,7 @@ class NewsList extends State<NewsletterList> {
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffE7E7FF)),
                         child:
                         TextButton(
+                          key: const Key ("allArticles"),
                           child: const Text(
                             "All articles",
                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xff4054FF)),
@@ -61,6 +62,7 @@ class NewsList extends State<NewsletterList> {
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffE7E7FF)),
                         child:
                         TextButton(
+                          key: const Key ("tipsForYou"),
                           child: const Text(
                             "Tips for you",
                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xff090A0A)),
@@ -81,6 +83,7 @@ class NewsList extends State<NewsletterList> {
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffE7E7FF)),
                         child:
                         TextButton(
+                          key: const Key ("todaysNews"),
                           child: const Text(
                             "Today's news",
                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xff090A0A)),
@@ -131,6 +134,7 @@ class NewsList extends State<NewsletterList> {
           ),
               const SizedBox(height: 10,),
               TextButton(
+                key: const Key("title1"),
                 child: const Text(
                   "You need this! Tips on how to save more money if you live alone and still in college.",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700,color: Color(0xff090A0A)),
@@ -170,6 +174,7 @@ class NewsList extends State<NewsletterList> {
                     ),
                   ]
               ),
+                  const SizedBox(height: 10,),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -181,6 +186,7 @@ class NewsList extends State<NewsletterList> {
               const SizedBox(height: 10,),
               // const Text('Student Loans: What happens to loans when you leave college?', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),),
               TextButton(
+                key: const Key("title2"),
                 child: const Text(
                   "Student Loans: What happens to loans when you leave college?",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700,color: Color(0xff090A0A)),

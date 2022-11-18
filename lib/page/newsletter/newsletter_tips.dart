@@ -119,6 +119,7 @@ class NewsTips extends State<NewsletterTips> {
                           ),
                         ]
                     ),
+                    const SizedBox(height: 10,),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -168,6 +169,7 @@ class NewsTips extends State<NewsletterTips> {
                           ),
                         ]
                     ),
+                    const SizedBox(height: 10,),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [

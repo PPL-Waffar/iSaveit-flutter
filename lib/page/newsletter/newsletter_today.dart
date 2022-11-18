@@ -119,6 +119,7 @@ class NewsToday extends State<NewsletterToday> {
                           ),
                         ]
                     ),
+                    const SizedBox(height: 10,),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -165,6 +166,7 @@ class NewsToday extends State<NewsletterToday> {
                           ),
                         ]
                     ),
+                    const SizedBox(height: 10,),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
