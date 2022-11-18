@@ -19,7 +19,14 @@ void main() {
     expect(find.text('By Academia.com'), findsOneWidget);
     expect(find.text("By Detik.com"), findsOneWidget);
     expect(find.text('My Balance'), findsNothing);
-
+    expect(
+        find.text(
+            "You need this! Tips on how to save more money if you live alone and still in college."),
+        findsOneWidget);
+    expect(
+        find.text(
+            "Student Loans: What happens to loans when you leave college?"),
+        findsOneWidget);
     await tester.tap(allArticles);
     await tester.tap(tipsForYou);
     await tester.tap(todaysNews);
