@@ -31,8 +31,8 @@ void main() {
 
 
     expect(find.byIcon(Icons.add), findsNothing);
-    
-
+    expect(find.text('Login to your account'), findsOneWidget);
+    expect(find.text("Welcome back, you've been missed"), findsOneWidget);
 
     expect(find.text('Welcome Back! \nYourname'), findsNothing);
 
