@@ -2,11 +2,10 @@
 name: Pre-Release
 
 # Controls when the workflow will run
-on:
+on: 
   # Triggers the workflow on pull request events but only for the main branch
   pull_request:
-
-  branches: [PBI-21-newsletter_details]
+    branches: [PBI-21-newsletter_details]
   
   # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -29,13 +28,12 @@ jobs:
         uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-
+      
       - name: Get packages
         run: flutter packages get
 
       - name: Analyze
         run: flutter analyze
-
+              
       - name: Build APK
         run: flutter build apk --split-per-abi
-      
