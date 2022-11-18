@@ -1,9 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:isaveit/models/user.dart';
-import '../page/login_page.dart';
+import 'login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //heroku link: https://isaveit-staging.herokuapp.com/user/flu-register-user/"
 
@@ -76,29 +78,57 @@ class RegisterPage extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
+      // appBar: AppBar(
+      //   automaticallyImplyLeading: false,
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      // ),
       body: SingleChildScrollView(
-          child: Column(children: <Widget>[
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
         const SizedBox(
-          height: 20,
+          height: 100,
         ),
-        const Text(
+        Image.asset(
+          'assets/images/isaveit_logo.png',
+          width: 200,
+          height: 100,
+        ),
+
+        Text(
           'Create an account',
-          style: TextStyle(fontSize: 24, color: Color(0xff3444CE)),
+          style: TextStyle(
+              fontSize: 24,
+              color: Colors.black,
+              fontWeight: FontWeight.w500),
         ),
+
         const SizedBox(
-          height: 7,
+          height: 32,
         ),
-        const Text(
-          'Welcome to iSaveIt!',
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(
-          height: 20,
+
+        //textformfield for Name
+        SingleChildScrollView(
+          padding: const EdgeInsets.only(left: 30, right: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Name',
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700)),
+              const SizedBox(height: 8),
+              TextFormField(
+                key: const Key("addName"),
+                controller: _email,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        borderSide:
+                            BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                    hintText: 'Enter your name'),
         ),
         const Text(
           'Name',

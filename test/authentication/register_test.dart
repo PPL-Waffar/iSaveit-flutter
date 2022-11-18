@@ -9,7 +9,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isaveit/models/user.dart';
-import 'package:isaveit/page/register_page.dart';
+import 'package:isaveit/page/authentication/register_page.dart';
 
 void main() {
   testWidgets('Test Login', (WidgetTester tester) async {
