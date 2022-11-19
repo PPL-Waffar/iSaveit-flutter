@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:isaveit/models/user.dart';
-import 'package:isaveit/page/navbar.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
@@ -77,10 +76,8 @@ class Plannedpaymentdetails extends State<PlanPayment> {
           elevation: 0,
           leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.black),
-              onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => SettingView(widget.user)))),
+              onPressed: () => Navigator.pop(context)),
+
           actions: <Widget>[
             IconButton(
               icon: const Icon(Icons.edit),
@@ -94,6 +91,8 @@ class Plannedpaymentdetails extends State<PlanPayment> {
             ),
           ],
         ),
+
+        
         body: SingleChildScrollView(
           padding: const EdgeInsets.only(left: 30, right: 30),
           child: FutureBuilder(
@@ -102,12 +101,18 @@ class Plannedpaymentdetails extends State<PlanPayment> {
                 return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      const SizedBox(
+                        height: 20,
+                      ),
+
                       const Text('Your Planned Payment Details!',
                           style: TextStyle(
                               fontFamily: 'Inter',
-                              fontSize: 16,
+                              fontSize: 20,
                               fontWeight: FontWeight.w700)),
+
                       const SizedBox(height: 32),
+
                       const Text('Payment Name',
                           style: TextStyle(
                               fontFamily: 'Inter',
@@ -116,7 +121,7 @@ class Plannedpaymentdetails extends State<PlanPayment> {
                       const SizedBox(height: 8),
                       TextFormField(
                         key: const Key("addPaymentName"),
-                        cursorWidth: 50,
+                        enabled: false,
                         decoration: InputDecoration(
                             enabledBorder: const OutlineInputBorder(
                                 borderRadius:
@@ -126,15 +131,20 @@ class Plannedpaymentdetails extends State<PlanPayment> {
                             hintText: thedata["name"]),
                         keyboardType: TextInputType.number,
                       ),
-                      const SizedBox(height: 24),
+
+                      const SizedBox(height: 32),
+
                       const Text('Expense',
                           style: TextStyle(
                               fontFamily: 'Inter',
                               fontSize: 16,
                               fontWeight: FontWeight.w700)),
+                      
                       const SizedBox(height: 8),
+
                       TextFormField(
                         key: const Key("addExpense"),
+                        enabled: false,
                         decoration: InputDecoration(
                             enabledBorder: const OutlineInputBorder(
                                 borderRadius:
@@ -144,7 +154,9 @@ class Plannedpaymentdetails extends State<PlanPayment> {
                             hintText: thedata["amount"]),
                         keyboardType: TextInputType.number,
                       ),
-                      const SizedBox(height: 24),
+
+                      const SizedBox(height: 32),
+
                       const Text('Date',
                           style: TextStyle(
                               fontFamily: 'Inter',
@@ -155,6 +167,7 @@ class Plannedpaymentdetails extends State<PlanPayment> {
                           padding: const EdgeInsets.only(),
                           child: Center(
                               child: TextField(
+                                enabled: false,
                             key: const Key("transactionDate"),
                             cursorWidth: 50,
                             decoration: InputDecoration(
@@ -178,6 +191,7 @@ class Plannedpaymentdetails extends State<PlanPayment> {
                               fontWeight: FontWeight.w700)),
                       const SizedBox(height: 8),
                       TextFormField(
+                        enabled: false,
                         key: const Key("paymentType"),
                         decoration: InputDecoration(
                             enabledBorder: const OutlineInputBorder(
@@ -196,6 +210,7 @@ class Plannedpaymentdetails extends State<PlanPayment> {
                               fontWeight: FontWeight.w700)),
                       const SizedBox(height: 8),
                       TextFormField(
+                        enabled: false,
                         key: const Key("pocketType"),
                         decoration: InputDecoration(
                             enabledBorder: const OutlineInputBorder(

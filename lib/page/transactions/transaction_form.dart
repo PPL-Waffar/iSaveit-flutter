@@ -135,12 +135,12 @@ class CreateTransactionPage extends State<CreateTransaction> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: const Color(0XFFF9F9F9),
           elevation: 0,
-          leadingWidth: 500,
-          leading: const Padding(
-              padding: EdgeInsets.all(10.0),
+          leadingWidth: 150,
+          backgroundColor: Colors.white,
+          leading: Padding(padding: EdgeInsets.only(left: 20, top:10),
               child: Text('Input Transaction',
                   style: TextStyle(
                       fontFamily: 'Inter',
@@ -154,6 +154,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                SizedBox(height: 32),
                 Container(
                     alignment: Alignment.center,
                     child: const Center(
@@ -199,6 +200,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
+                const SizedBox(height: 8),
                 Padding(
                   padding: const EdgeInsets.only(left: 30, right: 30),
                   child: Row(
@@ -229,6 +231,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
+                const SizedBox(height: 8),
                 Padding(
                   padding: const EdgeInsets.only(left: 30, right: 30),
                   child: Row(
@@ -260,6 +263,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
+                const SizedBox(height: 8),
                 //Date Picker
                 Container(
                     padding: const EdgeInsets.only(left: 30, right: 30),
@@ -307,6 +311,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
+                const SizedBox(height: 8),
                 Padding(
                   padding: const EdgeInsets.only(left: 30, right: 30),
                   child: Row(
@@ -360,6 +365,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
+                const SizedBox(height: 8),
                 Padding(
                   padding: const EdgeInsets.only(left: 30, right: 30),
                   child: Row(
@@ -423,6 +429,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
                   ),
                 ),
 
+                const SizedBox(height: 8),
                 Padding(
                   padding: const EdgeInsets.only(left: 30, right: 30),
                   child: DropdownButtonFormField(
@@ -457,81 +464,8 @@ class CreateTransactionPage extends State<CreateTransaction> {
                     isExpanded: true,
                   ),
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.only(left: 30, right: 30),
-                //   child: Row(
-                //     children: <Widget> [
-                //       DropdownButton(hint: Text("Select Pocket"), value: _valPocket,items: allpocket.map(item){
-                //          return DropdownMenuItem(
-                //     child: Text(item['pocket_name']),
-                //     value: item['pocket_name'],);}).toList(), onChanged: (value){
-                //       setState(() {
-                //         _valPocket = value.toString();
-                //       });
-                //     },),
-
-                //     ],
-                //   ),
-                // ),
-
-                // const Padding(
-                //   padding: EdgeInsets.only(left: 30, right: 30),
-                //   child: Text(
-                //     'Pocket',
-                //     style: TextStyle(fontWeight: FontWeight.bold),
-                //   ),
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.only(left: 30, right: 30),
-                //   child: Row(
-                //     children: [
-                //       Expanded(
-                //         child: DropdownButtonFormField<String>(
-                //             key: const ValueKey("PocketName"),
-                //             style: const TextStyle(height: 0),
-                //             decoration: const InputDecoration(
-                //               fillColor: Color(0XFFF9F9F9),
-                //               enabledBorder: OutlineInputBorder(
-                //                   borderRadius:
-                //                       BorderRadius.all(Radius.circular(8.0)),
-                //                   borderSide:
-                //                       BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                //               hintText: 'Enter your pocket',
-                //               filled: true,
-                //             ),
-                //             value: _pocketType,
-                //             onChanged: (String? value) => {_pocketType = value!},
-                //             items: const [
-                //               DropdownMenuItem<String>(
-                //                 value: "Groceries",
-                //                 child: Text(
-                //                   "Groceries",
-                //                   style: TextStyle(
-                //                     color: Colors.black,
-                //                   ),
-                //                 ),
-                //               ),
-                //               DropdownMenuItem(
-                //                   value: "Health",
-                //                   child: Text(
-                //                     "Health",
-                //                     style: TextStyle(
-                //                       color: Colors.black,
-                //                     ),
-                //                   )),
-                //               DropdownMenuItem(
-                //                   value: "Food And Beverages",
-                //                   child: Text(
-                //                     "Food And Beverages",
-                //                     style: TextStyle(
-                //                       color: Colors.black,
-                //                     ),
-                //                   )),
-                //             ]),
-                //       ),
-                //     ],
-                //   ),
-                // ),
+                
+                const SizedBox(height: 32),
 
                 Container(
                   alignment: Alignment.center,
@@ -543,7 +477,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
                         elevation: 0,
                         backgroundColor: const Color(0XFF4054FF),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(48),
                         )),
                     onPressed: () async {
                       {
@@ -592,6 +526,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
                     ),
                   ),
                 ),
+                const SizedBox(height: 32),
               ],
             ),
           ),

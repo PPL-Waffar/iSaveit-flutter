@@ -69,7 +69,7 @@ class _CreatePocketPage extends State<CreatePocket> {
                       child: const Text('💰 Create Pocket',
                           style: TextStyle(
                               fontFamily: 'Inter',
-                              fontSize: 16,
+                              fontSize: 20,
                               fontWeight: FontWeight.w700)),
                     ),
 
@@ -187,9 +187,7 @@ class _CreatePocketPage extends State<CreatePocket> {
 
                     TextButton(
                       key: const Key("cancelCreatePocket"),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                      onPressed: () {Navigator.pop(context);},
                       child: const Text(
                         'Cancel',
                         style: TextStyle(color: Color(0xFFD3180C)),

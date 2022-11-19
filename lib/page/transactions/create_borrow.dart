@@ -1,5 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'dart:convert';
+
 
 class CreateBorrow extends StatefulWidget {
   const CreateBorrow({super.key});
@@ -23,21 +27,23 @@ class CreateBorrowPage extends State<CreateBorrow> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
+        appBar: AppBar(
+          elevation: 0,
+          leadingWidth: 150,
+          backgroundColor: Colors.white,
+          leading: Padding(padding: EdgeInsets.only(left: 20, top:10),
+              child: Text('Borrow Transaction',
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black))),
+        ),
         body: SingleChildScrollView(
+          child: Form(
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 60),
-
-                  //Edit pocket title
-                  Container(
-                    margin: const EdgeInsets.only(left: 20),
-                    alignment: Alignment.topLeft,
-                    child:
-                    const Text('Borrow Transactions 🤝🏼',
-                        style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)
-                    ),
-                  ),
+                children: <Widget>[
 
                   const SizedBox(height: 32),
 
@@ -92,8 +98,6 @@ class CreateBorrowPage extends State<CreateBorrow> {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const SizedBox(height: 0.5,),
-                            const SizedBox(height: 32),
                             const Text('Payment Name', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
                             const SizedBox(height: 8),
                             TextFormField(
@@ -317,13 +321,15 @@ class CreateBorrowPage extends State<CreateBorrow> {
                             ),
                             const SizedBox(height: 24),
                             const InputTransactions(),
-                            const SizedBox(height: 24),
-                            const Cancelpayment()
+                            const Cancelpayment(),
+                            const SizedBox(height: 32),
+
                           ]
                       )
                   ),
                 ]
             )
+        )
         )
     );
   }
@@ -335,7 +341,7 @@ class InputTransactions extends StatelessWidget{
   Widget build(BuildContext context){
     return Container(
       alignment: Alignment.center,
-      margin: const EdgeInsets.only(left: 20),
+      
       child: ElevatedButton(
         key: const Key("createInputTransactions"),
         style: ElevatedButton.styleFrom(
@@ -363,30 +369,21 @@ class Cancelpayment extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return Container(
-      alignment: Alignment.center,
-      margin: const EdgeInsets.only(left: 20),
-      child: ElevatedButton(
-        key: const Key("createCancelButton"),
-        style: ElevatedButton.styleFrom(
-            minimumSize: const Size.fromHeight(48), backgroundColor: Colors.white70,
-            elevation: 0,
-            // backgroundColor: const Color(0xffb74093),
-            shape:
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(48),)),
-        // style: ElevatedButton.styleFrom(
-        //     primary: Colors.white70,),
-        onPressed: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => const HomeView()),
-          // );
-        },
-        child: const Text('Cancel',
-            style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFFD3180C))
-        ),
-      ),
-    );
+    return Padding(
+                  padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
+                  child: Center(
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.pop(
+                          context,
+                        );
+                      },
+                      child: const Text(
+                        'Cancel',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ),
+                  ),
+                );
   }
 }

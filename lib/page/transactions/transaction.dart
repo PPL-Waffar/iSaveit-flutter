@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:isaveit/page/navbar.dart';
 import 'package:isaveit/page/transactions/transaction_form.dart';
 import 'package:isaveit/models/user.dart';
+
+import 'create_borrow.dart';
 
 // ignore: must_be_immutable
 class Transaction extends StatefulWidget {
@@ -24,6 +27,9 @@ class TransactionPage extends State<Transaction> {
             height: 280,
           ),
           AlertDialog(
+            shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(16.0))),
+                  contentPadding: EdgeInsets.only(top: 10.0),
             title: Center(
               child: Text(
               'Input',
@@ -88,7 +94,13 @@ class TransactionPage extends State<Transaction> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(48),
                             )),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        CreateBorrow()));
+                        },
                         child: Row(children: [
                           SizedBox(
                             width: 20,
@@ -118,7 +130,11 @@ class TransactionPage extends State<Transaction> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        SettingView(widget.user)));
                       },
                       child: const Text(
                         'Cancel',

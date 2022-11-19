@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:isaveit/models/user.dart';
-import 'package:isaveit/page/navbar.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -402,29 +401,16 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                       ),
                     ),
 
+                    const SizedBox(height: 16),
+                    
                     Container(
                       alignment: Alignment.center,
-                      margin: const EdgeInsets.only(left: 30, right: 30),
-                      child: ElevatedButton(
-                        key: const Key("createCancelButton"),
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: const Size.fromHeight(48),
-                            backgroundColor: Colors.white70,
-                            elevation: 0,
-                            // backgroundColor: const Color(0xffb74093),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(48),
-                            )),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SettingView(widget.user)),
-                          );
-                        },
-                        child: const Text('Cancel',
-                            style: TextStyle(color: Color(0xFFD3180C))),
-                      ),
+                      child: TextButton(
+                          key: const Key("createCancelButton"),
+                          onPressed: () {Navigator.pop(context);},
+                          child: const Text('Cancel',
+                              style: TextStyle(color: Color(0xFFD3180C))),
+                        ),
                     ),
                   ])),
         ));

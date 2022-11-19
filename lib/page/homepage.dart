@@ -205,64 +205,95 @@ class HomePage extends State<HomeView> {
             IconButton(
               icon: const Icon(Icons.add, color: Colors.black, size: 35.0,),
                 onPressed: () => showDialog<String>(
-                      context: context,
-                      builder: (BuildContext context) => AlertDialog(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(16.0))),
-                        contentPadding: EdgeInsets.only(top: 10.0),
-                          title: Center(
-                            child: Text('Add', style: TextStyle(
-                              fontSize: 24, color: Colors.black,fontWeight: FontWeight.w700))),
-                            insetPadding: EdgeInsets.zero,  
-                          actions: <Widget>[
-                            Center(
-                              child:Column(
-                              children: [
-                                Padding(padding: const EdgeInsets.only(left:15, right:15),
-                                child:
-                                ElevatedButton.icon(
-                                  style: ElevatedButton.styleFrom(
-                                    minimumSize: const Size.fromHeight(48),
-                                    elevation: 0,
-                                      backgroundColor:
-                                          Color(0xff4054FF),
-                                          shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(48)),
-                                    ),
-                                     // <-- ElevatedButton
-                                    onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) =>CreatePocket(widget.user)));},
-                                    
-                                    icon: Icon( // <-- Icon
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(16.0))),
+                  contentPadding: EdgeInsets.only(top: 10.0),
+                    title: Center( child: Text('Add', 
+                    style: TextStyle(
+                      fontSize: 24, color: Colors.black,fontWeight: FontWeight.w700))),
+                      insetPadding: EdgeInsets.zero,  
+            actions: <Widget>[
+              Center(
+                child: Column(
+                  children: [
+                    Padding(padding: const EdgeInsets.only(left:15, right:15),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              minimumSize: const Size.fromHeight(48),
+                              backgroundColor: Color(0xff4054FF),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(48),
+                              )),
+                          onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) =>CreatePocket(widget.user)));},
+                          
+                          child: Row(
+                            
+                            // ignore: prefer_const_literals_to_create_immutables
+                            children: <Widget>[
+                            SizedBox(width: 20),
+                            Icon( // <-- Icon
                                       Icons.account_balance_wallet_outlined,
                                       size: 24.0,
                                       color: Color(0xffDFE2FF),
-                                    ),
-                                    label: Text('New Pocket', style: TextStyle(color: Color(0xffDFE2FF), fontSize: 16, fontWeight: FontWeight.w500),), // <-- Text
-                                  ),),
-                              
-                            SizedBox(height: 16),
-                            
-                            Padding(padding: const EdgeInsets.only(left:15, right:15),
-                                child:
-                            ElevatedButton.icon(
-                                  style: ElevatedButton.styleFrom(
-                                    minimumSize: const Size.fromHeight(48),
-                                    elevation: 0,
-                                      backgroundColor:
-                                          Color(0xffDFE2FF),
-                                          shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(48)),
-                                    ),
-                                     
-                                    onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) =>PlannedPayment(widget.user)));},
-                                    
-                                    icon: Icon(Icons.wallet, size: 24.0, color: Color(0xff4054FF)),
-                                    label: Text('New Planned Payment', style: TextStyle(color: Color(0xff4054FF), fontSize: 16, fontWeight: FontWeight.w500)), // <-- Text
-                                  ),),
-                            SizedBox(height: 32),
-                          ],
-                          ),)]
-                      )),
+                            ),
+                            SizedBox(width: 15),
+                            Padding(
+                                padding: EdgeInsets.only(left: 20, right: 20),
+                                child: Text(
+                                  'New Pocket',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white),
+                                ))
+                          ]),
+                        )),
+
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Padding(padding: const EdgeInsets.only(left:15, right:15),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            minimumSize: const Size.fromHeight(48),
+                            backgroundColor: Color(0xffDFE2FF),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(48),
+                            )),
+                        onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) =>PlannedPayment(widget.user)));},
+
+                        // ignore: prefer_const_literals_to_create_immutables
+                        child: Row(children: [
+                            SizedBox(width: 20),
+                            Icon(Icons.wallet, size: 24.0, color: Color(0xff4054FF)),
+
+                            SizedBox(width: 8),
+                            Padding(
+                                padding: EdgeInsets.only(left: 20, right: 20),
+                                child: Text(
+                                  'New Planned Payment',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xff4054FF)),
+                                ))
+                          ]),
+                        )),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    
+                  ],
+                ),
+              ),
+            ],
+          ),),
                 
                 )
           ]
