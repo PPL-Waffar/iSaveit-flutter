@@ -39,9 +39,7 @@ class TransactionPage extends State<Transaction> {
               Center(
                 child: Column(
                   children: [
-                    SizedBox(
-                        height: 52,
-                        width: 430,
+                    Padding(padding: const EdgeInsets.only(left:15, right:15),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 0,
@@ -67,7 +65,7 @@ class TransactionPage extends State<Transaction> {
                               color: Colors.white,
                             ),
                             SizedBox(
-                              width: 25,
+                              width: 15,
                             ),
                             Padding(
                                 padding: EdgeInsets.only(left: 20, right: 20),
@@ -83,9 +81,7 @@ class TransactionPage extends State<Transaction> {
                     SizedBox(
                       height: 15,
                     ),
-                    SizedBox(
-                      height: 52,
-                      width: 430,
+                    Padding(padding: const EdgeInsets.only(left:15, right:15),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             elevation: 0,
@@ -111,7 +107,7 @@ class TransactionPage extends State<Transaction> {
                             color: Color(0xff4054FF),
                           ),
                           SizedBox(
-                            width: 25,
+                            width: 15,
                           ),
                           Padding(
                               padding: EdgeInsets.only(left: 20, right: 20),
