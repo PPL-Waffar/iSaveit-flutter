@@ -69,7 +69,7 @@ class _CreatePocketPage extends State<CreatePocket> {
                       child: const Text('💰 Create Pocket',
                           style: TextStyle(
                               fontFamily: 'Inter',
-                              fontSize: 20,
+                              fontSize: 16,
                               fontWeight: FontWeight.w700)),
                     ),
 

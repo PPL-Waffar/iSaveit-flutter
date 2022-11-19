@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:isaveit/main.dart';
 import 'package:isaveit/models/user.dart';
 import 'package:isaveit/page/navbar.dart';
 import 'package:http/http.dart' as http;
