@@ -190,110 +190,119 @@ class HomePage extends State<HomeView> {
           elevation: 0,
           leadingWidth: 150,
           backgroundColor: Colors.white,
-          leading: Center(
-            child: Text('Welcome Back \n ${thedata["name"]}', style: TextStyle(fontSize: 16, color: Colors.black),)),
-          
+          leading: Padding(padding: EdgeInsets.only(left: 20, top:10),
+          child:Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+            Text('Welcome Back', style: TextStyle(fontSize: 16, color: Colors.black),),
+            Text('${thedata["name"]}', style: TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w700),),
+          ],
+          ),
+          ),
+
+          //Add icon for showDialog create pocket and pp
           actions: [
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                ),
+            IconButton(
+              icon: const Icon(Icons.add, color: Colors.black, size: 35.0,),
                 onPressed: () => showDialog<String>(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(16.0))),
+                        contentPadding: EdgeInsets.only(top: 10.0),
                           title: Center(
-                            child: Text('Add'),),
+                            child: Text('Add', style: TextStyle(
+                              fontSize: 24, color: Colors.black,fontWeight: FontWeight.w700))),
+                            insetPadding: EdgeInsets.zero,  
                           actions: <Widget>[
                             Center(
                               child:Column(
                               children: [
-                              SizedBox(  
-                                height: 48,
-                                width: 279,
-                                child :ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                minimumSize: const Size.fromHeight(48),
-                                  backgroundColor:
-                                      Color(0xff4054FF),
-                                      shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(48),)
-                                      ), // <-- ElevatedButton
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            CreatePocket(widget.user)));
-                              },
-                              child: const Text('New Pocket', style: TextStyle(fontSize: 16, color: Colors.white),),
-                             
-                            ),
-                              ),
-                            SizedBox(height: 10,),
-                            SizedBox(
-                              height: 48,
-                              width: 279,
-                            child:ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                minimumSize: const Size.fromHeight(48),
-                                  backgroundColor:
-                                      Color(0xffDFE2FF),
-                                      shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(48),)), // <-- ElevatedButton
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            PlannedPayment(widget.user)));
-                              },
-                              child: const Text(
-                                'Planned Payment',
-                                style: TextStyle(color: Color(0xff4054FF)),
-                              ),
-                            ),
-                            ),
-                            SizedBox(height: 10,),
-                            TextButton(
-                              // <-- TextButton
-                              onPressed: () {
-                                Navigator.pop(
-                                  context,
-                                );
-                              },
-                              child: const Text(
-                                'Cancel',
-                                style: TextStyle(color: Colors.red),
-                              ),
-                            ),],
-                            ),)
+                                Padding(padding: const EdgeInsets.only(left:15, right:15),
+                                child:
+                                ElevatedButton.icon(
+                                  style: ElevatedButton.styleFrom(
+                                    minimumSize: const Size.fromHeight(48),
+                                    elevation: 0,
+                                      backgroundColor:
+                                          Color(0xff4054FF),
+                                          shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(48)),
+                                    ),
+                                     // <-- ElevatedButton
+                                    onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) =>CreatePocket(widget.user)));},
+                                    
+                                    icon: Icon( // <-- Icon
+                                      Icons.account_balance_wallet_outlined,
+                                      size: 24.0,
+                                      color: Color(0xffDFE2FF),
+                                    ),
+                                    label: Text('New Pocket', style: TextStyle(color: Color(0xffDFE2FF), fontSize: 16, fontWeight: FontWeight.w500),), // <-- Text
+                                  ),),
+                              
+                            SizedBox(height: 16),
                             
-                          ]),
-                    ),
-                child: const Icon(
-                  Icons.add,
-                  color: Colors.black,
-                  size: 40,
-                ))
-          ],
-        ),
+                            Padding(padding: const EdgeInsets.only(left:15, right:15),
+                                child:
+                            ElevatedButton.icon(
+                                  style: ElevatedButton.styleFrom(
+                                    minimumSize: const Size.fromHeight(48),
+                                    elevation: 0,
+                                      backgroundColor:
+                                          Color(0xffDFE2FF),
+                                          shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(48)),
+                                    ),
+                                     
+                                    onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) =>PlannedPayment(widget.user)));},
+                                    
+                                    icon: Icon(Icons.wallet, size: 24.0, color: Color(0xff4054FF)),
+                                    label: Text('New Planned Payment', style: TextStyle(color: Color(0xff4054FF), fontSize: 16, fontWeight: FontWeight.w500)), // <-- Text
+                                  ),),
+                            SizedBox(height: 32),
+                          ],
+                          ),)]
+                      )),
+                
+                )
+          ]
+                          ),
+                
+        //My balance information       
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               const SizedBox(
-                height: 10,
+                height: 24,
               ),
-              const Text(
-                'My balance ',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20),
-              ),
-              const Text(
-                'Rp 5.000.000',
-                style: TextStyle(
-                  fontSize: 25,
+              //container for my balance
+              Container(
+                    alignment: Alignment.center,
+                    child: Center(
+                      child: Text('My Balance',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500)),
+                    )),
+                const SizedBox(height: 10),
+
+                Container(
+                  alignment: Alignment.center,
+                  child: Center(
+                    child: Text('Rp 5.000.000',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 32,
+                            fontWeight: FontWeight.w700)),
+                  ),
                 ),
-              ),
+              
+              const SizedBox(height: 32),
+
+              //divider line
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
                 child: const Divider(
@@ -304,9 +313,21 @@ class HomePage extends State<HomeView> {
                   endIndent: 0,
                 ),
               ),
-              const SizedBox(
-                height: 15,
+
+              const SizedBox(height: 16),
+
+              Container(
+              alignment: Alignment.centerLeft,
+              margin: const EdgeInsets.only(left: 20),
+              child: const Text('💳 My Payments',
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700)),
               ),
+              
+              const SizedBox(height: 16),
+
               FutureBuilder(
                   future: fetchPlanned(widget.user),
                   builder: (context, snapshot) {
@@ -326,7 +347,7 @@ class HomePage extends State<HomeView> {
                           itemBuilder: (context, index, realIndex) {
                             return SizedBox(
                               height: 120,
-                              width: 200,
+                              width: 210,
                               child: ElevatedButton(
                                 onPressed: () => {
                                   Navigator.push(
@@ -385,9 +406,9 @@ class HomePage extends State<HomeView> {
                       return CircularProgressIndicator();
                     }
                   }),
-              const SizedBox(
-                height: 15,
-              ),
+
+              const SizedBox(height: 32),
+
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
                 child: const Divider(
@@ -398,16 +419,19 @@ class HomePage extends State<HomeView> {
                   endIndent: 0,
                 ),
               ),
-              const SizedBox(
-                height: 15,
+
+              const SizedBox(height: 16),
+
+              Container(
+              alignment: Alignment.centerLeft,
+              margin: const EdgeInsets.only(left: 20),
+              child: const Text('💰 My Pockets',
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700)),
               ),
-              const Text(
-                'My Pocket',
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-                textDirection: TextDirection.ltr,
-              ),
+
               FutureBuilder(
                   future: _intializeData(),
                   builder: (context, snapshot) {
@@ -442,10 +466,14 @@ class HomePage extends State<HomeView> {
                               child :Align(
                                 alignment: Alignment.centerLeft,
                                 child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(allpocket[i]["pocket_name"] + '\n' + allpocket[i]["pocket_budget"],style: TextStyle(
+                                  Text(allpocket[i]["pocket_name"], style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w700, color: Color(0xff4054FF)), textAlign: TextAlign.left,),
+                                  Text(allpocket[i]["pocket_budget"],style: TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.w700, color: Colors.black), textAlign: TextAlign.left,),
+                                          fontWeight: FontWeight.w500, color: Colors.black), textAlign: TextAlign.left,),
                               ],
                             ), 
                             ),
@@ -455,7 +483,7 @@ class HomePage extends State<HomeView> {
             ],
           ),
         ),
-      );
+        );
     } else {
       return Scaffold(
           body: Center(
