@@ -59,17 +59,17 @@ class _CreatePocketPage extends State<CreatePocket> {
                 key: _formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 60),
+                  children:  <Widget>[
+                    const SizedBox(height: 100),
 
                     //Create pocket title
                     Container(
                       margin: const EdgeInsets.only(left: 20),
                       alignment: Alignment.topLeft,
-                      child: const Text('Create Pocket',
+                      child: const Text('💰 Create Pocket',
                           style: TextStyle(
                               fontFamily: 'Inter',
-                              fontSize: 16,
+                              fontSize: 20,
                               fontWeight: FontWeight.w700)),
                     ),
 
@@ -183,7 +183,7 @@ class _CreatePocketPage extends State<CreatePocket> {
                           child: const Text('Create Pocket')),
                     ),
 
-                    const SizedBox(height: 32),
+                    const SizedBox(height: 16),
 
                     TextButton(
                       key: const Key("cancelCreatePocket"),
