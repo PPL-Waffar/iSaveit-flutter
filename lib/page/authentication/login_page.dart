@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_ _ ructors, prefer_const_constructors, prefer_const_constructors_in_immutables
 
 import 'dart:convert';
 import '../navbar.dart';
@@ -14,7 +14,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 //url local: "http://127.0.0.1:8000/user/flu-login/"
 
 class Login extends StatefulWidget {
-  const Login({super.key});
+    Login({super.key});
   Future<User> webServiceLogin(String telephone, String password) async {
     var response =
         await post(Uri.parse("http://localhost:8000/user/flu-login/"),
@@ -87,20 +87,20 @@ class LoginPage extends State<Login> {
 
         //textformfield for email
         SingleChildScrollView(
-          padding: const EdgeInsets.only(left: 30, right: 30),
+          padding:   EdgeInsets.only(left: 30, right: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Email',
+                Text('Email',
                   style: TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 16,
                       fontWeight: FontWeight.w700)),
-              const SizedBox(height: 8),
+                SizedBox(height: 8),
               TextFormField(
-                key: const Key("addEmail"),
+                key:   Key("addEmail"),
                 controller: _email,
-                decoration: const InputDecoration(
+                decoration:   InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                         borderSide:
@@ -111,21 +111,21 @@ class LoginPage extends State<Login> {
         SizedBox(height: 32),
 
         SingleChildScrollView(
-          // padding: const EdgeInsets.only(left: 30, right: 30),
+          // padding:   EdgeInsets.only(left: 30, right: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Password',
+                Text('Password',
                   style: TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 16,
                       fontWeight: FontWeight.w700)),
-              const SizedBox(height: 8),
+                SizedBox(height: 8),
               TextFormField(
-                  key: const Key("addPassword"),
+                  key:   Key("addPassword"),
                   controller: _password,
                   obscureText: true,
-                  decoration: const InputDecoration(
+                  decoration:   InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8)),
                           borderSide:
@@ -141,13 +141,13 @@ class LoginPage extends State<Login> {
         //login button
         Container(
           alignment: Alignment.center,
-          // margin: const EdgeInsets.only(left: 30, right: 30),
+          // margin:   EdgeInsets.only(left: 30, right: 30),
           child: ElevatedButton(
-              key: const Key("loginAccount"),
+              key:   Key("loginAccount"),
               style: ElevatedButton.styleFrom(
-                  minimumSize: const Size.fromHeight(48),
+                  minimumSize:   Size.fromHeight(48),
                   elevation: 0,
-                  backgroundColor: const Color(0XFF4054FF),
+                  backgroundColor:   Color(0XFF4054FF),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(48),
                   )),
@@ -171,10 +171,10 @@ class LoginPage extends State<Login> {
           alignment: Alignment.center,
           child:
         TextButton(
-          key: const Key("registerAccount"),
+          key:   Key("registerAccount"),
           // <-- TextButton
-          onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) => const Register()));},
-          child: const Text(
+          onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) =>   Register()));},
+          child:   Text(
             "Don't have an account?",
             style: TextStyle(color: Color(0XFF4054FF), fontWeight: FontWeight.w500, fontSize: 16),
             ),

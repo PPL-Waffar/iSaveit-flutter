@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer__ructors, prefer__literals_to_create_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:isaveit/page/navbar.dart';
@@ -23,7 +23,7 @@ class TransactionPage extends State<Transaction> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          const SizedBox(
+           SizedBox(
             height: 280,
           ),
           AlertDialog(
@@ -39,11 +39,11 @@ class TransactionPage extends State<Transaction> {
               Center(
                 child: Column(
                   children: [
-                    Padding(padding: const EdgeInsets.only(left:15, right:15),
+                    Padding(padding:  EdgeInsets.only(left:15, right:15),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 0,
-                              minimumSize: const Size.fromHeight(48),
+                              minimumSize:  Size.fromHeight(48),
                               backgroundColor: Color(0xff4054FF),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(48),
@@ -81,22 +81,16 @@ class TransactionPage extends State<Transaction> {
                     SizedBox(
                       height: 15,
                     ),
-                    Padding(padding: const EdgeInsets.only(left:15, right:15),
+                    Padding(padding:  EdgeInsets.only(left:15, right:15),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             elevation: 0,
-                            minimumSize: const Size.fromHeight(48),
+                            minimumSize:  Size.fromHeight(48),
                             backgroundColor: Color(0xffDFE2FF),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(48),
                             )),
-                        onPressed: () {
-                          Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        CreateBorrow()));
-                        },
+                        onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) =>CreateBorrow()));},
                         child: Row(children: [
                           SizedBox(
                             width: 20,
@@ -125,14 +119,8 @@ class TransactionPage extends State<Transaction> {
                       height: 15,
                     ),
                     TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        SettingView(widget.user)));
-                      },
-                      child: const Text(
+                      onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) =>SettingView(widget.user)));},
+                      child:  Text(
                         'Cancel',
                         style: TextStyle(color: Colors.red),
                       ),

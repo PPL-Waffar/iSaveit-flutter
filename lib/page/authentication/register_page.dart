@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, duplicate_ignore
+// ignore_for_file: prefer_ _ ructors, duplicate_ignore, prefer_const_constructors, prefer_const_constructors_in_immutables
 
 import 'dart:convert';
 import 'package:intl/intl.dart';
@@ -47,14 +47,14 @@ Future<User> registerUser(
     prefs.setString('email', userData["email"]);
     prefs.setString('name', userData["name"]);
 
-    return Future.delayed(const Duration(seconds: 0), () => user);
+    return Future.delayed(  Duration(seconds: 0), () => user);
   } else {
     return Future.error("internal");
   }
 }
 
 class Register extends StatefulWidget {
-  const Register({super.key});
+    Register({super.key});
 
   @override
   RegisterPage createState() {
@@ -87,7 +87,7 @@ class RegisterPage extends State<Register> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-        const SizedBox(
+          SizedBox(
           height: 100,
         ),
         Image.asset(
@@ -104,26 +104,26 @@ class RegisterPage extends State<Register> {
               fontWeight: FontWeight.w500),
         ),
 
-        const SizedBox(
+          SizedBox(
           height: 32,
         ),
 
         //textformfield for Name
         SingleChildScrollView(
-          padding: const EdgeInsets.only(left: 30, right: 30),
+          padding:   EdgeInsets.only(left: 30, right: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Name',
+                Text('Name',
                   style: TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 16,
                       fontWeight: FontWeight.w700)),
-              const SizedBox(height: 8),
+                SizedBox(height: 8),
               TextFormField(
-                key: const Key("addName"),
+                key:   Key("addName"),
                 controller: _email,
-                decoration: const InputDecoration(
+                decoration:   InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                         borderSide:
@@ -138,19 +138,19 @@ class RegisterPage extends State<Register> {
 
         //textformfield for Name
         SingleChildScrollView(
-          padding: const EdgeInsets.only(left: 30, right: 30),
+          padding:   EdgeInsets.only(left: 30, right: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Date of Birth',
+                Text('Date of Birth',
                   style: TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 16,
                       fontWeight: FontWeight.w700)),
-              const SizedBox(height: 8),TextField(
-              key: const Key("addDate"),
+                SizedBox(height: 8),TextField(
+              key:   Key("addDate"),
               controller: dateinput,
-              decoration: const InputDecoration(
+              decoration:   InputDecoration(
                   prefixIcon: Icon(Icons.calendar_today),
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -183,20 +183,20 @@ class RegisterPage extends State<Register> {
 
         //textformfield for email
         SingleChildScrollView(
-          padding: const EdgeInsets.only(left: 30, right: 30),
+          padding:   EdgeInsets.only(left: 30, right: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Email',
+                Text('Email',
                   style: TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 16,
                       fontWeight: FontWeight.w700)),
-              const SizedBox(height: 8),
+                SizedBox(height: 8),
               TextFormField(
-                key: const Key("addEmail"),
+                key:   Key("addEmail"),
                 controller: _email,
-                decoration: const InputDecoration(
+                decoration:   InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                         borderSide:
@@ -206,21 +206,21 @@ class RegisterPage extends State<Register> {
 
         SizedBox(height: 32),
         SingleChildScrollView(
-          // padding: const EdgeInsets.only(left: 30, right: 30),
+          // padding:   EdgeInsets.only(left: 30, right: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Password',
+                Text('Password',
                   style: TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 16,
                       fontWeight: FontWeight.w700)),
-              const SizedBox(height: 8),
+                SizedBox(height: 8),
               TextFormField(
-                  key: const Key("addPassword"),
+                  key:   Key("addPassword"),
                   controller: _password,
                   obscureText: true,
-                  decoration: const InputDecoration(
+                  decoration:   InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8)),
                           borderSide:
@@ -234,11 +234,11 @@ class RegisterPage extends State<Register> {
         Container(
           alignment: Alignment.center,
           child: ElevatedButton(
-            key: const Key("addAccount"),
+            key:   Key("addAccount"),
             style: ElevatedButton.styleFrom(
-                  minimumSize: const Size.fromHeight(48),
+                  minimumSize:   Size.fromHeight(48),
                   elevation: 0,
-                  backgroundColor: const Color(0XFF4054FF),
+                  backgroundColor:   Color(0XFF4054FF),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(48),
                   )),
@@ -248,7 +248,7 @@ class RegisterPage extends State<Register> {
                         Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute<void>(builder: (BuildContext context) =>Login()),(Route<dynamic> route) => false);
                       });}},
         
-            child: const Text(
+            child:   Text(
               'Create Account',
               style: TextStyle(fontSize: 16, color: Colors.white),
             ),
@@ -262,8 +262,8 @@ class RegisterPage extends State<Register> {
           child:
         TextButton(
           // <-- TextButton
-          onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) => const Login()));},
-          child: const Text(
+          onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) => Login()));},
+          child:   Text(
             'Already have an account?',
             style: TextStyle(color: Color(0XFF4054FF), fontWeight: FontWeight.w500, fontSize: 16),
             ),

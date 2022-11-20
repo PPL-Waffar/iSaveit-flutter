@@ -25,7 +25,7 @@ void main() {
         name: "Amanda");
     
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MaterialApp(
+    await tester.pumpWidget( MaterialApp(
       home: Login(),
     ));
 
