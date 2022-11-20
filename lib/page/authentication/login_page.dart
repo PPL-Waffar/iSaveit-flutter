@@ -151,27 +151,12 @@ class LoginPage extends State<Login> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(48),
                   )),
-            onPressed: () async {
-              setState(() {
-                loading = true;
-              });
-              {
-                User user =
-                    await widget.webServiceLogin(_email.text, _password.text);
-
-                {
-                  SchedulerBinding.instance.addPostFrameCallback((_) {
-                    Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute<void>(
-                            builder: (BuildContext context) =>
-                                SettingView(user)),
-                        (Route<dynamic> route) => false);
-                  });
-                }
-              }
-              _email.clear();
-              _password.clear();
-            },
+            onPressed: () async {setState(() {loading = true;});
+              {User user =await widget.webServiceLogin(_email.text, _password.text);
+                {SchedulerBinding.instance.addPostFrameCallback((_) {Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute<void>(builder: (BuildContext context) =>SettingView(user)),(Route<dynamic> route) => false);
+                    });}} _email.clear(); _password.clear();},
+            
             child: Text(
               'Login',
               style: TextStyle(fontSize: 16, color: Colors.white),

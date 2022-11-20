@@ -1,4 +1,4 @@
-// ignore_for_file: duplicate_import, no_leading_underscores_for_local_identifiers, avoid_print, unused_field, annotate_overrides, prefer_const_constructors, duplicate_ignore, use_build_context_synchronously
+// ignore_for_file: duplicate_import, no_leading_underscores_for_local_identifiers, avoid_print, unused_field, annotate_overrides, prefer_ _ ructors, duplicate_ignore, use_build_context_synchronously, prefer_ _literals_to_create_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -20,7 +20,7 @@ Future<Map<String, dynamic>> sendNewUser(
     String paymentType,
     String _valPocket,
     User user) async {
-  const url = 'http://localhost:8000/transaction/input-transaction/';
+    const url = 'http://localhost:8000/transaction/input-transaction/';
 
   try {
     final response = await http.post(
@@ -118,6 +118,11 @@ class CreateTransactionPage extends State<CreateTransaction> {
     });
   }
 
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
   Future<void> _intializeData() async {
     response = await fetchGroups(widget.user);
     if (response["isSuccessful"]) {
@@ -157,7 +162,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
                 SizedBox(height: 32),
                 Container(
                     alignment: Alignment.center,
-                    child: const Center(
+                    child:   Center(
                       child: Text('My Balance',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -165,10 +170,10 @@ class CreateTransactionPage extends State<CreateTransaction> {
                               fontSize: 16,
                               fontWeight: FontWeight.w500)),
                     )),
-                const SizedBox(height: 10),
+                SizedBox(height: 10),
                 Container(
                   alignment: Alignment.center,
-                  child: const Center(
+                  child:   Center(
                     child: Text('Rp 5.000.000',
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -178,12 +183,11 @@ class CreateTransactionPage extends State<CreateTransaction> {
                   ),
                 ),
 
-                const SizedBox(
-                  height: 32,
-                ),
+                SizedBox(height: 32),
+
                 Container(
-                  margin: const EdgeInsets.only(left: 20, right: 20),
-                  child: const Divider(
+                  margin:   EdgeInsets.only(left: 20, right: 20),
+                  child:   Divider(
                     color: Color(0xFFDBDBDB),
                     height: 20,
                     thickness: 1,
@@ -192,24 +196,24 @@ class CreateTransactionPage extends State<CreateTransaction> {
                   ),
                 ),
 
-                const SizedBox(height: 32),
-                const Padding(
+                 SizedBox(height: 32),
+                 Padding(
                   padding: EdgeInsets.only(left: 30, right: 30),
                   child: Text(
                     'Payment Name',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                const SizedBox(height: 8),
+                 SizedBox(height: 8),
                 Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  padding:   EdgeInsets.only(left: 30, right: 30),
                   child: Row(
                     children: [
                       Expanded(
                         child: TextFormField(
-                          key: const Key("transactionName"),
+                          key:   Key("transactionName"),
                           controller: transactionName,
-                          decoration: const InputDecoration(
+                          decoration:   InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(8.0)),
@@ -222,25 +226,25 @@ class CreateTransactionPage extends State<CreateTransaction> {
                   ),
                 ),
 
-                const SizedBox(height: 32),
+                 SizedBox(height: 32),
 
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(left: 30, right: 30),
                   child: Text(
                     'Amount',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                const SizedBox(height: 8),
+                 SizedBox(height: 8),
                 Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  padding: EdgeInsets.only(left: 30, right: 30),
                   child: Row(
                     children: [
                       Expanded(
                         child: TextFormField(
                           controller: transactionAmount,
-                          key: const Key("transactionAmount"),
-                          decoration: const InputDecoration(
+                          key:  Key("transactionAmount"),
+                          decoration:  InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(8.0)),
@@ -254,24 +258,24 @@ class CreateTransactionPage extends State<CreateTransaction> {
                   ),
                 ),
 
-                const SizedBox(height: 32),
+                 SizedBox(height: 32),
 
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(left: 30, right: 30),
                   child: Text(
                     'Date',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                const SizedBox(height: 8),
+                 SizedBox(height: 8),
                 //Date Picker
                 Container(
-                    padding: const EdgeInsets.only(left: 30, right: 30),
+                    padding:  EdgeInsets.only(left: 30, right: 30),
                     child: Center(
                         child: TextField(
-                      key: const Key("transactionDate"),
+                      key:  Key("transactionDate"),
                       controller: transactionDate,
-                      decoration: const InputDecoration(
+                      decoration:  InputDecoration(
                           prefixIcon: Icon(Icons.calendar_today),
                           enabledBorder: OutlineInputBorder(
                               borderRadius:
@@ -302,24 +306,24 @@ class CreateTransactionPage extends State<CreateTransaction> {
                       },
                     ))),
 
-                const SizedBox(height: 32),
+                 SizedBox(height: 32),
 
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(left: 30, right: 30),
                   child: Text(
                     'Type of Transaction',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                const SizedBox(height: 8),
+                 SizedBox(height: 8),
                 Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  padding:  EdgeInsets.only(left: 30, right: 30),
                   child: Row(
                     children: [
                       Expanded(
                         child: DropdownButtonFormField<String>(
-                            key: const ValueKey("transactionType"),
-                            decoration: const InputDecoration(
+                            key:  ValueKey("transactionType"),
+                            decoration:  InputDecoration(
                               fillColor: Color(0XFFF9F9F9),
                               enabledBorder: OutlineInputBorder(
                                   borderRadius:
@@ -332,7 +336,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
                             value: transacType,
                             onChanged: (String? value) =>
                                 {transacType = value!},
-                            items: const [
+                            items: [
                               DropdownMenuItem<String>(
                                 value: "Income",
                                 child: Text(
@@ -356,25 +360,25 @@ class CreateTransactionPage extends State<CreateTransaction> {
                   ),
                 ),
 
-                const SizedBox(height: 32),
+                 SizedBox(height: 32),
 
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(left: 30, right: 30),
                   child: Text(
                     'Type of Payment',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                const SizedBox(height: 8),
+                 SizedBox(height: 8),
                 Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  padding:  EdgeInsets.only(left: 30, right: 30),
                   child: Row(
                     children: [
                       Expanded(
                         child: DropdownButtonFormField<String>(
-                            key: const ValueKey("PaymentType"),
-                            style: const TextStyle(height: 0),
-                            decoration: const InputDecoration(
+                            key:  ValueKey("PaymentType"),
+                            style:  TextStyle(height: 0),
+                            decoration:  InputDecoration(
                               fillColor: Color(0XFFF9F9F9),
                               enabledBorder: OutlineInputBorder(
                                   borderRadius:
@@ -387,7 +391,7 @@ class CreateTransactionPage extends State<CreateTransaction> {
                             value: paymentType,
                             onChanged: (String? value) =>
                                 {paymentType = value!},
-                            items: const [
+                            items:  [
                               DropdownMenuItem<String>(
                                 value: "debit card",
                                 child: Text(
@@ -419,9 +423,9 @@ class CreateTransactionPage extends State<CreateTransaction> {
                   ),
                 ),
 
-                const SizedBox(height: 32),
+                  SizedBox(height: 32),
 
-                const Padding(
+                  Padding(
                   padding: EdgeInsets.only(left: 30, right: 30),
                   child: Text(
                     'Pocket',
@@ -429,12 +433,12 @@ class CreateTransactionPage extends State<CreateTransaction> {
                   ),
                 ),
 
-                const SizedBox(height: 8),
+                  SizedBox(height: 8),
                 Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  padding:   EdgeInsets.only(left: 30, right: 30),
                   child: DropdownButtonFormField(
-                    style: const TextStyle(height: 0),
-                    decoration: const InputDecoration(
+                    style:   TextStyle(height: 0),
+                    decoration:   InputDecoration(
                       fillColor: Color(0XFFF9F9F9),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -443,12 +447,12 @@ class CreateTransactionPage extends State<CreateTransaction> {
                       hintText: 'Enter your pocket name',
                       filled: true,
                     ),
-                    key: const ValueKey("PocketType"),
+                    key:   ValueKey("PocketType"),
                     items: allpocket.map((item) {
                       return DropdownMenuItem(
                         // ignore: sort_child_properties_last
                         child: Text(item['pocket_name'],
-                            // ignore: prefer_const_constructors
+                            // ignore: prefer_ _ ructors
                             style: TextStyle(
                               color: Colors.black,
                             )),
@@ -465,68 +469,43 @@ class CreateTransactionPage extends State<CreateTransaction> {
                   ),
                 ),
                 
-                const SizedBox(height: 32),
+                  SizedBox(height: 32),
 
                 Container(
                   alignment: Alignment.center,
-                  margin: const EdgeInsets.only(left: 30, right: 30),
+                  margin:   EdgeInsets.only(left: 30, right: 30),
                   child: ElevatedButton(
-                    key: const Key("inputTransactionButton"),
+                    key:   Key("inputTransactionButton"),
                     style: ElevatedButton.styleFrom(
-                        minimumSize: const Size.fromHeight(48),
+                        minimumSize:   Size.fromHeight(48),
                         elevation: 0,
-                        backgroundColor: const Color(0XFF4054FF),
+                        backgroundColor:   Color(0XFF4054FF),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(48),
                         )),
                     onPressed: () async {
-                      {
-                        fetchedResult = await sendNewUser(
-                            transactionName.text,
-                            transactionAmount.text,
-                            transactionDate.text,
-                            paymentType,
-                            transacType,
-                            _valPocket!,
-                            widget.user);
+                      {fetchedResult = await sendNewUser(transactionName.text,transactionAmount.text,transactionDate.text,paymentType,transacType,_valPocket!,widget.user);
                         isSuccessful = fetchedResult!['isSuccessful'];
-                        if (isSuccessful!) {
-                          // ignore: use_build_context_synchronously
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SettingView(widget.user)),
-                          );
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Transaction Failed'),
-                            ),
-                          );
-                        }
-                      }
-                    },
-                    child: const Text('Input Transaction'),
+                        if (isSuccessful!) {// ignore: use_build_context_synchronously
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => SettingView(widget.user)),);} 
+                          else {ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Transaction Failed'),),
+                          );}}},
+                    child:   Text('Input Transaction'),
                   ),
                 ),
-
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
-                  child: Center(
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.pop(
-                          context,
-                        );
-                      },
-                      child: const Text(
+              
+                Container(
+                  alignment: Alignment.center,
+                  margin:   EdgeInsets.only(left: 30, right: 30),
+                child: TextButton(
+                      key:   Key("cancelTransaction"),
+                      onPressed: () {Navigator.pop(context);},
+                      child:   Text(
                         'Cancel',
-                        style: TextStyle(color: Colors.red),
+                        style: TextStyle(color: Color(0xFFD3180C)),
                       ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 32),
+                    )),
+                  SizedBox(height: 32),
               ],
             ),
           ),

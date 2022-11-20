@@ -242,26 +242,11 @@ class RegisterPage extends State<Register> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(48),
                   )),
-            onPressed: submitting
-                ? null
-                : () async {
-                    setState(() {
-                      submitting = true;
-                    });
-                    {
-                      await registerUser(_email.text, _password.text,
-                              _name.text, _datetime.text)
-                          .then((user) {
+            onPressed: submitting ? null : () async {setState(() {submitting = true;});
+                    {await registerUser(_email.text, _password.text, _name.text, _datetime.text).then((user) {
                         // create User and then pushAndRemoveUntil(MyHomePage(user:uset))
-                        Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute<void>(
-                                builder: (BuildContext context) =>
-                                    // ignore: prefer_const_constructors
-                                    Login()),
-                            (Route<dynamic> route) => false);
-                      });
-                    }
-                  },
+                        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute<void>(builder: (BuildContext context) =>Login()),(Route<dynamic> route) => false);
+                      });}},
         
             child: const Text(
               'Create Account',
