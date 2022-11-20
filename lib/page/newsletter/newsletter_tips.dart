@@ -42,6 +42,7 @@ class NewsTips extends State<NewsletterTips> {
                             decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffE7E7FF)),
                             child:
                             TextButton(
+                              key: const Key("allArt"),
                               child: const Text(
                                 "All articles",
                                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xff090A0A)),
@@ -61,6 +62,7 @@ class NewsTips extends State<NewsletterTips> {
                             decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffE7E7FF)),
                             child:
                             TextButton(
+                              key: const Key("tips4u"),
                               child: const Text(
                                 "Tips for you",
                                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xff4054FF)),
@@ -80,6 +82,7 @@ class NewsTips extends State<NewsletterTips> {
                             decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffE7E7FF)),
                             child:
                             TextButton(
+                              key: const Key("newsToday"),
                               child: const Text(
                                 "Today's news",
                                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xff090A0A)),
@@ -130,6 +133,7 @@ class NewsTips extends State<NewsletterTips> {
                     ),
                     const SizedBox(height: 10,),
                     TextButton(
+                      key: const Key("titleOne"),
                       child: const Text(
                         "You need this! Tips on how to save more money if you live alone and still in college.",
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700,color: Color(0xff090A0A)),
@@ -180,6 +184,7 @@ class NewsTips extends State<NewsletterTips> {
                     ),
                     const SizedBox(height: 10,),
                     TextButton(
+                      key: const Key("titleTwo"),
                       child: const Text(
                         "You need this! Tips on how to save more money if you live alone and still in college.",
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700,color: Color(0xff090A0A)),
