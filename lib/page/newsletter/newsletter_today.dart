@@ -39,7 +39,7 @@ class NewsToday extends State<NewsletterToday> {
                           Container(
                             width: 132,
                             height: 32,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffE7E7FF)),
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffF2F4F5)),
                             child:
                             TextButton(
                               key: const Key("allArticlez"),
@@ -59,7 +59,7 @@ class NewsToday extends State<NewsletterToday> {
                           Container(
                             width: 132,
                             height: 32,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffE7E7FF)),
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffF2F4F5)),
                             child:
                             TextButton(
                               key: const Key("tipzforU"),
@@ -115,7 +115,7 @@ class NewsToday extends State<NewsletterToday> {
                           Container(
                             width: 132,
                             height: 32,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffE7E7FF)),
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffF2F4F5)),
                             child: const Center(
                               child :Text("Today's news", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xff090A0A)),),
                             ),
@@ -163,7 +163,7 @@ class NewsToday extends State<NewsletterToday> {
                           Container(
                             width: 132,
                             height: 32,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffE7E7FF)),
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffF2F4F5)),
                             child: const Center(
                               child :Text("Today's news", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xff090A0A)),),
                             ),
