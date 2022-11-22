@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables
+// ignore_for_file: prefer_const_constructors, duplicate_ignore
 
 import 'dart:convert';
 import 'package:intl/intl.dart';
@@ -47,14 +47,14 @@ Future<User> registerUser(
     prefs.setString('email', userData["email"]);
     prefs.setString('name', userData["name"]);
 
-    return Future.delayed( Duration(seconds: 0), () => user);
+    return Future.delayed(const Duration(seconds: 0), () => user);
   } else {
     return Future.error("internal");
   }
 }
 
 class Register extends StatefulWidget {
-   Register({super.key});
+  const Register({super.key});
 
   @override
   RegisterPage createState() {
@@ -78,6 +78,7 @@ class RegisterPage extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
@@ -85,37 +86,46 @@ class RegisterPage extends State<Register> {
       ),
       body: SingleChildScrollView(
           child: Column(children: <Widget>[
-         SizedBox(
+        SizedBox(
           height: 20,
         ),
-         Text(
+        Text(
           'Create an account',
-          style: TextStyle(fontSize: 24, color: Color(0xff3444CE)),
+          style: TextStyle(
+              fontSize: 24,
+              color: Color(0xff3444CE),
+              fontWeight: FontWeight.w700),
         ),
-         SizedBox(
+        SizedBox(
           height: 7,
         ),
-         Text(
+        Text(
           'Welcome to iSaveIt!',
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
+          ),
         ),
-         SizedBox(
+        SizedBox(
           height: 20,
         ),
-         Text(
+        Text(
           'Name',
           textAlign: TextAlign.left,
           style: TextStyle(fontSize: 14),
         ),
         Padding(
-          padding:  EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(10.0),
           child: Row(
             children: [
               Expanded(
                 child: TextFormField(
-                  key:  Key("addName"),
-                  decoration:  InputDecoration(
-                      border: OutlineInputBorder(),
+                  key: const Key("addName"),
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                          borderSide:
+                              BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
                       hintText: 'Enter your name'),
                   controller: _name,
                 ),
@@ -123,17 +133,17 @@ class RegisterPage extends State<Register> {
             ],
           ),
         ),
-         Text(
+        Text(
           'Date of Birth',
           style: TextStyle(fontSize: 14),
         ),
         Padding(
-            padding:  EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             child: Center(
                 child: TextField(
-              key:  Key("addDate"),
+              key: const Key("addDate"),
               controller: dateinput,
-              decoration:  InputDecoration(
+              decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.calendar_today),
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -162,40 +172,46 @@ class RegisterPage extends State<Register> {
                 } else {}
               },
             ))),
-         Text(
+        Text(
           'Email',
           style: TextStyle(fontSize: 14),
         ),
         Padding(
-            padding:  EdgeInsets.all(10.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    key:  Key("addEmail"),
-                    decoration:  InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Enter your email'),
-                    controller: _email,
-                  ),
-                ),
-              ],
-            ),
-          ),
-         Text(
-          'Password',
-          style: TextStyle(fontSize: 14),
-        ),
-        Padding(
-          padding:  EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(10.0),
           child: Row(
             children: [
               Expanded(
                 child: TextFormField(
-                  key:  Key("addPassword"),
+                  key: const Key("addEmail"),
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                          borderSide:
+                              BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                      hintText: 'Enter your email'),
+                  controller: _email,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Text(
+          'Password',
+          style: TextStyle(fontSize: 14),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: TextFormField(
+                  key: const Key("addPassword"),
                   obscureText: true,
-                  decoration:  InputDecoration(
-                      border: OutlineInputBorder(),
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                          borderSide:
+                              BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
                       hintText: 'Enter your password'),
                   controller: _password,
                 ),
@@ -203,22 +219,20 @@ class RegisterPage extends State<Register> {
             ],
           ),
         ),
-         SizedBox(
+        SizedBox(
           height: 25,
         ),
-        Container(
+        SizedBox(
           height: 48,
           width: 327,
-          padding:  EdgeInsets.fromLTRB(70, 16, 70, 16),
-          decoration:  BoxDecoration(color: Color(0xff4054FF)),
           child: ElevatedButton(
-            key:  Key("addAccount"),
+            key: const Key("addAccount"),
             style: ElevatedButton.styleFrom(
-              minimumSize:  Size.fromHeight(48),
+              minimumSize: const Size.fromHeight(48),
               elevation: 0,
-              backgroundColor:  Color(0XFF4054FF),
+              backgroundColor: const Color(0XFF4054FF),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(48),
               ),
             ),
             onPressed: submitting
@@ -235,28 +249,28 @@ class RegisterPage extends State<Register> {
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute<void>(
                                 builder: (BuildContext context) =>
-                                    // ignore: prefer__ructors
+                                    // ignore: prefer_const_constructors
                                     Login()),
                             (Route<dynamic> route) => false);
                       });
                     }
                   },
-            child:  Text(
+            child: Text(
               'Create Account',
               style: TextStyle(fontSize: 16, color: Colors.white),
             ),
           ),
         ),
-         SizedBox(
+        SizedBox(
           height: 20,
         ),
         TextButton(
           // <-- TextButton
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Login()));
+                MaterialPageRoute(builder: (context) => const Login()));
           },
-          child:  Text(
+          child: Text(
             'Already have an account?',
             style: TextStyle(
               color: Color(0XFF4054FF),
