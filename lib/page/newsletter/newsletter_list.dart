@@ -48,11 +48,11 @@ class NewsList extends State<NewsletterList> {
                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xff4054FF)),
                           ),
                           onPressed: () async {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const NewsletterList()));
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) =>
+                            //             const NewsletterList()));
                           },
                         ),
                       ),
@@ -141,11 +141,11 @@ class NewsList extends State<NewsletterList> {
                   textAlign: TextAlign.center,
                 ),
                 onPressed: () async {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const NewsDetails()));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) =>
+                  //             const NewsDetails()));
                 },
               ),
               const SizedBox(height: 10,),

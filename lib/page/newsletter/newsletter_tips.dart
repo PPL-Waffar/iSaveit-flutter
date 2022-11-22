@@ -140,11 +140,11 @@ class NewsTips extends State<NewsletterTips> {
                         textAlign: TextAlign.center,
                       ),
                       onPressed: () async {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const NewsDetails()));
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) =>
+                        //             const NewsDetails()));
                       },
                     ),
                     const SizedBox(height: 10,),
@@ -191,11 +191,11 @@ class NewsTips extends State<NewsletterTips> {
                         textAlign: TextAlign.center,
                       ),
                       onPressed: () async {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                const NewsDetails()));
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) =>
+                        //         const NewsDetails()));
                       },
                     ),
                     const SizedBox(height: 10,),
