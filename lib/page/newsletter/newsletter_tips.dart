@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:isaveit/page/newsletter/newsletter_details.dart';
+// import 'package:isaveit/page/newsletter/newsletter_details.dart';
 import 'package:isaveit/page/newsletter/newsletter_list.dart';
 import 'package:isaveit/page/newsletter/newsletter_today.dart';
 
