@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:isaveit/models/user.dart';
+import 'package:isaveit/page/newsletter.dart';
+import 'package:isaveit/page/profile/profile_detail.dart';
 import '../page/homepage.dart';
 import '../page/report/reportpage.dart';
 import 'transactions/transaction.dart';
-import '../page/newsletter/newsletter_list.dart';
 
 // ignore: must_be_immutable
 class SettingView extends StatefulWidget {
@@ -29,7 +30,8 @@ class _SettingViewState extends State<SettingView> {
       HomeView(widget.user),
       const ReportView(),
       Transaction(widget.user),
-      const NewsletterList(),
+      const NewsView(),
+      const ProfileView()
     ];
   }
 

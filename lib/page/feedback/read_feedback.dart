@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:isaveit/page/feedback/create_feedback.dart';
+import 'package:isaveit/page/feedback/feedback_details.dart';
 
 
 class ReadFeedback extends StatefulWidget {
@@ -19,7 +21,7 @@ class ReadFeedbackPage extends State<ReadFeedback> {
           backgroundColor: Colors.white,
           elevation: 0,
           leading: IconButton(
-              icon: const Icon(Icons.add, color: Colors.black),
+              icon: const Icon(Icons.arrow_back, color: Colors.black),
               onPressed: () => Navigator.of(context).pop()),
           actions: <Widget>[
             IconButton(
@@ -28,7 +30,7 @@ class ReadFeedbackPage extends State<ReadFeedback> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ReadFeedback()),
+                  MaterialPageRoute(builder: (context) => const CreateFeedback()),
                 );
               },
             ),
@@ -95,7 +97,7 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                               ]
                               ),
                             ),
-                            TextButton(onPressed: () => Navigator.of(context).pop(),
+                            TextButton(onPressed: ()=> Navigator.of(context).push(MaterialPageRoute(builder: (context) => const FeedbackDetails())),
                                 style: ButtonStyle(
                                   padding: MaterialStateProperty.all<EdgeInsets>(
                                       const EdgeInsets.all(20)),
@@ -154,7 +156,7 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                               ]
                               ),
                             ),
-                            TextButton(onPressed: () => Navigator.of(context).pop(),
+                            TextButton(onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const FeedbackDetails())),
                                 style: ButtonStyle(
                                   padding: MaterialStateProperty.all<EdgeInsets>(
                                       const EdgeInsets.all(20)),
@@ -211,7 +213,7 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                               ]
                               ),
                             ),
-                            TextButton(onPressed: () => Navigator.of(context).pop(),
+                            TextButton(onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const FeedbackDetails())),
                                 style: ButtonStyle(
                                   padding: MaterialStateProperty.all<EdgeInsets>(
                                       const EdgeInsets.all(20)),

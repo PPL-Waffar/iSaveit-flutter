@@ -12,7 +12,7 @@ void main() {
         email: "usertest@gmail.com",
         name: "Amanda");
 
-
+    
     // Build our app and trigger a frame.
     await tester.pumpWidget(MaterialApp(
       home: Transaction(user),
