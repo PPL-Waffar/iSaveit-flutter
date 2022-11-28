@@ -70,7 +70,7 @@ Future<Map<String, dynamic>> sendNewUser(String payname, String payamount,
     );
 
     Map<String, dynamic> result = jsonDecode(response.body);
-  
+
     if (response.statusCode == 200) {
       return result;
     } else {
@@ -306,7 +306,11 @@ class EditplannedpaymentState extends State<Editplannedpayment> {
                       isSuccessful = fetchedResult!['isSuccessful'];
                       if (isSuccessful == true) {
                         // ignore: use_build_context_synchronously
-                        Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    SettingView(widget.user)));
                       } else {
                         // ignore: use_build_context_synchronously
                         ScaffoldMessenger.of(context).showSnackBar(
