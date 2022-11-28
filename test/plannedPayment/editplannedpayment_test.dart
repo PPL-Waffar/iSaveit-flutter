@@ -6,11 +6,19 @@
 // tree, read text, and verify that the values of widget properties are correct.
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:isaveit/models/user.dart';
 import 'package:isaveit/page/plannedpayment/editplannedpayment.dart';
 
 void main() {
   testWidgets('Edit Your Planned Payment', (WidgetTester tester) async {
-
+    Map<String, dynamic> thedata = {};
+    User user = User(
+        datetime: "2021-05-01 00:00:00.000000",
+        sessionId: "1234567890",
+        isCitizen: true,
+        email: "usertest@gmail.com",
+        name: "Amanda");
+    
     final addPaymentName = find.byKey(const ValueKey("addPaymentName"));
     final addExpense = find.byKey(const ValueKey("addExpense"));
     final transactionDate = find.byKey(const ValueKey("transactionDate"));
@@ -18,23 +26,21 @@ void main() {
     final addPocketName = find.byKey(const ValueKey("addPocketName"));
 
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MaterialApp(
-      home: Editplannedpayment(),
+    await tester.pumpWidget(MaterialApp(
+      home: Editplannedpayment(user, thedata),
     ));
     await tester.pump();
 
     //Test textfields
-    await tester.enterText(addPaymentName, "Spotify");
-    await tester.pumpAndSettle();
+  
     await tester.enterText(addExpense, "Rp 64.000");
     await tester.pumpAndSettle();
     await tester.enterText(transactionDate, "YYYY-MM-dd");
     await tester.pumpAndSettle();
     await tester.tap(addPaymentType);
     await tester.pumpAndSettle();
-    await tester.tap(addPocketName);
-    await tester.pumpAndSettle();
-    await tester.pump(const Duration(seconds: 2));
+   
+
 
     // //test buttons
     // await tester.tap(editPlannedPayment);

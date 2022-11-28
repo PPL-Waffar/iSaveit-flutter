@@ -191,6 +191,7 @@ class HomePage extends State<HomeView> {
       }
     });
   }
+  
 
   Future<void> _intializeData() async {
     response = await fetchGroups(widget.user);

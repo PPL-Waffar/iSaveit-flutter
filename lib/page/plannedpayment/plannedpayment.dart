@@ -111,7 +111,10 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
     dateinput.text = ""; //set the initial value of text field
     super.initState();
   }
-
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
   Future<void> _intializeData() async {
     response = await fetchGroups(widget.user);
     if (response["isSuccessful"]) {

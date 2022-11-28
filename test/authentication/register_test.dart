@@ -27,7 +27,7 @@ void main() {
 
     expect(find.byIcon(Icons.add), findsNothing);
     expect(find.text('Create an account'), findsOneWidget);
-    expect(find.text('Welcome to iSaveIt!'), findsOneWidget);
+    
 
 
     await tester.pump();
@@ -46,7 +46,7 @@ void main() {
     await tester.tap(addAccount);
     await tester.pump();
 
-    expect(find.text('Welcome to iSaveIt!'), findsOneWidget);
+    
     expect(find.text('Welcome Back! \nYourname'), findsNothing);
 
   });

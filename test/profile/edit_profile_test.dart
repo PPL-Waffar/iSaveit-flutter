@@ -8,21 +8,25 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:isaveit/models/user.dart';
 import 'package:isaveit/page/profile/edit_profile.dart';
 
 void main() {
   testWidgets('Edit Profile', (WidgetTester tester) async {
-
+    User user = User(
+        datetime: "2021-05-01 00:00:00.000000",
+        sessionId: "1234567890",
+        isCitizen: true,
+        email: "usertest@gmail.com",
+        name: "Amanda");
     final editName = find.byKey(const ValueKey("editName"));
     final editEmail = find.byKey(const ValueKey("editEmail"));
-    final editOccupation = find.byKey(const ValueKey("editOccupation"));
-    final transactionDate = find.byKey(const ValueKey("birthDate"));
     final saveEditProfile = find.byKey(const ValueKey("saveEditProfile"));
     final cancelEditProfile = find.byKey(const ValueKey("cancelEditProfile"));
 
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MaterialApp(
-      home: EditProfile(),
+    await tester.pumpWidget(MaterialApp(
+      home: EditProfile(user),
     ));
 
     expect(find.byIcon(Icons.arrow_back), findsNothing);
@@ -36,13 +40,13 @@ void main() {
     await tester.pumpAndSettle();
     await tester.enterText(editEmail, "audi@yahoo.com");
     await tester.pumpAndSettle();
-    await tester.enterText(editOccupation, "Social worker");
-    await tester.pump(const Duration(seconds: 2));
+    // await tester.enterText(editOccupation, "Social worker");
+    // await tester.pump(const Duration(seconds: 2));
 
     //Test calendar widget
-    await tester.enterText(transactionDate, "2022-10-02");
-    final dateTextField = find.byIcon(Icons.calendar_today);
-        await tester.tap(dateTextField);
+    // await tester.enterText(transactionDate, "2022-10-02");
+    // final dateTextField = find.byIcon(Icons.calendar_today);
+    //     await tester.tap(dateTextField);
 
     // //test buttons
     await tester.tap(saveEditProfile);
