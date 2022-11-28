@@ -23,27 +23,29 @@ class TransactionPage extends State<Transaction> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-           SizedBox(
+          SizedBox(
             height: 280,
           ),
           AlertDialog(
             shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(16.0))),
-                  contentPadding: EdgeInsets.only(top: 10.0),
+                borderRadius: BorderRadius.all(Radius.circular(16.0))),
+            contentPadding: EdgeInsets.only(top: 10.0),
             title: Center(
               child: Text(
-              'Input',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
-            ),),
+                'Input',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+              ),
+            ),
             actions: <Widget>[
               Center(
                 child: Column(
                   children: [
-                    Padding(padding:  EdgeInsets.only(left:15, right:15),
+                    Padding(
+                        padding: EdgeInsets.only(left: 15, right: 15),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 0,
-                              minimumSize:  Size.fromHeight(48),
+                              minimumSize: Size.fromHeight(48),
                               backgroundColor: Color(0xff4054FF),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(48),
@@ -81,16 +83,23 @@ class TransactionPage extends State<Transaction> {
                     SizedBox(
                       height: 15,
                     ),
-                    Padding(padding:  EdgeInsets.only(left:15, right:15),
+                    Padding(
+                      padding: EdgeInsets.only(left: 15, right: 15),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             elevation: 0,
-                            minimumSize:  Size.fromHeight(48),
+                            minimumSize: Size.fromHeight(48),
                             backgroundColor: Color(0xffDFE2FF),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(48),
                             )),
-                        onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) =>CreateBorrow()));},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      CreateBorrow(widget.user)));
+                        },
                         child: Row(children: [
                           SizedBox(
                             width: 20,
@@ -119,8 +128,14 @@ class TransactionPage extends State<Transaction> {
                       height: 15,
                     ),
                     TextButton(
-                      onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) =>SettingView(widget.user)));},
-                      child:  Text(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    SettingView(widget.user)));
+                      },
+                      child: Text(
                         'Cancel',
                         style: TextStyle(color: Colors.red),
                       ),

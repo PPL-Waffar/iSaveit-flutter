@@ -18,7 +18,7 @@ Future<User> registerUser(
   Response response;
   try {
     response =
-        await post(Uri.parse("http://10.0.2.2:8000/user/flu-register-user/"),
+        await post(Uri.parse("http://localhost:8000/user/flu-register-user/"),
             headers: <String, String>{
               'Content-Type': 'application/json; charset=UTF-8',
             },
@@ -47,14 +47,14 @@ Future<User> registerUser(
     prefs.setString('email', userData["email"]);
     prefs.setString('name', userData["name"]);
 
-    return Future.delayed(  Duration(seconds: 0), () => user);
+    return Future.delayed(Duration(seconds: 0), () => user);
   } else {
     return Future.error("internal");
   }
 }
 
 class Register extends StatefulWidget {
-    Register({super.key});
+  Register({super.key});
 
   @override
   RegisterPage createState() {
@@ -78,79 +78,77 @@ class RegisterPage extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   automaticallyImplyLeading: false,
-      //   backgroundColor: Colors.white,
-      //   elevation: 0,
-      // ),
-      body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-          SizedBox(
-          height: 100,
-        ),
-        Image.asset(
-          'assets/images/isaveit_logo.png',
-          width: 200,
-          height: 100,
-        ),
+        // appBar: AppBar(
+        //   automaticallyImplyLeading: false,
+        //   backgroundColor: Colors.white,
+        //   elevation: 0,
+        // ),
+        body: SingleChildScrollView(
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.start, children: <
+                    Widget>[
+      SizedBox(
+        height: 100,
+      ),
+      Image.asset(
+        'assets/images/isaveit_logo.png',
+        width: 200,
+        height: 100,
+      ),
 
-        Text(
-          'Create an account',
-          style: TextStyle(
-              fontSize: 24,
-              color: Colors.black,
-              fontWeight: FontWeight.w500),
-        ),
+      Text(
+        'Create an account',
+        style: TextStyle(
+            fontSize: 24, color: Colors.black, fontWeight: FontWeight.w500),
+      ),
 
-          SizedBox(
-          height: 32,
-        ),
+      SizedBox(
+        height: 32,
+      ),
 
-        //textformfield for Name
-        SingleChildScrollView(
-          padding:   EdgeInsets.only(left: 30, right: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-                Text('Name',
-                  style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700)),
-                SizedBox(height: 8),
-              TextFormField(
-                key:   Key("addName"),
-                controller: _email,
-                decoration:   InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
-                        borderSide:
-                            BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                    hintText: 'Enter your name'),
+      //textformfield for Name
+      SingleChildScrollView(
+        padding: EdgeInsets.only(left: 30, right: 30),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Name',
+                style: TextStyle(
+                    fontFamily: 'Inter',
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700)),
+            SizedBox(height: 8),
+            TextFormField(
+              key: Key("addName"),
+              controller: _name,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                      borderSide:
+                          BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                  hintText: 'Enter your name'),
+            ),
+          ],
         ),
-            ],
-          ),
-        ),
-        
-        SizedBox(height: 32),
+      ),
 
-        //textformfield for Name
-        SingleChildScrollView(
-          padding:   EdgeInsets.only(left: 30, right: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-                Text('Date of Birth',
-                  style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700)),
-                SizedBox(height: 8),TextField(
-              key:   Key("addDate"),
+      SizedBox(height: 32),
+
+      //textformfield for Name
+      SingleChildScrollView(
+          padding: EdgeInsets.only(left: 30, right: 30),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text('Date of Birth',
+                style: TextStyle(
+                    fontFamily: 'Inter',
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700)),
+            SizedBox(height: 8),
+            TextField(
+              key: Key("addDate"),
               controller: dateinput,
-              decoration:   InputDecoration(
+              decoration: InputDecoration(
                   prefixIcon: Icon(Icons.calendar_today),
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -177,105 +175,111 @@ class RegisterPage extends State<Register> {
                   });
                 } else {}
               },
-            )])),
-        
-        SizedBox(height: 32),
+            )
+          ])),
 
-        //textformfield for email
-        SingleChildScrollView(
-          padding:   EdgeInsets.only(left: 30, right: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-                Text('Email',
-                  style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700)),
-                SizedBox(height: 8),
-              TextFormField(
-                key:   Key("addEmail"),
-                controller: _email,
-                decoration:   InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
-                        borderSide:
-                            BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                    hintText: 'Enter your email'),
-        ),
+      SizedBox(height: 32),
 
-        SizedBox(height: 32),
-        SingleChildScrollView(
-          // padding:   EdgeInsets.only(left: 30, right: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-                Text('Password',
-                  style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700)),
-                SizedBox(height: 8),
-              TextFormField(
-                  key:   Key("addPassword"),
-                  controller: _password,
-                  obscureText: true,
-                  decoration:   InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                          borderSide:
-                              BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                      hintText: 'Enter your password'),
-                ),
-            ])),
-
-        SizedBox(height: 32),
-
-        Container(
-          alignment: Alignment.center,
-          child: ElevatedButton(
-            key:   Key("addAccount"),
-            style: ElevatedButton.styleFrom(
-                  minimumSize:   Size.fromHeight(48),
-                  elevation: 0,
-                  backgroundColor:   Color(0XFF4054FF),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(48),
-                  )),
-            onPressed: submitting ? null : () async {setState(() {submitting = true;});
-                    {await registerUser(_email.text, _password.text, _name.text, _datetime.text).then((user) {
-                        // create User and then pushAndRemoveUntil(MyHomePage(user:uset))
-                        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute<void>(builder: (BuildContext context) =>Login()),(Route<dynamic> route) => false);
-                      });}},
-        
-            child:   Text(
-              'Create Account',
-              style: TextStyle(fontSize: 16, color: Colors.white),
-            ),
-          ),
-        ),
-        
-        SizedBox(height: 15),
-
-        Container(
-          alignment: Alignment.center,
+      //textformfield for email
+      SingleChildScrollView(
+          padding: EdgeInsets.only(left: 30, right: 30),
           child:
-        TextButton(
-          // <-- TextButton
-          onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) => Login()));},
-          child:   Text(
-            'Already have an account?',
-            style: TextStyle(color: Color(0XFF4054FF), fontWeight: FontWeight.w500, fontSize: 16),
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text('Email',
+                style: TextStyle(
+                    fontFamily: 'Inter',
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700)),
+            SizedBox(height: 8),
+            TextFormField(
+              key: Key("addEmail"),
+              controller: _email,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                      borderSide:
+                          BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
+                  hintText: 'Enter your email'),
             ),
-          ),
-        ),
-          
-          ]
-  )
-        )
-            ]
-          )
-        )
-      );
+            SizedBox(height: 32),
+            SingleChildScrollView(
+                // padding:   EdgeInsets.only(left: 30, right: 30),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                  Text('Password',
+                      style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700)),
+                  SizedBox(height: 8),
+                  TextFormField(
+                    key: Key("addPassword"),
+                    controller: _password,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                            borderSide: BorderSide(
+                                width: 1.0, color: Color(0xFFDBDBDB))),
+                        hintText: 'Enter your password'),
+                  ),
+                ])),
+            SizedBox(height: 32),
+            Container(
+              alignment: Alignment.center,
+              child: ElevatedButton(
+                key: Key("addAccount"),
+                style: ElevatedButton.styleFrom(
+                    minimumSize: Size.fromHeight(48),
+                    elevation: 0,
+                    backgroundColor: Color(0XFF4054FF),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(48),
+                    )),
+                onPressed: submitting
+                    ? null
+                    : () async {
+                        setState(() {
+                          submitting = true;
+                        });
+                        {
+                          await registerUser(_email.text, _password.text,
+                                  _name.text, _datetime.text)
+                              .then((user) {
+                            // create User and then pushAndRemoveUntil(MyHomePage(user:uset))
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute<void>(
+                                    builder: (BuildContext context) => Login()),
+                                (Route<dynamic> route) => false);
+                          });
+                        }
+                      },
+                child: Text(
+                  'Create Account',
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                ),
+              ),
+            ),
+            SizedBox(height: 15),
+            Container(
+              alignment: Alignment.center,
+              child: TextButton(
+                // <-- TextButton
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Login()));
+                },
+                child: Text(
+                  'Already have an account?',
+                  style: TextStyle(
+                      color: Color(0XFF4054FF),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16),
+                ),
+              ),
+            ),
+          ]))
+    ])));
   }
 }

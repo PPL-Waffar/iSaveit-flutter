@@ -55,7 +55,6 @@ class Plannedpaymentdetails extends State<PlanPayment> {
   @override
   void initState() {
     super.initState();
-
   }
 
   Future<void> _intializeData() async {
@@ -77,7 +76,6 @@ class Plannedpaymentdetails extends State<PlanPayment> {
           leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.black),
               onPressed: () => Navigator.pop(context)),
-
           actions: <Widget>[
             IconButton(
               icon: const Icon(Icons.edit),
@@ -85,14 +83,14 @@ class Plannedpaymentdetails extends State<PlanPayment> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Editplannedpayment()),
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          Editplannedpayment(widget.user, thedata)),
                 );
               },
             ),
           ],
         ),
-
-        
         body: SingleChildScrollView(
           padding: const EdgeInsets.only(left: 30, right: 30),
           child: FutureBuilder(
@@ -104,15 +102,12 @@ class Plannedpaymentdetails extends State<PlanPayment> {
                       const SizedBox(
                         height: 20,
                       ),
-
                       const Text('Your Planned Payment Details!',
                           style: TextStyle(
                               fontFamily: 'Inter',
                               fontSize: 20,
                               fontWeight: FontWeight.w700)),
-
                       const SizedBox(height: 32),
-
                       const Text('Payment Name',
                           style: TextStyle(
                               fontFamily: 'Inter',
@@ -131,17 +126,13 @@ class Plannedpaymentdetails extends State<PlanPayment> {
                             hintText: thedata["name"]),
                         keyboardType: TextInputType.number,
                       ),
-
                       const SizedBox(height: 32),
-
                       const Text('Expense',
                           style: TextStyle(
                               fontFamily: 'Inter',
                               fontSize: 16,
                               fontWeight: FontWeight.w700)),
-                      
                       const SizedBox(height: 8),
-
                       TextFormField(
                         key: const Key("addExpense"),
                         enabled: false,
@@ -154,9 +145,7 @@ class Plannedpaymentdetails extends State<PlanPayment> {
                             hintText: thedata["amount"]),
                         keyboardType: TextInputType.number,
                       ),
-
                       const SizedBox(height: 32),
-
                       const Text('Date',
                           style: TextStyle(
                               fontFamily: 'Inter',
@@ -167,7 +156,7 @@ class Plannedpaymentdetails extends State<PlanPayment> {
                           padding: const EdgeInsets.only(),
                           child: Center(
                               child: TextField(
-                                enabled: false,
+                            enabled: false,
                             key: const Key("transactionDate"),
                             cursorWidth: 50,
                             decoration: InputDecoration(
