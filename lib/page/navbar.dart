@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:isaveit/models/user.dart';
-import 'package:isaveit/page/newsletter/newsletter.dart';
 import 'package:isaveit/page/newsletter/newsletter_list.dart';
 import 'package:isaveit/page/profile/profile_detail.dart';
 import '../page/homepage.dart';
