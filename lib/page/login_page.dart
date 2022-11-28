@@ -181,7 +181,7 @@ class LoginPage extends State<Login> {
           // <-- TextButton
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Register()));
+                MaterialPageRoute(builder: (context) => const Register()));
           },
           child: const Text(
             "Don't have an account?",

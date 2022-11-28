@@ -22,7 +22,7 @@ void main() {
     final addPassword = find.byKey(const ValueKey("addPassword"));
     final addAccount = find.byKey(const ValueKey("addAccount"));
 
-    await tester.pumpWidget(MaterialApp(
+    await tester.pumpWidget(const MaterialApp(
       home: Register(),
     ));
 
