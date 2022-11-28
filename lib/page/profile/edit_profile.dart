@@ -162,34 +162,6 @@ class _EditProfilePage extends State<EditProfile> {
 
                     const SizedBox(height: 32),
 
-                    //Email
-                    SingleChildScrollView(
-                        padding: const EdgeInsets.only(left: 30, right: 30),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text('Email',
-                                  style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w700)),
-                              const SizedBox(height: 8),
-                              TextFormField(
-                                controller: userEmail,
-                                key: const Key("editEmail"),
-                                decoration: const InputDecoration(
-                                    enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(8.0)),
-                                        borderSide: BorderSide(
-                                            width: 1.0,
-                                            color: Color(0xFFDBDBDB))),
-                                    hintText: 'johndoe@isaveit.com'),
-                              )
-                            ])),
-
-                    const SizedBox(height: 32),
-
                     // SingleChildScrollView(
                     //     padding: const EdgeInsets.only(left: 30, right: 30),
                     //     child: Column(
