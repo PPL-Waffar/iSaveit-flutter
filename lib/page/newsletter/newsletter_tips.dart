@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:isaveit/page/newsletter/newsletter_list.dart';
 import 'package:isaveit/page/newsletter/newsletter_today.dart';
 
+import 'newsletter_details.dart';
+
 class NewsletterTips extends StatefulWidget {
   const NewsletterTips({super.key});
 
@@ -140,11 +142,11 @@ class NewsTips extends State<NewsletterTips> {
                         textAlign: TextAlign.center,
                       ),
                       onPressed: () async {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) =>
-                        //             const NewsDetails()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const NewsDetails()));
                       },
                     ),
                     const SizedBox(height: 10,),
@@ -191,11 +193,11 @@ class NewsTips extends State<NewsletterTips> {
                         textAlign: TextAlign.center,
                       ),
                       onPressed: () async {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) =>
-                        //         const NewsDetails()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const NewsDetails()));
                       },
                     ),
                     const SizedBox(height: 10,),

@@ -6,6 +6,8 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isaveit/models/user.dart';
@@ -25,18 +27,14 @@ void main() {
         name: "Amanda");
     
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MaterialApp(
+    await tester.pumpWidget( MaterialApp(
       home: Login(),
     ));
 
 
     expect(find.byIcon(Icons.add), findsNothing);
     expect(find.text('Login to your account'), findsOneWidget);
-    expect(find.text("Welcome back, you've been missed"), findsOneWidget);
-
-
-    await tester.pump();
-
+    expect(find.text("Welcome back, you've been missed!"), findsOneWidget);
 
     expect(find.text('Welcome Back! \nYourname'), findsNothing);
 
