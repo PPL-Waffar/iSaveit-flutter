@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field, no_leading_underscores_for_local_identifiers, prefer_const_constructors, duplicate_ignore
+// ignore_for_file: unused_field, no_leading_underscores_for_local_identifiers, prefer_const_constructors, duplicate_ignore, annotate_overrides
 
 import 'package:flutter/material.dart';
 import 'package:isaveit/models/user.dart';

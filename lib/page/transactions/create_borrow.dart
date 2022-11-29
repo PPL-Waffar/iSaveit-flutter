@@ -1,11 +1,10 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers, avoid_print, must_be_immutable, annotate_overrides, use_build_context_synchronously, duplicate_ignore
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:isaveit/models/user.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
-import "package:flutter/material.dart";
 import 'dart:convert';
 
 import '../navbar.dart';

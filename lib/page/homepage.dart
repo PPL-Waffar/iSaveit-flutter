@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_is_empty
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';

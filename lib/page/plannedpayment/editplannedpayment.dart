@@ -1,15 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+// ignore_for_file: unused_field, prefer_final_fields, annotate_overrides, unnecessary_null_comparison, prefer_conditional_assignment
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:isaveit/models/user.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:async';
-import "package:flutter/material.dart";
-import 'dart:async';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:isaveit/page/navbar.dart';
 
 Future<Map<String, dynamic>> fetchGroups(User user) async {
@@ -81,6 +77,7 @@ Future<Map<String, dynamic>> sendNewUser(String payname, String payamount,
   }
 }
 
+// ignore: must_be_immutable
 class Editplannedpayment extends StatefulWidget {
   User user;
 
@@ -103,7 +100,7 @@ class EditplannedpaymentState extends State<Editplannedpayment> {
   void initState() {
     super.initState();
 
-    _timer = Timer.periodic(Duration(seconds: 3), (timer) async {
+    _timer = Timer.periodic(const Duration(seconds: 3), (timer) async {
       await _intializeData();
       if (mounted) {
         setState(() {});

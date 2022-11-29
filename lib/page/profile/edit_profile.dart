@@ -1,20 +1,12 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_element
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:isaveit/page/navbar.dart';
-import 'package:isaveit/page/profile/profile_detail.dart';
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:isaveit/page/feedback/read_feedback.dart';
-import 'package:flutter/material.dart';
 import 'package:isaveit/models/user.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
-import 'package:isaveit/page/plannedpayment/editplannedpayment.dart';
-import 'edit_profile.dart';
 
 // heroku link:
 
@@ -262,6 +254,7 @@ class _EditProfilePage extends State<EditProfile> {
                           onPressed: () async {
                             fetchedResult =
                                 await sendNewUser(userName.text, widget.user);
+                            // ignore: use_build_context_synchronously
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
