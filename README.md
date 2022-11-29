@@ -1,5 +1,6 @@
 # iSaveit
 [![CodeFactor](https://www.codefactor.io/repository/github/ppl-waffar/isaveit/badge)](https://www.codefactor.io/repository/github/ppl-waffar/isaveit)
+
 **Product Owner:**
 1. Anastasia Audi Wulandari - 2006607495
 2. Anne Yuliana - 2006607513
@@ -18,6 +19,11 @@ https://isaveit.herokuapp.com/
 
 ### iSaveIt: A financial management application
 iSaveIt is a money management application that hope to organize budget and expenses with the intent that users can spend their money responsibly. The features we hope to implement are creating multiple pockets as needed, input transactions, keep track of the money users might've borrowed from other people, viewing the finance report, and reading newsletter about finance and economy.
+
+**Changes:**
+The changes made in this sprint is the progress on Newsletter Epic. There is a modification made for the backlog task. Initially we wanted the admin to retrieve online article API and published them into the newsletter section of our application. However, we find that backlog to be quite challenging, so we switch it into admin writing the articles (copy and paste) into backend website where they can post the article text, title, creditted website, and add image. This is successfully created in the newsletter app, where the admin can write, publish, and delete articles. There's also an update for the front end for displaying the list of articles and article text. 
+
+Another changes is that we have managed to connect the edit profile, borrow transaction, and report epics. 
 
 ### List of iSaveIt Features:
 Register
@@ -86,281 +92,41 @@ Once the users have registered themselves, they are required to login to the app
 3. The users are allowed to delete the feedback report if the report is above three months old
 4. The feedback report feature is in a form of questions related to the user’s goals, motivation, and feedback
 
-## Summary of SQA
-## Sprint 1
-1. PPL-6 : View Pocket Categories
-    - Tester : Firlandi
-    - Functionality
-    - Browser: Pass
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-2. PPL-7: Create Pocket
-    - Tester: Firlandi
-    - Functionality
-    - Browser: Pass
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-3. PPL-11: Read Planned Payments
-    - Tester: Firlandi
-    - Functionality
-    - Browser: Pass
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-4. PPL-12: Update Planned Payments
-    - Tester: Firlandi
-    - Functionality
-    - Browser: Pass
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-5. PPL-12: Delete Planned Payments
-    - Tester: Firlandi
-    - Functionality
-    - Browser: Pass
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
+ ## Summary of SQA
+### Sprint 1
+[UAT sprint 1 test cases](https://docs.google.com/spreadsheets/d/1wVKp_U2KGYYdOu7ktalVgQA0ULiJT_J4Y4Sbqrq7LX0/edit?usp=sharing)
 
-6. PPL-9: View pocket details
-    - Tester: Anastasia Audi
-    - UI/UX
-    - Browser: Not Tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-7. PPL-10: Create pocket details
-    - Tester: Anastasia Audi
-    - UI/UX
-    - Browser: Not Tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-8. PPL-11: Edit pocket details
-    - Tester: Anastasia Audi
-    - UI/UX
-    - Browser: Not Tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-9. PPL-12: Delete pocket
-    - Tester: Anastasia Audi
-    - UI/UX
-    - Browser: Not Tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-10. PPL-13: Create planned payment
-    - Tester: Anne Yuliana
-    - UI/UX
-    - Browser: Not Tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-11. PPL-14: Remove planned payment
-    - Tester: Anne Yuliana
-    - UI/UX
-    - Browser: Not Tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-12. PPL-11: Edit Pocket details
-    - Tester: Raihan
-    - Functionality
-    - Browser: Pass
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-13. PPL-12: Delete Pocket details
-    - Tester: Raihan
-    - Functionality
-    - Browser: Pass
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-14. PPL-13: Create Planned payment
-    - Tester: Winaldo
-    - Functionality
-    - Browser: Pass
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-15. PPL-30: Register
-    - Tester: Winaldo
-    - Functionality
-    - Browser: Pass
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-16. PPL-28: Login
-    - Tester: Winaldo
-    - Functionality
-    - Browser: Pass
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-17. PPL-30: Register
-    - Tester: Reynaldi
-    - UI/UX
-    - Browser: Pass
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-18. PPL-28: Login
-    - Tester: Reynaldi
-    - UI/UX
-    - Browser: Pass
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-## Homepage
-- Tester: Reynaldi
-- UI/UX
-- Browser: Pass
-- Local: Pass
-- Staging: Pass
-- Production: Pass
+[codecov staging](https://app.codecov.io/gh/PPL-Waffar/iSaveIt/tree/staging)
 
-## Sprint 2
-1. PPL-2: Input Expense Report
-    - Tester: Anastasia Audi
-    - UI/UX
-    - Browser: Not tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-2. PPL-3: Input Income report
-    - Tester: Anastasia Audi
-    - UI/UX
-    - Browser: Not tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-3. PPL-4: View transactions
-    - Tester: Reynaldi
-    - UI/UX
-    - Browser: Not tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-4. PPL-4: View Expense
-    - Tester: Firlandi
-    - Functionality
-    - Browser: Pass
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-5. PPL-5: Make the expense for debt
-    - Tester: Anne
-    - UI/UX
-    - Browser: Not tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-6. PPL-6: Make the expense after lending money
-    - Tester: Anne
-    - UI/UX
-    - Browser: Not tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-7. PPL-2&3: Input transactions
-    - Tester: Raihan
-    - Functionality
-    - Browser: Pass
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-8. PPL-5&6: Add expense report
-    - Tester: Winaldo
-    - Functionality
-    - Browser: Pass
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
+[code factor staging](https://www.codefactor.io/repository/github/ppl-waffar/isaveit/issues)
 
-## Sprint 3
-1. PPL-18: See financial report details
-    - Tester: Firlandi
-    - Functionality
-    - Browser: Not tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-2. PPL-18: See financial report details
-    - Tester: Reynaldi
-    - UI/UX
-    - Browser: Not tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-3. PPL-19: Download financial report button
-    - Tester: Anne
-    - UI/UX
-    - Browser: Not tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-4. PPL-23: Create feedback
-    - Tester: Raihan
-    - Functionality
-    - Browser: Not tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-5. PPL-29: Edit profile
-    - Tester: Winaldo
-    - Functionality
-    - Browser: Not tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-6. PPL-29: Edit profile
-    - Tester: Anastasia Audi
-    - UI/UX
-    - Browser: Not tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
+### Sprint 2
+[UAT sprint 2 test cases](https://docs.google.com/spreadsheets/d/1wVKp_U2KGYYdOu7ktalVgQA0ULiJT_J4Y4Sbqrq7LX0/edit?usp=sharing)
 
-## Sprint 4
-1. PPL-27: View list of feedback report
-    - Tester: Anne
-    - UI/UX
-    - Browser: Not tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-2. PPL-23: Create feedback/satisfaction report
-    - Tester: Anastasia Audi
-    - UI/UX
-    - Browser: Not tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-3. PPL-24: View report details
-    - Tester: Reynaldi
-    - UI/UX
-    - Browser: Not tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-4. PPL-24: View report details
-    - Tester: Firlandi
-    - Functionality
-    - Browser: Not tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
-5. PPL-26: Delete Satisfaction Report
-    - Tester: Reynaldi
-    - UI/UX
-    - Browser: Not tested
-    - Local: Pass
-    - Staging: Pass
-    - Production: Pass
+[codecov staging](https://app.codecov.io/gh/PPL-Waffar/iSaveIt/tree/staging)
+
+[code factor staging](https://www.codefactor.io/repository/github/ppl-waffar/isaveit/issues)
+
+### Sprint 3
+[UAT sprint 3 test cases](https://docs.google.com/spreadsheets/d/1wVKp_U2KGYYdOu7ktalVgQA0ULiJT_J4Y4Sbqrq7LX0/edit?usp=sharing)
+
+[codecov staging](https://app.codecov.io/gh/PPL-Waffar/iSaveIt/tree/staging)
+
+[code factor staging](https://www.codefactor.io/repository/github/ppl-waffar/isaveit/issues)
+
+### Sprint 4
+[UAT sprint 4 test cases](https://docs.google.com/spreadsheets/d/1wVKp_U2KGYYdOu7ktalVgQA0ULiJT_J4Y4Sbqrq7LX0/edit?usp=sharing)
+
+[codecov staging](https://app.codecov.io/gh/PPL-Waffar/iSaveIt/tree/staging)
+
+[code factor staging](https://www.codefactor.io/repository/github/ppl-waffar/isaveit/issues)
+
+### Sprint 5
+[UAT sprint 5 test cases](https://docs.google.com/spreadsheets/d/1wVKp_U2KGYYdOu7ktalVgQA0ULiJT_J4Y4Sbqrq7LX0/edit?usp=sharing)
+
+[codecov staging](https://app.codecov.io/gh/PPL-Waffar/iSaveIt/tree/staging)
+
+[code factor staging](https://www.codefactor.io/repository/github/ppl-waffar/isaveit/issues)
 
 
 ## Getting Started
