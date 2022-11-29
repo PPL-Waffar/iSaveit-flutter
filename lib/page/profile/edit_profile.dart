@@ -93,6 +93,7 @@ class _EditProfilePage extends State<EditProfile> {
   void initState() {
     super.initState();
   }
+  
 
   Future<void> _intializeData() async {
     response = await fetchGroups(

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_is_empty
+// ignore_for_file: prefer_const_constructors, prefer_is_empty, annotate_overrides
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -190,6 +190,10 @@ class HomePage extends State<HomeView> {
         setState(() => _isLoading = true);
       }
     });
+  }
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
   }
   
 

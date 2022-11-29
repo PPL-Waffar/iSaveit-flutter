@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:isaveit/page/newsletter/newsletter_details.dart';
+
 
 class NewsView extends StatefulWidget {
   const NewsView({super.key});
@@ -74,10 +74,10 @@ class NewsPage extends State<NewsView> {
               Center(child:
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const NewsDetails()),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => const NewsDetails()),
+                  //);
                 },
                 child: const Text('See More'),)
               ),

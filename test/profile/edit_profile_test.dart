@@ -6,6 +6,8 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isaveit/models/user.dart';
@@ -38,7 +40,7 @@ void main() {
     //Test textfields
     await tester.enterText(editName, "audi");
     await tester.pumpAndSettle();
-    await tester.enterText(editEmail, "audi@yahoo.com");
+    // await tester.enterText(editEmail, "audi@yahoo.com");
     await tester.pumpAndSettle();
     // await tester.enterText(editOccupation, "Social worker");
     // await tester.pump(const Duration(seconds: 2));
