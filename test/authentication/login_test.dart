@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isaveit/models/user.dart';
 
-import 'package:isaveit/page/login_page.dart';
+import 'package:isaveit/page/authentication/login_page.dart';
 
 void main() {
   testWidgets('Test Login', (WidgetTester tester) async {
@@ -34,7 +34,11 @@ void main() {
 
     expect(find.byIcon(Icons.add), findsNothing);
     expect(find.text('Login to your account'), findsOneWidget);
-    expect(find.text("Welcome back, you've been missed!"), findsOneWidget);
+    expect(find.text("Welcome back, you've been missed"), findsNothing);
+
+
+    await tester.pump();
+
 
     expect(find.text('Welcome Back! \nYourname'), findsNothing);
 

@@ -1,8 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer__ructors, prefer__literals_to_create_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:isaveit/page/navbar.dart';
 import 'package:isaveit/page/transactions/transaction_form.dart';
 import 'package:isaveit/models/user.dart';
+
+import 'create_borrow.dart';
 
 // ignore: must_be_immutable
 class Transaction extends StatefulWidget {
@@ -20,26 +23,29 @@ class TransactionPage extends State<Transaction> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          const SizedBox(
+          SizedBox(
             height: 280,
           ),
           AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(16.0))),
+            contentPadding: EdgeInsets.only(top: 10.0),
             title: Center(
               child: Text(
-              'Input',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
-            ),),
+                'Input',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+              ),
+            ),
             actions: <Widget>[
               Center(
                 child: Column(
                   children: [
-                    SizedBox(
-                        height: 52,
-                        width: 430,
+                    Padding(
+                        padding: EdgeInsets.only(left: 15, right: 15),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 0,
-                              minimumSize: const Size.fromHeight(48),
+                              minimumSize: Size.fromHeight(48),
                               backgroundColor: Color(0xff4054FF),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(48),
@@ -61,7 +67,7 @@ class TransactionPage extends State<Transaction> {
                               color: Colors.white,
                             ),
                             SizedBox(
-                              width: 25,
+                              width: 15,
                             ),
                             Padding(
                                 padding: EdgeInsets.only(left: 20, right: 20),
@@ -77,18 +83,23 @@ class TransactionPage extends State<Transaction> {
                     SizedBox(
                       height: 15,
                     ),
-                    SizedBox(
-                      height: 52,
-                      width: 430,
+                    Padding(
+                      padding: EdgeInsets.only(left: 15, right: 15),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             elevation: 0,
-                            minimumSize: const Size.fromHeight(48),
+                            minimumSize: Size.fromHeight(48),
                             backgroundColor: Color(0xffDFE2FF),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(48),
                             )),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      CreateBorrow(widget.user)));
+                        },
                         child: Row(children: [
                           SizedBox(
                             width: 20,
@@ -99,7 +110,7 @@ class TransactionPage extends State<Transaction> {
                             color: Color(0xff4054FF),
                           ),
                           SizedBox(
-                            width: 25,
+                            width: 15,
                           ),
                           Padding(
                               padding: EdgeInsets.only(left: 20, right: 20),
@@ -118,9 +129,13 @@ class TransactionPage extends State<Transaction> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    SettingView(widget.user)));
                       },
-                      child: const Text(
+                      child: Text(
                         'Cancel',
                         style: TextStyle(color: Colors.red),
                       ),

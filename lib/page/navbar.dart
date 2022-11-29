@@ -28,10 +28,10 @@ class _SettingViewState extends State<SettingView> {
     super.initState();
     screens = [
       HomeView(widget.user),
-      const ReportView(),
+      ReportView(widget.user),
       Transaction(widget.user),
       const NewsletterList(),
-      const ProfileView()
+      ProfileView(widget.user)
     ];
   }
 

@@ -1,8 +1,7 @@
-// ignore_for_file: unused_field, no_leading_underscores_for_local_identifiers, prefer_const_constructors, duplicate_ignore
+// ignore_for_file: unused_field, no_leading_underscores_for_local_identifiers, prefer_const_constructors, duplicate_ignore, annotate_overrides
 
 import 'package:flutter/material.dart';
 import 'package:isaveit/models/user.dart';
-import 'package:isaveit/page/navbar.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -112,7 +111,10 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
     dateinput.text = ""; //set the initial value of text field
     super.initState();
   }
-
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
   Future<void> _intializeData() async {
     response = await fetchGroups(widget.user);
     if (response["isSuccessful"]) {
@@ -131,37 +133,41 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-              icon: const Icon(Icons.arrow_back, color: Colors.black),
-              onPressed: () => Navigator.of(context).pop()),
-        ),
+        
         body: SingleChildScrollView(
           child: Form(
               key: _formKey,
               // padding: const EdgeInsets.only(left: 30, right: 30),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text('Create your planned payment',
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700)),
+                  children: <Widget>[
+                    SizedBox(height: 100),
+
+                    Container(
+                      margin: const EdgeInsets.only(left: 20),
+                      alignment: Alignment.topLeft,
+                      child: const Text('💳 Create Planned Payment',
+                          style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700)),
+                    ),
+
                     const SizedBox(height: 32),
-                    const Text('Payment Name',
+
+                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
+                    child: Text('Payment Name',
                         style: TextStyle(
                             fontFamily: 'Inter',
                             fontSize: 16,
-                            fontWeight: FontWeight.w700)),
-                    const SizedBox(height: 8),
-                    TextFormField(
+                            fontWeight: FontWeight.w700))),
+
+                     SizedBox(height: 8),
+                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
+                    child: TextFormField(
                       controller: payname,
                       key: const Key("addPaymentName"),
-                      cursorWidth: 50,
+                      
                       decoration: const InputDecoration(
                           enabledBorder: OutlineInputBorder(
                               borderRadius:
@@ -170,16 +176,20 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                                   width: 1.0, color: Color(0xFFDBDBDB))),
                           hintText: 'Enter your payment'),
                       keyboardType: TextInputType.number,
-                    ),
+                    )),
 
                     const SizedBox(height: 32),
 
-                    const Text('Expense',
+                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
+                    child: Text('Expense',
                         style: TextStyle(
                             fontFamily: 'Inter',
                             fontSize: 16,
-                            fontWeight: FontWeight.w700)),
+                            fontWeight: FontWeight.w700))),
                     const SizedBox(height: 8),
+
+                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
+                    child:
                     TextFormField(
                       controller: payamount,
                       key: const Key("addExpense"),
@@ -191,16 +201,22 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                                   width: 1.0, color: Color(0xFFDBDBDB))),
                           hintText: 'Rp 0'),
                       keyboardType: TextInputType.number,
-                    ),
+                    )),
 
                     const SizedBox(height: 32),
 
+                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
+                    child:
                     const Text('Date',
                         style: TextStyle(
                             fontFamily: 'Inter',
                             fontSize: 16,
-                            fontWeight: FontWeight.w700)),
+                            fontWeight: FontWeight.w700))),
                     const SizedBox(height: 8),
+
+
+                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
+                    child:
                     Container(
                         padding: const EdgeInsets.only(),
                         child: Center(
@@ -234,16 +250,22 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                               });
                             } else {}
                           },
-                        ))),
+                        )))),
+
                     const SizedBox(height: 24),
+
+
+                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
+                    child:
                     const Text('Type of Payment',
                         style: TextStyle(
                             fontFamily: 'Inter',
                             fontSize: 16,
-                            fontWeight: FontWeight.w700)),
+                            fontWeight: FontWeight.w700))),
+
                     const SizedBox(height: 8),
-                    Padding(
-                      padding: const EdgeInsets.only(),
+                    
+                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
                       child: Row(
                         children: [
                           Expanded(
@@ -296,14 +318,18 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                       ),
                     ),
                     const SizedBox(height: 24),
-                    const Text('Type of Pocketr',
+
+                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
+                    child:
+                     Text('Type of Pocket',
                         style: TextStyle(
                             fontFamily: 'Inter',
                             fontSize: 16,
-                            fontWeight: FontWeight.w700)),
-                    const SizedBox(height: 24),
+                            fontWeight: FontWeight.w700))),
+                    const SizedBox(height: 8),
+
                     Padding(
-                      padding: const EdgeInsets.only(left: 0, right: 0),
+                      padding: EdgeInsets.only(left: 30, right: 30),
                       child: DropdownButtonFormField(
                         style: const TextStyle(height: 0),
                         decoration: const InputDecoration(
@@ -337,64 +363,11 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                         isExpanded: true,
                       ),
                     ),
-                    // const SizedBox(height: 24),
-                    // const Text('Pocket', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
-                    // const SizedBox(height: 8),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(),
-                    //   child: Row(
-                    //     children: [
-                    //       Expanded(
-                    //         child: DropdownButtonFormField<String>(
-                    //             key: const Key("addPocketName"),
-                    //             style: const TextStyle(height: 0),
-                    //             decoration: const InputDecoration(
-                    //               fillColor: Color(0XFFF9F9F9),
-                    //               enabledBorder: OutlineInputBorder(
-                    //                   borderRadius:
-                    //                   BorderRadius.all(Radius.circular(8.0)),
-                    //                   borderSide:
-                    //                   BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                    //               hintText: 'Enter your pocket',
-                    //               filled: true,
-                    //             ),
-                    //             value: _pocketType,
-                    //             onChanged: (String? value) => {_pocketType = value!},
-                    //             items: const [
-                    //               DropdownMenuItem<String>(
-                    //                 value: "Groceries",
-                    //                 child: Text(
-                    //                   "Groceries",
-                    //                   style: TextStyle(
-                    //                     color: Colors.black,
-                    //                   ),
-                    //                 ),
-                    //               ),
-                    //               DropdownMenuItem(
-                    //                   value: "Health",
-                    //                   child: Text(
-                    //                     "Health",
-                    //                     style: TextStyle(
-                    //                       color: Colors.black,
-                    //                     ),
-                    //                   )),
-                    //               DropdownMenuItem(
-                    //                   value: "Food And Beverages",
-                    //                   child: Text(
-                    //                     "Food And Beverages",
-                    //                     style: TextStyle(
-                    //                       color: Colors.black,
-                    //                     ),
-                    //                   )),
-                    //             ]),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
+                    
                     const SizedBox(height: 32),
                     Container(
                       alignment: Alignment.center,
-                      margin: const EdgeInsets.only(left: 20),
+                      margin: const EdgeInsets.only(left: 30, right: 30),
                       child: ElevatedButton(
                         key: const Key("createSubmitButton"),
                         style: ElevatedButton.styleFrom(
@@ -430,32 +403,17 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                             style: TextStyle(color: Colors.white)),
                       ),
                     ),
-                    const SizedBox(height: 24),
+
+                    const SizedBox(height: 16),
+                    
                     Container(
                       alignment: Alignment.center,
-                      margin: const EdgeInsets.only(left: 20),
-                      child: ElevatedButton(
-                        key: const Key("createCancelButton"),
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: const Size.fromHeight(48),
-                            backgroundColor: Colors.white70,
-                            elevation: 0,
-                            // backgroundColor: const Color(0xffb74093),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(48),
-                            )),
-                        // style: ElevatedButton.styleFrom(
-                        //     primary: Colors.white70,),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SettingView(widget.user)),
-                          );
-                        },
-                        child: const Text('Cancel',
-                            style: TextStyle(color: Color(0xFFD3180C))),
-                      ),
+                      child: TextButton(
+                          key: const Key("createCancelButton"),
+                          onPressed: () {Navigator.pop(context);},
+                          child: const Text('Cancel',
+                              style: TextStyle(color: Color(0xFFD3180C))),
+                        ),
                     ),
                   ])),
         ));

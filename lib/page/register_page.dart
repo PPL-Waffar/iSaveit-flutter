@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:isaveit/models/user.dart';
-import '../page/login_page.dart';
+import 'package:isaveit/page/authentication/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //heroku link: https://isaveit-staging.herokuapp.com/user/flu-register-user/"
 
@@ -268,7 +268,7 @@ class RegisterPage extends State<Register> {
           // <-- TextButton
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const Login()));
+                MaterialPageRoute(builder: (context) =>  Login()));
           },
           child: Text(
             'Already have an account?',

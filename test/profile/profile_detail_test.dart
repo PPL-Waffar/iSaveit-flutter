@@ -8,19 +8,23 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:isaveit/models/user.dart';
 import 'package:isaveit/page/profile/profile_detail.dart';
 
 void main() {
   testWidgets('View Profile', (WidgetTester tester) async {
-
+    User user = User(
+        datetime: "2021-05-01 00:00:00.000000",
+        sessionId: "1234567890",
+        isCitizen: true,
+        email: "usertest@gmail.com",
+        name: "Amanda");
     final editName = find.byKey(const ValueKey("editName"));
     final editEmail = find.byKey(const ValueKey("editEmail"));
-    final birthDate = find.byKey(const ValueKey("birthDate"));
-    final editOccupation = find.byKey(const ValueKey("editOccupation"));   
-
+  
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MaterialApp(
-      home: ProfileView(),
+    await tester.pumpWidget(MaterialApp(
+      home: ProfileView(user),
     ));
 
     expect(find.byIcon(Icons.arrow_back), findsNothing);
@@ -35,12 +39,9 @@ void main() {
     await tester.pumpAndSettle();
     await tester.enterText(editEmail, "audi@yahoo.com");
     await tester.pumpAndSettle();
-    await tester.enterText(editOccupation, "Social worker");
-    await tester.pump(const Duration(seconds: 2));
 
-    await tester.enterText(birthDate, "2022-10-02");
-    final dateTextField = find.byIcon(Icons.calendar_today);
-        await tester.tap(dateTextField);
+
+   
 
   });
 

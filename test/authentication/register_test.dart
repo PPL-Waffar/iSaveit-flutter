@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 
-import 'package:isaveit/page/register_page.dart';
+import 'package:isaveit/page/authentication/register_page.dart';
 
 void main() {
   testWidgets('Test Register Page', (WidgetTester tester) async {
@@ -22,14 +22,14 @@ void main() {
     final addPassword = find.byKey(const ValueKey("addPassword"));
     final addAccount = find.byKey(const ValueKey("addAccount"));
 
-    await tester.pumpWidget(const MaterialApp(
+    await tester.pumpWidget( MaterialApp(
       home: Register(),
     ));
 
 
     expect(find.byIcon(Icons.add), findsNothing);
     expect(find.text('Create an account'), findsOneWidget);
-    expect(find.text('Welcome to iSaveIt!'), findsOneWidget);
+    
 
 
     await tester.pump();
@@ -48,7 +48,7 @@ void main() {
     await tester.tap(addAccount);
     await tester.pump();
 
-    expect(find.text('Welcome to iSaveIt!'), findsOneWidget);
+    
     expect(find.text('Welcome Back! \nYourname'), findsNothing);
 
   });
