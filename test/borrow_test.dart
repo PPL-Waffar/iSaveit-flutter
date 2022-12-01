@@ -22,20 +22,20 @@ void main() {
         name: "Amanda");
     final addPaymentName = find.byKey(const ValueKey("addPaymentName"));
     final addAmount = find.byKey(const ValueKey("addAmount"));
-    final addDate = find.byKey(const ValueKey("addDate"));
+    final borrowDate = find.byKey(const ValueKey("borrowDate"));
     final addBorrowingType = find.byKey(const ValueKey("addBorrowingType"));
     final addBorrowerName = find.byKey(const ValueKey("addBorrowerName"));
     final addPaymentType = find.byKey(const ValueKey("addPaymentType"));
     final addPocketName = find.byKey(const ValueKey("addPocketName"));
     final createInputTransactions =
-        find.byKey(const ValueKey("createInputTransactions"));
-    final createCancelButton = find.byKey(const ValueKey("createCancelButton"));
+        find.byKey(const ValueKey("inputTransactionButton"));
+    final createCancelButton = find.byKey(const ValueKey("cancelTransaction"));
 
     await tester.pumpWidget(MaterialApp(
       home: CreateBorrow(user),
     ));
-
     await tester.pump();
+
     expect(find.text('Borrow Transaction'), findsOneWidget);
     expect(find.text('My Balance'), findsOneWidget);
 
@@ -47,12 +47,20 @@ void main() {
 
     await tester.pumpAndSettle(const Duration(seconds:3));
 
+    //payment dropdown test
     final paymentItem = find.text('debit card').last;
-
     await tester.tap(paymentItem);
     await tester.pumpAndSettle();
 
-    
+    //calendar date test
+    await tester.enterText(borrowDate, "2022-10-02");
+    final dateTextField = find.byIcon(Icons.calendar_today);
+    await tester.tap(dateTextField);
+
+    //button test
+    await tester.tap(createInputTransactions);
+    await tester.pumpAndSettle(const Duration(seconds:3));
+    await tester.tap(createCancelButton);
     //Create test for text fields
     // await tester.enterText(addPaymentName, "Lunch");
     // await tester.pumpAndSettle();
