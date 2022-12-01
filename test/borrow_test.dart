@@ -38,6 +38,20 @@ void main() {
     await tester.pump();
     expect(find.text('Borrow Transaction'), findsOneWidget);
     expect(find.text('My Balance'), findsOneWidget);
+
+    expect(find.byIcon(Icons.add), findsNothing);
+    expect(find.text("Date"), findsOneWidget);
+    expect(find.text("Amount"), findsOneWidget);
+    expect(find.text("Type of Transaction"), findsOneWidget);
+    expect(find.text("Type of Payment"), findsOneWidget);
+
+    await tester.pumpAndSettle(const Duration(seconds:3));
+
+    final paymentItem = find.text('debit card').last;
+
+    await tester.tap(paymentItem);
+    await tester.pumpAndSettle();
+
     
     //Create test for text fields
     // await tester.enterText(addPaymentName, "Lunch");
@@ -58,6 +72,7 @@ void main() {
 
     //Create test for the button
     // await tester.tap(createInputTransactions);
+    // await tester.pumpAndSettle(const Duration(seconds:3));
     // await tester.pump();
     // await tester.tap(createCancelButton);
     // await tester.pump();
