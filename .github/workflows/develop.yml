@@ -5,9 +5,9 @@ name: Develop
 on:
   # Triggers the workflow on push or pull request events but only for the develop branch
   push:
-    branches: [staging]
+    branches: [PBI-18-Refactor_Report_Interface]
   pull_request:
-    branches: [staging]
+    branches: [PBI-18-Refactor_Report_Interface]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
