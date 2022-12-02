@@ -20,13 +20,13 @@ void main() {
         isCitizen: true,
         email: "usertest@gmail.com",
         name: "Amanda");
-    final addPaymentName = find.byKey(const ValueKey("addPaymentName"));
-    final addAmount = find.byKey(const ValueKey("addAmount"));
+    final borrowName = find.byKey(const ValueKey("borrowName"));
+    final borrowAmount = find.byKey(const ValueKey("borrowAmount"));
     final borrowDate = find.byKey(const ValueKey("borrowDate"));
-    final addBorrowingType = find.byKey(const ValueKey("addBorrowingType"));
-    final addBorrowerName = find.byKey(const ValueKey("addBorrowerName"));
-    final addPaymentType = find.byKey(const ValueKey("addPaymentType"));
-    final addPocketName = find.byKey(const ValueKey("addPocketName"));
+    final borrowType = find.byKey(const ValueKey("borrowType"));
+    final borrowerName = find.byKey(const ValueKey("borrowerName"));
+    // final PaymentType = find.byKey(const ValueKey("PaymentType"));
+    // final PocketType = find.byKey(const ValueKey("PocketType"));
     final createInputTransactions =
         find.byKey(const ValueKey("inputTransactionButton"));
     final createCancelButton = find.byKey(const ValueKey("cancelTransaction"));
@@ -56,11 +56,13 @@ void main() {
     await tester.enterText(borrowDate, "2022-10-02");
     final dateTextField = find.byIcon(Icons.calendar_today);
     await tester.tap(dateTextField);
+    await tester.pumpAndSettle(const Duration(seconds:3));
 
     //button test
     await tester.tap(createInputTransactions);
     await tester.pumpAndSettle(const Duration(seconds:3));
     await tester.tap(createCancelButton);
+    await tester.pumpAndSettle(const Duration(seconds:3));
     //Create test for text fields
     // await tester.enterText(addPaymentName, "Lunch");
     // await tester.pumpAndSettle();
