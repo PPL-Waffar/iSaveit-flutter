@@ -38,12 +38,18 @@ void main() {
     await tester.pump();
 
     expect(find.text('Borrow Transaction'), findsOneWidget);
+    expect(find.text('Input Transaction'), findsOneWidget);
+    expect(find.text('Borrow Transac'), findsNothing);
     expect(find.text('My Balance'), findsOneWidget);
+    expect(find.text('Her Balance'), findsNothing);
 
     expect(find.byIcon(Icons.add), findsNothing);
     expect(find.text("Date"), findsOneWidget);
+    expect(find.text("Dating"), findsNothing);
     expect(find.text("Amount"), findsOneWidget);
+    expect(find.text("Money"), findsNothing);
     expect(find.text("Type of Transaction"), findsOneWidget);
+    expect(find.text("Type of Transac"), findsNothing);
     expect(find.text("Type of Payment"), findsOneWidget);
     expect(find.text("Transaction Failed"), findsNothing);
 
