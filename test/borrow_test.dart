@@ -55,6 +55,19 @@ void main() {
 
     await tester.pumpAndSettle(const Duration(seconds:3));
 
+    await tester.enterText(borrowName, "Jajan kantin nasi goreng");
+    await tester.pumpAndSettle(const Duration(seconds:3));
+    await tester.enterText(borrowAmount, "30.000");
+
+    await tester.pumpAndSettle(const Duration(seconds:3));
+
+
+    await tester.tap(borrowType);
+    await tester.pumpAndSettle(const Duration(seconds:3));
+
+    await tester.enterText(borrowName, "John Doe");
+    await tester.pumpAndSettle(const Duration(seconds:3));
+
     //payment dropdown test
     final paymentItem = find.text('debit card').last;
     await tester.tap(paymentItem);
