@@ -25,6 +25,7 @@ void main() {
     final borrowDate = find.byKey(const ValueKey("borrowDate"));
     final borrowType = find.byKey(const ValueKey("borrowType"));
     final borrowerName = find.byKey(const ValueKey("borrowerName"));
+    final snackFail = find.byKey(const ValueKey("snackFail"));
     // final PaymentType = find.byKey(const ValueKey("PaymentType"));
     // final PocketType = find.byKey(const ValueKey("PocketType"));
     final createInputTransactions =
@@ -44,6 +45,7 @@ void main() {
     expect(find.text("Amount"), findsOneWidget);
     expect(find.text("Type of Transaction"), findsOneWidget);
     expect(find.text("Type of Payment"), findsOneWidget);
+    expect(find.text("Transaction Failed"), findsNothing);
 
     await tester.pumpAndSettle(const Duration(seconds:3));
 
