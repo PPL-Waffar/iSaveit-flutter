@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 // import 'package:isaveit/page/newsletter/newsletter_details.dart';
-import 'package:isaveit/page/newsletter/newsletter_list.dart';
-import 'package:isaveit/page/newsletter/newsletter_tips.dart';
-
 class NewsletterToday extends StatefulWidget {
   const NewsletterToday({super.key});
 
@@ -13,94 +10,7 @@ class NewsletterToday extends StatefulWidget {
 class NewsToday extends State<NewsletterToday> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: DefaultTabController(
-          length: 3,
-          child: Scaffold(
-              backgroundColor: Colors.white,
-              appBar: AppBar(
-                backgroundColor: Colors.white,
-                // title: const Text('Flutter Tabs', style: TextStyle(color: Colors.black)),
-                bottom: PreferredSize(
-                  preferredSize: const Size.fromHeight(40),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: TabBar(
-                        padding: const EdgeInsets.only(bottom: 10.0),
-                        isScrollable: true,
-                        unselectedLabelStyle:
-                        const TextStyle(fontWeight: FontWeight.normal),
-                        unselectedLabelColor: Colors.black,
-                        indicatorSize: TabBarIndicatorSize.label,
-                        indicatorColor: Colors.transparent,
-                        labelColor: Colors.red,
-                        labelStyle: const TextStyle(fontWeight: FontWeight.bold),
-                        tabs: [
-                          Container(
-                            width: 132,
-                            height: 32,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffF2F4F5)),
-                            child:
-                            TextButton(
-                              key: const Key("allArticlez"),
-                              child: const Text(
-                                "All articles",
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xff090A0A)),
-                              ),
-                              onPressed: () async {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const NewsletterList()));
-                              },
-                            ),
-                          ),
-                          Container(
-                            width: 132,
-                            height: 32,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffF2F4F5)),
-                            child:
-                            TextButton(
-                              key: const Key("tipzforU"),
-                              child: const Text(
-                                "Tips for you",
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xff090A0A)),
-                              ),
-                              onPressed: () async {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const NewsletterTips()));
-                              },
-                            ),
-                          ),
-                          Container(
-                            width: 132,
-                            height: 32,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffE7E7FF)),
-                            child:
-                            TextButton(
-                              key: const Key("tudeiNews"),
-                              child: const Text(
-                                "Today's news",
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xff4054FF)),
-                              ),
-                              onPressed: () async {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const NewsletterToday()));
-                              },
-                            ),
-                          ),
-                        ]),
-                  ),
-                ),
-              ),
-
+        return Scaffold(
               body: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(20),
@@ -206,8 +116,6 @@ class NewsToday extends State<NewsletterToday> {
                   ]
                   )
           ),
-        )
-          )
         )
     );
   }
