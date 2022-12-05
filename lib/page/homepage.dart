@@ -124,7 +124,7 @@ Future<Map<String, dynamic>> fetchGroups(User user) async {
 
 Future<Map<String, dynamic>> getUserInfo(User user) async {
   String url2 =
-      'http://localhost:8000/user/user-info/?session_id=${user.sessionId}';
+      'http://10.0.2.2:8000/user/user-info/?session_id=${user.sessionId}';
 
   try {
     Map<String, String> headers = {

@@ -12,7 +12,7 @@ import 'dart:math' as math;
 
 Future<Map<String, dynamic>> fetchGroups(User user) async {
   String url =
-      'http://localhost:8000/financialreport/view-financial-report/?session_id=${user.sessionId}';
+      'http://10.0.2.2:8000/financialreport/view-financial-report/?session_id=${user.sessionId}';
 
   try {
     Map<String, String> headers = {
@@ -157,54 +157,55 @@ class ReportPage extends State<ReportView> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
+                      Center(child: 
                       Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                          child: Row(children: [
-                            ElevatedButton(
-                              key: const Key("previousPage"),
-                              style: ElevatedButton.styleFrom(
-                                  elevation: 0, backgroundColor: Colors.white),
-                              onPressed: () => Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return ReportView(
-                                    widget.user, widget.bulan - 1);
-                              })),
-                              child: const Icon(
-                                Icons.arrow_back_sharp,
-                                color: Colors.black,
-                              ),
+                        padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+                        child: Row(children: [
+                          ElevatedButton(
+                            key: const Key("previousPage"),
+                            style: ElevatedButton.styleFrom(
+                                elevation: 0, backgroundColor: Colors.white),
+                            onPressed: () => Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return ReportView(
+                                  widget.user, widget.bulan - 1);
+                            })),
+                            child: const Icon(
+                              Icons.arrow_back_sharp,
+                              color: Colors.black,
                             ),
-                            const SizedBox(
-                              width: 70,
+                          ),
+                          const SizedBox(
+                            width: 35,
+                          ),
+                          Text(
+                            bulan,
+                            style: const TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w500),
+                          ),
+                          const SizedBox(
+                            width: 35,
+                          ),
+                          ElevatedButton(
+                            key: const Key("nextPage"),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              elevation: 0,
                             ),
-                            Text(
-                              bulan,
-                              style: const TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w500),
+                            onPressed: () => Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return ReportView(
+                                  widget.user, widget.bulan + 1);
+                            })),
+                            child: const Icon(
+                              Icons.arrow_forward_sharp,
+                              color: Colors.black,
                             ),
-                            const SizedBox(
-                              width: 70,
-                            ),
-                            ElevatedButton(
-                              key: const Key("nextPage"),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
-                                elevation: 0,
-                              ),
-                              onPressed: () => Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return ReportView(
-                                    widget.user, widget.bulan + 1);
-                              })),
-                              child: const Icon(
-                                Icons.arrow_forward_sharp,
-                                color: Colors.black,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 50,
-                            ),
-                          ])),
+                          ),
+                          const SizedBox(
+                            width: 50,
+                          ),
+                        ]))),
                       Container(
                         padding: const EdgeInsets.all(16),
                         child: const Text(
@@ -274,7 +275,7 @@ class ReportPage extends State<ReportView> {
                           Row(
                             children: [
                               const SizedBox(
-                                width: 40,
+                                width: 10,
                               ),
                               Container(
                                 decoration: BoxDecoration(
@@ -304,7 +305,7 @@ class ReportPage extends State<ReportView> {
                                 ),
                               ),
                               const SizedBox(
-                                width: 16,
+                                width: 7,
                               ),
                               Container(
                                 padding: const EdgeInsets.all(10),
