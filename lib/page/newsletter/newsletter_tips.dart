@@ -102,12 +102,7 @@ class NewsTips extends State<NewsletterTips> {
                         textAlign: TextAlign.center,
                       ),
                       onPressed: () async {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                const NewsDetails()));
-                      },
+                        Navigator.push(context,MaterialPageRoute(builder: (context) =>const NewsDetails()));},
                     ),
                     const SizedBox(height: 10,),
                     const Text('By Academia.com', style: TextStyle(color: Color(0xff979C9E), fontSize: 12, fontWeight: FontWeight.w500),),

@@ -94,11 +94,7 @@ class _NavbarViewState extends State<NavbarView> {
                       )),
                       
                     ],
-                    onTap: (index) {
-                    setState(() {
-                      _currentIndex = index;
-                    });
-                  },
+                    onTap: (index) {setState(() {_currentIndex = index;});},
       ),
                 ),)
               ),
