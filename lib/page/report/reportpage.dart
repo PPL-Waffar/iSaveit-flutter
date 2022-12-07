@@ -175,10 +175,11 @@ class ReportPage extends State<ReportView> {
                       const SizedBox(
                         height: 7,
                       ),
-                      CarouselSlider(
-                        items: [
-                          SfCircularChart(series: <CircularSeries>[
+                          SfCircularChart(
+                            // title: ChartTitle(text: if, textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                            series: <CircularSeries>[
                             PieSeries<ChartModel, String>(
+                              
                                 dataSource: [
                                   for (var i = 0;
                                       i < thedata2[bulanBaru].length;
@@ -200,6 +201,7 @@ class ReportPage extends State<ReportView> {
                                     data.percentage,
                                 dataLabelMapper: (ChartModel data, _) =>
                                     data.title,
+                                radius: '85%',
                                 dataLabelSettings: DataLabelSettings(
                                     isVisible: true,
                                     labelPosition:
@@ -208,12 +210,7 @@ class ReportPage extends State<ReportView> {
                                         ConnectorLineSettings(
                                             // Type of the connector line
                                             type: ConnectorType.curve))),
-                          ]),
-                        ],
-                        options: CarouselOptions(
-                            enlargeCenterPage: true, height: 200),
-                        carouselController: _controller,
-                      ),
+                          ]),  
                       Padding(
                         padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
                         child: Column(children: [
