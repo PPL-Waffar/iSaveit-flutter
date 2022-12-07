@@ -52,14 +52,7 @@ class _TimeState extends State<ReportTime> with SingleTickerProviderStateMixin {
           },
           child: TextButton(
             key: ValueKey(backgroundColor),
-            onPressed: () {
-              setState(() {
-                _selectedMonth = dateTime;
-                choosenDate = DateFormat.yMMMM().format(_selectedMonth);
-                bulan = choosenDate.substring(0, choosenDate.indexOf(' '));
-                tahun = choosenDate.substring(
-                    choosenDate.indexOf(' '), choosenDate.length);
-                tahun = tahun.substring(1, 5);
+            onPressed: () {setState(() {_selectedMonth = dateTime;choosenDate = DateFormat.yMMMM().format(_selectedMonth);bulan = choosenDate.substring(0, choosenDate.indexOf(' '));tahun = choosenDate.substring(choosenDate.indexOf(' '), choosenDate.length);tahun = tahun.substring(1, 5);
               });
             },
             style: TextButton.styleFrom(
@@ -110,9 +103,7 @@ class _TimeState extends State<ReportTime> with SingleTickerProviderStateMixin {
                     Row(
                       children: [
                         IconButton(
-                          onPressed: () {
-                            setState(() {
-                              _pickerYear = _pickerYear - 1;
+                          onPressed: () {setState(() { _pickerYear = _pickerYear - 1;
                             });
                           },
                           icon: Icon(Icons.navigate_before_rounded),
@@ -126,9 +117,7 @@ class _TimeState extends State<ReportTime> with SingleTickerProviderStateMixin {
                           ),
                         ),
                         IconButton(
-                          onPressed: () {
-                            setState(() {
-                              _pickerYear = _pickerYear + 1;
+                          onPressed: () {setState(() {_pickerYear = _pickerYear + 1;
                             });
                           },
                           icon: Icon(Icons.navigate_next_rounded),
