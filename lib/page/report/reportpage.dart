@@ -1,7 +1,8 @@
-// ignore_for_file: unused_field, prefer_const_constructors, unused_local_variable, annotate_overrides
+// ignore_for_file: unused_field, prefer_const_constructors, unused_local_variable, annotate_overrides, unnecessary_new
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:isaveit/page/navbar.dart';
 import 'package:isaveit/page/report/downloadreport.dart';
 import 'package:isaveit/models/user.dart';
 import 'package:http/http.dart' as http;
@@ -12,7 +13,7 @@ import 'dart:math' as math;
 
 Future<Map<String, dynamic>> fetchGroups(User user) async {
   String url =
-      'http://10.0.2.2:8000/financialreport/view-financial-report/?session_id=${user.sessionId}';
+      'http://localhost:8000/financialreport/view-financial-report/?session_id=${user.sessionId}';
 
   try {
     Map<String, String> headers = {
@@ -54,7 +55,7 @@ Future<Map<String, dynamic>> fetchGroups(User user) async {
 
 class ReportView extends StatefulWidget {
   final User user;
-  final int bulan;
+  final String bulan;
   const ReportView(this.user, this.bulan, {super.key});
 
   @override
@@ -90,6 +91,7 @@ class ReportPage extends State<ReportView> {
       }
     });
   }
+
   void dispose() {
     _timer.cancel();
     super.dispose();
@@ -108,33 +110,33 @@ class ReportPage extends State<ReportView> {
   @override
   Widget build(BuildContext context) {
     if (_isLoading) {
-      String bulanBaru = widget.bulan.toString();
+      String bulanBaru = widget.bulan;
       final ChartIndexedValueMapper<String>? dataLabelMapper;
       var bulan = bulanBaru;
-      if (bulan == '01') {
-        bulan = 'Januari';
-      } else if (bulan == '02') {
-        bulan = 'Februari';
-      } else if (bulan == '03') {
-        bulan = 'Maret';
-      } else if (bulan == '04') {
-        bulan = 'April';
-      } else if (bulan == '05') {
-        bulan = 'Mei';
-      } else if (bulan == '06') {
-        bulan = 'Juni';
-      } else if (bulan == '07') {
-        bulan = 'Juli';
-      } else if (bulan == '08') {
-        bulan = 'Agustus';
-      } else if (bulan == '09') {
-        bulan = 'September';
-      } else if (bulan == '10') {
-        bulan = 'Oktober';
-      } else if (bulan == '11') {
-        bulan = 'November';
-      } else if (bulan == '12') {
-        bulan = 'Desember';
+      if (bulan == 'January') {
+        bulanBaru = '01';
+      } else if (bulan == 'February') {
+        bulanBaru = '02';
+      } else if (bulan == 'March') {
+        bulanBaru = '03';
+      } else if (bulan == 'April') {
+        bulanBaru = '04';
+      } else if (bulan == 'May') {
+        bulanBaru = '05';
+      } else if (bulan == 'June') {
+        bulan = '06';
+      } else if (bulan == 'July') {
+        bulanBaru = '07';
+      } else if (bulan == 'August') {
+        bulanBaru = '08';
+      } else if (bulan == 'September') {
+        bulanBaru = '09';
+      } else if (bulan == 'October') {
+        bulanBaru = '10';
+      } else if (bulan == 'November') {
+        bulanBaru = '11';
+      } else if (bulan == 'December') {
+        bulanBaru = '12';
       }
       return Scaffold(
           backgroundColor: Colors.white,
@@ -142,12 +144,17 @@ class ReportPage extends State<ReportView> {
             backgroundColor: Colors.white,
             elevation: 0,
             leadingWidth: 150,
-            leading: const Center(
-              child: Text(
+            leading:  Row(
+              children: [ 
+                IconButton(
+                  icon: const Icon(Icons.arrow_back, color: Colors.black),
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => SettingView(widget.user)))),
+                Text(
                 'My Spendings',
                 style: TextStyle(fontSize: 16, color: Colors.black),
               ),
-            ),
+            ]),
           ),
           body: SingleChildScrollView(
             child: FutureBuilder(
@@ -157,55 +164,6 @@ class ReportPage extends State<ReportView> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Center(child: 
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
-                        child: Row(children: [
-                          ElevatedButton(
-                            key: const Key("previousPage"),
-                            style: ElevatedButton.styleFrom(
-                                elevation: 0, backgroundColor: Colors.white),
-                            onPressed: () => Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return ReportView(
-                                  widget.user, widget.bulan - 1);
-                            })),
-                            child: const Icon(
-                              Icons.arrow_back_sharp,
-                              color: Colors.black,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 35,
-                          ),
-                          Text(
-                            bulan,
-                            style: const TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.w500),
-                          ),
-                          const SizedBox(
-                            width: 35,
-                          ),
-                          ElevatedButton(
-                            key: const Key("nextPage"),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              elevation: 0,
-                            ),
-                            onPressed: () => Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return ReportView(
-                                  widget.user, widget.bulan + 1);
-                            })),
-                            child: const Icon(
-                              Icons.arrow_forward_sharp,
-                              color: Colors.black,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 50,
-                          ),
-                        ]))),
                       Container(
                         padding: const EdgeInsets.all(16),
                         child: const Text(
@@ -364,46 +322,61 @@ class ReportPage extends State<ReportView> {
                           for (var i = 0; i < thedata2[bulanBaru].length; i++)
                             Column(
                               children: [
-                                Container(
-                                  padding: const EdgeInsets.all(14),
-                                  width: 342,
-                                  height: 72,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: const Color(0xffDFE2FF),
+                                Row(children: [
+                                  Flexible(
+                                    child:  Container(
+                                      height: 46,
+                                      width: 200,
+                                      padding: new EdgeInsets.only(left: 20.0),
+                                      child: RichText(
+                                        text: TextSpan(
+                                        style:
+                                            DefaultTextStyle.of(context).style,
+                                        children: <TextSpan>[
+                                          TextSpan(
+                                              text:thedata2[bulanBaru][i]
+                                                     ["expense_name"] ,
+                                              style: TextStyle(
+                                                fontSize: 14.0,
+                                                fontFamily: 'Roboto',
+                                                color: Color(0xFF212121),
+                                                fontWeight: FontWeight.bold,
+                                              )),
+                                         
+                                        ]),
                                   ),
-                                  child: RichText(
-                                    text: TextSpan(
-                                      style: DefaultTextStyle.of(context).style,
-                                      children: <TextSpan>[
-                                        TextSpan(
-                                            text: thedata2[bulanBaru][i]
-                                                    ["expense_name"] +
-                                                '\n',
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 16,
-                                            )),
-                                        TextSpan(
-                                            text: thedata2[bulanBaru][i]
+                                ),
+                              ),
+                              Container(
+                                  height: 46,
+                                  width: 200,
+                                  padding:
+                                      const EdgeInsets.fromLTRB(90, 0, 17, 0),
+                                  child: Text(
+                                      thedata2[bulanBaru][i]
                                                 ["expense_amount"],
-                                            style: const TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500,
-                                                color: Color(0xff4CD471))),
-                                      ],
-                                    ),
-                                  ),
+                                      style: TextStyle(
+                                          color: Colors.red,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500)),
                                 ),
+                                 
                                 const SizedBox(
-                                  height: 14,
+                                  height: 5,
                                 ),
+                                
                               ],
-                            )
-                        ]),
-                      )
+                            ),
+                        MySeparator(),
+                        SizedBox(height: 10,)
+                        ]
+                        ),
                     ],
-                  );
+                  )
+                      )
+                    ]
+                );
+                      
                 }),
           ));
     } else {
@@ -428,4 +401,36 @@ class ChartModel {
   final String title;
   final dynamic percentage;
   final Color color;
+}
+
+class MySeparator extends StatelessWidget {
+  const MySeparator({Key? key, this.height = 1, this.color = Colors.black})
+      : super(key: key);
+  final double height;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        final boxWidth = constraints.constrainWidth();
+        const dashWidth = 10.0;
+        final dashHeight = height;
+        final dashCount = (boxWidth / (2 * dashWidth)).floor();
+        return Flex(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          direction: Axis.horizontal,
+          children: List.generate(dashCount, (_) {
+            return SizedBox(
+              width: dashWidth,
+              height: dashHeight,
+              child: const DecoratedBox(
+                decoration: BoxDecoration(color: Color(0xffCDCFD0)),
+              ),
+            );
+          }),
+        );
+      },
+    );
+  }
 }

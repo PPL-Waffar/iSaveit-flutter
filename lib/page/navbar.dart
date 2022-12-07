@@ -3,8 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:isaveit/models/user.dart';
 import 'package:isaveit/page/newsletter/newsletter_list.dart';
 import 'package:isaveit/page/profile/profile_detail.dart';
+import 'package:isaveit/page/report/report_inputdate.dart';
 import '../page/homepage.dart';
-import '../page/report/reportpage.dart';
 import 'transactions/transaction.dart';
 
 // ignore: must_be_immutable
@@ -20,6 +20,7 @@ class SettingView extends StatefulWidget {
 class _SettingViewState extends State<SettingView> {
   int date1 = int.parse(
       DateFormat('yyyy-MM-dd').format(DateTime.now()).substring(5, 7));
+
   late final List screens;
   //ReportView(), MoneyView(), NewsView(), ProfileView()
   int _currentIndex = 0;
@@ -30,7 +31,7 @@ class _SettingViewState extends State<SettingView> {
     super.initState();
     screens = [
       HomeView(widget.user),
-      ReportView(widget.user, date1),
+      ReportTime(user:widget.user),
       Transaction(widget.user),
       const NewsletterList(),
       ProfileView(widget.user)
