@@ -15,7 +15,7 @@ class ReadFeedbackPage extends State<ReadFeedback> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+
         appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.white,
@@ -60,10 +60,6 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const SizedBox(height: 0.5,),
-                            const SizedBox(height: 24),
-
-
-                            const SizedBox(height: 24),
 
                             //Name of the user
                             Container(
@@ -85,9 +81,8 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                                     width: 200,
                                     padding: const EdgeInsets.only(left: 20.0),
                                     child: RichText(
-                                      text: TextSpan(
-                                          style: DefaultTextStyle.of(context).style,
-                                          children: const <TextSpan>[
+                                      text: const TextSpan(
+                                          children: <TextSpan>[
                                             TextSpan(text: 'Save money for buying new phone\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121))),
                                           ]
                                       ),
@@ -103,7 +98,7 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                                       const EdgeInsets.all(20)),
                                 ),
                                 child:RichText(
-                                  text: const TextSpan(
+                                  text:  const TextSpan(
                                       children: <TextSpan>[
                                         TextSpan(text: 'See more', style: TextStyle(fontSize: 12, color: Color(0xff979C9E), fontWeight: FontWeight.w700))
                                       ]
@@ -144,9 +139,8 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                                     width: 200,
                                     padding: const EdgeInsets.only(left: 20.0),
                                     child: RichText(
-                                      text: TextSpan(
-                                          style: DefaultTextStyle.of(context).style,
-                                          children: const <TextSpan>[
+                                      text: const TextSpan(
+                                          children: <TextSpan>[
                                             TextSpan(text: 'Reduce unnecessary expense and save income weekly\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121))),
                                           ]
                                       ),
@@ -201,9 +195,8 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                                     width: 200,
                                     padding: const EdgeInsets.only(left: 20.0),
                                     child: RichText(
-                                      text: TextSpan(
-                                          style: DefaultTextStyle.of(context).style,
-                                          children: const <TextSpan>[
+                                      text: const TextSpan(
+                                          children: <TextSpan>[
                                             TextSpan(text: 'Keep track of the details of my expenses and incomes\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121))),
                                           ]
                                       ),
@@ -274,9 +267,8 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                                     width: 200,
                                     padding: const EdgeInsets.only(left: 20.0),
                                     child: RichText(
-                                      text: TextSpan(
-                                          style: DefaultTextStyle.of(context).style,
-                                          children: const <TextSpan>[
+                                      text: const TextSpan(
+                                          children: <TextSpan>[
                                             TextSpan(text: 'Keep track of the details of my expenses and incomes\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121))),
                                           ]
                                       ),
@@ -350,9 +342,8 @@ class ReadFeedbackPage extends State<ReadFeedback> {
                                     width: 200,
                                     padding: const EdgeInsets.only(left: 20.0),
                                     child: RichText(
-                                      text: TextSpan(
-                                          style: DefaultTextStyle.of(context).style,
-                                          children: const <TextSpan>[
+                                      text: const TextSpan(
+                                          children: <TextSpan>[
                                             TextSpan(text: 'Stop over spending money on clothing and food\n',style: TextStyle(fontSize: 14.0,fontFamily: 'Roboto',color: Color(0xFF212121))),
                                             TextSpan(text: 'See more', style: TextStyle(fontSize: 12, color: Color(0xff979C9E), fontWeight: FontWeight.w700))
                                           ]
