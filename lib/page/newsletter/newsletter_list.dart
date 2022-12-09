@@ -16,56 +16,46 @@ class NewsList extends State<NewsletterList> {
   @override
   Widget build(BuildContext context) {
         return Scaffold(
-        
           body: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
+            child: Column(
                        mainAxisAlignment: MainAxisAlignment.center,
-                       crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                    const SizedBox(height: 10,),
-              Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 132,
-                    height: 32,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffF2F4F5)),
-                    child: const Center(
-                      child :Text('Tips for you', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xff090A0A)),),
-                    ),
-                  ),
-              
-               SizedBox(height: 10),
+                    const SizedBox(height: 30),
+                    
+                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
+                    child:Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 132,
+                              height: 32,
+                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: Color.fromARGB(255, 239, 238, 239)),
+                              child: const Center(
+                                child :Text('Tips for you', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xff090A0A)),),
+                              ),
+                            ),
+                        
+                        SizedBox(height: 10),
 
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      child: Image.asset('assets/images/newsletter.png', width: 343, height: 154,),
-                    ),
-                  
-              const SizedBox(height: 10),
+                        Image.asset('assets/images/newsletter.png', width: 343, height: 154,),
 
-              TextButton(
-                key: const Key("title1"),
-                child: const Text(
-                  "You need this! Tips on how to save more money if you live alone and still in college.",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700,color: Color(0xff090A0A)),
-                ),
-                onPressed: () async {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const NewsDetails()));
-                },
-              ),
-              SizedBox(height: 10),
+                        SizedBox(height: 5),
 
-              Text('By Detik.com', style: TextStyle(color: Color(0xff979C9E), fontSize: 12, fontWeight: FontWeight.w500)),
+                        TextButton(
+                          key: const Key("title1"),
+                          child: const Text(
+                            "You need this! Tips on how to save more money if you live alone and still in college.",
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700,color: Color(0xff090A0A)),
+                          ),
+                          onPressed: () async {Navigator.push(context,MaterialPageRoute(builder: (context) =>const NewsDetails()));},
+                          ),
 
+                          SizedBox(height: 5),
+
+                          Text('By Detik.com', style: TextStyle(color: Color(0xff979C9E), fontSize: 12, fontWeight: FontWeight.w500)),
+                          ]
+                    )),
+              const SizedBox(height: 24), 
               Divider(
                 color: Color(0xFFDBDBDB),
                 height: 20,
@@ -73,60 +63,49 @@ class NewsList extends State<NewsletterList> {
                 indent: 0,
                 endIndent: 0,
                 ),
+          
+              const SizedBox(height: 24), 
+              Padding(padding: EdgeInsets.only(left: 30, right: 30),
+                    child:Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 132,
+                              height: 32,
+                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: Color.fromARGB(255, 239, 238, 239)),
+                              child: const Center(
+                                child :Text("Today's news", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xff090A0A)),),
+                              ),
+                            ),
+                        
+                        SizedBox(height: 10),
+
+                        Image.asset('assets/images/newsletter2.png', width: 343, height: 154,),
+
+                        SizedBox(height: 5),
+
+                        TextButton(
+                          key: const Key("title2"),
+                          child: const Text(
+                            "Student Loans: What happens to loans when you leave college?",
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700,color: Color(0xff090A0A)),
+                          ),
+                          onPressed: () async {Navigator.push(context,MaterialPageRoute(builder: (context) =>const NewsDetails()));},
+                          ),
+
+                          SizedBox(height: 5),
+
+                          Text('By Academia.com', style: TextStyle(color: Color(0xff979C9E), fontSize: 12, fontWeight: FontWeight.w500)),
+                          ]
+                    )),
+              
+              
                 ]
-              ),
-              const SizedBox(height: 18,),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: 132,
-                      height: 32,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: const Color(0xffF2F4F5)),
-                      child: const Center(
-                        child :Text("Today's news", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xff090A0A)),),
-                      ),
-                    ),
-                  ]
-              ),
-                  const SizedBox(height: 10,),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    child: Image.asset('assets/images/newsletter2.png', width: 343, height: 154,),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10,),
-              // const Text('Student Loans: What happens to loans when you leave college?', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),),
-              TextButton(
-                key: const Key("title2"),
-                child: const Text(
-                  "Student Loans: What happens to loans when you leave college?",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700,color: Color(0xff090A0A)),
-                  textAlign: TextAlign.center,
-                ),
-                onPressed: () async {
-                },
-              ),
-              const SizedBox(height: 10,),
-              const Text('By Academia.com', style: TextStyle(color: Color(0xff979C9E), fontSize: 12, fontWeight: FontWeight.w500),),
-              Container(
-                margin: const EdgeInsets.only(left: 20, right: 20),
-                child: const Divider(
-                  color: Color(0xFFDBDBDB),
-                  height: 20,
-                  thickness: 1,
-                  indent: 0,
-                  endIndent: 0,
-                ),
-              ),
-            ]
           )
-      ])
       )
-      )
+      
       );
+      
+      
   }
 }

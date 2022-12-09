@@ -6,7 +6,7 @@ void main() {
   testWidgets('Newsletter Today', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     // final todayTitle1 = find.byKey(const ValueKey("todayTitle1"));
-    final tudeiTitle2 = find.byKey(const ValueKey("tudeiTitle2"));
+    final tudeiTitle2 = find.byKey(const ValueKey("today2"));
 
     await tester.pumpWidget(const MaterialApp(
       home: NewsletterToday(),
