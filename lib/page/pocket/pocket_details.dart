@@ -321,57 +321,7 @@ class PocketPage extends State<Pocket> {
                   ]);
                 }),
 
-            // SizedBox(
-            //   height: 14,
-            // ),
-            // Container(
-            //   padding: const EdgeInsets.fromLTRB(17, 0, 16, 0),
-            //   child: const MySeparator(),
-            // ),
-            // SizedBox(
-            //   height: 24,
-            // ),
-            // SizedBox(
-            //   child: Row(children: [
-            //     // Flexible(
-            //     //   child: new Container(
-            //     //     height: 46,
-            //     //     width: 200,
-            //     //     padding: new EdgeInsets.only(left: 20.0),
-            //     //     child: RichText(
-            //     //       text: TextSpan(
-            //     //           style: DefaultTextStyle.of(context).style,
-            //     //           children: const <TextSpan>[
-            //     //             TextSpan(
-            //     //                 text: 'Patungan Potluck\n',
-            //     //                 style: TextStyle(
-            //     //                   fontSize: 14.0,
-            //     //                   fontFamily: 'Roboto',
-            //     //                   color: Color(0xFF212121),
-            //     //                   fontWeight: FontWeight.bold,
-            //     //                 )),
-            //     //             TextSpan(
-            //     //                 text: 'Credit card',
-            //     //                 style: TextStyle(
-            //     //                     fontSize: 12,
-            //     //                     color: Color(0xff979C9E),
-            //     //                     fontWeight: FontWeight.w700))
-            //     //           ]),
-            //     //     ),
-            //     //   ),
-            //     // ),
-            //     Container(
-            //       height: 46,
-            //       width: 200,
-            //       padding: const EdgeInsets.fromLTRB(90, 0, 17, 0),
-            //       child: const Text('+Rp 120.000',
-            //           style: TextStyle(
-            //               color: Colors.green,
-            //               fontSize: 14,
-            //               fontWeight: FontWeight.w500)),
-            //     ),
-            //   ]),
-            // ),
+            
             Container(
               padding: const EdgeInsets.fromLTRB(17, 0, 16, 0),
               child: const MySeparator(),

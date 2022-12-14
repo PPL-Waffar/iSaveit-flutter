@@ -5,9 +5,6 @@ import 'package:isaveit/page/newsletter/newsletter_list.dart';
 void main() {
   testWidgets('Newsletter List', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    final allArticles = find.byKey(const ValueKey("allArticles"));
-    final tipsForYou = find.byKey(const ValueKey("tipsForYou"));
-    final todaysNews = find.byKey(const ValueKey("todaysNews"));
     final title1 = find.byKey(const ValueKey("title1"));
     final title2 = find.byKey(const ValueKey("title2"));
 
@@ -15,7 +12,7 @@ void main() {
       home: NewsletterList(),
     ));
 
-    expect(find.text("All articles"), findsOneWidget);
+    expect(find.text("All articles"), findsNothing);
     expect(find.text('By Academia.com'), findsOneWidget);
     expect(find.text("By Detik.com"), findsOneWidget);
     expect(find.text('My Balance'), findsNothing);
@@ -27,9 +24,6 @@ void main() {
         find.text(
             "Student Loans: What happens to loans when you leave college?"),
         findsOneWidget);
-    await tester.tap(allArticles);
-    await tester.tap(tipsForYou);
-    await tester.tap(todaysNews);
     await tester.tap(title1);
     await tester.tap(title2);
     await tester.pump();

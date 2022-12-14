@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:isaveit/models/user.dart';
-import 'package:isaveit/page/newsletter/newsletter_list.dart';
+import 'package:isaveit/page/newsletter/newsletter_navbar.dart';
 import 'package:isaveit/page/profile/profile_detail.dart';
 import 'package:isaveit/page/report/report_inputdate.dart';
 import '../page/homepage.dart';
@@ -33,7 +33,7 @@ class _SettingViewState extends State<SettingView> {
       HomeView(widget.user),
       ReportTime(user:widget.user),
       Transaction(widget.user),
-      const NewsletterList(),
+      NavbarView(),
       ProfileView(widget.user)
     ];
   }
