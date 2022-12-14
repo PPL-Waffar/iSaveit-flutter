@@ -533,6 +533,7 @@ class CreateBorrowPage extends State<CreateBorrow> {
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
+                              key: Key("snackFail"),
                               content: Text('Transaction Failed'),
                             ),
                           );
@@ -602,6 +603,7 @@ class Cancelpayment extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
       child: Center(
         child: TextButton(
+          key: Key("cancelTransaction"),
           onPressed: () {
             Navigator.pop(
               context,
