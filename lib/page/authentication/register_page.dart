@@ -18,7 +18,7 @@ Future<User> registerUser(
   Response response;
   try {
     response =
-        await post(Uri.parse("http://localhost:8000/user/flu-register-user/"),
+        await post(Uri.parse("http://10.0.2.2:8000/user/flu-register-user/"),
             headers: <String, String>{
               'Content-Type': 'application/json; charset=UTF-8',
             },

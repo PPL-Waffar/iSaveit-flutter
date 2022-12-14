@@ -20,25 +20,70 @@ void main() {
         isCitizen: true,
         email: "usertest@gmail.com",
         name: "Amanda");
-    final addPaymentName = find.byKey(const ValueKey("addPaymentName"));
-    final addAmount = find.byKey(const ValueKey("addAmount"));
-    final addDate = find.byKey(const ValueKey("addDate"));
-    final addBorrowingType = find.byKey(const ValueKey("addBorrowingType"));
-    final addBorrowerName = find.byKey(const ValueKey("addBorrowerName"));
-    final addPaymentType = find.byKey(const ValueKey("addPaymentType"));
-    final addPocketName = find.byKey(const ValueKey("addPocketName"));
+    final borrowName = find.byKey(const ValueKey("borrowName"));
+    final borrowAmount = find.byKey(const ValueKey("borrowAmount"));
+    final borrowDate = find.byKey(const ValueKey("borrowDate"));
+    final borrowType = find.byKey(const ValueKey("borrowType"));
+    final borrowerName = find.byKey(const ValueKey("borrowerName"));
+    final snackFail = find.byKey(const ValueKey("snackFail"));
+    // final PaymentType = find.byKey(const ValueKey("PaymentType"));
+    // final PocketType = find.byKey(const ValueKey("PocketType"));
     final createInputTransactions =
-        find.byKey(const ValueKey("createInputTransactions"));
-    final createCancelButton = find.byKey(const ValueKey("createCancelButton"));
+        find.byKey(const ValueKey("inputTransactionButton"));
+    final createCancelButton = find.byKey(const ValueKey("cancelTransaction"));
 
     await tester.pumpWidget(MaterialApp(
       home: CreateBorrow(user),
     ));
-
     await tester.pump();
+
     expect(find.text('Borrow Transaction'), findsOneWidget);
+    expect(find.text('Input Transaction'), findsOneWidget);
+    expect(find.text('Borrow Transac'), findsNothing);
     expect(find.text('My Balance'), findsOneWidget);
-    
+    expect(find.text('Her Balance'), findsNothing);
+
+    expect(find.byIcon(Icons.add), findsNothing);
+    expect(find.text("Date"), findsOneWidget);
+    expect(find.text("Dating"), findsNothing);
+    expect(find.text("Amount"), findsOneWidget);
+    expect(find.text("Money"), findsNothing);
+    expect(find.text("Type of Transaction"), findsOneWidget);
+    expect(find.text("Type of Transac"), findsNothing);
+    expect(find.text("Type of Payment"), findsOneWidget);
+    expect(find.text("Transaction Failed"), findsNothing);
+
+    await tester.pumpAndSettle(const Duration(seconds:3));
+
+    await tester.enterText(borrowName, "Jajan kantin nasi goreng");
+    await tester.pumpAndSettle(const Duration(seconds:3));
+    await tester.enterText(borrowAmount, "30.000");
+
+    await tester.pumpAndSettle(const Duration(seconds:3));
+
+
+    await tester.tap(borrowType);
+    await tester.pumpAndSettle(const Duration(seconds:3));
+
+    await tester.enterText(borrowName, "John Doe");
+    await tester.pumpAndSettle(const Duration(seconds:3));
+
+    //payment dropdown test
+    final paymentItem = find.text('debit card').last;
+    await tester.tap(paymentItem);
+    await tester.pumpAndSettle();
+
+    //calendar date test
+    await tester.enterText(borrowDate, "2022-10-02");
+    final dateTextField = find.byIcon(Icons.calendar_today);
+    await tester.tap(dateTextField);
+    await tester.pumpAndSettle(const Duration(seconds:3));
+
+    //button test
+    await tester.tap(createInputTransactions);
+    await tester.pumpAndSettle(const Duration(seconds:3));
+    await tester.tap(createCancelButton);
+    await tester.pumpAndSettle(const Duration(seconds:3));
     //Create test for text fields
     // await tester.enterText(addPaymentName, "Lunch");
     // await tester.pumpAndSettle();
@@ -58,6 +103,7 @@ void main() {
 
     //Create test for the button
     // await tester.tap(createInputTransactions);
+    // await tester.pumpAndSettle(const Duration(seconds:3));
     // await tester.pump();
     // await tester.tap(createCancelButton);
     // await tester.pump();
