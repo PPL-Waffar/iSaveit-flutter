@@ -214,7 +214,7 @@ class _ProfileDetailPage extends State<ProfileView> {
                                         onPressed: () => Navigator.of(context)
                                             .push(MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const ReadFeedback())),
+                                                    ReadFeedback(widget.user))),
                                         child:
                                             const Text('Click here to see more',
                                                 style: TextStyle(

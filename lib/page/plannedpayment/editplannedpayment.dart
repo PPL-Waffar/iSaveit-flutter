@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field, prefer_final_fields, annotate_overrides, unnecessary_null_comparison, prefer_conditional_assignment
+// ignore_for_file: must_be_immutable, unused_field, prefer_final_fields, unnecessary_null_comparison, prefer_const_constructors, prefer_conditional_assignment, annotate_overrides
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -7,6 +7,29 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'package:isaveit/page/navbar.dart';
+
+Future<Map<String, dynamic>> deletePayment(User user, String id) async {
+  String url =
+      'http://localhost:8000/payment/flu-delete-payment/?session_id=${user.sessionId}&input_payment=$id';
+  Map<String, String> headers = {
+    'Content-Type': 'application/json; charset=UTF-8',
+  };
+  Map<String, dynamic> body = {
+    'session_id': user.sessionId,
+    'input_payment': id
+  };
+
+  final response = await http.delete(
+    Uri.parse(url),
+    headers: headers,
+    body: jsonEncode(body),
+  );
+  if (response.statusCode == 200) {
+    return {"isSuccessful": true, "error": null};
+  } else {
+    return {"isSuccessful": false, "error": "An error has occurred"};
+  }
+}
 
 Future<Map<String, dynamic>> fetchGroups(User user) async {
   String url =
@@ -77,7 +100,6 @@ Future<Map<String, dynamic>> sendNewUser(String payname, String payamount,
   }
 }
 
-// ignore: must_be_immutable
 class Editplannedpayment extends StatefulWidget {
   User user;
 
@@ -100,15 +122,17 @@ class EditplannedpaymentState extends State<Editplannedpayment> {
   void initState() {
     super.initState();
 
-    _timer = Timer.periodic(const Duration(seconds: 3), (timer) async {
+    _timer = Timer.periodic(Duration(seconds: 3), (timer) async {
       await _intializeData();
       if (mounted) {
         setState(() {});
       }
     });
+
     dateinput.text = ""; //set the initial value of text field
     super.initState();
   }
+
   void dispose() {
     _timer.cancel();
     super.dispose();
@@ -348,10 +372,16 @@ class EditplannedpaymentState extends State<Editplannedpayment> {
                             ),
                             TextButton(
                               key: const Key("confirmDeletePlannedPayment"),
-                              onPressed: () => Navigator.pop(
-                                context,
-                                'Delete',
-                              ),
+                              onPressed: () {
+                                deletePayment(
+                                    widget.user, widget.thedata["name"]);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          SettingView(widget.user)),
+                                );
+                              },
                               child: const Text('Delete',
                                   style: TextStyle(color: Color(0XFF4054FF))),
                             ),

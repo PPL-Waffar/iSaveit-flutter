@@ -103,6 +103,7 @@ Future<Map<String, dynamic>> fetchGroups(User user) async {
     );
 
     List<dynamic> extractedData = jsonDecode(response.body);
+
     // await Future.delayed(Duration(seconds: 10));
     if (response.statusCode == 200) {
       return {"isSuccessful": true, "data": extractedData, "error": null};
@@ -122,9 +123,37 @@ Future<Map<String, dynamic>> fetchGroups(User user) async {
   }
 }
 
+Future<Map<String, dynamic>> allBalance(User user) async {
+  String url =
+      'http://localhost:8000/pocket/all-balance/?session_id=${user.sessionId}';
+
+  Map<String, String> headers = {
+    'Content-Type': 'application/json; charset=UTF-8',
+  };
+  Map<String, dynamic> body = {'session_id': user.sessionId};
+
+  final responsed = await http.post(
+    Uri.parse(url),
+    headers: headers,
+    body: jsonEncode(body),
+  );
+  List<dynamic> totalbalance = jsonDecode(responsed.body);
+
+  // await Future.delayed(Duration(seconds: 10));
+  if (responsed.statusCode == 200) {
+    return {"isSuccessful": true, "data": totalbalance, "error": null};
+  } else {
+    return {
+      "isSuccessful": false,
+      "data": totalbalance,
+      "error": "An error has occurred"
+    };
+  }
+}
+
 Future<Map<String, dynamic>> getUserInfo(User user) async {
   String url2 =
-      'http://10.0.2.2:8000/user/user-info/?session_id=${user.sessionId}';
+      'http://localhost:8000/user/user-info/?session_id=${user.sessionId}';
 
   try {
     Map<String, String> headers = {
@@ -178,12 +207,13 @@ class HomePage extends State<HomeView> {
   List<dynamic> allplanned = [];
   Map<String, dynamic> response4 = {};
   Map<String, dynamic> response9 = {};
-
+  Map<String, dynamic> responseBalance = {};
+  List<dynamic> allbalance = [];
   @override
   void initState() {
     super.initState();
 
-    _timer = Timer.periodic(Duration(seconds: 8), (timer) async {
+    _timer = Timer.periodic(Duration(seconds: 3), (timer) async {
       await _intializeData();
       if (mounted) {
         _isLoading = true;
@@ -191,11 +221,11 @@ class HomePage extends State<HomeView> {
       }
     });
   }
-  void dispose() {
+
+   void dispose() {
     _timer.cancel();
     super.dispose();
   }
-  
 
   Future<void> _intializeData() async {
     response = await fetchGroups(widget.user);
@@ -214,6 +244,9 @@ class HomePage extends State<HomeView> {
     if (response4["isSuccessful"]) {
       allplanned.addAll(response9["data"]);
     }
+    responseBalance = await allBalance(widget.user);
+    if (responseBalance["isSuccessful"]) {}
+    allbalance = responseBalance["data"];
   }
 
   @override
@@ -380,61 +413,72 @@ class HomePage extends State<HomeView> {
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              const SizedBox(
-                height: 24,
-              ),
+              FutureBuilder(
+                  future: allBalance(widget.user),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return Column(children: <Widget>[
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        Container(
+                            alignment: Alignment.center,
+                            child: Center(
+                              child: Text('My Balance',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500)),
+                            )),
+                        const SizedBox(height: 10),
+
+                        Container(
+                          alignment: Alignment.center,
+                          child: Center(
+                            child: Text(allbalance[0],
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontFamily: 'Inter',
+                                    fontSize: 32,
+                                    fontWeight: FontWeight.w700)),
+                          ),
+                        ),
+
+                        const SizedBox(height: 32),
+
+                        //divider line
+                        Container(
+                          margin: const EdgeInsets.only(left: 20, right: 20),
+                          child: const Divider(
+                            color: Color(0xFFDBDBDB),
+                            height: 20,
+                            thickness: 1,
+                            indent: 0,
+                            endIndent: 0,
+                          ),
+                        ),
+
+                        const SizedBox(height: 16),
+
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          margin: const EdgeInsets.only(left: 20),
+                          child: const Text('💳 My Payments',
+                              style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700)),
+                        ),
+
+                        const SizedBox(height: 16),
+                      ]);
+                    } else {
+                      return CircularProgressIndicator();
+                    }
+                  }),
+
               //container for my balance
-              Container(
-                  alignment: Alignment.center,
-                  child: Center(
-                    child: Text('My Balance',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500)),
-                  )),
-              const SizedBox(height: 10),
-
-              Container(
-                alignment: Alignment.center,
-                child: Center(
-                  child: Text('Rp 5.000.000',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 32,
-                          fontWeight: FontWeight.w700)),
-                ),
-              ),
-
-              const SizedBox(height: 32),
-
-              //divider line
-              Container(
-                margin: const EdgeInsets.only(left: 20, right: 20),
-                child: const Divider(
-                  color: Color(0xFFDBDBDB),
-                  height: 20,
-                  thickness: 1,
-                  indent: 0,
-                  endIndent: 0,
-                ),
-              ),
-
-              const SizedBox(height: 16),
-
-              Container(
-                alignment: Alignment.centerLeft,
-                margin: const EdgeInsets.only(left: 20),
-                child: const Text('💳 My Payments',
-                    style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700)),
-              ),
-
-              const SizedBox(height: 16),
 
               FutureBuilder(
                   future: fetchPlanned(widget.user),
@@ -733,7 +777,9 @@ class HomePage extends State<HomeView> {
                                                     widget.user,
                                                     allpocket[i]["pocket_name"],
                                                     allpocket[i]
-                                                        ["pocket_budget"])))
+                                                        ["pocket_budget"],
+                                                    allpocket[i]
+                                                        ["pocket_balance"])))
                                       },
                                       child: Padding(
                                         padding:

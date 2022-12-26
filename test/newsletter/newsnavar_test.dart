@@ -9,6 +9,6 @@ void main() {
     await tester.pumpWidget(MaterialApp(
       home: NavbarView(),
     ));
-    expect(find.byType(TabBar), findsOneWidget);
+    expect(find.text('🗞️ Newsletter'), findsOneWidget);
   });
 }

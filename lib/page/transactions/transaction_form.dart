@@ -12,6 +12,34 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:isaveit/page/navbar.dart';
 
+Future<Map<String, dynamic>> allBalance(User user) async {
+  String url =
+      'http://localhost:8000/pocket/all-balance/?session_id=${user.sessionId}';
+
+  Map<String, String> headers = {
+    'Content-Type': 'application/json; charset=UTF-8',
+  };
+  Map<String, dynamic> body = {'session_id': user.sessionId};
+
+  final responsed = await http.post(
+    Uri.parse(url),
+    headers: headers,
+    body: jsonEncode(body),
+  );
+  List<dynamic> totalbalance = jsonDecode(responsed.body);
+
+  // await Future.delayed(Duration(seconds: 10));
+  if (responsed.statusCode == 200) {
+    return {"isSuccessful": true, "data": totalbalance, "error": null};
+  } else {
+    return {
+      "isSuccessful": false,
+      "data": totalbalance,
+      "error": "An error has occurred"
+    };
+  }
+}
+
 Future<Map<String, dynamic>> sendNewUser(
     String transactionName,
     String transactionAmount,
@@ -105,19 +133,22 @@ class CreateTransactionPage extends State<CreateTransaction> {
   String transacType = "Income";
   Map<String, dynamic> response = {};
   late Timer _timer;
+  Map<String, dynamic> responseBalance = {};
+  List<dynamic> allbalance = [];
+  bool _isLoading = false;
 
+@override
   void initState() {
     super.initState();
-    transactionDate.text = "";
 
-    _timer = Timer.periodic(Duration(seconds: 2), (timer) async {
+    _timer = Timer.periodic(Duration(seconds: 3), (timer) async {
       await _intializeData();
       if (mounted) {
-        setState(() {});
+        _isLoading = true;
+        setState(() => _isLoading = true);
       }
     });
   }
-
   void dispose() {
     _timer.cancel();
     super.dispose();
@@ -128,6 +159,9 @@ class CreateTransactionPage extends State<CreateTransaction> {
     if (response["isSuccessful"]) {
       allpocket = response["data"];
     }
+    responseBalance = await allBalance(widget.user);
+    if (responseBalance["isSuccessful"]) {}
+    allbalance = responseBalance["data"];
   }
 
   TextEditingController transactionDate = TextEditingController();
@@ -139,20 +173,30 @@ class CreateTransactionPage extends State<CreateTransaction> {
 
   @override
   Widget build(BuildContext context) {
+    if (_isLoading) {
     return Scaffold(
       backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
           leadingWidth: 150,
           backgroundColor: Colors.white,
-          leading: Padding(padding: EdgeInsets.only(left: 20, top:10),
-              child: Text('Input Transaction',
+          leading: 
+            Padding(
+              padding: EdgeInsets.only( top: 10),
+              child: Row(
+                children :[ 
+                  IconButton(
+              icon: const Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => SettingView(widget.user)))),
+              Text('Input Transaction',
                   style: TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
-                      color: Colors.black))),
-        ),
+                      color: Colors.black))]
+            ),
+        ),),
         body: SingleChildScrollView(
           child: Form(
             key: _formKey,
@@ -172,16 +216,16 @@ class CreateTransactionPage extends State<CreateTransaction> {
                     )),
                 SizedBox(height: 10),
                 Container(
-                  alignment: Alignment.center,
-                  child:   Center(
-                    child: Text('Rp 5.000.000',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 32,
-                            fontWeight: FontWeight.w700)),
-                  ),
-                ),
+                      alignment: Alignment.center,
+                      child: Center(
+                        child: Text(allbalance[0],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 32,
+                                fontWeight: FontWeight.w700)),
+                      ),
+                    ),
 
                 SizedBox(height: 32),
 
@@ -510,5 +554,15 @@ class CreateTransactionPage extends State<CreateTransaction> {
             ),
           ),
         ));
+        } else {
+      return Scaffold(
+          body: Center(
+        child: Text(
+          "Loading",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+        ),
+      ) // this will show when loading is false
+          );
+    }
   }
 }
