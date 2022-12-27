@@ -71,6 +71,7 @@ class NewsList extends State<NewsletterList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
         body: SingleChildScrollView(
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -80,15 +81,15 @@ class NewsList extends State<NewsletterList> {
               builder: (context, snapshot) {
                 return Column(children: [
                   for (int i = 0; i < allpocket.length; i++)
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 10),
                   for (int i = 0; i < allpocket.length; i++)
                     Padding(
-                        padding: EdgeInsets.only(left: 30, right: 30),
+                        padding: EdgeInsets.only(left: 20, right: 20),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                width: 132,
+                                width: 150,
                                 height: 32,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(32),
@@ -102,7 +103,7 @@ class NewsList extends State<NewsletterList> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 10),
+                              SizedBox(height: 5),
                               Image.network(
                                 'https://isaveit-backend.herokuapp.com' +
                                     jsonDecode(
@@ -110,7 +111,6 @@ class NewsList extends State<NewsletterList> {
                                 width: 343,
                                 height: 154,
                               ),
-                              SizedBox(height: 5),
                               TextButton(
                                 key: const Key("title1"),
                                 child: Text(
@@ -128,21 +128,25 @@ class NewsList extends State<NewsletterList> {
                                               allpocket[i]['newsletter_id'])));
                                 },
                               ),
-                              SizedBox(height: 5),
-                              Text(allpocket[i]['newsletter_category'],
+                              SizedBox(height: 3),
+                              Text('   '+allpocket[i]['newsletter_category'],
                                   style: TextStyle(
                                       color: Color(0xff979C9E),
                                       fontSize: 12,
                                       fontWeight: FontWeight.w500)),
+                              SizedBox(height: 10,),
+                              Divider(
+                                color: Color(0xFFDBDBDB),
+                                height: 20,
+                                thickness: 1,
+                                indent: 0,
+                                endIndent: 0,
+                              ),
+                              SizedBox(height: 10,)
                             ])),
+                          
                   const SizedBox(height: 24),
-                  Divider(
-                    color: Color(0xFFDBDBDB),
-                    height: 20,
-                    thickness: 1,
-                    indent: 0,
-                    endIndent: 0,
-                  ),
+                  
                 ]);
               })
         ])));
