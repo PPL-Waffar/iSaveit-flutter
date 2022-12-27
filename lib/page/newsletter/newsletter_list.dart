@@ -9,7 +9,8 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 
 Future<Map<String, dynamic>> fetchGroups() async {
-  String url = 'http://localhost:8000/newsletter/view-all-newsletter/';
+  String url =
+      'https://isaveit-backend.herokuapp.com/newsletter/view-all-newsletter/';
 
   try {
     Map<String, String> headers = {
@@ -104,7 +105,7 @@ class NewsList extends State<NewsletterList> {
                               ),
                               SizedBox(height: 10),
                               Image.network(
-                                'http://localhost:8000/images/newsletter/pictures/Screenshot_2022-12-22_at_12.09.31.png',
+                                'https://isaveit-backend.herokuapp.com/images/newsletter/pictures/Screenshot_2022-12-22_at_12.09.31.png',
                                 width: 343,
                                 height: 154,
                               ),

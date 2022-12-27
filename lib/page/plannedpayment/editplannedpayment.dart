@@ -10,7 +10,7 @@ import 'package:isaveit/page/navbar.dart';
 
 Future<Map<String, dynamic>> deletePayment(User user, String id) async {
   String url =
-      'http://localhost:8000/payment/flu-delete-payment/?session_id=${user.sessionId}&input_payment=$id';
+      'https://isaveit-backend.herokuapp.com/payment/flu-delete-payment/?session_id=${user.sessionId}&input_payment=$id';
   Map<String, String> headers = {
     'Content-Type': 'application/json; charset=UTF-8',
   };
@@ -33,7 +33,7 @@ Future<Map<String, dynamic>> deletePayment(User user, String id) async {
 
 Future<Map<String, dynamic>> fetchGroups(User user) async {
   String url =
-      'http://localhost:8000/pocket/get-pocket/?session_id=${user.sessionId}';
+      'https://isaveit-backend.herokuapp.com/pocket/get-pocket/?session_id=${user.sessionId}';
 
   try {
     Map<String, String> headers = {
@@ -71,7 +71,8 @@ Future<Map<String, dynamic>> fetchGroups(User user) async {
 Future<Map<String, dynamic>> sendNewUser(String payname, String payamount,
     String paydate, String paytype, User user) async {
   // const url = 'http://127.0.0.1:8000/payment/flu-add-payment/';
-  const url = 'http://localhost:8000/payment/flu-update-payment/';
+  const url =
+      'https://isaveit-backend.herokuapp.com/payment/flu-update-payment/';
 
   try {
     final response = await http.post(

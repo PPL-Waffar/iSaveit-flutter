@@ -10,7 +10,7 @@ import 'dart:async';
 
 Future<Map<String, dynamic>> fetchGroups(User user) async {
   String url =
-      'http://localhost:8000/feedbackreport/view-feedback-report/?session_id=${user.sessionId}';
+      'https://isaveit-backend.herokuapp.com/feedbackreport/view-feedback-report/?session_id=${user.sessionId}';
 
   try {
     Map<String, String> headers = {
@@ -71,11 +71,11 @@ class ReadFeedbackPage extends State<ReadFeedback> {
       }
     });
   }
+
   void dispose() {
     _timer.cancel();
     super.dispose();
   }
-
 
   Future<void> _intializeData() async {
     response = await fetchGroups(widget.user);

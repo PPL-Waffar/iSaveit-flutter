@@ -13,7 +13,7 @@ import 'dart:math' as math;
 
 Future<Map<String, dynamic>> fetchGroups(User user) async {
   String url =
-      'http://localhost:8000/financialreport/view-financial-report/?session_id=${user.sessionId}';
+      'https://isaveit-backend.herokuapp.com/financialreport/view-financial-report/?session_id=${user.sessionId}';
 
   try {
     Map<String, String> headers = {
@@ -230,87 +230,102 @@ class ReportPage extends State<ReportView> {
                                   height: 15,
                                 ),
                                 Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(15),
-                                width: 164,
-                                height: 90,
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFFDFE2FF),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: SingleChildScrollView(
-                                    child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                      //Text for budget
-                                      Text('Income',
-                                          style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 24,
-                                              fontWeight: FontWeight.w700,
-                                              color: Color(0xFF4054FF))),
-                                      SizedBox(height: 5),
-                                      //Text for amount of money
-                                      if (thedata2[bulanBaru].length == 0)
-                                              Text('Rp. 0',
-                                                  style: const TextStyle(
-                                                      fontSize: 14,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.all(15),
+                                        width: 164,
+                                        height: 90,
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFFDFE2FF),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                        child: SingleChildScrollView(
+                                            child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                              //Text for budget
+                                              Text('Income',
+                                                  style: TextStyle(
+                                                      fontFamily: 'Inter',
+                                                      fontSize: 24,
                                                       fontWeight:
-                                                          FontWeight.w500)),
-                                            if (thedata2[bulanBaru].length != 0)
-                                              Text( thedata2[bulanBaru][
-                                                      thedata2[bulanBaru]
-                                                              .length -
-                                                          1]["total_income"],
-                                                  style: const TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight:
-                                                          FontWeight.w500)),
-                                    ])),
-                              ),
-                              const SizedBox(width: 20),
-                              Container(
-                                  padding: const EdgeInsets.all(15),
-                                  width: 164,
-                                  height: 90,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFDFE2FF),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: SingleChildScrollView(
-                                      child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                        //Text for budget
-                                        Text('Expense',
-                                            style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 24,
-                                                fontWeight: FontWeight.w700,
-                                                color: Color(0xFF4054FF))),
-                                        SizedBox(height: 5),
-                                        //Text for amount of money
-                                        if (thedata2[bulanBaru].length == 0)
-                                              Text('Rp. 0',
-                                                  style: const TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight:
-                                                          FontWeight.w500)),
-                                            if (thedata2[bulanBaru].length != 0)
-                                              Text(thedata2[bulanBaru][
-                                                      thedata2[bulanBaru]
+                                                          FontWeight.w700,
+                                                      color:
+                                                          Color(0xFF4054FF))),
+                                              SizedBox(height: 5),
+                                              //Text for amount of money
+                                              if (thedata2[bulanBaru].length ==
+                                                  0)
+                                                Text('Rp. 0',
+                                                    style: const TextStyle(
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w500)),
+                                              if (thedata2[bulanBaru].length !=
+                                                  0)
+                                                Text(
+                                                    thedata2[bulanBaru][
+                                                        thedata2[bulanBaru]
+                                                                .length -
+                                                            1]["total_income"],
+                                                    style: const TextStyle(
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w500)),
+                                            ])),
+                                      ),
+                                      const SizedBox(width: 20),
+                                      Container(
+                                          padding: const EdgeInsets.all(15),
+                                          width: 164,
+                                          height: 90,
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xFFDFE2FF),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          child: SingleChildScrollView(
+                                              child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                //Text for budget
+                                                Text('Expense',
+                                                    style: TextStyle(
+                                                        fontFamily: 'Inter',
+                                                        fontSize: 24,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color:
+                                                            Color(0xFF4054FF))),
+                                                SizedBox(height: 5),
+                                                //Text for amount of money
+                                                if (thedata2[bulanBaru]
+                                                        .length ==
+                                                    0)
+                                                  Text('Rp. 0',
+                                                      style: const TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w500)),
+                                                if (thedata2[bulanBaru]
+                                                        .length !=
+                                                    0)
+                                                  Text(
+                                                      thedata2[
+                                                          bulanBaru][thedata2[
+                                                                  bulanBaru]
                                                               .length -
                                                           1]["total_amount"],
-                                                  style: const TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight:
-                                                          FontWeight.w500)),
-                                      ])))
-                            ]),
+                                                      style: const TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w500)),
+                                              ])))
+                                    ]),
                                 // Row(
                                 //   children: [
                                 //     const SizedBox(

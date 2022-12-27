@@ -7,7 +7,7 @@ import 'package:isaveit/page/navbar.dart';
 
 Future<Map<String, dynamic>> sendNewUser(
     String pocketName, String pocketBudget, User user) async {
-  const url = 'http://localhost:8000/pocket/add-pocket/';
+  const url = 'https://isaveit-backend.herokuapp.com/pocket/add-pocket/';
 
   try {
     final response = await http.post(
@@ -59,7 +59,7 @@ class _CreatePocketPage extends State<CreatePocket> {
                 key: _formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children:  <Widget>[
+                  children: <Widget>[
                     const SizedBox(height: 100),
 
                     //Create pocket title
@@ -187,7 +187,9 @@ class _CreatePocketPage extends State<CreatePocket> {
 
                     TextButton(
                       key: const Key("cancelCreatePocket"),
-                      onPressed: () {Navigator.pop(context);},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                       child: const Text(
                         'Cancel',
                         style: TextStyle(color: Color(0xFFD3180C)),

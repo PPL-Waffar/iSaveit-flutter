@@ -16,7 +16,7 @@ import 'dart:async';
 //----------------------------------------//
 Future<Map<String, dynamic>> fetchExpense(User user) async {
   String url =
-      'http://localhost:8000/expense/get-expense/?session_id=${user.sessionId}';
+      'https://isaveit-backend.herokuapp.com/expense/get-expense/?session_id=${user.sessionId}';
 
   try {
     Map<String, String> headers = {
@@ -52,7 +52,7 @@ Future<Map<String, dynamic>> fetchExpense(User user) async {
 
 Future<Map<String, dynamic>> fetchPlanned(User user) async {
   String url =
-      'http://localhost:8000/payment/flu-get-payment/?session_id=${user.sessionId}';
+      'https://isaveit-backend.herokuapp.com/payment/flu-get-payment/?session_id=${user.sessionId}';
 
   try {
     Map<String, String> headers = {
@@ -88,7 +88,7 @@ Future<Map<String, dynamic>> fetchPlanned(User user) async {
 
 Future<Map<String, dynamic>> fetchGroups(User user) async {
   String url =
-      'http://localhost:8000/pocket/get-pocket/?session_id=${user.sessionId}';
+      'https://isaveit-backend.herokuapp.com/pocket/get-pocket/?session_id=${user.sessionId}';
 
   try {
     Map<String, String> headers = {
@@ -125,7 +125,7 @@ Future<Map<String, dynamic>> fetchGroups(User user) async {
 
 Future<Map<String, dynamic>> allBalance(User user) async {
   String url =
-      'http://localhost:8000/pocket/all-balance/?session_id=${user.sessionId}';
+      'https://isaveit-backend.herokuapp.com/pocket/all-balance/?session_id=${user.sessionId}';
 
   Map<String, String> headers = {
     'Content-Type': 'application/json; charset=UTF-8',
@@ -153,7 +153,7 @@ Future<Map<String, dynamic>> allBalance(User user) async {
 
 Future<Map<String, dynamic>> getUserInfo(User user) async {
   String url2 =
-      'http://localhost:8000/user/user-info/?session_id=${user.sessionId}';
+      'https://isaveit-backend.herokuapp.com/user/user-info/?session_id=${user.sessionId}';
 
   try {
     Map<String, String> headers = {
@@ -222,7 +222,7 @@ class HomePage extends State<HomeView> {
     });
   }
 
-   void dispose() {
+  void dispose() {
     _timer.cancel();
     super.dispose();
   }

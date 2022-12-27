@@ -7,7 +7,8 @@ import 'package:isaveit/page/navbar.dart';
 
 Future<Map<String, dynamic>> sendNewUser(String feedback1, String feedback2,
     String feedback3, String feedback4, String feedback5, User user) async {
-  const url = 'http://localhost:8000/feedbackreport/add-feedback-report/';
+  const url =
+      'https://isaveit-backend.herokuapp.com/feedbackreport/add-feedback-report/';
 
   try {
     final response = await http.post(

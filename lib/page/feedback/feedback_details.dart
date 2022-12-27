@@ -9,7 +9,7 @@ import 'dart:async';
 
 Future<Map<String, dynamic>> fetchGroups(User user, int id) async {
   String url =
-      'http://localhost:8000/feedbackreport/view-feedback-detail/?session_id=${user.sessionId}&input_id=$id';
+      'https://isaveit-backend.herokuapp.com/feedbackreport/view-feedback-detail/?session_id=${user.sessionId}&input_id=$id';
 
   try {
     Map<String, String> headers = {
