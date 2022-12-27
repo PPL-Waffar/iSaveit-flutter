@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers, avoid_print, must_be_immutable, annotate_overrides, use_build_context_synchronously, duplicate_ignore
+// ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers, must_be_immutable, annotate_overrides, use_build_context_synchronously, duplicate_ignore
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -8,6 +8,34 @@ import 'dart:async';
 import 'dart:convert';
 
 import '../navbar.dart';
+
+Future<Map<String, dynamic>> allBalance(User user) async {
+  String url =
+      'http://localhost:8000/pocket/all-balance/?session_id=${user.sessionId}';
+
+  Map<String, String> headers = {
+    'Content-Type': 'application/json; charset=UTF-8',
+  };
+  Map<String, dynamic> body = {'session_id': user.sessionId};
+
+  final responsed = await http.post(
+    Uri.parse(url),
+    headers: headers,
+    body: jsonEncode(body),
+  );
+  List<dynamic> totalbalance = jsonDecode(responsed.body);
+
+  // await Future.delayed(Duration(seconds: 10));
+  if (responsed.statusCode == 200) {
+    return {"isSuccessful": true, "data": totalbalance, "error": null};
+  } else {
+    return {
+      "isSuccessful": false,
+      "data": totalbalance,
+      "error": "An error has occurred"
+    };
+  }
+}
 
 Future<Map<String, dynamic>> sendNewUser(
     String borrowName,
@@ -42,7 +70,6 @@ Future<Map<String, dynamic>> sendNewUser(
     if (response.statusCode == 200) {
       return result;
     } else {
-      print(response);
       return <String, dynamic>{'error': 'Web service is offline'};
     }
   } catch (error) {
@@ -98,23 +125,27 @@ class CreateBorrow extends StatefulWidget {
 class CreateBorrowPage extends State<CreateBorrow> {
   final _formKey = GlobalKey<FormState>();
   List allpocket = [];
+  bool _isLoading = false;
   Map<String, dynamic> response = {};
   late Timer _timer;
   String borrowType = "Debt";
   String paymentType = "debit card";
   TextEditingController dateinput = TextEditingController();
+  Map<String, dynamic> responseBalance = {};
+  List<dynamic> allbalance = [];
+
+  @override
   void initState() {
     super.initState();
-    borrowDate.text = "";
 
-    _timer = Timer.periodic(Duration(seconds: 2), (timer) async {
+    _timer = Timer.periodic(Duration(seconds: 3), (timer) async {
       await _intializeData();
       if (mounted) {
-        setState(() {});
+        _isLoading = true;
+        setState(() => _isLoading = true);
       }
     });
   }
-  
 
   void dispose() {
     _timer.cancel();
@@ -126,6 +157,9 @@ class CreateBorrowPage extends State<CreateBorrow> {
     if (response["isSuccessful"]) {
       allpocket = response["data"];
     }
+    responseBalance = await allBalance(widget.user);
+    if (responseBalance["isSuccessful"]) {}
+    allbalance = responseBalance["data"];
   }
 
   Map<String, dynamic>? fetchedResult;
@@ -137,21 +171,30 @@ class CreateBorrowPage extends State<CreateBorrow> {
   TextEditingController borrowAmount = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    if (_isLoading) {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
-          leadingWidth: 150,
+          leadingWidth: 250,
           backgroundColor: Colors.white,
-          leading: Padding(
-              padding: EdgeInsets.only(left: 20, top: 10),
-              child: Text('Borrow Transaction',
+          leading: 
+            Padding(
+              padding: EdgeInsets.only( top: 10),
+              child: Row(
+                children :[ 
+                  IconButton(
+              icon: const Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => SettingView(widget.user)))),
+              Text('Borrow Transaction',
                   style: TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
-                      color: Colors.black))),
-        ),
+                      color: Colors.black))]
+            ),
+        ),),
         body: SingleChildScrollView(
           child: Form(
             key: _formKey,
@@ -171,16 +214,16 @@ class CreateBorrowPage extends State<CreateBorrow> {
                     )),
                 SizedBox(height: 10),
                 Container(
-                  alignment: Alignment.center,
-                  child: Center(
-                    child: Text('Rp 5.000.000',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 32,
-                            fontWeight: FontWeight.w700)),
-                  ),
-                ),
+                      alignment: Alignment.center,
+                      child: Center(
+                        child: Text(allbalance[0],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 32,
+                                fontWeight: FontWeight.w700)),
+                      ),
+                    ),
 
                 SizedBox(height: 32),
 
@@ -533,7 +576,6 @@ class CreateBorrowPage extends State<CreateBorrow> {
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              key: Key("snackFail"),
                               content: Text('Transaction Failed'),
                             ),
                           );
@@ -562,6 +604,16 @@ class CreateBorrowPage extends State<CreateBorrow> {
             ),
           ),
         ));
+        } else {
+      return Scaffold(
+          body: Center(
+        child: Text(
+          "Loading",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+        ),
+      ) // this will show when loading is false
+          );
+    }
   }
 }
 
@@ -603,7 +655,6 @@ class Cancelpayment extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
       child: Center(
         child: TextButton(
-          key: Key("cancelTransaction"),
           onPressed: () {
             Navigator.pop(
               context,

@@ -5,6 +5,29 @@ import 'package:isaveit/models/user.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+Future<Map<String, dynamic>> deletePocket(User user, String id) async {
+  String url =
+      'http://localhost:8000/pocket/delete-pocket/?session_id=${user.sessionId}&input_pocketname=$id';
+  Map<String, String> headers = {
+    'Content-Type': 'application/json; charset=UTF-8',
+  };
+  Map<String, dynamic> body = {
+    'session_id': user.sessionId,
+    'input_pocketname': id
+  };
+
+  final response = await http.delete(
+    Uri.parse(url),
+    headers: headers,
+    body: jsonEncode(body),
+  );
+  if (response.statusCode == 200) {
+    return {"isSuccessful": true, "error": null};
+  } else {
+    return {"isSuccessful": false, "error": "An error has occurred"};
+  }
+}
+
 Future<Map<String, dynamic>> sendNewUser(
     String pocketBudget, User user, String pocketname) async {
   String url = 'http://localhost:8000/pocket/edit-pocket/';
@@ -38,7 +61,10 @@ class EditPocket extends StatefulWidget {
   final User user;
   final String pocketname;
   final String pocketbudget;
-  const EditPocket(this.user, this.pocketname, this.pocketbudget, {super.key});
+  final String pocketdefault;
+  const EditPocket(
+      this.user, this.pocketname, this.pocketbudget, this.pocketdefault,
+      {super.key});
 
   @override
   EditPocketPage createState() => EditPocketPage();
@@ -170,7 +196,9 @@ class EditPocketPage extends State<EditPocket> {
                         child: const Text('Edit Pocket'),
                       ),
                     ),
-                    const SizedBox(height: 15,),
+                    const SizedBox(
+                      height: 15,
+                    ),
                     Container(
                         alignment: Alignment.center,
                         margin: const EdgeInsets.only(left: 30, right: 30),
@@ -200,11 +228,17 @@ class EditPocketPage extends State<EditPocket> {
                                 ),
                                 TextButton(
                                   key: const Key("confirmDeletePocket"),
-                                  onPressed: () => Navigator.push(
+                                  onPressed: () {
+                                    deletePocket(
+                                        widget.user, widget.pocketname);
+                                    Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              SettingView(widget.user))),
+                                              SettingView(widget.user)),
+                                    );
+                                  },
+                                  // onPressed: () => Navigator.pop(context, 'OK')
                                   child: const Text('Delete',
                                       style:
                                           TextStyle(color: Color(0XFF4054FF))),
@@ -223,8 +257,11 @@ class EditPocketPage extends State<EditPocket> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Pocket(widget.user,
-                                  widget.pocketname, widget.pocketbudget)),
+                              builder: (context) => Pocket(
+                                  widget.user,
+                                  widget.pocketname,
+                                  widget.pocketbudget,
+                                  widget.pocketdefault)),
                         );
                       },
                       child: const Text(

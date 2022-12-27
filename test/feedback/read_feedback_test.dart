@@ -1,12 +1,22 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isaveit/page/feedback/read_feedback.dart';
 
+import 'package:isaveit/models/user.dart';
+
+User user = User(
+    datetime: "2021-05-01 00:00:00.000000",
+    sessionId: "1234567890",
+    isCitizen: true,
+    email: "usertest@gmail.com",
+    name: "Amanda");
 void main() {
   testWidgets('Your FeedbackReport', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MaterialApp(
-      home: ReadFeedback(),
+    await tester.pumpWidget(MaterialApp(
+      home: ReadFeedback(user),
     ));
 
     final seeMoreButton = find.byKey(const ValueKey("seeMoreButton"));
@@ -15,19 +25,11 @@ void main() {
     // final seeMoreButton3 = find.byKey(const ValueKey("seeMoreButton3"));
     // final seeMoreButton4 = find.byKey(const ValueKey("seeMoreButton4"));
 
-  
     // expect(find.byIcon(Icons.add), findsOneWidget);
     // expect(find.byIcon(Icons.warning_amber_rounded), findsOneWidget);
     expect(find.text("Your feedback"), findsNothing);
     expect(find.text("See your feedback"), findsNothing);
     expect(find.text("Your Satisfaction Report"), findsOneWidget);
-    expect(find.text('12 June 2022'), findsOneWidget);
-    expect(find.text('13 May 2022'), findsOneWidget);
-    expect(find.text('15 July 2022'), findsOneWidget);
-    expect(find.text('20 August 2022'), findsOneWidget);
-    expect(find.text('21 June 2022'), findsOneWidget);
-
-    await tester.tap(seeMoreButton);
     await tester.pump();
     // await tester.tap(seeMoreButton1);
     // await tester.pump();
@@ -37,11 +39,5 @@ void main() {
     // await tester.pump();
     // await tester.tap(seeMoreButton4);
     // await tester.pump();
-
-
-
-
-
-
   });
 }

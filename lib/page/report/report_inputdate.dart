@@ -24,7 +24,7 @@ class _TimeState extends State<ReportTime> with SingleTickerProviderStateMixin {
   );
   late String choosenDate;
   String bulan = DateTime.now().month.toString();
-  
+
   late String tahun;
   dynamic _pickerOpen = false;
 
@@ -52,7 +52,14 @@ class _TimeState extends State<ReportTime> with SingleTickerProviderStateMixin {
           },
           child: TextButton(
             key: ValueKey(backgroundColor),
-            onPressed: () {setState(() {_selectedMonth = dateTime;choosenDate = DateFormat.yMMMM().format(_selectedMonth);bulan = choosenDate.substring(0, choosenDate.indexOf(' '));tahun = choosenDate.substring(choosenDate.indexOf(' '), choosenDate.length);tahun = tahun.substring(1, 5);
+            onPressed: () {
+              setState(() {
+                _selectedMonth = dateTime;
+                choosenDate = DateFormat.yMMMM().format(_selectedMonth);
+                bulan = choosenDate.substring(0, choosenDate.indexOf(' '));
+                tahun = choosenDate.substring(
+                    choosenDate.indexOf(' '), choosenDate.length);
+                tahun = tahun.substring(1, 5);
               });
             },
             style: TextButton.styleFrom(
@@ -103,7 +110,9 @@ class _TimeState extends State<ReportTime> with SingleTickerProviderStateMixin {
                     Row(
                       children: [
                         IconButton(
-                          onPressed: () {setState(() { _pickerYear = _pickerYear - 1;
+                          onPressed: () {
+                            setState(() {
+                              _pickerYear = _pickerYear - 1;
                             });
                           },
                           icon: Icon(Icons.navigate_before_rounded),
@@ -117,7 +126,9 @@ class _TimeState extends State<ReportTime> with SingleTickerProviderStateMixin {
                           ),
                         ),
                         IconButton(
-                          onPressed: () {setState(() {_pickerYear = _pickerYear + 1;
+                          onPressed: () {
+                            setState(() {
+                              _pickerYear = _pickerYear + 1;
                             });
                           },
                           icon: Icon(Icons.navigate_next_rounded),
@@ -136,55 +147,66 @@ class _TimeState extends State<ReportTime> with SingleTickerProviderStateMixin {
           SizedBox(
             height: 100.0,
           ),
-          Text("Please select the month you want to see the report:", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),),
-          SizedBox(height: 15,),
-          Text(DateFormat.yMMMM().format(_selectedMonth), style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
-          SizedBox(height: 10,),
+          Text(
+            "Please select the month you want to see the report:",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Text(
+            DateFormat.yMMMM().format(_selectedMonth),
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+          ),
+          SizedBox(
+            height: 10,
+          ),
           SizedBox(
             width: 327,
             height: 42,
-            child:
-          ElevatedButton(
-            key: Key('reportDate'),
-            style: ElevatedButton.styleFrom(
-              elevation: 0,
-              minimumSize: Size.fromHeight(48),
-              backgroundColor: Color(0xff4054FF),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(48))),
-            onPressed: switchPicker,
-            child: Text(
-              'Select date',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
+            child: ElevatedButton(
+              key: Key('reportDate'),
+              style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  minimumSize: Size.fromHeight(48),
+                  backgroundColor: Color(0xff4054FF),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(48))),
+              onPressed: switchPicker,
+              child: Text(
+                'Select date',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-          ),),
-          SizedBox(height: 12,),
+          ),
+          SizedBox(
+            height: 12,
+          ),
           SizedBox(
             width: 327,
             height: 45,
-            child:
-          ElevatedButton(
-            key: Key('submit'),
-             style: ElevatedButton.styleFrom(
-              elevation: 0,
-              minimumSize: Size.fromHeight(48),
-              backgroundColor: Color(0xffDFE2FF),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(48))),
-            onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => ReportView(widget.user, bulan))),
-
-            child: Text(
-              'Submit',
-              style: TextStyle(
-                color: Color(0xff4054FF),
-                fontWeight: FontWeight.w500,
+            child: ElevatedButton(
+              key: Key('submit'),
+              style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  minimumSize: Size.fromHeight(48),
+                  backgroundColor: Color(0xffDFE2FF),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(48))),
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ReportView(widget.user, bulan))),
+              child: Text(
+                'Submit',
+                style: TextStyle(
+                  color: Color(0xff4054FF),
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
-          ),),
+          ),
         ],
       ),
     );
