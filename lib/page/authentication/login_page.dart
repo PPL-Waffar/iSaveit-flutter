@@ -14,14 +14,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 //url local: "http://127.0.0.1:8000/user/flu-login/"
 
 class Login extends StatefulWidget {
-    Login({super.key});
+  Login({super.key});
   Future<User> webServiceLogin(String telephone, String password) async {
-    var response =
-        await post(Uri.parse("http://localhost:8000/user/flu-login/"),
-            headers: <String, String>{
-              'Content-Type': 'application/json; charset=UTF-8',
-            },
-            body: jsonEncode({"email": telephone, "password": password}));
+    var response = await post(
+        Uri.parse("https://isaveit-backend.herokuapp.com/user/flu-login/"),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode({"email": telephone, "password": password}));
 
     if (response.statusCode == 200) {
       Map<String, dynamic> userData = jsonDecode(response.body);
@@ -55,132 +55,157 @@ class LoginPage extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   automaticallyImplyLeading: false,
-      //   backgroundColor: Colors.white,
-      //   elevation: 0,
-      // ),
-      body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
+        backgroundColor: Colors.white,
+        // appBar: AppBar(
+        //   automaticallyImplyLeading: false,
+        //   backgroundColor: Colors.white,
+        //   elevation: 0,
+        // ),
+        body: SingleChildScrollView(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+              SizedBox(height: 100),
 
-        SizedBox(height: 100),
+              //add image isaveit_logo
+              Image.asset(
+                'assets/images/isaveit_logo.png',
+                width: 200,
+                height: 100,
+              ),
 
-        //add image isaveit_logo
-        Image.asset(
-          'assets/images/isaveit_logo.png',
-          width: 200,
-          height: 100,
-        ),
+              Text(
+                'Login to your account',
+                style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500),
+              ),
 
-        Text(
-          'Login to your account',
-          style: TextStyle(
-              fontSize: 24,
-              color: Colors.black,
-              fontWeight: FontWeight.w500),
-        ),
+              SizedBox(height: 32),
 
-        SizedBox(height: 32),
+              //textformfield for email
+              SingleChildScrollView(
+                  padding: EdgeInsets.only(left: 30, right: 30),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Email',
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700)),
+                        SizedBox(height: 8),
+                        TextFormField(
+                          key: Key("addEmail"),
+                          controller: _email,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8)),
+                                  borderSide: BorderSide(
+                                      width: 1.0, color: Color(0xFFDBDBDB))),
+                              hintText: 'Enter your email'),
+                        ),
 
-        //textformfield for email
-        SingleChildScrollView(
-          padding:   EdgeInsets.only(left: 30, right: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-                Text('Email',
-                  style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700)),
-                SizedBox(height: 8),
-              TextFormField(
-                key:   Key("addEmail"),
-                controller: _email,
-                decoration:   InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
-                        borderSide:
-                            BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                    hintText: 'Enter your email'),
-        ),
-        
-        SizedBox(height: 32),
+                        SizedBox(height: 32),
 
-        SingleChildScrollView(
-          // padding:   EdgeInsets.only(left: 30, right: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-                Text('Password',
-                  style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700)),
-                SizedBox(height: 8),
-              TextFormField(
-                  key:   Key("addPassword"),
-                  controller: _password,
-                  obscureText: true,
-                  decoration:   InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                          borderSide:
-                              BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
-                      hintText: 'Enter your password'),
-                ),
-            ])),
-        
-        SizedBox(
-          height: 32,
-        ),
-        
-        //login button
-        Container(
-          alignment: Alignment.center,
-          // margin:   EdgeInsets.only(left: 30, right: 30),
-          child: ElevatedButton(
-              key:   Key("loginAccount"),
-              style: ElevatedButton.styleFrom(
-                  minimumSize:   Size.fromHeight(48),
-                  elevation: 0,
-                  backgroundColor:   Color(0XFF4054FF),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(48),
-                  )),
-            onPressed: () async {setState(() {loading = true;});
-              {User user =await widget.webServiceLogin(_email.text, _password.text);
-                {SchedulerBinding.instance.addPostFrameCallback((_) {Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute<void>(builder: (BuildContext context) =>SettingView(user)),(Route<dynamic> route) => false);
-                    });}} _email.clear(); _password.clear();},
-            
-            child: Text(
-              'Login',
-              style: TextStyle(fontSize: 16, color: Colors.white),
-            ),
-          ),
-        ),
-        
-        SizedBox(height: 15),
+                        SingleChildScrollView(
+                            // padding:   EdgeInsets.only(left: 30, right: 30),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                              Text('Password',
+                                  style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700)),
+                              SizedBox(height: 8),
+                              TextFormField(
+                                key: Key("addPassword"),
+                                controller: _password,
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(8)),
+                                        borderSide: BorderSide(
+                                            width: 1.0,
+                                            color: Color(0xFFDBDBDB))),
+                                    hintText: 'Enter your password'),
+                              ),
+                            ])),
 
-        //direct to register
-        Container(
-          alignment: Alignment.center,
-          child:
-        TextButton(
-          key:   Key("registerAccount"),
-          // <-- TextButton
-          onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) =>   Register()));},
-          child:   Text(
-            "Don't have an account?",
-            style: TextStyle(color: Color(0XFF4054FF), fontWeight: FontWeight.w500, fontSize: 16),
-            ),
-          ),
-        )]))
-      ]))
-    );
+                        SizedBox(
+                          height: 32,
+                        ),
+
+                        //login button
+                        Container(
+                          alignment: Alignment.center,
+                          // margin:   EdgeInsets.only(left: 30, right: 30),
+                          child: ElevatedButton(
+                            key: Key("loginAccount"),
+                            style: ElevatedButton.styleFrom(
+                                minimumSize: Size.fromHeight(48),
+                                elevation: 0,
+                                backgroundColor: Color(0XFF4054FF),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(48),
+                                )),
+                            onPressed: () async {
+                              setState(() {
+                                loading = true;
+                              });
+                              {
+                                User user = await widget.webServiceLogin(
+                                    _email.text, _password.text);
+                                {
+                                  SchedulerBinding.instance
+                                      .addPostFrameCallback((_) {
+                                    Navigator.of(context).pushAndRemoveUntil(
+                                        MaterialPageRoute<void>(
+                                            builder: (BuildContext context) =>
+                                                SettingView(user)),
+                                        (Route<dynamic> route) => false);
+                                  });
+                                }
+                              }
+                              _email.clear();
+                              _password.clear();
+                            },
+                            child: Text(
+                              'Login',
+                              style:
+                                  TextStyle(fontSize: 16, color: Colors.white),
+                            ),
+                          ),
+                        ),
+
+                        SizedBox(height: 15),
+
+                        //direct to register
+                        Container(
+                          alignment: Alignment.center,
+                          child: TextButton(
+                            key: Key("registerAccount"),
+                            // <-- TextButton
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Register()));
+                            },
+                            child: Text(
+                              "Don't have an account?",
+                              style: TextStyle(
+                                  color: Color(0XFF4054FF),
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16),
+                            ),
+                          ),
+                        )
+                      ]))
+            ])));
   }
 }

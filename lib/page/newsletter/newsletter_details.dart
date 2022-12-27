@@ -5,7 +5,7 @@ import 'dart:async';
 
 Future<Map<String, dynamic>> fetchGroups(int id) async {
   String url =
-      'http://localhost:8000/newsletter/view-detail-newsletter/?input_id=$id';
+      'https://isaveit-backend.herokuapp.com/newsletter/view-detail-newsletter/?input_id=$id';
 
   try {
     Map<String, String> headers = {

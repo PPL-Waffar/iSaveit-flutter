@@ -17,7 +17,7 @@ class DeleteFeedback extends StatefulWidget {
 
 Future<Map<String, dynamic>> deleteFeedback(User user, int id) async {
   String url =
-      'http://localhost:8000/feedbackreport/delete-feedback-report/?session_id=${user.sessionId}&input_id=$id';
+      'https://isaveit-backend.herokuapp.com/feedbackreport/delete-feedback-report/?session_id=${user.sessionId}&input_id=$id';
   Map<String, String> headers = {
     'Content-Type': 'application/json; charset=UTF-8',
   };

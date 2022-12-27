@@ -20,7 +20,7 @@ import 'edit_profile.dart';
 
 Future<Map<String, dynamic>> sendNewUser(String name, User user) async {
   // const url = 'http://127.0.0.1:8000/payment/flu-add-payment/';
-  const url = 'http://localhost:8000/user/edit-user/';
+  const url = 'https://isaveit-backend.herokuapp.com/user/edit-user/';
 
   try {
     final response = await http.post(
@@ -48,7 +48,7 @@ Future<Map<String, dynamic>> sendNewUser(String name, User user) async {
 
 Future<Map<String, dynamic>> fetchGroups(User user) async {
   String url =
-      'http://localhost:8000/user/user-info/?session_id=${user.sessionId}';
+      'https://isaveit-backend.herokuapp.com/user/user-info/?session_id=${user.sessionId}';
 
   try {
     Map<String, String> headers = {

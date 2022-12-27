@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 Future<Map<String, dynamic>> deletePocket(User user, String id) async {
   String url =
-      'http://localhost:8000/pocket/delete-pocket/?session_id=${user.sessionId}&input_pocketname=$id';
+      'https://isaveit-backend.herokuapp.com/pocket/delete-pocket/?session_id=${user.sessionId}&input_pocketname=$id';
   Map<String, String> headers = {
     'Content-Type': 'application/json; charset=UTF-8',
   };
@@ -30,7 +30,7 @@ Future<Map<String, dynamic>> deletePocket(User user, String id) async {
 
 Future<Map<String, dynamic>> sendNewUser(
     String pocketBudget, User user, String pocketname) async {
-  String url = 'http://localhost:8000/pocket/edit-pocket/';
+  String url = 'https://isaveit-backend.herokuapp.com/pocket/edit-pocket/';
 
   try {
     final response = await http.post(

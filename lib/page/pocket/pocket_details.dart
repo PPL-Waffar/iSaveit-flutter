@@ -10,7 +10,7 @@ import 'dart:async';
 
 Future<Map<String, dynamic>> fetchGroups(User user, String pocketname) async {
   String url =
-      'http://localhost:8000/transaction/view-transaction/?session_id=${user.sessionId}&input_pocketname=$pocketname';
+      'https://isaveit-backend.herokuapp.com/transaction/view-transaction/?session_id=${user.sessionId}&input_pocketname=$pocketname';
 
   try {
     Map<String, String> headers = {
@@ -50,7 +50,7 @@ Future<Map<String, dynamic>> fetchGroups(User user, String pocketname) async {
 
 Future<Map<String, dynamic>> fetchPocket(User user, String pocketname) async {
   String url =
-      'http://localhost:8000/pocket/all-expense/?session_id=${user.sessionId}&input_pocketname=$pocketname';
+      'https://isaveit-backend.herokuapp.com/pocket/all-expense/?session_id=${user.sessionId}&input_pocketname=$pocketname';
 
   Map<String, String> headers = {
     'Content-Type': 'application/json; charset=UTF-8',

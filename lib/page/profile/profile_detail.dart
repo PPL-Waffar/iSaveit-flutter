@@ -11,7 +11,7 @@ import 'edit_profile.dart';
 
 Future<Map<String, dynamic>> fetchGroups(User user) async {
   String url =
-      'http://localhost:8000/user/user-info/?session_id=${user.sessionId}';
+      'https://isaveit-backend.herokuapp.com/user/user-info/?session_id=${user.sessionId}';
 
   try {
     Map<String, String> headers = {

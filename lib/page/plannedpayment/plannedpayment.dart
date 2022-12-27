@@ -10,7 +10,7 @@ import 'dart:async';
 
 Future<Map<String, dynamic>> fetchGroups(User user) async {
   String url =
-      'http://localhost:8000/pocket/get-pocket/?session_id=${user.sessionId}';
+      'https://isaveit-backend.herokuapp.com/pocket/get-pocket/?session_id=${user.sessionId}';
 
   try {
     Map<String, String> headers = {
@@ -48,7 +48,7 @@ Future<Map<String, dynamic>> fetchGroups(User user) async {
 Future<Map<String, dynamic>> sendNewUser(String payname, String payamount,
     String paydate, String paytype, String _valPocket, User user) async {
   // const url = 'http://127.0.0.1:8000/payment/flu-add-payment/';
-  const url = 'http://localhost:8000/payment/flu-add-payment/';
+  const url = 'https://isaveit-backend.herokuapp.com/payment/flu-add-payment/';
 
   try {
     final response = await http.post(
@@ -107,20 +107,15 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
       if (mounted) {
         setState(() {});
       }
-
-    }
-    
-    );
+    });
     dateinput.text = ""; //set the initial value of text field
     super.initState();
   }
 
-    void dispose() {
+  void dispose() {
     _timer.cancel();
     super.dispose();
   }
-
-
 
   Future<void> _intializeData() async {
     response = await fetchGroups(widget.user);
@@ -140,7 +135,6 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        
         body: SingleChildScrollView(
           child: Form(
               key: _formKey,
@@ -149,7 +143,6 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(height: 100),
-
                     Container(
                       margin: const EdgeInsets.only(left: 20),
                       alignment: Alignment.topLeft,
@@ -159,120 +152,110 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                               fontSize: 20,
                               fontWeight: FontWeight.w700)),
                     ),
-
                     const SizedBox(height: 32),
-
-                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
-                    child: Text('Payment Name',
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700))),
-
-                     SizedBox(height: 8),
-                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
-                    child: TextFormField(
-                      controller: payname,
-                      key: const Key("addPaymentName"),
-                      
-                      decoration: const InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8.0)),
-                              borderSide: BorderSide(
-                                  width: 1.0, color: Color(0xFFDBDBDB))),
-                          hintText: 'Enter your payment'),
-                      keyboardType: TextInputType.number,
-                    )),
-
-                    const SizedBox(height: 32),
-
-                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
-                    child: Text('Expense',
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700))),
-                    const SizedBox(height: 8),
-
-                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
-                    child:
-                    TextFormField(
-                      controller: payamount,
-                      key: const Key("addExpense"),
-                      decoration: const InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8.0)),
-                              borderSide: BorderSide(
-                                  width: 1.0, color: Color(0xFFDBDBDB))),
-                          hintText: 'Rp 0'),
-                      keyboardType: TextInputType.number,
-                    )),
-
-                    const SizedBox(height: 32),
-
-                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
-                    child:
-                    const Text('Date',
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700))),
-                    const SizedBox(height: 8),
-
-
-                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
-                    child:
-                    Container(
-                        padding: const EdgeInsets.only(),
-                        child: Center(
-                            child: TextField(
-                          key: const Key("transactionDate"),
-                          controller: dateinput,
-                          cursorWidth: 50,
+                    Padding(
+                        padding: EdgeInsets.only(left: 30, right: 30),
+                        child: Text('Payment Name',
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700))),
+                    SizedBox(height: 8),
+                    Padding(
+                        padding: EdgeInsets.only(left: 30, right: 30),
+                        child: TextFormField(
+                          controller: payname,
+                          key: const Key("addPaymentName"),
                           decoration: const InputDecoration(
-                              prefixIcon: Icon(Icons.calendar_today),
                               enabledBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(8.0)),
                                   borderSide: BorderSide(
                                       width: 1.0, color: Color(0xFFDBDBDB))),
-                              hintText: 'YYYY-MM'),
-                          readOnly:
-                              true, //set it true, so that user will not able to edit text
-                          onTap: () async {
-                            DateTime? pickedDate = await showDatePicker(
-                                context: context,
-                                initialDate: DateTime.now(),
-                                firstDate: DateTime(
-                                    2000), //DateTime.now() - not to allow to choose before today.
-                                lastDate: DateTime(2101));
-                            if (pickedDate != null) {
-                              String formattedDate =
-                                  DateFormat('yyyy-MM-dd').format(pickedDate);
-                              setState(() {
-                                dateinput.text =
-                                    formattedDate; //set output date to TextField value.
-                              });
-                            } else {}
-                          },
-                        )))),
-
-                    const SizedBox(height: 24),
-
-
-                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
-                    child:
-                    const Text('Type of Payment',
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700))),
-
+                              hintText: 'Enter your payment'),
+                          keyboardType: TextInputType.number,
+                        )),
+                    const SizedBox(height: 32),
+                    Padding(
+                        padding: EdgeInsets.only(left: 30, right: 30),
+                        child: Text('Expense',
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700))),
                     const SizedBox(height: 8),
-                    
-                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
+                    Padding(
+                        padding: EdgeInsets.only(left: 30, right: 30),
+                        child: TextFormField(
+                          controller: payamount,
+                          key: const Key("addExpense"),
+                          decoration: const InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8.0)),
+                                  borderSide: BorderSide(
+                                      width: 1.0, color: Color(0xFFDBDBDB))),
+                              hintText: 'Rp 0'),
+                          keyboardType: TextInputType.number,
+                        )),
+                    const SizedBox(height: 32),
+                    Padding(
+                        padding: EdgeInsets.only(left: 30, right: 30),
+                        child: const Text('Date',
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700))),
+                    const SizedBox(height: 8),
+                    Padding(
+                        padding: EdgeInsets.only(left: 30, right: 30),
+                        child: Container(
+                            padding: const EdgeInsets.only(),
+                            child: Center(
+                                child: TextField(
+                              key: const Key("transactionDate"),
+                              controller: dateinput,
+                              cursorWidth: 50,
+                              decoration: const InputDecoration(
+                                  prefixIcon: Icon(Icons.calendar_today),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(8.0)),
+                                      borderSide: BorderSide(
+                                          width: 1.0,
+                                          color: Color(0xFFDBDBDB))),
+                                  hintText: 'YYYY-MM'),
+                              readOnly:
+                                  true, //set it true, so that user will not able to edit text
+                              onTap: () async {
+                                DateTime? pickedDate = await showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime(
+                                        2000), //DateTime.now() - not to allow to choose before today.
+                                    lastDate: DateTime(2101));
+                                if (pickedDate != null) {
+                                  String formattedDate =
+                                      DateFormat('yyyy-MM-dd')
+                                          .format(pickedDate);
+                                  setState(() {
+                                    dateinput.text =
+                                        formattedDate; //set output date to TextField value.
+                                  });
+                                } else {}
+                              },
+                            )))),
+                    const SizedBox(height: 24),
+                    Padding(
+                        padding: EdgeInsets.only(left: 30, right: 30),
+                        child: const Text('Type of Payment',
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700))),
+                    const SizedBox(height: 8),
+                    Padding(
+                      padding: EdgeInsets.only(left: 30, right: 30),
                       child: Row(
                         children: [
                           Expanded(
@@ -325,16 +308,14 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                       ),
                     ),
                     const SizedBox(height: 24),
-
-                    Padding(padding: EdgeInsets.only(left: 30, right: 30),
-                    child:
-                     Text('Type of Pocket',
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700))),
+                    Padding(
+                        padding: EdgeInsets.only(left: 30, right: 30),
+                        child: Text('Type of Pocket',
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700))),
                     const SizedBox(height: 8),
-
                     Padding(
                       padding: EdgeInsets.only(left: 30, right: 30),
                       child: DropdownButtonFormField(
@@ -370,7 +351,6 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                         isExpanded: true,
                       ),
                     ),
-                    
                     const SizedBox(height: 32),
                     Container(
                       alignment: Alignment.center,
@@ -410,17 +390,17 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                             style: TextStyle(color: Colors.white)),
                       ),
                     ),
-
                     const SizedBox(height: 16),
-                    
                     Container(
                       alignment: Alignment.center,
                       child: TextButton(
-                          key: const Key("createCancelButton"),
-                          onPressed: () {Navigator.pop(context);},
-                          child: const Text('Cancel',
-                              style: TextStyle(color: Color(0xFFD3180C))),
-                        ),
+                        key: const Key("createCancelButton"),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('Cancel',
+                            style: TextStyle(color: Color(0xFFD3180C))),
+                      ),
                     ),
                   ])),
         ));
