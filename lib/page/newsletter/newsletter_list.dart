@@ -94,8 +94,7 @@ class NewsList extends State<NewsletterList> {
                                     borderRadius: BorderRadius.circular(32),
                                     color: Color.fromARGB(255, 239, 238, 239)),
                                 child: Center(
-                                  child: Text(
-                                    allpocket[i]['newsletter_title'],
+                                  child: Text('Newsletter for you',
                                     style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
