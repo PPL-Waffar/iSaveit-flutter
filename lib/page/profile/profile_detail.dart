@@ -1,6 +1,7 @@
-// ignore_for_file: unused_field
+// ignore_for_file: unused_field, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:isaveit/main.dart';
 import 'package:isaveit/page/feedback/read_feedback.dart';
 import 'package:isaveit/models/user.dart';
 import 'package:http/http.dart' as http;
@@ -223,8 +224,42 @@ class _ProfileDetailPage extends State<ProfileView> {
                                       )),
 
                                   const SizedBox(height: 5),
-                                ],
-                              ))),
+                                ]  
+                              ),
+                         
+                                
+                              )),
+
+                        SizedBox(height: 35,),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30, right: 30),
+                          child:
+                            Container(
+                                    alignment: Alignment.center,
+                                    // margin:   EdgeInsets.only(left: 30, right: 30),
+                                    child: ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            minimumSize:   Size.fromHeight(48),
+                                            elevation: 0,
+                                            backgroundColor:   Color(0XFF4054FF),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(48),
+                                            )),
+                                      onPressed: ()  {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      MyApp()));
+                                        },
+                                      
+                                      child: Text(
+                                        'Log Out',
+                                        style: TextStyle(fontSize: 16, color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+                        ),
                       const SizedBox(height: 32),
                     ]);
               })),

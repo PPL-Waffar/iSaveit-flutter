@@ -262,7 +262,7 @@ class _CreateFeedbackPage extends State<CreateFeedback> {
                                       // ignore: use_build_context_synchronously
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(const SnackBar(
-                                              content: Text('Pocket created')));
+                                              content: Text('Feedback created')));
                                       // ignore: use_build_context_synchronously
                                       Navigator.push(
                                           context,
@@ -274,7 +274,7 @@ class _CreateFeedbackPage extends State<CreateFeedback> {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(const SnackBar(
                                               content: Text(
-                                                  'Failed to create pocket')));
+                                                  'Failed to create feedback')));
                                     }
                                   }
                                 },

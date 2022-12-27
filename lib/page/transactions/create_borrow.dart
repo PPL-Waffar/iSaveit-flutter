@@ -190,7 +190,7 @@ class CreateBorrowPage extends State<CreateBorrow> {
               Text('Borrow Transaction',
                   style: TextStyle(
                       fontFamily: 'Inter',
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.w700,
                       color: Colors.black))]
             ),

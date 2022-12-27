@@ -213,7 +213,7 @@ class HomePage extends State<HomeView> {
   void initState() {
     super.initState();
 
-    _timer = Timer.periodic(Duration(seconds: 3), (timer) async {
+    _timer = Timer.periodic(Duration(seconds: 5), (timer) async {
       await _intializeData();
       if (mounted) {
         _isLoading = true;

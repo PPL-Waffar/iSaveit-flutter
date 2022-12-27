@@ -6,6 +6,8 @@ import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
+
+import '../navbar.dart';
 // import 'package:dropdownfield/dropdownfield.dart';
 
 Future<Map<String, dynamic>> fetchGroups(User user) async {
@@ -182,7 +184,6 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                               borderSide: BorderSide(
                                   width: 1.0, color: Color(0xFFDBDBDB))),
                           hintText: 'Enter your payment'),
-                      keyboardType: TextInputType.number,
                     )),
 
                     const SizedBox(height: 32),
@@ -389,14 +390,18 @@ class _CreatePlannedPayment extends State<PlannedPayment> {
                             fetchedResult = await sendNewUser(
                                 payname.text,
                                 payamount.text,
-                                paydate.text,
+                                dateinput.text,
                                 paytype,
                                 _valPocket!,
                                 widget.user);
                             isSuccessful = fetchedResult!['isSuccessful'];
                             if (isSuccessful == true) {
                               // ignore: use_build_context_synchronously
-                              Navigator.pop(context);
+                             Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            SettingView(widget.user)));
                             } else {
                               // ignore: use_build_context_synchronously
                               ScaffoldMessenger.of(context).showSnackBar(
