@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_interpolation_to_compose_strings
+
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -115,6 +117,15 @@ class _NewsDetails extends State<NewsDetails> {
                           style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w700),
                         ),
+                        const SizedBox(
+                          height: 7,
+                        ),
+                        Image.network(
+                                'https://isaveit-backend.herokuapp.com' +
+                                    jsonDecode(
+                                        allpocket[0]['newsletter_picture']),
+                                width: 343,
+                                height: 154,),
                         const SizedBox(
                           height: 7,
                         ),

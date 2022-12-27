@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings
 
 import 'package:flutter/material.dart';
 // import 'package:isaveit/page/newsletter/newsletter_details.dart';
@@ -105,7 +105,9 @@ class NewsList extends State<NewsletterList> {
                               ),
                               SizedBox(height: 10),
                               Image.network(
-                                'https://isaveit-backend.herokuapp.com/images/newsletter/pictures/Screenshot_2022-12-22_at_12.09.31.png',
+                                'https://isaveit-backend.herokuapp.com' +
+                                    jsonDecode(
+                                        allpocket[i]['newsletter_picture']),
                                 width: 343,
                                 height: 154,
                               ),
