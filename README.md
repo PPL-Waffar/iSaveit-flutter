@@ -127,6 +127,282 @@ Once the users have registered themselves, they are required to login to the app
 [codecov staging](https://app.codecov.io/gh/PPL-Waffar/iSaveIt/tree/staging)
 
 [code factor staging](https://www.codefactor.io/repository/github/ppl-waffar/isaveit/issues)
+=======
+## Summary of SQA
+## Sprint 1
+1. PPL-6 : View Pocket Categories
+    - Tester : Firlandi
+    - Functionality
+    - Browser: Pass
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+2. PPL-7: Create Pocket
+    - Tester: Firlandi
+    - Functionality
+    - Browser: Pass
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+3. PPL-11: Read Planned Payments
+    - Tester: Firlandi
+    - Functionality
+    - Browser: Pass
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+4. PPL-12: Update Planned Payments
+    - Tester: Firlandi
+    - Functionality
+    - Browser: Pass
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+5. PPL-12: Delete Planned Payments
+    - Tester: Firlandi
+    - Functionality
+    - Browser: Pass
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+
+6. PPL-9: View pocket details
+    - Tester: Anastasia Audi
+    - UI/UX
+    - Browser: Not Tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+7. PPL-10: Create pocket details
+    - Tester: Anastasia Audi
+    - UI/UX
+    - Browser: Not Tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+8. PPL-11: Edit pocket details
+    - Tester: Anastasia Audi
+    - UI/UX
+    - Browser: Not Tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+9. PPL-12: Delete pocket
+    - Tester: Anastasia Audi
+    - UI/UX
+    - Browser: Not Tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+10. PPL-13: Create planned payment
+    - Tester: Anne Yuliana
+    - UI/UX
+    - Browser: Not Tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+11. PPL-14: Remove planned payment
+    - Tester: Anne Yuliana
+    - UI/UX
+    - Browser: Not Tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+12. PPL-11: Edit Pocket details
+    - Tester: Raihan
+    - Functionality
+    - Browser: Pass
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+13. PPL-12: Delete Pocket details
+    - Tester: Raihan
+    - Functionality
+    - Browser: Pass
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+14. PPL-13: Create Planned payment
+    - Tester: Winaldo
+    - Functionality
+    - Browser: Pass
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+15. PPL-30: Register
+    - Tester: Winaldo
+    - Functionality
+    - Browser: Pass
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+16. PPL-28: Login
+    - Tester: Winaldo
+    - Functionality
+    - Browser: Pass
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+17. PPL-30: Register
+    - Tester: Reynaldi
+    - UI/UX
+    - Browser: Pass
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+18. PPL-28: Login
+    - Tester: Reynaldi
+    - UI/UX
+    - Browser: Pass
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+## Homepage
+- Tester: Reynaldi
+- UI/UX
+- Browser: Pass
+- Local: Pass
+- Staging: Pass
+- Production: Pass
+
+## Sprint 2
+1. PPL-2: Input Expense Report
+    - Tester: Anastasia Audi
+    - UI/UX
+    - Browser: Not tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+2. PPL-3: Input Income report
+    - Tester: Anastasia Audi
+    - UI/UX
+    - Browser: Not tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+3. PPL-4: View transactions
+    - Tester: Reynaldi
+    - UI/UX
+    - Browser: Not tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+4. PPL-4: View Expense
+    - Tester: Firlandi
+    - Functionality
+    - Browser: Pass
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+5. PPL-5: Make the expense for debt
+    - Tester: Anne
+    - UI/UX
+    - Browser: Not tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+6. PPL-6: Make the expense after lending money
+    - Tester: Anne
+    - UI/UX
+    - Browser: Not tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+7. PPL-2&3: Input transactions
+    - Tester: Raihan
+    - Functionality
+    - Browser: Pass
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+8. PPL-5&6: Add expense report
+    - Tester: Winaldo
+    - Functionality
+    - Browser: Pass
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+
+## Sprint 3
+1. PPL-18: See financial report details
+    - Tester: Firlandi
+    - Functionality
+    - Browser: Not tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+2. PPL-18: See financial report details
+    - Tester: Reynaldi
+    - UI/UX
+    - Browser: Not tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+3. PPL-19: Download financial report button
+    - Tester: Anne
+    - UI/UX
+    - Browser: Not tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+4. PPL-23: Create feedback
+    - Tester: Raihan
+    - Functionality
+    - Browser: Not tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+5. PPL-29: Edit profile
+    - Tester: Winaldo
+    - Functionality
+    - Browser: Not tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+6. PPL-29: Edit profile
+    - Tester: Anastasia Audi
+    - UI/UX
+    - Browser: Not tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+
+## Sprint 4
+1. PPL-27: View list of feedback report
+    - Tester: Anne
+    - UI/UX
+    - Browser: Not tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+2. PPL-23: Create feedback/satisfaction report
+    - Tester: Anastasia Audi
+    - UI/UX
+    - Browser: Not tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+3. PPL-24: View report details
+    - Tester: Reynaldi
+    - UI/UX
+    - Browser: Not tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+4. PPL-24: View report details
+    - Tester: Firlandi
+    - Functionality
+    - Browser: Not tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
+5. PPL-26: Delete Satisfaction Report
+    - Tester: Reynaldi
+    - UI/UX
+    - Browser: Not tested
+    - Local: Pass
+    - Staging: Pass
+    - Production: Pass
 
 
 ## Getting Started
