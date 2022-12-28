@@ -1,5 +1,6 @@
 # iSaveit
 [![CodeFactor](https://www.codefactor.io/repository/github/ppl-waffar/isaveit/badge)](https://www.codefactor.io/repository/github/ppl-waffar/isaveit)
+
 **Product Owner:**
 1. Anastasia Audi Wulandari - 2006607495
 2. Anne Yuliana - 2006607513
@@ -18,6 +19,11 @@ https://isaveit.herokuapp.com/
 
 ### iSaveIt: A financial management application
 iSaveIt is a money management application that hope to organize budget and expenses with the intent that users can spend their money responsibly. The features we hope to implement are creating multiple pockets as needed, input transactions, keep track of the money users might've borrowed from other people, viewing the finance report, and reading newsletter about finance and economy.
+
+**Changes:**
+The changes made in this sprint is the progress on Newsletter Epic. There is a modification made for the backlog task. Initially we wanted the admin to retrieve online article API and published them into the newsletter section of our application. However, we find that backlog to be quite challenging, so we switch it into admin writing the articles (copy and paste) into backend website where they can post the article text, title, creditted website, and add image. This is successfully created in the newsletter app, where the admin can write, publish, and delete articles. There's also an update for the front end for displaying the list of articles and article text. 
+
+Another changes is that we have managed to connect the edit profile, borrow transaction, and report epics. 
 
 ### List of iSaveIt Features:
 Register
@@ -86,6 +92,42 @@ Once the users have registered themselves, they are required to login to the app
 3. The users are allowed to delete the feedback report if the report is above three months old
 4. The feedback report feature is in a form of questions related to the user’s goals, motivation, and feedback
 
+ ## Summary of SQA
+### Sprint 1
+[UAT sprint 1 test cases](https://docs.google.com/spreadsheets/d/1wVKp_U2KGYYdOu7ktalVgQA0ULiJT_J4Y4Sbqrq7LX0/edit?usp=sharing)
+
+[codecov staging](https://app.codecov.io/gh/PPL-Waffar/iSaveIt/tree/staging)
+
+[code factor staging](https://www.codefactor.io/repository/github/ppl-waffar/isaveit/issues)
+
+### Sprint 2
+[UAT sprint 2 test cases](https://docs.google.com/spreadsheets/d/1wVKp_U2KGYYdOu7ktalVgQA0ULiJT_J4Y4Sbqrq7LX0/edit?usp=sharing)
+
+[codecov staging](https://app.codecov.io/gh/PPL-Waffar/iSaveIt/tree/staging)
+
+[code factor staging](https://www.codefactor.io/repository/github/ppl-waffar/isaveit/issues)
+
+### Sprint 3
+[UAT sprint 3 test cases](https://docs.google.com/spreadsheets/d/1wVKp_U2KGYYdOu7ktalVgQA0ULiJT_J4Y4Sbqrq7LX0/edit?usp=sharing)
+
+[codecov staging](https://app.codecov.io/gh/PPL-Waffar/iSaveIt/tree/staging)
+
+[code factor staging](https://www.codefactor.io/repository/github/ppl-waffar/isaveit/issues)
+
+### Sprint 4
+[UAT sprint 4 test cases](https://docs.google.com/spreadsheets/d/1wVKp_U2KGYYdOu7ktalVgQA0ULiJT_J4Y4Sbqrq7LX0/edit?usp=sharing)
+
+[codecov staging](https://app.codecov.io/gh/PPL-Waffar/iSaveIt/tree/staging)
+
+[code factor staging](https://www.codefactor.io/repository/github/ppl-waffar/isaveit/issues)
+
+### Sprint 5
+[UAT sprint 5 test cases](https://docs.google.com/spreadsheets/d/1wVKp_U2KGYYdOu7ktalVgQA0ULiJT_J4Y4Sbqrq7LX0/edit?usp=sharing)
+
+[codecov staging](https://app.codecov.io/gh/PPL-Waffar/iSaveIt/tree/staging)
+
+[code factor staging](https://www.codefactor.io/repository/github/ppl-waffar/isaveit/issues)
+=======
 ## Summary of SQA
 ## Sprint 1
 1. PPL-6 : View Pocket Categories
