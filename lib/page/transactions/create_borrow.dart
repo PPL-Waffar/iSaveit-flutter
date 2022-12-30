@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:isaveit/page/plannedpayment/plannedpayment.dart';
-import 'package:intl/intl.dart';
 
 class CreateBorrow extends StatefulWidget {
   const CreateBorrow({super.key});
@@ -136,21 +135,7 @@ class CreateBorrowPage extends State<CreateBorrow> {
                                               borderSide: BorderSide(width: 1.0, color: Color(0xFFDBDBDB))),
                                           hintText: 'YYYY-MM-DD'),
                                       readOnly: true,  //set it true, so that user will not able to edit text
-                                      onTap: () async {
-                                        DateTime? pickedDate = await showDatePicker(
-                                            context: context, initialDate: DateTime.now(),
-                                            firstDate: DateTime(2000), //DateTime.now() - not to allow to choose before today.
-                                            lastDate: DateTime(2101)
-                                        );
-                                        if(pickedDate != null ){
-                                          String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
-                                          setState(() {
-                                            dateinput.text = formattedDate; //set output date to TextField value.
-                                          });
-                                        }else{
-                                        }
-                                      },
-                                    ))),
+                                      onTap: () async {}))),
                             const SizedBox(height: 24),
                             const Text('Type of Borrowing', style: TextStyle(fontFamily: 'Inter', fontSize: 16, fontWeight: FontWeight.w700)),
                             const SizedBox(height: 8),
